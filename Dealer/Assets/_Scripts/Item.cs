@@ -15,6 +15,8 @@ public class Item {
 	{
 		Weapon, Consumable, Quest
 	}
+	public Item()
+	{}
 	public Item(string name, int id, string desc, int power, int speed, ItemType type)
 	{
 		itemName = name;

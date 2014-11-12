@@ -109,7 +109,7 @@ MonoBehaviour:
     itemPower: 0
     itemSpeed: 0
     itemtype: 0
-  - itemName: 
+  - itemName: tits
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
@@ -176,6 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed00a384b4fba64e97d6de6aef8d38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotsX: 4
+  slotsY: 5
+  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
+  slots: []
   inventory: []
 --- !u!4 &123489238
 Transform:
