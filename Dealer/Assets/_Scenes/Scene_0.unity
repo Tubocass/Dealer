@@ -105,33 +105,12 @@ MonoBehaviour:
   - itemName: Ass
     itemID: 0
     itemDesc: dat Ass
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 2800000, guid: 97c02d20362cd4b4f8fcd688235ee7b4, type: 3}
     itemPower: 0
     itemSpeed: 0
     itemtype: 0
   - itemName: tits
-    itemID: 0
-    itemDesc: 
-    itemIcon: {fileID: 0}
-    itemPower: 0
-    itemSpeed: 0
-    itemtype: 0
-  - itemName: 
-    itemID: 0
-    itemDesc: 
-    itemIcon: {fileID: 0}
-    itemPower: 0
-    itemSpeed: 0
-    itemtype: 0
-  - itemName: 
-    itemID: 0
-    itemDesc: 
-    itemIcon: {fileID: 0}
-    itemPower: 0
-    itemSpeed: 0
-    itemtype: 0
-  - itemName: 
-    itemID: 0
+    itemID: 1
     itemDesc: 
     itemIcon: {fileID: 0}
     itemPower: 0

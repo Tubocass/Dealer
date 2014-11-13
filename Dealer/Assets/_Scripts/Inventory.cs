@@ -9,8 +9,11 @@ public class Inventory : MonoBehaviour {
 	public List<Item> inventory = new List<Item> ();
 	private Item_Database itemDB;
 	string tooltip;
+	int prevIndex;
 	private bool showInventory = false;
 	private bool showTooltip = false;
+	private bool draggingItem = false;
+	private Item draggedItem;
 
 
 	void Start()
@@ -21,6 +24,7 @@ public class Inventory : MonoBehaviour {
 			inventory.Add(new Item());
 		}
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
+		//AddItem (0);
 
 	}
 	void Update()
@@ -28,6 +32,7 @@ public class Inventory : MonoBehaviour {
 		if(Input.GetButtonDown("Inventory"))
 		{
 			showInventory = !showInventory;
+			AddItem (0);
 		}
 	}
 	void OnGUI()
@@ -37,11 +42,16 @@ public class Inventory : MonoBehaviour {
 		if(showInventory)
 		{
 			DrawInventory();
+			if(showTooltip)
+			{
+				GUI.Box(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,200,200),tooltip);
+			}
 		}
-		if(showTooltip)
+		if(draggingItem)
 		{
-			GUI.Box(new Rect(Event.current.mousePosition.x+20f,Event.current.mousePosition.y+20f,200,200),tooltip);
+			GUI.DrawTexture(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,50,50),draggedItem.itemIcon);
 		}
+	
 	}
 	void CreateTooltip(Item item)
 	{
@@ -50,6 +60,7 @@ public class Inventory : MonoBehaviour {
 
 	void DrawInventory()
 	{
+		Event e = Event.current;
 		int i = 0;
 		for (int y=0;y<slotsY;y++)
 		{
@@ -61,10 +72,34 @@ public class Inventory : MonoBehaviour {
 				if(slots[i].itemName!=null)
 				{
 					GUI.DrawTexture(slotRect,slots[i].itemIcon);
-					if(slotRect.Contains(Event.current.mousePosition))
+					if(slotRect.Contains(e.mousePosition))
 					{
 						CreateTooltip(slots[i]);
 						showTooltip = true;
+						if(e.button==0 && e.type==EventType.mouseDrag && !draggingItem)
+						{
+							draggingItem = true;
+							prevIndex = i;
+							draggedItem = slots[i];
+							inventory[i] = new Item();
+						}
+						if(e.type == EventType.mouseUp&& draggingItem)
+						{
+							inventory[prevIndex] = inventory[i];
+							inventory[i] = draggedItem;
+							draggingItem = false;
+							draggedItem = null;
+						}
+					}
+				}else{
+					if(slotRect.Contains(e.mousePosition))
+					{
+						if(e.type == EventType.mouseUp&& draggingItem)
+						{
+							inventory[i] = draggedItem;
+							draggingItem = false;
+							draggedItem = null;
+						}
 					}
 				}
 				if (tooltip == "")
@@ -88,8 +123,9 @@ public class Inventory : MonoBehaviour {
 					if(itemDB.items[j].itemID==id)
 					{
 						inventory[i]= itemDB.items[j];
+						break;
 					}
-				}
+				}break;
 			}
 		}
 	}
