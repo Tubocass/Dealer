@@ -24,7 +24,9 @@ public class Inventory : MonoBehaviour {
 			inventory.Add(new Item());
 		}
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
-		//AddItem (0);
+		AddItem (0);
+		AddItem (0);
+		AddItem (0);
 
 	}
 	void Update()
@@ -32,11 +34,14 @@ public class Inventory : MonoBehaviour {
 		if(Input.GetButtonDown("Inventory"))
 		{
 			showInventory = !showInventory;
-			AddItem (0);
 		}
 	}
 	void OnGUI()
 	{
+		if(GUI.Button(new Rect(40,400,100,40),"Save"))
+		   SaveInventory();
+		if(GUI.Button(new Rect(40,460,100,40),"Load"))
+		   LoadInventory();
 		tooltip = "";
 		GUI.skin = skin;
 		if(showInventory)
@@ -74,8 +79,11 @@ public class Inventory : MonoBehaviour {
 					GUI.DrawTexture(slotRect,slots[i].itemIcon);
 					if(slotRect.Contains(e.mousePosition))
 					{
-						CreateTooltip(slots[i]);
-						showTooltip = true;
+						if(!draggingItem)
+						{
+							CreateTooltip(slots[i]);
+							showTooltip = true;
+						}
 						if(e.button==0 && e.type==EventType.mouseDrag && !draggingItem)
 						{
 							draggingItem = true;
@@ -89,6 +97,13 @@ public class Inventory : MonoBehaviour {
 							inventory[i] = draggedItem;
 							draggingItem = false;
 							draggedItem = null;
+						}
+						if(e.type==EventType.mouseDown&& e.button==1)
+						{
+							if(slots[i].itemtype==Item.ItemType.Consumable)
+							{
+								print ("balls");
+							}
 						}
 					}
 				}else{
@@ -152,5 +167,20 @@ public class Inventory : MonoBehaviour {
 			
 		}
 		return result;
+	}
+	
+	void SaveInventory()
+	{
+		for(int i = 0;i<inventory.Count;i++)
+		{
+			PlayerPrefs.SetInt("Inventory"+i,inventory[i].itemID);
+		}
+	}
+	void LoadInventory()
+	{
+			for(int i = 0;i<inventory.Count;i++)
+			{
+				inventory[i] = PlayerPrefs.GetInt("Inventory"+i,-1) >= 0 ? itemDB.items[PlayerPrefs.GetInt("Inventory"+i)] : new Item();
+			}
 	}
 }

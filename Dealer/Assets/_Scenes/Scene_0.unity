@@ -112,10 +112,10 @@ MonoBehaviour:
   - itemName: tits
     itemID: 1
     itemDesc: 
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 2800000, guid: ac326914829e03e46ab605ad9cfdf4ca, type: 3}
     itemPower: 0
     itemSpeed: 0
-    itemtype: 0
+    itemtype: 1
 --- !u!4 &18059365
 Transform:
   m_ObjectHideFlags: 0
