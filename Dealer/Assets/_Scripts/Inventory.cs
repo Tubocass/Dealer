@@ -24,9 +24,6 @@ public class Inventory : MonoBehaviour {
 			inventory.Add(new Item());
 		}
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
-		AddItem (0);
-		AddItem (0);
-		AddItem (0);
 
 	}
 	void Update()
@@ -127,7 +124,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
-	void AddItem(int id)
+	public void AddItem(int id)
 	{
 		for(int i =0;i<inventory.Count;i++)
 		{
@@ -144,7 +141,7 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 	}
-	void RemoveItem(int id)
+	public void RemoveItem(int id)
 	{
 		for(int i = 0;i<inventory.Count;i++)
 		{
@@ -156,7 +153,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
-	bool ContainsItem(int id)
+	public bool ContainsItem(int id)
 	{
 		bool result = false;
 		for (int i = 0; i<inventory.Count;i++)

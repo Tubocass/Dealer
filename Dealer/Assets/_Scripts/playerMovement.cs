@@ -20,8 +20,4 @@ public class playerMovement : MonoBehaviour {
 		rigidbody2D.AddForce (gameObject.transform.up * speed * input);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
