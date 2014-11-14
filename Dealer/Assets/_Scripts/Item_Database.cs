@@ -8,6 +8,6 @@ public class Item_Database : MonoBehaviour
 	//items.Add(new Item("Weed",1,"Some Reggie",0,0,Item.ItemType.Consumable));
 	void Start()
 	{
-		items.Add(new Item("Weed",1,"Some Reggie",0,0,Item.ItemType.Consumable));
+		//items.Add(new Item("Weed",1,"Some Reggie",0,0,Item.ItemType.Consumable));
 	}
 }

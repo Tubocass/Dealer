@@ -7,7 +7,7 @@ public class Player_Interactions : MonoBehaviour {
 	
 	void Start()
 	{
-		inventory = GetComponent<Inventory>();
+		inventory = GetComponent<Player_Inventory>();
 		inventory.AddItem(1);
 	}
 	void OnTriggerEnter2D(Collider2D other)

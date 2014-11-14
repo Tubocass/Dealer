@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
 	public int slotsX, slotsY;
+	public float beginX, beginY;
 	public GUISkin skin;
 	public List<Item> slots = new List<Item> ();
 	public List<Item> inventory = new List<Item> ();
-	private Item_Database itemDB;
+	protected Item_Database itemDB;
 	string tooltip;
 	int prevIndex;
-	private bool showInventory = false;
-	private bool showTooltip = false;
+	public bool showInventory = false;
+	protected bool showTooltip = false;
 	private bool draggingItem = false;
 	private Item draggedItem;
 
@@ -26,19 +27,9 @@ public class Inventory : MonoBehaviour {
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
 
 	}
-	void Update()
+
+	protected void OnGUI()
 	{
-		if(Input.GetButtonDown("Inventory"))
-		{
-			showInventory = !showInventory;
-		}
-	}
-	void OnGUI()
-	{
-		if(GUI.Button(new Rect(40,400,100,40),"Save"))
-		   SaveInventory();
-		if(GUI.Button(new Rect(40,460,100,40),"Load"))
-		   LoadInventory();
 		tooltip = "";
 		GUI.skin = skin;
 		if(showInventory)
@@ -68,7 +59,7 @@ public class Inventory : MonoBehaviour {
 		{
 			for (int x=0;x<slotsX;x++)
 			{
-				Rect slotRect = new Rect(x*60,y*60,50,50);
+				Rect slotRect = new Rect(beginX+(x*60),beginY+(y*60),50,50);
 				GUI.Box(slotRect,"",skin.GetStyle("Slot"));
 				slots[i] = inventory[i];
 				if(slots[i].itemName!=null)
@@ -166,18 +157,5 @@ public class Inventory : MonoBehaviour {
 		return result;
 	}
 	
-	void SaveInventory()
-	{
-		for(int i = 0;i<inventory.Count;i++)
-		{
-			PlayerPrefs.SetInt("Inventory"+i,inventory[i].itemID);
-		}
-	}
-	void LoadInventory()
-	{
-			for(int i = 0;i<inventory.Count;i++)
-			{
-				inventory[i] = PlayerPrefs.GetInt("Inventory"+i,-1) >= 0 ? itemDB.items[PlayerPrefs.GetInt("Inventory"+i)] : new Item();
-			}
-	}
+	
 }
