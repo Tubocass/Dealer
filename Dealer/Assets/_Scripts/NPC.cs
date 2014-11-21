@@ -21,10 +21,19 @@ public class NPC : MonoBehaviour {
 		{
 			//print ("tiiiittttss");
 			clicked = false;
+			inventory.showInventory = false;
 		}
 		if(clicked)
 		{
-			if(GUI.Button(trade,"trade"))
+			if(GUI.Button(trade,"Trade"))
+			{
+				inventory.showInventory = !inventory.showInventory; 
+			}
+			if(GUI.Button(new Rect(40,240,100,40),"Talk"))
+			{
+				inventory.showInventory = !inventory.showInventory; 
+			}
+			if(GUI.Button(new Rect(40,300,100,40),"Quest"))
 			{
 				inventory.showInventory = !inventory.showInventory; 
 			}

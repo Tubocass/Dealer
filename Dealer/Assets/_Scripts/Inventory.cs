@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour {
 	protected bool showTooltip = false;
 	private bool draggingItem = false;
 	private Item draggedItem;
+	private Rect windowRect;
+	public int UniqueID;
 
 
 	void Start()
@@ -24,21 +26,20 @@ public class Inventory : MonoBehaviour {
 			slots.Add(new Item());
 			inventory.Add(new Item());
 		}
+		windowRect = new Rect (20, 20, (slotsX*60), (slotsY*60)+20);
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
 
 	}
 
 	protected void OnGUI()
 	{
+		
 		tooltip = "";
 		GUI.skin = skin;
+		
 		if(showInventory)
 		{
-			DrawInventory();
-			if(showTooltip)
-			{
-				GUI.Box(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,200,200),tooltip);
-			}
+			windowRect = GUI.Window (UniqueID, windowRect, WindowFunction, "My Inventory");
 		}
 		if(draggingItem)
 		{
@@ -46,6 +47,16 @@ public class Inventory : MonoBehaviour {
 		}
 	
 	}
+	void WindowFunction (int windowID) 
+	{
+		DrawInventory();
+		if(showTooltip)
+		{
+			GUI.Box(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,200,200),tooltip);
+		}
+		GUI.DragWindow(new Rect(0, 0, 10000, 10000));
+	}
+	
 	void CreateTooltip(Item item)
 	{
 		tooltip = item.itemName;
@@ -59,7 +70,7 @@ public class Inventory : MonoBehaviour {
 		{
 			for (int x=0;x<slotsX;x++)
 			{
-				Rect slotRect = new Rect(beginX+(x*60),beginY+(y*60),50,50);
+				Rect slotRect = new Rect(5+(x*60),20+(y*60),50,50);
 				GUI.Box(slotRect,"",skin.GetStyle("Slot"));
 				slots[i] = inventory[i];
 				if(slots[i].itemName!=null)

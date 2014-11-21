@@ -270,6 +270,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
+      propertyPath: UniqueID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
   m_RootGameObject: {fileID: 1310554422}
@@ -392,6 +396,7 @@ MonoBehaviour:
   slots: []
   inventory: []
   showInventory: 0
+  UniqueID: 0
 --- !u!114 &716985162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +737,7 @@ MonoBehaviour:
   slots: []
   inventory: []
   showInventory: 0
+  UniqueID: 1
 --- !u!212 &1310554425
 SpriteRenderer:
   m_ObjectHideFlags: 0

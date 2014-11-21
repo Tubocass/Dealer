@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Player_Inventory : Inventory 
 {
+	
 
 	void Update()
 	{
@@ -13,13 +14,13 @@ public class Player_Inventory : Inventory
 	}
 	void OnGUI()
 	{
-		base.OnGUI();
 		
-		if(GUI.Button(new Rect(40,400,100,40),"Save"))
-			SaveInventory();
-		if(GUI.Button(new Rect(40,460,100,40),"Load"))
-			LoadInventory();
+		//if(GUI.Button(new Rect(40,400,100,40),"Save"))
+			//SaveInventory();
+		//if(GUI.Button(new Rect(40,460,100,40),"Load"))
+			//LoadInventory();
 	}
+	
 	void SaveInventory()
 	{
 		for(int i = 0;i<inventory.Count;i++)
