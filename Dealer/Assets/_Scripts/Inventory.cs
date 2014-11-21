@@ -13,8 +13,8 @@ public class Inventory : MonoBehaviour {
 	int prevIndex;
 	public bool showInventory = false;
 	protected bool showTooltip = false;
-	private bool draggingItem = false;
-	private Item draggedItem;
+	private static bool draggingItem = false;
+	public static Item draggedItem;
 	private Rect windowRect;
 	public int UniqueID;
 
@@ -43,6 +43,7 @@ public class Inventory : MonoBehaviour {
 		}
 		if(draggingItem)
 		{
+			GUI.BringWindowToBack(UniqueID);
 			GUI.DrawTexture(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,50,50),draggedItem.itemIcon);
 		}
 	
