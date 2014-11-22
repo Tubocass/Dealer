@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour {
 	protected bool showTooltip = false;
 	private static bool draggingItem = false;
 	public static Item draggedItem;
+	public static int draggedAmount;
 	private Rect windowRect;
 	public int UniqueID;
 
@@ -77,6 +78,10 @@ public class Inventory : MonoBehaviour {
 				if(slots[i].itemName!=null)
 				{
 					GUI.DrawTexture(slotRect,slots[i].itemIcon);
+					if(slots[i].bStackable)
+					{
+						GUI.Label(slotRect, ""+slots[i].stackAmount,skin.GetStyle("label"));
+					}
 					if(slotRect.Contains(e.mousePosition))
 					{
 						if(!draggingItem)
@@ -129,18 +134,28 @@ public class Inventory : MonoBehaviour {
 
 	public void AddItem(int id)
 	{
-		for(int i =0;i<inventory.Count;i++)
+		if(ContainsItem(id))
 		{
-			if(inventory[i].itemName == null)
+			int s = ContainsItemAt(id);
+			if(inventory[s].bStackable)
 			{
-				for(int j = 0;j<itemDB.items.Count;j++)
+				inventory[s].stackAmount += 1;
+			}
+		}else
+		{
+			for(int i =0;i<inventory.Count;i++)
+			{
+				if(inventory[i].itemName == null)
 				{
-					if(itemDB.items[j].itemID==id)
+					for(int j = 0;j<itemDB.items.Count;j++)
 					{
-						inventory[i]= itemDB.items[j];
-						break;
-					}
-				}break;
+						if(itemDB.items[j].itemID==id)
+						{
+							inventory[i]= itemDB.items[j];
+							break;
+						}
+					}break;
+				}
 			}
 		}
 	}
@@ -163,10 +178,25 @@ public class Inventory : MonoBehaviour {
 		{
 			result = inventory[i].itemID == id;
 			if(result)
-			{break;}
+			{
+				break;
+			}
 			
 		}
 		return result;
+	}
+	public int ContainsItemAt(int id)
+	{
+		for (int i = 0; i<inventory.Count;i++)
+		{
+			if(inventory[i].itemID == id)
+			{
+				return i;
+				break;
+			}
+			
+		}
+		return -1;
 	}
 	
 	

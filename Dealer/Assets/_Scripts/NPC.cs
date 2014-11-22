@@ -15,7 +15,7 @@ public class NPC : MonoBehaviour {
 	}
 	void OnGUI()
 	{
-		Rect trade = new Rect(40,200,100,40);
+		Rect trade = new Rect(100,40,110,200);
 		Event e = Event.current;
 		if(!sprite.bounds.Contains(e.mousePosition)&& !trade.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
@@ -25,18 +25,20 @@ public class NPC : MonoBehaviour {
 		}
 		if(clicked)
 		{
-			if(GUI.Button(trade,"Trade"))
+			GUI.BeginGroup(trade);
+			if(GUI.Button(new Rect(0,0+5,100,40),"Trade"))
 			{
 				inventory.showInventory = !inventory.showInventory; 
 			}
-			if(GUI.Button(new Rect(40,240,100,40),"Talk"))
+			if(GUI.Button(new Rect(0,0+55,100,40),"Talk"))
 			{
 				inventory.showInventory = !inventory.showInventory; 
 			}
-			if(GUI.Button(new Rect(40,300,100,40),"Quest"))
+			if(GUI.Button(new Rect(0,0+105,100,40),"Quest"))
 			{
 				inventory.showInventory = !inventory.showInventory; 
 			}
+			GUI.EndGroup();
 		}
 	}
 	void OnMouseDown() 

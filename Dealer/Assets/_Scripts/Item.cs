@@ -10,6 +10,8 @@ public class Item {
 	public int itemPower;
 	public int itemSpeed;
 	public ItemType itemtype;
+	public int stackAmount;
+	public bool bStackable;
 
 	public enum ItemType
 	{
@@ -19,7 +21,7 @@ public class Item {
 	{
 		itemID = -1;
 	}
-	public Item(string name, int id, string desc, int power, int speed, ItemType type)
+	public Item(string name, int id, string desc, int power, int speed, ItemType type, bool stackable, int amount)
 	{
 		itemName = name;
 		itemID = id;
@@ -27,5 +29,7 @@ public class Item {
 		itemPower = power;
 		itemSpeed = speed;
 		itemtype = type;
+		bStackable = stackable;
+		stackAmount = amount;
 	}
 }
