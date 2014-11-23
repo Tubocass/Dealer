@@ -134,13 +134,14 @@ public class Inventory : MonoBehaviour {
 
 	public void AddItem(int id)
 	{
-		if(ContainsItem(id))
+		if(id<1)
+		return;
+		
+		if(itemDB.items[id].bStackable && ContainsItem(id))
 		{
 			int s = ContainsItemAt(id);
-			if(inventory[s].bStackable)
-			{
-				inventory[s].stackAmount += 1;
-			}
+			inventory[s].stackAmount += 1;
+				
 		}else
 		{
 			for(int i =0;i<inventory.Count;i++)

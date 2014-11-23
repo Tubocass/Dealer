@@ -13,18 +13,30 @@ public class Player_Interactions : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.gameObject.tag =="Weed")
+		switch(other.gameObject.tag)
+		{
+		
+		case "Weed":
 		{
 			Destroy(other.gameObject,1);
 			print ("something");
 			inventory.AddItem(1);
+			break;
 		}
-		
-		if(other.gameObject.tag =="Drank")
+		case "Drank":
 		{
 			Destroy(other.gameObject,1);
 			print ("something");
 			inventory.AddItem(2);
+			break;
+		}
+		case "Pills":
+		{
+			Destroy(other.gameObject,1);
+			print ("something");
+			inventory.AddItem(2);
+			break;
+		}
 		}
 		
 	}
