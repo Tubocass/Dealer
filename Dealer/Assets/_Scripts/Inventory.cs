@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour {
 	public static int draggedAmount;
 	private Rect windowRect;
 	public int UniqueID;
+	private bool bTrading;
 
 
 	void Start()
@@ -84,6 +85,10 @@ public class Inventory : MonoBehaviour {
 					}
 					if(slotRect.Contains(e.mousePosition))
 					{
+						if(bTrading)
+						{
+							
+						}
 						if(!draggingItem)
 						{
 							CreateTooltip(slots[i]);
@@ -130,6 +135,12 @@ public class Inventory : MonoBehaviour {
 				i++;
 			}
 		}
+	}
+	
+	public void StartTrading()
+	{
+		showInventory = true;
+		bTrading = true;
 	}
 
 	public void AddItem(int id)

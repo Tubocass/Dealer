@@ -32,11 +32,11 @@ public class NPC : MonoBehaviour {
 			}
 			if(GUI.Button(new Rect(0,0+55,100,40),"Talk"))
 			{
-				inventory.showInventory = !inventory.showInventory; 
+				//inventory.showInventory = !inventory.showInventory; 
 			}
 			if(GUI.Button(new Rect(0,0+105,100,40),"Quest"))
 			{
-				inventory.showInventory = !inventory.showInventory; 
+				//inventory.showInventory = !inventory.showInventory; 
 			}
 			GUI.EndGroup();
 		}
