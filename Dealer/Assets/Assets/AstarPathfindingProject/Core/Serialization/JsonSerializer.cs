@@ -1,9 +1,13 @@
 //#define ASTARDEBUG
 //#define ASTAR_FAST_NO_EXCEPTIONS
+//#define ASTAR_NO_JSON //Strips out usage of the JsonFx library. Slightly lower build size but reduces backwards and forwards compatibility of saving graph settings. Only works properly with the NavmeshGraph right now. You can remove the Pathfinding.JsonFx.dll file if you enable this.
+//#define ASTAR_NO_ZIP
 using System;
 using Pathfinding;
 using Pathfinding.Serialization.JsonFx;
+
 using Pathfinding.Ionic.Zip;
+
 using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
@@ -52,7 +56,7 @@ namespace Pathfinding.Serialization
 		private AstarData data;
 		public JsonWriterSettings writerSettings;
 		public JsonReaderSettings readerSettings;
-		
+
 		private ZipFile zip;
 		private MemoryStream str;
 		
@@ -61,14 +65,14 @@ namespace Pathfinding.Serialization
 		private SerializeSettings settings;
 		
 		private NavGraph[] graphs;
-		
-		const string jsonExt = ".json";
+
 		const string binaryExt = ".binary";
-		
+		const string jsonExt = ".json";
+
 		private uint checksum = 0xffffffff;
-		
+
 		System.Text.UTF8Encoding encoding=new System.Text.UTF8Encoding();
-		
+
 		private static System.Text.StringBuilder _stringBuilder = new System.Text.StringBuilder();
 		
 		/** Returns a cached StringBuilder.
@@ -99,7 +103,7 @@ namespace Pathfinding.Serialization
 			zip = new ZipFile();
 			zip.AlternateEncoding = System.Text.Encoding.UTF8;
 			zip.AlternateEncodingUsage = ZipOption.Always;
-			
+
 			writerSettings = new JsonWriterSettings();
 			writerSettings.AddTypeConverter (new VectorConverter());
 			writerSettings.AddTypeConverter (new BoundsConverter());
@@ -110,7 +114,6 @@ namespace Pathfinding.Serialization
 			
 			//writerSettings.DebugMode = true;
 			writerSettings.PrettyPrint = settings.prettyPrint;
-			
 			meta = new GraphMeta();
 		}
 		
@@ -122,8 +125,8 @@ namespace Pathfinding.Serialization
 			
 			MemoryStream output = new MemoryStream();
     		zip.Save(output);
-			output.Close();
 			bytes = output.ToArray();
+			output.Dispose();
 			
 			
 			zip.Dispose();
@@ -152,7 +155,6 @@ namespace Pathfinding.Serialization
 		}
 		
 		public void SerializeUserConnections (UserConnection[] conns) {
-			
 			if (conns == null) conns = new UserConnection[0];
 			
 			System.Text.StringBuilder output = GetStringBuilder ();//new System.Text.StringBuilder();
@@ -187,7 +189,7 @@ namespace Pathfinding.Serialization
 				
 				//meta.nodeCounts[i] = data.graphs[i].nodes==null?0:data.graphs[i].nodes.Length;
 			}
-			
+
 			System.Text.StringBuilder output = GetStringBuilder ();//new System.Text.StringBuilder();
 			JsonWriter writer = new JsonWriter (output,writerSettings);
 			writer.Write (meta);
@@ -303,10 +305,10 @@ namespace Pathfinding.Serialization
 				}
 				
 				if (c != totCount) throw new System.Exception ("Some graphs are not consistent in their GetNodes calls, sequential calls give different results.");
-				
-				wr.Close ();
-				
+
 				byte[] bytes = stream.ToArray ();
+				wr.Close ();
+
 				
 				AddChecksum (bytes);
 				zip.AddEntry ("graph_references"+binaryExt,bytes);
@@ -320,10 +322,9 @@ namespace Pathfinding.Serialization
 				GraphSerializationContext ctx = new GraphSerializationContext(wr);
 				
 				graphs[i].SerializeExtraInfo (ctx);
-				
-				wr.Close ();
-				
 				byte[] bytes = stream.ToArray ();
+
+				wr.Close ();
 				
 				AddChecksum (bytes);
 				zip.AddEntry ("graph"+i+"_extra"+binaryExt,bytes);
@@ -336,7 +337,7 @@ namespace Pathfinding.Serialization
 					node.SerializeReferences (ctx);
 					return true;
 				});
-				
+
 				wr.Close ();
 				
 				bytes = stream.ToArray ();
@@ -394,10 +395,10 @@ for every node {
 			return str.ToArray();*/
 		}
 		
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 		public void SerializeEditorSettings (GraphEditorBase[] editors) {
 			if (editors == null || !settings.editorSettings) return;
-			
+
 			for (int i=0;i<editors.Length;i++) {
 				if (editors[i] == null) return;
 				
@@ -415,7 +416,7 @@ for every node {
 				zip.AddEntry ("graph"+i+"_editor"+jsonExt,bytes);
 			}
 		}
-#endif
+//#endif
 		
 #endregion
 		
@@ -429,16 +430,17 @@ for every node {
 			readerSettings.AddTypeConverter (new MatrixConverter());
 			readerSettings.AddTypeConverter (new GuidConverter());
 			readerSettings.AddTypeConverter (new UnityObjectConverter());
-			
+
 			str = new MemoryStream();
 			str.Write(bytes,0,bytes.Length);
 			str.Position = 0;
 			try {
 				zip = ZipFile.Read(str);
-			} catch (ZipException e) {
+			} catch (System.Exception e) {
 				//Catches exceptions when an invalid zip file is found
 				Debug.LogWarning ("Caught exception when loading from zip\n"+e);
-				str.Close();
+
+				str.Dispose ();
 				return false;
 			}
 			meta = DeserializeMeta (zip["meta"+jsonExt]);
@@ -454,7 +456,7 @@ for every node {
 		}
 		
 		public void CloseDeserialize () {
-			str.Close();
+			str.Dispose();
 			zip.Dispose();
 			zip = null;
 			str = null;
@@ -477,7 +479,7 @@ for every node {
 				Type tp = meta.GetGraphType(i);
 				
 				//Graph was null when saving, ignore
-				if (tp == null) continue;
+				if (System.Type.Equals (tp, null)) continue;
 
 				nonNull++;
 
@@ -485,17 +487,18 @@ for every node {
 				
 				if (entry == null)
 					throw new FileNotFoundException ("Could not find data for graph "+i+" in zip. Entry 'graph+"+i+jsonExt+"' does not exist");
-				
-				//Debug.Log ("Reading graph " +i+" with type "+tp.FullName);
-				String entryText = GetString(entry);
-				//Debug.Log (entryText);
-					
+
+
 				NavGraph tmp = data.CreateGraph(tp);//(NavGraph)System.Activator.CreateInstance(tp);
+
+				String entryText = GetString(entry);
+					
 				JsonReader reader = new JsonReader(entryText,readerSettings);
 				
 				//NavGraph graph = tmp.Deserialize(reader);//reader.Deserialize<NavGraph>();
 				reader.PopulateObject (ref tmp);
 				
+
 				graphs[i] = tmp;
 				if (graphs[i].guid.ToString () != meta.guids[i])
 					throw new System.Exception ("Guid in graph file not equal to guid defined in meta file. Have you edited the data manually?\n"+graphs[i].guid.ToString()+" != "+meta.guids[i]);
@@ -659,8 +662,8 @@ for every node {
 				} catch (System.Exception e) {
 					throw new System.Exception ("Some graph(s) has thrown an exception during GetNodes, or some graph(s) have deserialized more or fewer nodes than were serialized", e);
 				}
-				
-				reader.Close();
+
+				reader.Close ();
 				
 				// Deserialize node references
 				for (int i=0;i<graphs.Length;i++) {
@@ -703,7 +706,7 @@ for every node {
 		private void DeserializeNodeConnections (int index, BinaryReader reader) {
 		}
 		
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 		/** Deserializes graph editor settings.
 		 * For future compatibility this method does not assume that the \a graphEditors array matches the #graphs array in order and/or count.
 		 * It searches for a matching graph (matching if graphEditor.target == graph) for every graph editor.
@@ -711,7 +714,6 @@ for every node {
 		 * \note Stored in files named "graph#_editor.json" where # is the graph number.
 		 */
 		public void DeserializeEditorSettings (GraphEditorBase[] graphEditors) {
-			
 			if (graphEditors == null) return;
 			
 			for (int i=0;i<graphEditors.Length;i++) {
@@ -731,17 +733,9 @@ for every node {
 					break;
 				}
 			}
-			
-			
 		}
-#endif
-		
-		/** Returns node with specified global index.
-		 * Graphs must be deserialized or serialized first */
-		public GraphNode GetNodeWithIndex (int index) {
-			return null;
-			//throw new System.NotImplementedException ();
-		}
+//#endif
+
 		private string GetString (ZipEntry entry) {
 			MemoryStream buffer = new MemoryStream();
 			entry.Extract(buffer);
@@ -749,11 +743,13 @@ for every node {
 			StreamReader reader = new StreamReader(buffer);
 			string s = reader.ReadToEnd();
 			buffer.Position = 0;
-			reader.Close();
+			reader.Dispose();
 			return s;
 		}
 		
 		private GraphMeta DeserializeMeta (ZipEntry entry) {
+			if ( entry == null ) throw new System.Exception ("No metadata found in serialized data.");
+
 			string s = GetString (entry);
 			
 			JsonReader reader = new JsonReader(s,readerSettings);
@@ -816,10 +812,10 @@ for every node {
 #else
 			Type type = Type.GetType (typeNames[i]);
 #endif
-			if (type != null)
+			if (!System.Type.Equals (type, null))
 				return type;
 			else
-				throw new Exception ("No graph of type '"+typeNames[i]+"' could be created, type does not exist");
+				throw new Exception ("No graph of type '" + typeNames [i] + "' could be created, type does not exist");
 		}
 	}
 	
@@ -850,13 +846,6 @@ for every node {
 				return s;
 			}
 		}
-		
-#if UNITY_EDITOR
-		public void OnGUI () {
-			nodes =  UnityEditor.EditorGUILayout.Toggle ("Save Node Data", nodes);
-			prettyPrint = UnityEditor.EditorGUILayout.Toggle (new GUIContent ("Pretty Print","Format Json data for readability. Yields slightly smaller files when turned off"),prettyPrint);
-		}
-#endif
 	}
 	
 }

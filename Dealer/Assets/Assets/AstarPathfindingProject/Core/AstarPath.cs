@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Threading;
 using Pathfinding;
 
+using Thread = System.Threading.Thread;
+using ParameterizedThreadStart = System.Threading.ParameterizedThreadStart;
+
 // Note sure why anyone would want to use this...
 //#define ASTAR_MORE_PATH_IDS //Increases the number of pathIDs from 2^16 to 2^32. Uses more memory
 
@@ -28,7 +31,7 @@ public class AstarPath : MonoBehaviour {
 	 */
 	public static System.Version Version {
 		get {
-			return new System.Version (3,4,0,6);
+			return new System.Version (3,5,2);
 		}
 	}
 	
@@ -42,7 +45,7 @@ public class AstarPath : MonoBehaviour {
 	 * users of the development versions can get notifications of development
 	 * updates.
 	 */
-	public static readonly string Branch = "master_Free";
+	public static readonly string Branch = "isometric_Free";
 
 	/** Used by the editor to show some Pro specific stuff.
 	 * Note that setting this to true will not grant you any additional features */
@@ -1098,7 +1101,8 @@ public class AstarPath : MonoBehaviour {
 		public GraphUpdateObject obj;
 	}
 	
-	private void ProcessGraphUpdatesAsync (System.Object _astar) {
+	private 
+	void ProcessGraphUpdatesAsync (System.Object _astar) {
 		AstarPath astar = _astar as AstarPath;
 		if (System.Object.ReferenceEquals (astar, null)) {
 			Debug.LogError ("ProcessGraphUpdatesAsync started with invalid parameter _astar (was no AstarPath object)");
@@ -1250,8 +1254,7 @@ public class AstarPath : MonoBehaviour {
 				Debug.Log ("Starting pathfinding thread "+i);
 			threads[i].Start (threadInfos[i]);
 		}
-		
-	
+
 		Thread graphUpdateThread = new Thread (new ParameterizedThreadStart(ProcessGraphUpdatesAsync));
 		graphUpdateThread.IsBackground = true;
 		graphUpdateThread.Start (this);
@@ -1670,51 +1673,6 @@ public class AstarPath : MonoBehaviour {
 		}
 	}
 	
-#if UNITY_EDITOR
-	[UnityEditor.MenuItem ("Edit/Pathfinding/Scan All Graphs %&s")]
-	public static void MenuScan () {
-		
-		if (AstarPath.active == null) {
-			AstarPath.active = FindObjectOfType(typeof(AstarPath)) as AstarPath;
-			if (AstarPath.active == null) {
-				return;
-			}
-		}
-		
-		if (!Application.isPlaying && (AstarPath.active.astarData.graphs == null || AstarPath.active.astarData.graphTypes == null)) {
-			UnityEditor.EditorUtility.DisplayProgressBar ("Scanning","Deserializing",0);
-			AstarPath.active.astarData.DeserializeGraphs ();
-		}
-		
-		UnityEditor.EditorUtility.DisplayProgressBar ("Scanning","Scanning...",0);
-		
-		try {
-			OnScanStatus info = delegate (Progress p) {
-				UnityEditor.EditorUtility.DisplayProgressBar ("Scanning",p.description,p.progress);
-			};
-			AstarPath.active.ScanLoop (info);
-			
-		} catch (System.Exception e) {
-			Debug.LogError ("There was an error generating the graphs:\n"+e.ToString ()+"\n\nIf you think this is a bug, please contact me on arongranberg.com (post a comment)\n");
-			UnityEditor.EditorUtility.DisplayDialog ("Error Generating Graphs","There was an error when generating graphs, check the console for more info","Ok");
-			throw e;
-		} finally {
-			UnityEditor.EditorUtility.ClearProgressBar();
-		}
-	}
-	
-	/** Called by editor scripts to rescan the graphs e.g when the user moved a graph.
-	  * Will only scan graphs if not playing and time to scan last graph was less than some constant (to avoid lag with large graphs) */
-	public bool AutoScan () {
-		
-		if (!Application.isPlaying && lastScanTime < 0.11F) {
-			Scan ();
-			return true;
-		}
-		return false;
-	}
-#endif
-	
 	/** Scans all graphs */
 	public void Scan () {
 		
@@ -1963,7 +1921,7 @@ public class AstarPath : MonoBehaviour {
 					}
 					
 					//Wait for threads to calculate paths
-					Thread.Sleep (1);
+					Thread.Sleep(1);
 					active.PerformBlockingActions();
 				}
 			} else {
@@ -2183,7 +2141,8 @@ AstarPath.RegisterSafeUpdate (delegate () {
 	 * \see CalculatePaths
 	 * \astarpro 
 	 */
-	private static void CalculatePathsThreaded (System.Object _threadInfo) {
+	private static 
+	void CalculatePathsThreaded (System.Object _threadInfo) {
 		
 		PathThreadInfo threadInfo;
 		
@@ -2271,7 +2230,7 @@ AstarPath.RegisterSafeUpdate (delegate () {
 						
 						//Yield/sleep so other threads can work
 						totalTicks += System.DateTime.UtcNow.Ticks-startTicks;
-						Thread.Sleep (0);
+						Thread.Sleep(0);
 						startTicks = System.DateTime.UtcNow.Ticks;
 						
 						targetTick = startTicks + maxTicks;
@@ -2312,7 +2271,7 @@ AstarPath.RegisterSafeUpdate (delegate () {
 				
 				//Wait a bit if we have calculated a lot of paths
 				if (System.DateTime.UtcNow.Ticks > targetTick) {
-					Thread.Sleep (1);
+					Thread.Sleep(1);
 					targetTick = System.DateTime.UtcNow.Ticks + maxTicks;
 				}
 			}
@@ -2652,5 +2611,4 @@ AstarPath.RegisterSafeUpdate (delegate () {
 		
 		return nearestNode;
 	}
-	
 }

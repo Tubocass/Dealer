@@ -2,6 +2,8 @@
 	#define UNITY_LE_4_3
 #endif
 
+//#define ASTAR_NO_JSON
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -377,7 +379,8 @@ namespace Pathfinding {
 		 */
 		public virtual void PostDeserialization () {
 		}
-		
+
+
 		/** Returns if the node is in the search tree of the path.
 		 * Only guaranteed to be correct if \a path is the latest path calculated.
 		 * Use for gizmo drawing only.
