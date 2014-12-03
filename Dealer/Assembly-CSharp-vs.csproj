@@ -218,6 +218,7 @@
      <Compile Include="Assets\_Scripts\NPC.cs" />
      <Compile Include="Assets\_Scripts\Player_Interactions.cs" />
      <Compile Include="Assets\_Scripts\Player_Inventory.cs" />
+     <Compile Include="Assets\_Scripts\SceneChange.cs" />
      <Compile Include="Assets\_Scripts\Weed.cs" />
      <Compile Include="Assets\_Scripts\playerMovement.cs" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
