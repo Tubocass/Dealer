@@ -10,21 +10,21 @@ public class Inventory : MonoBehaviour
 	public List<Item> slots = new List<Item> ();
 	public List<Item> inventory = new List<Item> ();
 	protected Item_Database itemDB;
-	string tooltip;
+	protected string tooltip;
 	static int prevIndex;
 	public bool showInventory = false;
 	protected bool showTooltip = false;
-	private static bool draggingItem = false;
+	protected static bool draggingItem = false;
 	public static Item draggedItem;
 	public static int draggedAmount;
-	private Rect windowRect;
+	protected Rect windowRect;
 	public int UniqueID;
 	public bool bTrading;
 	public int money;
 	
 
 
-	void Start()
+	protected virtual void Start()
 	{
 		for (int i = 0; i<(slotsX*slotsY); i++)
 		{
@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour
 		}
 	}
 
-	protected void OnGUI()
+	protected virtual void OnGUI()
 	{
 		
 		tooltip = "";
@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
 		
 		if(showInventory)
 		{
-			windowRect = GUI.Window (UniqueID, windowRect, WindowFunction, "My Inventory");
+			windowRect = GUI.Window (UniqueID, windowRect, WindowFunction, "My Inventory",skin.GetStyle("Window"));
 		}
 		if(draggingItem)
 		{
@@ -56,22 +56,22 @@ public class Inventory : MonoBehaviour
 		}
 	
 	}
-	void WindowFunction (int windowID) 
+	protected virtual void WindowFunction (int windowID) 
 	{
 		DrawInventory();
 		if(showTooltip)
 		{
-			GUI.Box(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,200,200),tooltip);
+			GUI.Box(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,100,100),tooltip,skin.GetStyle("box"));
 		}
 		GUI.DragWindow(new Rect(0, 0, 10000, 10000));
 	}
 
-	void CreateTooltip(Item item)
+	protected void CreateTooltip(Item item)
 	{
 		tooltip = item.itemName;
 	}
 
-	void DrawInventory()
+	protected virtual void DrawInventory()
 	{
 		Event e = Event.current;
 		int i = 0;

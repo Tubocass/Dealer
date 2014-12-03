@@ -4,6 +4,7 @@ using System.Collections;
 public class NPC : MonoBehaviour {
 
 	Inventory inventory;
+	Inventory quests;
 	bool clicked;
 	SpriteRenderer sprite;
 	GameObject player;
@@ -13,6 +14,8 @@ public class NPC : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player");
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory>();
+		quests = GetComponent<Quest_Journal>();
+		quests.AddItem(3);
 		inventory.AddItem(1);
 		inventory.AddItem(1);
 	}
