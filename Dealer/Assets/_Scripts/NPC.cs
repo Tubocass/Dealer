@@ -4,7 +4,7 @@ using System.Collections;
 public class NPC : MonoBehaviour {
 
 	Inventory inventory;
-	Inventory quests;
+	Quest_Journal quests;
 	bool clicked;
 	SpriteRenderer sprite;
 	GameObject player;
@@ -15,7 +15,7 @@ public class NPC : MonoBehaviour {
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory>();
 		quests = GetComponent<Quest_Journal>();
-		quests.AddItem(3);
+		quests.AddItem(1);
 		inventory.AddItem(1);
 		inventory.AddItem(1);
 	}
@@ -43,7 +43,7 @@ public class NPC : MonoBehaviour {
 			}
 			if(GUI.Button(new Rect(0,0+105,100,40),"Quest"))
 			{
-				//inventory.showInventory = !inventory.showInventory; 
+				quests.showInventory = !quests.showInventory; 
 			}
 			GUI.EndGroup();
 		}

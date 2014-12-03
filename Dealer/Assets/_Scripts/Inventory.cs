@@ -130,6 +130,7 @@ public class Inventory : MonoBehaviour
 						if(e.type==EventType.mouseDown&& e.button==1)
 						{
 							Trade(GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>(),inventory[i]);
+
 							if(slots[i].itemtype==Item.ItemType.Consumable)
 							{
 								print ("balls");
@@ -177,7 +178,7 @@ public class Inventory : MonoBehaviour
 		other.AddItem(item.itemID);
 	}
 	
-	public void AddItem(int id)
+	public virtual void AddItem(int id)
 	{
 		if(id<1)
 		return;

@@ -4,6 +4,7 @@ using System.Collections;
 public class Quest_Journal : Inventory {
 	string words;
 	public Vector2 scrollPosition = Vector2.zero;
+	Quest_Database questDB;
 	protected override void Start()
 	{
 		for (int i = 0; i<(slotsX*slotsY); i++)
@@ -16,7 +17,7 @@ public class Quest_Journal : Inventory {
 			UniqueID = (int)(Random.value*2000f);
 		}
 		windowRect = new Rect (500, 100, 280, 200);
-		itemDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
+		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
 	}
 	void Update()
 	{
@@ -82,11 +83,63 @@ public class Quest_Journal : Inventory {
 								words = slots[i].itemDesc;
 							}
 						}
+						if(e.type==EventType.mouseDown&& e.button==1)
+						{
+							if(slots[i].itemtype==Item.ItemType.Quest)
+							{
+								if(UniqueID>1)
+								{
+									print ("testes");
+									Find_Journal(1).AddItem(slots[i].itemID);
+								}
+
+								words = slots[i].itemDesc;
+							}
+						}
 					}
 				}
 				i++;
 			}
 		}
 		GUI.EndScrollView();
+	}
+
+	public override void AddItem(int id)
+	{
+		int s = ContainsItemAt(id);
+		if(id<1||s>-1)
+		{
+			return;
+			
+		}else
+		{
+			for(int i =0;i<inventory.Count;i++)
+			{
+				if(inventory[i].itemName == null)
+				{
+					for(int j = 0;j<questDB.items.Count;j++)
+					{
+						if(questDB.items[j].itemID==id)
+						{
+							Item it = new Item(questDB.items[j]);
+							inventory[i] = it;
+							inventory[i].itemOwner = this.UniqueID;
+							break;
+						}
+					}break;
+				}
+			}
+		}
+	}
+
+	public static Quest_Journal Find_Journal(int id)
+	{
+		Quest_Journal[] inv = FindObjectsOfType<Quest_Journal>();
+		for(int i =0; i<inv.Length;i++)
+		{
+			if( inv[i].UniqueID == id)
+			{ return inv[i];}
+		}
+		return null;
 	}
 }

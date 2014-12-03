@@ -89,17 +89,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e5b7c0e21a30c4898f9d1ee511f3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 0
-  slotsY: 0
+  slotsX: 1
+  slotsY: 4
   beginX: 0
   beginY: 0
-  skin: {fileID: 0}
+  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
   slots: []
   inventory: []
   showInventory: 0
   UniqueID: 0
   bTrading: 0
   money: 0
+  scrollPosition: {x: 0, y: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

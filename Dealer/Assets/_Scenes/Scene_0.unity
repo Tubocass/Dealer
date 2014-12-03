@@ -230,6 +230,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7e49a2dbd7a4848bc2bd98d44ae8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weed:
+    itemName: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemPower: 0
+    itemSpeed: 0
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
 --- !u!61 &76760266
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -280,6 +294,9 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
   - itemName: Note
     itemID: 1
     itemDesc: Do Stuff
@@ -290,6 +307,9 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
   - itemName: 
     itemID: 0
     itemDesc: 
@@ -300,6 +320,9 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
   - itemName: 
     itemID: 0
     itemDesc: 
@@ -310,6 +333,9 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
   - itemName: 
     itemID: 0
     itemDesc: 
@@ -320,6 +346,9 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
 --- !u!4 &90167558
 Transform:
   m_ObjectHideFlags: 0
@@ -479,11 +508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e5b7c0e21a30c4898f9d1ee511f3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 0
-  slotsY: 0
+  slotsX: 1
+  slotsY: 4
   beginX: 0
   beginY: 0
-  skin: {fileID: 0}
+  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
   slots: []
   inventory: []
   showInventory: 0
@@ -1030,18 +1059,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 11400006, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 716985160}
-    - target: {fileID: 11400004, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
-      propertyPath: slotsX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400004, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
-      propertyPath: slotsY
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
   m_RootGameObject: {fileID: 951207400}
@@ -1322,7 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 4.71000004, y: 5.0999999, z: 0}
-  target: {fileID: 716985160}
+  target: {fileID: 0}
   speed: 10
   nextWaypointDistance: 3
 --- !u!114 &951207402
@@ -1452,7 +1469,7 @@ MonoBehaviour:
   slotsY: 4
   beginX: 0
   beginY: 0
-  skin: {fileID: 0}
+  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
   slots: []
   inventory: []
   showInventory: 0
@@ -1490,6 +1507,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7e49a2dbd7a4848bc2bd98d44ae8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weed:
+    itemName: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemPower: 0
+    itemSpeed: 0
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
 --- !u!61 &1150526896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1788,6 +1819,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7e49a2dbd7a4848bc2bd98d44ae8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weed:
+    itemName: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemPower: 0
+    itemSpeed: 0
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    questReward: 0
+    bConditionsMet: 0
+    bFinished: 0
 --- !u!61 &1868746130
 BoxCollider2D:
   m_ObjectHideFlags: 0

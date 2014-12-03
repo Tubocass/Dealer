@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//[System.Serializable]
+[System.Serializable]
 public class Quest_Item : Item 
 {
 	public int questReward;
