@@ -145,7 +145,7 @@ public class Inventory : MonoBehaviour
 							inventory[i] = draggedItem;
 							if(draggedItem.itemOwner != UniqueID)
 							{
-	
+								Find_Inventory(draggedItem.itemOwner).money-=1;;
 								inventory[i].itemOwner = UniqueID;
 								
 							}

@@ -204,6 +204,10 @@
      <Compile Include="Assets\Assets\Sample Assets\Vehicles\Car\Scripts\Wheel.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Vehicles\Rolling Ball\Scripts\Ball.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Vehicles\Rolling Ball\Scripts\BallUserControl.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Core\Misc\AstarEnumFlagAttr.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Core\Misc\WindowsStoreCompatibility.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleJsonReplacement.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleZipReplacement.cs" />
      <Compile Include="Assets\_Scripts\Inventory.cs" />
      <Compile Include="Assets\_Scripts\Item.cs" />
      <Compile Include="Assets\_Scripts\Item_Database.cs" />
@@ -258,11 +262,11 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer/Assets/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
- </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer/Assets/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

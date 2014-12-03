@@ -1,5 +1,28 @@
 /** \page changelog Changelog
 
+- 3.5.1 (2013-06-15)
+	- Added avoidance masks to local avoidance.
+		Each agent now has a layer and each agent can specify which layers it will avoid.
+
+- 3.5 (2013-06-12)
+	- Added back local avoidance!!
+		The new system uses a sampling based algorithm instead of a geometric one.
+		The API is almost exactly the same so if you used the previous system this will be a drop in replacement.
+		As for performance, it is roughly the same, maybe slightly worse in high density situations and slightly better
+		in less dense situations. It can handle several thousand agents on an i7 processor.
+		Obstacles are not yet supported, but they will be added in a future update.
+		
+	- Binary heap switched out for a 4-ary heap.
+		This improves pathfinding performances by about 5%.
+	- Optimized scanning of navmesh graphs (not the recast graphs)
+		Large meshes should be much faster to scan now.
+	- Optimized BBTree (nearest node lookup for navmesh/recast graphs, pro version only)
+		Nearest node queries on navmesh/recast graphs should be slightly faster now.
+	- Minor updates to the documentation, esp. to the GraphNode class.
+	
+- 3.4.0.7
+	- Vuforia test build
+
 - 3.4.0.6
 	- Fixed an issue where serialization could on some machines sometimes cause an exception to get thrown.
 	- Fixed an issue where the recast graph would not rasterize terrains properly near the edges of it.
@@ -530,5 +553,7 @@
 - .x releases are quite big feature updates
 - ..x releases are the most common updates, fix bugs, add some features etc.
 - ...x releases are quickfixes, most common when there was a really bad bug which needed fixing ASAP.
+
+Dates are written according to ISO 8601.
 
  */

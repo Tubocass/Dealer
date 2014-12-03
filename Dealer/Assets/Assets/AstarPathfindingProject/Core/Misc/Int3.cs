@@ -323,7 +323,7 @@ namespace Pathfinding
 		}
 		
 		public override int GetHashCode () {
-			return x*9+y*10+z*11;
+			return x*73856093 ^ y*19349663 ^ z*83492791;
 		}
 	}
 	

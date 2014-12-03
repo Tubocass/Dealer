@@ -1,9 +1,12 @@
 //#define ASTARDEBUG    //Some debugging
+//#define ASTAR_NO_JSON
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding.Serialization.JsonFx;
 using Pathfinding.Serialization;
+using Pathfinding;
+
 
 namespace Pathfinding {
 	public interface INavmesh {
@@ -527,7 +530,8 @@ and have a low memory footprint because of their smaller size to describe the sa
 		/** Generates a navmesh. Based on the supplied vertices and triangles. Memory usage is about O(n) */
 		public void GenerateNodes (Vector3[] vectorVertices, int[] triangles, out Vector3[] originalVertices, out Int3[] vertices) {
 			
-			
+			Profiler.BeginSample ("Init");
+
 			if (vectorVertices.Length == 0 || triangles.Length == 0) {
 				originalVertices = vectorVertices;
 				vertices = new Int3[0];
@@ -544,34 +548,19 @@ and have a low memory footprint because of their smaller size to describe the sa
 			//}
 			
 			int c = 0;
-			/*int maxX = 0;
-			int maxZ = 0;
-			
-			//Almost infinity
-			int minX = 0xFFFFFFF;
-			int minZ = 0xFFFFFFF;*/
 			
 			for (int i=0;i<vertices.Length;i++) {
 				vertices[i] = (Int3)matrix.MultiplyPoint3x4 (vectorVertices[i]);
-				/*maxX = Mathfx.Max (vertices[i].x, maxX);
-				maxZ = Mathfx.Max (vertices[i].z, maxZ);
-				minX = Mathfx.Min (vertices[i].x, minX);
-				minZ = Mathfx.Min (vertices[i].z, minZ);*/
 			}
-			
-			//maxX = maxX-minX;
-			//maxZ = maxZ-minZ;
 			
 			Dictionary<Int3,int> hashedVerts = new Dictionary<Int3,int> ();
 			
 			int[] newVertices = new int[vertices.Length];
 				
-			for (int i=0;i<vertices.Length-1;i++) {
-				
-				//int hash = Mathfx.ComputeVertexHash (vertices[i].x,vertices[i].y,vertices[i].z);
-				
-				//(vertices[i].x-minX)+(vertices[i].z-minX)*maxX+vertices[i].y*maxX*maxZ;
-				//if (sortedVertices[i] != sortedVertices[i+1]) {
+			Profiler.EndSample ();
+			Profiler.BeginSample ("Hashing");
+
+			for (int i=0;i<vertices.Length;i++) {
 				if (!hashedVerts.ContainsKey (vertices[i])) {
 					newVertices[c] = i;
 					hashedVerts.Add (vertices[i], c);
@@ -581,22 +570,17 @@ and have a low memory footprint because of their smaller size to describe the sa
 				//}
 			}
 			
-			newVertices[c] = vertices.Length-1;
-			
-			//int hash2 = (newVertices[c].x-minX)+(newVertices[c].z-minX)*maxX+newVertices[c].y*maxX*maxZ;
-			//int hash2 = Mathfx.ComputeVertexHash (newVertices[c].x,newVertices[c].y,newVertices[c].z);
+			/*newVertices[c] = vertices.Length-1;
+
 			if (!hashedVerts.ContainsKey (vertices[newVertices[c]])) {
 				
 				hashedVerts.Add (vertices[newVertices[c]], c);
 				c++;
-			}
+			}*/
 			
 			for (int x=0;x<triangles.Length;x++) {
 				Int3 vertex = vertices[triangles[x]];
-				
-				//int hash3 = (vertex.x-minX)+(vertex.z-minX)*maxX+vertex.y*maxX*maxZ;
-				//int hash3 = Mathfx.ComputeVertexHash (vertex.x,vertex.y,vertex.z);
-				//for (int y=0;y<newVertices.Length;y++) {
+
 				triangles[x] = hashedVerts[vertex];
 			}
 			
@@ -608,8 +592,6 @@ and have a low memory footprint because of their smaller size to describe the sa
 				Debug.DrawLine (newVertices[triangles[i+2]]+offset,newVertices[triangles[i]]+offset,Color.blue);
 			}*/
 			
-			//Debug.Log ("NavMesh - Old vertice count "+vertices.Length+", new vertice count "+c+" "+maxX+" "+maxZ+" "+maxX*maxZ);
-			
 			Int3[] totalIntVertices = vertices;
 			vertices = new Int3[c];
 			originalVertices = new Vector3[c];
@@ -618,7 +600,10 @@ and have a low memory footprint because of their smaller size to describe the sa
 				vertices[i] = totalIntVertices[newVertices[i]];//(Int3)graph.matrix.MultiplyPoint (vectorVertices[i]);
 				originalVertices[i] = (Vector3)vectorVertices[newVertices[i]];//vectorVertices[newVertices[i]];
 			}
-			
+
+			Profiler.EndSample ();
+			Profiler.BeginSample ("Constructing Nodes");
+
 			//graph.CreateNodes (triangles.Length/3);//new Node[triangles.Length/3];
 			nodes = new TriangleMeshNode[triangles.Length/3];
 			
@@ -654,52 +639,40 @@ and have a low memory footprint because of their smaller size to describe the sa
 				// Make sure position is correctly set
 				node.UpdatePositionFromVertices();
 			}
+
+			Profiler.EndSample ();
+
+			Dictionary<Int2,TriangleMeshNode> sides = new Dictionary<Int2, TriangleMeshNode>();
 			
+			for (int i=0, j=0;i<triangles.Length; j+=1, i+=3) {
+				sides[new Int2(triangles[i+0],triangles[i+1])] = nodes[j];
+				sides[new Int2(triangles[i+1],triangles[i+2])] = nodes[j];
+				sides[new Int2(triangles[i+2],triangles[i+0])] = nodes[j];
+			}
+
+			Profiler.BeginSample ("Connecting Nodes");
+
 			List<MeshNode> connections = new List<MeshNode> ();
 			List<uint> connectionCosts = new List<uint> ();
 			
 			int identicalError = 0;
-			
-			for (int i=0;i<triangles.Length;i+=3) {
-				
+
+			for (int i=0, j=0;i<triangles.Length; j+=1, i+=3) {
 				connections.Clear ();
 				connectionCosts.Clear ();
 				
 				//Int3 indices = new Int3(triangles[i],triangles[i+1],triangles[i+2]);
 				
-				TriangleMeshNode node = nodes[i/3];
-				
-				for (int x=0;x<triangles.Length;x+=3) {
-					
-					if (x == i) {
-						continue;
-					}
-					
-					int count = 0;
-					if (triangles[x] 	== 	triangles[i]) { count++; }
-					if (triangles[x+1]	== 	triangles[i]) { count++; }
-					if (triangles[x+2] 	== 	triangles[i]) { count++; }
-					if (triangles[x] 	== 	triangles[i+1]) { count++; }
-					if (triangles[x+1] 	== 	triangles[i+1]) { count++; }
-					if (triangles[x+2] 	== 	triangles[i+1]) { count++; }
-					if (triangles[x] 	== 	triangles[i+2]) { count++; }
-					if (triangles[x+1] 	== 	triangles[i+2]) { count++; }
-					if (triangles[x+2] 	== 	triangles[i+2]) { count++; }
-					
-					if (count >= 3) {
-						identicalError++;
-						Debug.DrawLine ((Vector3)vertices[triangles[x]],(Vector3)vertices[triangles[x+1]],Color.red);
-						Debug.DrawLine ((Vector3)vertices[triangles[x]],(Vector3)vertices[triangles[x+2]],Color.red);
-						Debug.DrawLine ((Vector3)vertices[triangles[x+2]],(Vector3)vertices[triangles[x+1]],Color.red);
-					}
-					
-					if (count == 2) {
-						GraphNode other = nodes[x/3];
-						connections.Add (other as MeshNode);
+				TriangleMeshNode node = nodes[j];
+
+				for ( int q = 0; q < 3; q++ ) {
+					TriangleMeshNode other;
+					if (sides.TryGetValue ( new Int2 (triangles[i+((q+1)%3)], triangles[i+q]), out other ) ) {
+						connections.Add (other);
 						connectionCosts.Add ((uint)(node.position-other.position).costMagnitude);
 					}
 				}
-				
+
 				node.connections = connections.ToArray ();
 				node.connectionCosts = connectionCosts.ToArray ();
 			}
@@ -707,8 +680,14 @@ and have a low memory footprint because of their smaller size to describe the sa
 			if (identicalError > 0) {
 				Debug.LogError ("One or more triangles are identical to other triangles, this is not a good thing to have in a navmesh\nIncreasing the scale of the mesh might help\nNumber of triangles with error: "+identicalError+"\n");
 			}
+
+			Profiler.EndSample ();
+			Profiler.BeginSample ("Rebuilding BBTree");
+
 			RebuildBBTree (this);
-			
+
+			Profiler.EndSample ();
+
 			//Debug.Log ("Graph Generation - NavMesh - Time to compute graph "+((Time.realtimeSinceStartup-startTime)*1000F).ToString ("0")+"ms");
 		}
 		
@@ -744,7 +723,7 @@ and have a low memory footprint because of their smaller size to describe the sa
 			if (!drawNodes) {
 				return;
 			}
-			
+
 			Matrix4x4 preMatrix = matrix;
 			
 			GenerateMatrix ();
@@ -756,7 +735,11 @@ and have a low memory footprint because of their smaller size to describe the sa
 			if (nodes == null) {
 				return;
 			}
-			
+
+			if ( bbTree != null ) {
+				bbTree.OnDrawGizmos ();
+			}
+
 			if (preMatrix != matrix) {
 				//Debug.Log ("Relocating Nodes");
 				RelocateNodes (preMatrix, matrix);
@@ -776,7 +759,7 @@ and have a low memory footprint because of their smaller size to describe the sa
 						Gizmos.DrawLine ((Vector3)node.position,(Vector3)debugData.GetPathNode(node).parent.node.position);
 					} else {
 						for (int q=0;q<node.connections.Length;q++) {
-							Gizmos.DrawLine ((Vector3)node.position,(Vector3)node.connections[q].position);
+							Gizmos.DrawLine ((Vector3)node.position,Vector3.Lerp ((Vector3)node.position, (Vector3)node.connections[q].position, 0.45f));
 						}
 					}
 				
@@ -884,43 +867,6 @@ and have a low memory footprint because of their smaller size to describe the sa
 			
 			RebuildBBTree (graph);
 		}
-		
-		//These functions are for serialization, the static ones are there so other graphs using mesh nodes can serialize them more easily
-		public static byte[] SerializeMeshNodes (NavMeshGraph graph, GraphNode[] nodes) {
-			
-			System.IO.MemoryStream mem = new System.IO.MemoryStream();
-			System.IO.BinaryWriter stream = new System.IO.BinaryWriter(mem);
-			
-			for (int i=0;i<nodes.Length;i++) {
-				TriangleMeshNode node = nodes[i] as TriangleMeshNode;
-				
-				if (node == null) {
-					Debug.LogError ("Serialization Error : Couldn't cast the node to the appropriate type - NavMeshGenerator. Omitting node data.");
-					return null;
-				}
-				
-				stream.Write (node.v0);
-				stream.Write (node.v1);
-				stream.Write (node.v2);
-			}
-			
-			Int3[] vertices = graph.vertices;
-			
-			if (vertices == null) {
-				vertices = new Int3[0];
-			}
-			
-			stream.Write (vertices.Length);
-			
-			for (int i=0;i<vertices.Length;i++) {
-				stream.Write (vertices[i].x);
-				stream.Write (vertices[i].y);
-				stream.Write (vertices[i].z);
-			}
-			
-			stream.Close ();
-			return mem.ToArray();
-		}
-		
+
 	}
 }

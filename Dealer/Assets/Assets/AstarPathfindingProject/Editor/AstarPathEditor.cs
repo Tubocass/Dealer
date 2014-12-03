@@ -24,6 +24,7 @@ public class AstarPathEditor : Editor {
 
 	public static Dictionary<NavGraph,KeyValuePair<float,KeyValuePair<int,int> > > graphNodeCounts;
 
+
 	/** List of all graph editors for graphs attached */
 	public GraphEditor[] graphEditors;
 	
@@ -445,7 +446,7 @@ public class AstarPathEditor : Editor {
 		GUILayout.Space (5);
 		
 		if (GUILayout.Button (new GUIContent ("Scan", "Recaculate all graphs. Shortcut cmd+alt+s ( ctrl+alt+s on windows )"))) {
-			AstarPath.MenuScan ();
+			MenuScan ();
 		}
 		
 		
@@ -1578,7 +1579,8 @@ public class AstarPathEditor : Editor {
 			
 			AstarProfiler.StartProfile ("SerializationSettings.OnGUI");
 			/* This displays the values of the serialization settings */
-			serializationSettings.OnGUI ();
+			serializationSettings.nodes =  UnityEditor.EditorGUILayout.Toggle ("Save Node Data", serializationSettings.nodes);
+			serializationSettings.prettyPrint = UnityEditor.EditorGUILayout.Toggle (new GUIContent ("Pretty Print","Format Json data for readability. Yields slightly smaller files when turned off"),serializationSettings.prettyPrint);
 			
 			AstarProfiler.EndProfile ("SerializationSettings.OnGUI");
 			
@@ -1602,7 +1604,7 @@ public class AstarPathEditor : Editor {
 			
 			if (GUILayout.Button ("Generate cache")) {
 				if (EditorUtility.DisplayDialog ("Scan before generating cache?","Do you want to scan the graphs before saving the cache","Scan","Don't scan")) {
-					AstarPath.MenuScan ();
+					MenuScan ();
 				}
 				script.astarData.SaveCacheData (serializationSettings);
 			}
@@ -1649,7 +1651,7 @@ public class AstarPathEditor : Editor {
 				if (path != "") {
 					if (EditorUtility.DisplayDialog ("Scan before saving?","Do you want to scan the graphs before saving" +
 						"\nNot scanning can cause node data to be omitted from the file if Save Node Data is enabled","Scan","Don't scan")) {
-						AstarPath.MenuScan ();
+						MenuScan ();
 					}
 					
 					uint checksum;
@@ -2294,6 +2296,38 @@ public class AstarPathEditor : Editor {
 		AstarPath.active.FlushWorkItems();
 	}
 	
+	[UnityEditor.MenuItem ("Edit/Pathfinding/Scan All Graphs %&s")]
+	public static void MenuScan () {
+		
+		if (AstarPath.active == null) {
+			AstarPath.active = FindObjectOfType(typeof(AstarPath)) as AstarPath;
+			if (AstarPath.active == null) {
+				return;
+			}
+		}
+		
+		if (!Application.isPlaying && (AstarPath.active.astarData.graphs == null || AstarPath.active.astarData.graphTypes == null)) {
+			UnityEditor.EditorUtility.DisplayProgressBar ("Scanning","Deserializing",0);
+			AstarPath.active.astarData.DeserializeGraphs ();
+		}
+		
+		UnityEditor.EditorUtility.DisplayProgressBar ("Scanning","Scanning...",0);
+		
+		try {
+			OnScanStatus info = delegate (Progress p) {
+				UnityEditor.EditorUtility.DisplayProgressBar ("Scanning",p.description,p.progress);
+			};
+			AstarPath.active.ScanLoop (info);
+			
+		} catch (System.Exception e) {
+			Debug.LogError ("There was an error generating the graphs:\n"+e.ToString ()+"\n\nIf you think this is a bug, please contact me on arongranberg.com (post a comment)\n");
+			UnityEditor.EditorUtility.DisplayDialog ("Error Generating Graphs","There was an error when generating graphs, check the console for more info","Ok");
+			throw e;
+		} finally {
+			UnityEditor.EditorUtility.ClearProgressBar();
+		}
+	}
+
 	/** Searches in the current assembly for GraphEditor and NavGraph types */
 	public void FindGraphTypes () {
 		
@@ -2316,8 +2350,8 @@ public class AstarPathEditor : Editor {
 		foreach (System.Type type in types) {
 			
 			System.Type baseType = type.BaseType;
-			while (baseType != null) {
-				if (baseType == typeof(GraphEditor)) {
+			while (!System.Type.Equals (baseType, null)) {
+				if (System.Type.Equals ( baseType, typeof(GraphEditor) )) {
 					
 					System.Object[] att = type.GetCustomAttributes (false);
 					
@@ -2325,7 +2359,7 @@ public class AstarPathEditor : Editor {
 					foreach (System.Object attribute in att) {
 						CustomGraphEditor cge = attribute as CustomGraphEditor;
 						
-						if (cge != null && cge.graphType != null) {
+						if (cge != null && !System.Type.Equals (cge.graphType, null)) {
 							cge.editorType = type;
 							graphList.Add (cge.graphType);
 							graphEditorTypes.Add (cge.graphType.Name,cge);
@@ -2350,7 +2384,7 @@ public class AstarPathEditor : Editor {
 			
 			System.Type baseType = type.BaseType;
 			while (baseType != null) {
-				if (baseType == typeof(NavGraph)) {
+				if (System.Type.Equals ( baseType, typeof(NavGraph) )) {
 					
 					bool alreadyFound = false;
 					for (int i=0;i<graphList.Count;i++) {

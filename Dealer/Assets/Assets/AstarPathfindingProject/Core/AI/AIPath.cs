@@ -325,7 +325,7 @@ public class AIPath : MonoBehaviour {
 		Vector3 dir = CalculateVelocity (GetFeetPosition());
 		
 		//Rotate towards targetDirection (filled in by CalculateVelocity)
-		//RotateTowards (targetDirection);
+		RotateTowards (targetDirection);
 	
 		if (navController != null) {
 		} else if (controller != null) {

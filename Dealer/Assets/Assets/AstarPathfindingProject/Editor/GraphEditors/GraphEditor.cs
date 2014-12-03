@@ -11,6 +11,17 @@ namespace Pathfinding {
 		
 		public AstarPathEditor editor;
 		
+		/** Called by editor scripts to rescan the graphs e.g when the user moved a graph.
+		  * Will only scan graphs if not playing and time to scan last graph was less than some constant (to avoid lag with large graphs) */
+		public bool AutoScan () {
+			
+			if (!Application.isPlaying && AstarPath.active != null && AstarPath.active.lastScanTime < 0.11F) {
+				AstarPath.active.Scan ();
+				return true;
+			}
+			return false;
+		}
+
 		public virtual void OnEnable () {
 		}
 		

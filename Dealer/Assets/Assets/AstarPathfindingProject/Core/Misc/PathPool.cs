@@ -22,7 +22,7 @@ namespace Pathfinding
 #if UNITY_EDITOR
 				// I am trusting the developer that it at least 1 time tests the game in the editor
 				// Increases performance in builds
-				if (path.GetType () != typeof(T)) {
+				if (!System.Type.Equals (path.GetType (), typeof(T))) {
 					throw new ArgumentException ("Cannot recycle path of type '"+path.GetType().Name+"' in a pool for path type '"+typeof(T).Name+"'.\n" +
 						"Most likely the path type does not have support for recycling. Please do not call Recycle () on that path");
 				}

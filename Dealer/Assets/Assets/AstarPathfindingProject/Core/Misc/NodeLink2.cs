@@ -73,7 +73,8 @@ namespace Pathfinding {
 			if ( AstarPath.active.astarData.pointGraph == null ) {
 				AstarPath.active.astarData.AddGraph ( new PointGraph () );
 			}
-	
+
+
 			if ( startNode != null) {
 				NodeLink2 tmp;
 				if (reference.TryGetValue (startNode, out tmp) && tmp == this) reference.Remove (startNode);
@@ -87,6 +88,7 @@ namespace Pathfinding {
 			//Get nearest nodes from the first point graph, assuming both start and end transforms are nodes
 			startNode = AstarPath.active.astarData.pointGraph.AddNode ( (Int3)StartTransform.position );//AstarPath.active.astarData.pointGraph.GetNearest(StartTransform.position).node as PointNode;
 			endNode = AstarPath.active.astarData.pointGraph.AddNode ( (Int3)EndTransform.position ); //AstarPath.active.astarData.pointGraph.GetNearest(EndTransform.position).node as PointNode;
+
 			connectedNode1 = null;
 			connectedNode2 = null;
 			

@@ -33,7 +33,7 @@ namespace Pathfinding
 		/** Flag 2 is at bit 29 */
 		private const int Flag2Offset = 29;
 		private const uint Flag2Mask = (uint)(1 << Flag2Offset);
-		
+
 		public uint cost {
 			get {
 				return flags & CostMask;
@@ -129,7 +129,7 @@ namespace Pathfinding
 		
 		/** True if the heap is empty */
 		public bool HeapEmpty () {
-			return heap.numberOfItems <= 1;
+			return heap.numberOfItems <= 0;
 		}
 		
 		/** Log2 size of buckets.
@@ -170,6 +170,7 @@ namespace Pathfinding
 			
 			//Clean up reference to help GC
 			pn.node = null;
+			pn.parent = null;
 		}
 		
 		/** Internal method to initialize node data */

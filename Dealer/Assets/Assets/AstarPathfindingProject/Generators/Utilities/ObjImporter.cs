@@ -31,7 +31,7 @@ namespace Pathfinding {
 	    
 	    // Use this for initialization
 	    public static Mesh ImportFile (string filePath) {
-			
+
 			if (!File.Exists (filePath)) {
 				Debug.LogError ("No file was found at '"+filePath+"'");
 				return null;
@@ -82,7 +82,7 @@ namespace Pathfinding {
 	        mesh.fileName = filename;
 	        StreamReader stream = File.OpenText(filename);
 	        string entireText = stream.ReadToEnd();
-	        stream.Close();
+	        stream.Dispose();
 	        using (StringReader reader = new StringReader(entireText))
 	        {
 	            string currentText = reader.ReadLine();

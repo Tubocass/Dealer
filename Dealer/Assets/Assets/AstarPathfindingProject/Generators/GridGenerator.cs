@@ -251,8 +251,9 @@ AstarPath.active.Scan();
 		}
 		
 		public Int3 GetNodePosition (int index, int yOffset) {
-			int x;
-			int z = System.Math.DivRem (index,Width, out x);
+			//int z = Math.DivRem (index,Width, out x);
+			int z = index/Width;
+			int x = index - z*Width;
 			return (Int3)matrix.MultiplyPoint3x4(new Vector3(x+0.5f,yOffset*Int3.PrecisionFactor,z+0.5f));//return Int3.zero;}
 		}
 		
@@ -283,8 +284,9 @@ AstarPath.active.Scan();
 				return nodes[node.NodeInGridIndex + neighbourOffsets[dir]];
 			} else {
 				int index = node.NodeInGridIndex;
-				int x;
-				int z = System.Math.DivRem (index,Width, out x);
+				//int z = Math.DivRem (index,Width, out x);
+				int z = index/Width;
+				int x = index - z*Width;
 				
 				return GetNodeConnection (index, x, z, dir);
 			}
@@ -296,8 +298,9 @@ AstarPath.active.Scan();
 				return true;
 			} else {
 				int index = node.NodeInGridIndex;
-				int x;
-				int z = System.Math.DivRem (index,Width, out x);
+				//int z = Math.DivRem (index,Width, out x);
+				int z = index/Width;
+				int x = index - z*Width;
 				
 				return HasNodeConnection (index, x, z, dir);
 			}
@@ -305,8 +308,9 @@ AstarPath.active.Scan();
 		
 		public void SetNodeConnection (GridNode node, int dir, bool value) {
 			int index = node.NodeInGridIndex;
-			int x;
-			int z = System.Math.DivRem (index,Width, out x);
+			//int z = Math.DivRem (index,Width, out x);
+			int z = index/Width;
+			int x = index - z*Width;
 			
 			SetNodeConnection (index, x, z, dir, value);
 		}
