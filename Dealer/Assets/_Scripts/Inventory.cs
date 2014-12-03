@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour 
+{
 	public int slotsX, slotsY;
 	public float beginX, beginY;
 	public GUISkin skin;
@@ -10,7 +11,7 @@ public class Inventory : MonoBehaviour {
 	public List<Item> inventory = new List<Item> ();
 	protected Item_Database itemDB;
 	string tooltip;
-	int prevIndex;
+	static int prevIndex;
 	public bool showInventory = false;
 	protected bool showTooltip = false;
 	private static bool draggingItem = false;
@@ -18,7 +19,9 @@ public class Inventory : MonoBehaviour {
 	public static int draggedAmount;
 	private Rect windowRect;
 	public int UniqueID;
-	private bool bTrading;
+	public bool bTrading;
+	public int money;
+	
 
 
 	void Start()
@@ -28,9 +31,12 @@ public class Inventory : MonoBehaviour {
 			slots.Add(new Item());
 			inventory.Add(new Item());
 		}
-		windowRect = new Rect (20, 20, (slotsX*60), (slotsY*60)+20);
+		windowRect = new Rect (400, 20, (slotsX*60), (slotsY*60)+20);
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
-
+		if(this.gameObject.tag!="Player")
+		{
+			UniqueID = (int)(Random.value*1000f);
+		}
 	}
 
 	protected void OnGUI()
@@ -45,7 +51,7 @@ public class Inventory : MonoBehaviour {
 		}
 		if(draggingItem)
 		{
-			GUI.BringWindowToBack(UniqueID);
+			//GUI.BringWindowToBack(UniqueID);
 			GUI.DrawTexture(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,50,50),draggedItem.itemIcon);
 		}
 	
@@ -59,7 +65,7 @@ public class Inventory : MonoBehaviour {
 		}
 		GUI.DragWindow(new Rect(0, 0, 10000, 10000));
 	}
-	
+
 	void CreateTooltip(Item item)
 	{
 		tooltip = item.itemName;
@@ -83,12 +89,18 @@ public class Inventory : MonoBehaviour {
 					{
 						GUI.Label(slotRect, ""+slots[i].stackAmount,skin.GetStyle("label"));
 					}
+					if(bTrading)
+					{
+						if(slotRect.Contains(e.mousePosition))
+						{
+							if(e.type==EventType.mouseDown&& e.button==1)
+							{
+								
+							}
+						}
+					}
 					if(slotRect.Contains(e.mousePosition))
 					{
-						if(bTrading)
-						{
-							
-						}
 						if(!draggingItem)
 						{
 							CreateTooltip(slots[i]);
@@ -96,20 +108,28 @@ public class Inventory : MonoBehaviour {
 						}
 						if(e.button==0 && e.type==EventType.mouseDrag && !draggingItem)
 						{
+							//print (UniqueID);
 							draggingItem = true;
 							prevIndex = i;
 							draggedItem = slots[i];
 							inventory[i] = new Item();
 						}
-						if(e.type == EventType.mouseUp&& draggingItem)
+						if(e.type==EventType.mouseUp&& draggingItem)
 						{
-							inventory[prevIndex] = inventory[i];
-							inventory[i] = draggedItem;
-							draggingItem = false;
-							draggedItem = null;
+							if(draggedItem.itemOwner != UniqueID)
+							{
+								return;
+								
+							}else{
+								inventory[prevIndex] = inventory[i];
+								inventory[i] = draggedItem;
+								draggingItem = false;
+								draggedItem = null;
+							}
 						}
 						if(e.type==EventType.mouseDown&& e.button==1)
 						{
+							Trade(GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>(),inventory[i]);
 							if(slots[i].itemtype==Item.ItemType.Consumable)
 							{
 								print ("balls");
@@ -121,9 +141,17 @@ public class Inventory : MonoBehaviour {
 					{
 						if(e.type == EventType.mouseUp&& draggingItem)
 						{
+							print (draggedItem.itemOwner);
 							inventory[i] = draggedItem;
+							if(draggedItem.itemOwner != UniqueID)
+							{
+	
+								inventory[i].itemOwner = UniqueID;
+								
+							}
 							draggingItem = false;
 							draggedItem = null;
+							
 						}
 					}
 				}
@@ -142,15 +170,20 @@ public class Inventory : MonoBehaviour {
 		showInventory = true;
 		bTrading = true;
 	}
-
+	public void Trade(Inventory other, Item item)
+	{
+		RemoveItem(inventory[ContainsItemAt(item.itemID)]);
+		other.money -=1;
+		other.AddItem(item.itemID);
+	}
+	
 	public void AddItem(int id)
 	{
 		if(id<1)
 		return;
-		
-		if(itemDB.items[id].bStackable && ContainsItem(id))
+		int s = ContainsItemAt(id);
+		if(s>-1&& inventory[s].bStackable)
 		{
-			int s = ContainsItemAt(id);
 			inventory[s].stackAmount += 1;
 				
 		}else
@@ -163,7 +196,9 @@ public class Inventory : MonoBehaviour {
 					{
 						if(itemDB.items[j].itemID==id)
 						{
-							inventory[i]= itemDB.items[j];
+							Item it = new Item(itemDB.items[j]);
+							inventory[i] = it;
+							inventory[i].itemOwner = this.UniqueID;
 							break;
 						}
 					}break;
@@ -171,16 +206,22 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 	}
-	public void RemoveItem(int id)
+	public void RemoveItem(Item item)
 	{
-		for(int i = 0;i<inventory.Count;i++)
+		if(item.bStackable)
 		{
-			if(inventory[i].itemID==id)
+			if(item.stackAmount>1)
 			{
-				inventory[i] = new Item();
-				break;
-			}
+				item.stackAmount-=1;
+			}else{
+				inventory[ContainsItemAt(item.itemID)]=  new Item();
+				}
+		}else{
+			inventory[ContainsItemAt(item.itemID)]=  new Item();
 		}
+		
+		
+		
 	}
 
 	public bool ContainsItem(int id)
@@ -209,6 +250,17 @@ public class Inventory : MonoBehaviour {
 			
 		}
 		return -1;
+	}
+	
+	public static Inventory Find_Inventory(int id)
+	{
+		Inventory[] inv = FindObjectsOfType<Inventory>();
+		for(int i =0; i<inv.Length;i++)
+		{
+			if( inv[i].UniqueID == id)
+			{ return inv[i];}
+		}
+		return null;
 	}
 	
 	

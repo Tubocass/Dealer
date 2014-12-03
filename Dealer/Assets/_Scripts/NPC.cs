@@ -6,16 +6,19 @@ public class NPC : MonoBehaviour {
 	Inventory inventory;
 	bool clicked;
 	SpriteRenderer sprite;
+	GameObject player;
 	// Use this for initialization
 	void Start () 
 	{
+		player = GameObject.FindGameObjectWithTag("Player");
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory>();
+		inventory.AddItem(1);
 		inventory.AddItem(1);
 	}
 	void OnGUI()
 	{
-		Rect trade = new Rect(100,40,110,200);
+		Rect trade = new Rect(100,20,110,200);
 		Event e = Event.current;
 		if(!sprite.bounds.Contains(e.mousePosition)&& !trade.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
@@ -28,7 +31,8 @@ public class NPC : MonoBehaviour {
 			GUI.BeginGroup(trade);
 			if(GUI.Button(new Rect(0,0+5,100,40),"Trade"))
 			{
-				inventory.showInventory = !inventory.showInventory; 
+				inventory.StartTrading();
+				player.GetComponent<Inventory>().StartTrading();
 			}
 			if(GUI.Button(new Rect(0,0+55,100,40),"Talk"))
 			{

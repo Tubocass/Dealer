@@ -10,6 +10,7 @@ public class Item {
 	public int itemPower;
 	public int itemSpeed;
 	public ItemType itemtype;
+	public int itemOwner;
 	public int stackAmount;
 	public bool bStackable;
 
@@ -31,5 +32,17 @@ public class Item {
 		itemtype = type;
 		bStackable = stackable;
 		stackAmount = amount;
+	}
+	public Item(Item item)
+	{
+		itemName = item.itemName;
+		itemID = item.itemID;
+		itemDesc = item.itemDesc;
+		itemPower = item.itemPower;
+		itemSpeed = item.itemSpeed;
+		itemtype = item.itemtype;
+		bStackable = item.bStackable;
+		stackAmount = item.stackAmount;
+		itemIcon = item.itemIcon;
 	}
 }
