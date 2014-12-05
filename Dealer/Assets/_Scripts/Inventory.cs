@@ -241,7 +241,7 @@ public class Inventory : MonoBehaviour
 		}
 		return result;
 	}
-	public int ContainsItemAt(int id)
+	public virtual int ContainsItemAt(int id)
 	{
 		for (int i = 0; i<inventory.Count;i++)
 		{

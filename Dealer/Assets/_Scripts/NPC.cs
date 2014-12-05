@@ -63,7 +63,7 @@ public class NPC : MonoBehaviour {
 		int s = player.GetComponent<Player_Inventory>().ContainsItemAt(2);
 		if(s>-1)
 		{
-			words = quests.inventory[s].itemDesc;
+			words = quests.quests[s].itemDesc;
 
 		}
 	}
