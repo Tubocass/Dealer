@@ -8,7 +8,7 @@ public class SecretNote : Quest
 	void Start()
 	{
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
-		questDB.AddQuest(this);
+		//questDB.AddQuest(this);
 	}
 	public SecretNote()
 	{

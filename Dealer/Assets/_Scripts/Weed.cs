@@ -14,11 +14,11 @@ public class Weed : MonoBehaviour
 		//journal = GetComponent<Quest_Journal>();
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
 		weed1 = questDB.items[2];
-		weed2 = questDB.items[3];
+		weed2 = new Quest_Item("Sell Weed",3,"Sell 3 Dank",Item.ItemType.Quest,3);
 		if (journal)
 		{
+			weed1.bActive = true;
 			journal.AddItem(weed1);
-			stage = 1;
 			journal.AddItem(weed2);
 		}
 		//OnEnable();
@@ -39,8 +39,7 @@ public class Weed : MonoBehaviour
 		if(weedAmount>=3)
 		{
 			print ("You got all the weed!");
-			weed1.bFinished = true;
-			stage = 2;
+			weed1.stage = 1;
 		}
 	}
 	void WeedSold()
@@ -49,8 +48,8 @@ public class Weed : MonoBehaviour
 		if(weedSold>=3)
 		{
 			print ("You sold all the weed!");
-			weed2.bFinished = true;
-			stage = 3;
+			weed1.bFinished = true;
+			stage = 2;
 		}
 	}
 }
