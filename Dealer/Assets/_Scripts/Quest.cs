@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 [System.Serializable]
-public class Quest : ScriptableObject
+public class Quest : MonoBehaviour
 {
 	public string questName;
 	public int questID;
@@ -27,7 +27,7 @@ public class Quest : ScriptableObject
 		questType = type;
 		questReward = reward;
 	}
-	public Quest(Quest item)
+	public void setQuest(Quest item)
 	{
 		questName = item.questName;
 		questID = item.questID;

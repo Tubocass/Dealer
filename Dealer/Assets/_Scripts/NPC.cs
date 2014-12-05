@@ -17,10 +17,8 @@ public class NPC : MonoBehaviour {
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory>();
 		quests = GetComponent<Quest_Journal>();
-		q2 = (Quest)Quest.CreateInstance("Quest");
-		q2.setQuest("Collection",1,"Collect 5 whole marijuana",Quest.QuestType.Trade,5);
+		if(q1)
 		quests.AddItem(q1);
-		quests.AddItem(q2);
 		//quests.AddItem(new Quest("Collection",1,"Collect 5 whole marijuana",Quest.QuestType.Trade,5));
 		//quests.AddItem(2);
 		inventory.AddItem(1);
@@ -66,6 +64,7 @@ public class NPC : MonoBehaviour {
 	}
 	void Update()
 	{
-
+		if(quests.inventory[0].bFinished)
+			Destroy(this.gameObject,0);
 	}
 }

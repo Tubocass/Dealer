@@ -20,8 +20,9 @@ public class Quest_Journal : MonoBehaviour {
 	{
 		for (int i = 0; i<(slotsX*slotsY); i++)
 		{
-			slots.Add(new Quest());
 			inventory.Add(new Quest());
+			slots.Add(new Quest());
+
 		}
 		if(this.gameObject.tag!="Player")
 		{
@@ -142,8 +143,8 @@ public class Quest_Journal : MonoBehaviour {
 				{
 					if(questDB.quests[j].questID==id)
 					{
-						Quest it = new Quest(questDB.quests[j]);
-						inventory[i] = it;
+						Quest it = new Quest();
+						inventory[i].setQuest(questDB.quests[j]);
 						inventory[i].questOwner = this.UniqueID;
 						break;
 					}
@@ -158,6 +159,20 @@ public class Quest_Journal : MonoBehaviour {
 		for (int i = 0; i<inventory.Count;i++)
 		{
 			result = inventory[i].questID == id;
+			if(result)
+			{
+				break;
+			}
+			
+		}
+		return result;
+	}
+	public bool ContainsItem(string name)
+	{
+		bool result = false;
+		for (int i = 0; i<inventory.Count;i++)
+		{
+			result = inventory[i].questName == name;
 			if(result)
 			{
 				break;

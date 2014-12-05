@@ -5,6 +5,7 @@ public class Player_Interactions : MonoBehaviour {
 
 	Inventory inventory;
 	Quest_Journal journal;
+	public Quest q1;
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
 	
@@ -12,12 +13,15 @@ public class Player_Interactions : MonoBehaviour {
 	{
 		inventory = GetComponent<Player_Inventory>();
 		journal = GetComponent<Quest_Journal>();
+		//Quest newQ = (Quest)Quest.CreateInstance("Quest");
+		//newQ = q1;
+		//q1.setQuest("Collection",1,"Collect 5 whole marijuana",Quest.QuestType.Trade,5);
 
 		inventory.AddItem(1);
 		inventory.AddItem(2);
 		inventory.AddItem(2);
-		//journal.AddItem(1);
-		//journal.AddItem(2);
+		if(q1)
+		journal.AddItem(q1);
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{

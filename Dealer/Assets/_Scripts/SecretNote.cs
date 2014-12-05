@@ -8,13 +8,14 @@ public class SecretNote : Quest
 	void Start()
 	{
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
+		questDB.AddQuest(this);
 	}
 	public SecretNote()
 	{
 		//quest = questDB.items[2];
 		//quest.itemName = "Secret Note";
 		//quest.itemDesc = "Collect 5 whole marijuana";
-		Player_Interactions.PickedUpWeed+= IncreaseSupply;
+		//Player_Interactions.PickedUpWeed+= IncreaseSupply;
 	}
 	void OnEnable()
 	{
@@ -23,6 +24,7 @@ public class SecretNote : Quest
 	void OnDisable()
 	{
 		Player_Interactions.PickedUpWeed-= IncreaseSupply;
+
 	}
 	void IncreaseSupply()
 	{
@@ -35,16 +37,21 @@ public class SecretNote : Quest
 			EndQuest();
 		}
 	}
+	void hitTarget()
+	{
+		//CreateInstance<>();
+	}
 	void Update()
 	{
 		if(weedAmount==4)
 		{
 			//Debug.Log("You 5 marijuanas");
-			EndQuest();
+			//EndQuest();
 		}
 	}
 	void EndQuest()
 	{
+		bFinished = true;
 		Debug.Log("You have 5 marijuanas");
 	}
 
