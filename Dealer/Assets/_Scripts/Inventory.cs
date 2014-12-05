@@ -22,7 +22,8 @@ public class Inventory : MonoBehaviour
 	public bool bTrading;
 	public int money;
 
-
+	public delegate void TradeAction();
+	public static event TradeAction SoldWeed;
 
 	protected virtual void Start()
 	{
@@ -148,6 +149,7 @@ public class Inventory : MonoBehaviour
 							{
 								Find_Inventory(draggedItem.itemOwner).money-=1;;
 								inventory[i].itemOwner = UniqueID;
+								SoldWeed();
 								
 							}
 							draggingItem = false;

@@ -1,35 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class Quest_Journal : MonoBehaviour {
+public class Quest_Journal : Inventory {
 	string words;
-	public int slotsX, slotsY;
-	public float beginX, beginY;
-	public GUISkin skin;
-	protected string tooltip;
-	public bool showInventory = false;
-	protected bool showTooltip = false;
 	public Vector2 scrollPosition = Vector2.zero;
-	public List<Quest> inventory = new List<Quest> ();
-	public List<Quest> slots = new List<Quest> ();
 	Quest_Database questDB;
-	protected Rect windowRect;
-	public int UniqueID;
-	protected void Start()
+	protected override void Start()
 	{
 		for (int i = 0; i<(slotsX*slotsY); i++)
 		{
-			inventory.Add(new Quest());
-			slots.Add(new Quest());
-
+			slots.Add(new Item());
+			inventory.Add(new Item());
 		}
 		if(this.gameObject.tag!="Player")
 		{
 			UniqueID = (int)(Random.value*2000f);
 		}
-
-		//AddItem(new Quest("Collection",2,"Collect 5 whole marijuana",Quest.QuestType.Trade,5));
 		windowRect = new Rect (500, 100, 280, 200);
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
 	}
@@ -41,7 +27,7 @@ public class Quest_Journal : MonoBehaviour {
 			showInventory = !showInventory;
 		}
 	}
-	protected void OnGUI()
+	protected override void OnGUI()
 	{
 		tooltip = "";
 		GUI.skin = skin;
@@ -53,7 +39,7 @@ public class Quest_Journal : MonoBehaviour {
 
 		}
 	}
-	protected void WindowFunction (int windowID) 
+	protected override void WindowFunction (int windowID) 
 	{
 		//GUI.BeginGroup(windowRect);
 		DrawInventory();
@@ -66,12 +52,7 @@ public class Quest_Journal : MonoBehaviour {
 		GUI.DragWindow(new Rect(0, 0, 10000, 10000));
 		
 	}
-	protected void CreateTooltip(Quest q)
-	{
-		tooltip = q.questName;
-	}
-
-	protected void DrawInventory()
+	protected override void DrawInventory()
 	{
 		Event e = Event.current;
 		int i = 0;
@@ -84,32 +65,31 @@ public class Quest_Journal : MonoBehaviour {
 				Rect slotRect = new Rect(5+(x*50),(y*35),50,25);
 				GUI.Box(slotRect,"",skin.GetStyle("Slot"));
 				slots[i] = inventory[i];
-				if(slots[i].questName!=null)
+				if(slots[i].itemName!=null)
 				{
-					GUI.Box(slotRect,slots[i].questName);
+					GUI.Box(slotRect,slots[i].itemName);
 					if(slotRect.Contains(e.mousePosition))
 					{
-					
-						CreateTooltip(slots[i]);
-						showTooltip = true;
-
+						if(!draggingItem)
+						{
+							CreateTooltip(slots[i]);
+							showTooltip = true;
+						}
 						if(e.type==EventType.mouseDown&& e.button==0)
 						{
 								print ("balls");
-								words = slots[i].questDesc;
+								words = slots[i].itemDesc;
 						}
 						if(e.type==EventType.mouseDown&& e.button==1)
 						{
-
-								if(UniqueID>1)
-								{
-									print ("testes");
-									Find_Journal(1).AddItem(slots[i]);
-								}
-
-								words = slots[i].questDesc;
+							if(UniqueID>1)
+							{
+								print ("testes");
+								Find_Journal(1).AddItem(slots[i].itemID);
 							}
 
+							words = slots[i].itemDesc;
+						}
 					}
 				}
 				i++;
@@ -118,69 +98,57 @@ public class Quest_Journal : MonoBehaviour {
 		GUI.EndScrollView();
 	}
 
-	public void AddItem(Quest quest)
+	public void AddItem(Quest_Item item)
 	{
-		if(!ContainsItem(quest.questID))
+		int s = ContainsItemAt(item.itemID);
+		if(item.itemID<1||s>-1)
+		{
+			return;
+			
+		}else
 		{
 			for(int i =0;i<inventory.Count;i++)
 			{
-				if(inventory[i].questName== null)
+				if(inventory[i].itemName == null)
 				{
-					inventory[i] = quest;
+					inventory[i] = item;
+					inventory[i].itemOwner = this.UniqueID;
 					break;
+				}
+			}
+		}
+			
+
+	}
+
+	public override void AddItem(int id)
+	{
+		int s = ContainsItemAt(id);
+		if(id<1||s>-1)
+		{
+			return;
+			
+		}else
+		{
+			for(int i =0;i<inventory.Count;i++)
+			{
+				if(inventory[i].itemName == null)
+				{
+					for(int j = 0;j<questDB.items.Count;j++)
+					{
+						if(questDB.items[j].itemID==id)
+						{
+							Item it = new Item(questDB.items[j]);
+							inventory[i] = it;
+							inventory[i].itemOwner = this.UniqueID;
+							break;
+						}
+					}break;
 				}
 			}
 		}
 	}
 
-	public void AddItem(int id)
-	{
-		for(int i =0;i<inventory.Count;i++)
-		{
-			if(inventory[i].questName == null)
-			{
-				for(int j = 0;j<questDB.quests.Count;j++)
-				{
-					if(questDB.quests[j].questID==id)
-					{
-						Quest it = new Quest();
-						inventory[i].setQuest(questDB.quests[j]);
-						inventory[i].questOwner = this.UniqueID;
-						break;
-					}
-				}break;
-			}
-		}
-	}
-
-	public bool ContainsItem(int id)
-	{
-		bool result = false;
-		for (int i = 0; i<inventory.Count;i++)
-		{
-			result = inventory[i].questID == id;
-			if(result)
-			{
-				break;
-			}
-			
-		}
-		return result;
-	}
-	public bool ContainsItem(string name)
-	{
-		bool result = false;
-		for (int i = 0; i<inventory.Count;i++)
-		{
-			result = inventory[i].questName == name;
-			if(result)
-			{
-				break;
-			}
-			
-		}
-		return result;
-	}
 	public static Quest_Journal Find_Journal(int id)
 	{
 		Quest_Journal[] inv = FindObjectsOfType<Quest_Journal>();

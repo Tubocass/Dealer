@@ -5,9 +5,8 @@ public class NPC : MonoBehaviour {
 
 	Inventory inventory;
 	Quest_Journal quests;
-	public Quest q1;
-	public Quest q2;
 	bool clicked;
+	string words;
 	SpriteRenderer sprite;
 	GameObject player;
 	// Use this for initialization
@@ -17,16 +16,13 @@ public class NPC : MonoBehaviour {
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory>();
 		quests = GetComponent<Quest_Journal>();
-		if(q1)
-		quests.AddItem(q1);
-		//quests.AddItem(new Quest("Collection",1,"Collect 5 whole marijuana",Quest.QuestType.Trade,5));
-		//quests.AddItem(2);
+		quests.AddItem(1);
 		inventory.AddItem(1);
 		inventory.AddItem(1);
 	}
 	void OnGUI()
 	{
-		Rect trade = new Rect(100,20,220,200);
+		Rect trade = new Rect(100,20,110,200);
 		Event e = Event.current;
 		if(!sprite.bounds.Contains(e.mousePosition)&& !trade.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
@@ -41,19 +37,19 @@ public class NPC : MonoBehaviour {
 			{
 				inventory.StartTrading();
 				player.GetComponent<Inventory>().StartTrading();
-				quests.showInventory = false; 
 			}
 			if(GUI.Button(new Rect(0,0+55,100,40),"Talk"))
 			{
+				//GUI.Box(new Rect(10,20,100,100),new GUIContent(words));
+				print(words);
 				//inventory.showInventory = !inventory.showInventory; 
 			}
 			if(GUI.Button(new Rect(0,0+105,100,40),"Quest"))
 			{
-				inventory.showInventory = false;
 				quests.showInventory = !quests.showInventory; 
 			}
 			GUI.EndGroup();
-		}
+		}else{quests.showInventory = false;}
 	}
 	void OnMouseDown() 
 	{
@@ -64,7 +60,11 @@ public class NPC : MonoBehaviour {
 	}
 	void Update()
 	{
-		if(quests.inventory[0].bFinished)
-			Destroy(this.gameObject,0);
+		int s = player.GetComponent<Player_Inventory>().ContainsItemAt(2);
+		if(s>-1)
+		{
+			words = quests.inventory[s].itemDesc;
+
+		}
 	}
 }

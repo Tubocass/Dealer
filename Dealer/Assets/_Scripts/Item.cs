@@ -7,8 +7,6 @@ public class Item {
 	public int itemID;
 	public string itemDesc;
 	public Texture2D itemIcon;
-	public int itemPower;
-	public int itemSpeed;
 	public ItemType itemtype;
 	public int itemOwner;
 	public int stackAmount;
@@ -22,13 +20,11 @@ public class Item {
 	{
 		itemID = -1;
 	}
-	public Item(string name, int id, string desc, int power, int speed, ItemType type, bool stackable, int amount)
+	public Item(string name, int id, string desc, ItemType type, bool stackable, int amount)
 	{
 		itemName = name;
 		itemID = id;
 		itemDesc = desc;
-		itemPower = power;
-		itemSpeed = speed;
 		itemtype = type;
 		bStackable = stackable;
 		stackAmount = amount;
@@ -38,8 +34,6 @@ public class Item {
 		itemName = item.itemName;
 		itemID = item.itemID;
 		itemDesc = item.itemDesc;
-		itemPower = item.itemPower;
-		itemSpeed = item.itemSpeed;
 		itemtype = item.itemtype;
 		bStackable = item.bStackable;
 		stackAmount = item.stackAmount;
