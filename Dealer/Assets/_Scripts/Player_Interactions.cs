@@ -15,7 +15,7 @@ public class Player_Interactions : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		switch (other.gameObject.tag) {
+				switch (other.gameObject.tag) {
 		
 				case "Weed":
 						{
@@ -40,16 +40,29 @@ public class Player_Interactions : MonoBehaviour {
 						}
 				case "Door":
 						{
-								Destroy (other.gameObject);
+								
+								
+								StartCoroutine (MyCoroutine(other.gameObject));
+								
+								
 								break;
 						}
 				}
+		}
+			IEnumerator MyCoroutine(GameObject obj) 
+		{
+				//This rotates an object out of view for x secs. For door animations.
+				obj.transform.Rotate (0, 90, 0);
+				yield return new WaitForSeconds(1);
+				obj.transform.Rotate (0, -90, 0);
 	
+				
+		}
 
 	}
 
 
 	
 
-}
+
 

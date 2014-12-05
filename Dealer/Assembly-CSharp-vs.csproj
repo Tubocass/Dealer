@@ -212,6 +212,8 @@
      <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\Example12_Procedural\ProceduralWorld.cs" />
      <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\ObjectPlacer.cs" />
      <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\TargetMover.cs" />
+     <Compile Include="Assets\Coppa.cs" />
+     <Compile Include="Assets\Coppee.cs" />
      <Compile Include="Assets\_Scripts\Inventory.cs" />
      <Compile Include="Assets\_Scripts\Item.cs" />
      <Compile Include="Assets\_Scripts\Item_Database.cs" />

@@ -18,7 +18,9 @@ public class playerMovement : MonoBehaviour {
 		rigidbody2D.angularVelocity = 0;
 		
 		float v = Input.GetAxis ("Vertical");
+
 		rigidbody2D.AddForce (gameObject.transform.up * speed * v);
+
 		float h = Input.GetAxis ("Horizontal");
 		rigidbody2D.AddForce (gameObject.transform.right * speed * h);
 		Vector3 newPosition = new Vector3 (h,v,0)*speed;
