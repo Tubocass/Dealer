@@ -49,9 +49,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7e49a2dbd7a4848bc2bd98d44ae8a5, type: 3}
+  m_Script: {fileID: 11500000, guid: f58d3248251720440a39122c6c2c8ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questName: Secret
+  questID: 3
+  questDesc: Do Stuff
+  questType: 2
+  questReward: 0
+  bPreConditionsMet: 1
+  bActive: 0
+  bFinished: 0
+  questStage: 0
+  questItem:
+    itemName: 
+    itemID: -1
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemPower: 0
+    itemSpeed: 0
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+  questOwner: 0
+  weedAmount: 8
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

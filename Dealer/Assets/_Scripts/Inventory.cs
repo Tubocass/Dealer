@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
 	public int UniqueID;
 	public bool bTrading;
 	public int money;
-	
+
 
 
 	protected virtual void Start()

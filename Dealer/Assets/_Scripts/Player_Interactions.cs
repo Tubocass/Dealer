@@ -5,6 +5,8 @@ public class Player_Interactions : MonoBehaviour {
 
 	Inventory inventory;
 	Quest_Journal journal;
+	public delegate void TradeAction();
+	public static event TradeAction PickedUpWeed;
 	
 	void Start()
 	{
@@ -27,6 +29,7 @@ public class Player_Interactions : MonoBehaviour {
 			Destroy(other.gameObject,1);
 			print ("something");
 			inventory.AddItem(1);
+			PickedUpWeed();
 			break;
 		}
 		case "Drank":
