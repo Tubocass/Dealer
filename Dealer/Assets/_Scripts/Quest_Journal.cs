@@ -7,6 +7,9 @@ public class Quest_Journal : Inventory {
 	public Vector2 scrollPosition = Vector2.zero;
 	Quest_Database questDB;
 	public List<Quest_Item> quests = new List<Quest_Item>();
+
+	public delegate void TalkAction();
+	public static event TalkAction TalkTo;
 	protected override void Start()
 	{
 		for (int i = 0; i<(slotsX*slotsY); i++)
@@ -46,7 +49,7 @@ public class Quest_Journal : Inventory {
 
 		//GUI.BeginGroup(windowRect);
 		DrawInventory();
-		GUI.Box(new Rect(85,20,windowRect.width-((slotsX*60)+20),windowRect.height-40),new GUIContent(words));
+		GUI.Box(new Rect(85,20,windowRect.width-((slotsX*60)+20),windowRect.height-40),words);
 		//GUI.EndGroup();
 		if(showTooltip)
 		{
@@ -80,8 +83,11 @@ public class Quest_Journal : Inventory {
 						}
 						if(e.type==EventType.mouseDown&& e.button==0)
 						{
-								print ("balls");
-								words = quests[i].GetText();
+							print ("balls");
+							words = quests[i].GetText();
+							if(TalkTo != null)
+								TalkTo();
+
 						}
 						if(e.type==EventType.mouseDown&& e.button==1)
 						{

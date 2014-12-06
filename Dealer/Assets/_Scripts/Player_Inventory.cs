@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class Player_Inventory : Inventory 
-{
-	public static int PlayerMoney;
-	
+{	
 	void Update()
 	{
 		if(Input.GetButtonDown("Inventory"))

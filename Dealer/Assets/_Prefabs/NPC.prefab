@@ -99,8 +99,9 @@ MonoBehaviour:
   showInventory: 0
   UniqueID: 0
   bTrading: 0
-  money: 0
+  money: 5
   scrollPosition: {x: 0, y: 0}
+  quests: []
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

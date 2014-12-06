@@ -6,7 +6,6 @@ public class NPC : MonoBehaviour {
 	Inventory inventory;
 	Quest_Journal quests;
 	bool clicked;
-	string words;
 	SpriteRenderer sprite;
 	GameObject player;
 	// Use this for initialization
@@ -42,7 +41,6 @@ public class NPC : MonoBehaviour {
 			if(GUI.Button(new Rect(0,0+55,100,40),"Talk"))
 			{
 				//GUI.Box(new Rect(10,20,100,100),new GUIContent(words));
-				print(words);
 				//inventory.showInventory = !inventory.showInventory; 
 			}
 			if(GUI.Button(new Rect(0,0+105,100,40),"Quest"))
@@ -61,11 +59,6 @@ public class NPC : MonoBehaviour {
 	}
 	void Update()
 	{
-		int s = player.GetComponent<Player_Inventory>().ContainsItemAt(2);
-		if(s>-1)
-		{
-			words = quests.quests[s].itemDesc;
 
-		}
 	}
 }

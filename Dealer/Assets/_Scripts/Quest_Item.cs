@@ -6,8 +6,9 @@ public class Quest_Item : Item
 	public int questReward;
 	public bool bConditionsMet;
 	public bool bActive;
+	public bool bAlmostFinished;
 	public bool bFinished;
-	public int stage = 0;
+	public int questStage = 0;
 	public string[] text = new string[1];
 	public Quest_Item(){itemID = -1;}
 	public Quest_Item(string name, int id, string desc, ItemType type, int reward)
@@ -25,27 +26,45 @@ public class Quest_Item : Item
 		itemDesc = item.itemDesc;
 		itemtype = item.itemtype;
 		itemIcon = item.itemIcon;
+		questReward = item.questReward;
+		questStage = item.questStage;
+	}
+	public void FinishQuest()
+	{
+		bFinished = true;
+		bAlmostFinished = false;
+		bActive = false;
+		bConditionsMet = false;
+		//stage = -1;
 	}
 	public static string GetText(Quest_Item item)
 	{
-		if(item.text.Length>0)
+		if(!item.bFinished)
 		{
-			string words = item.text[item.stage];
-			if(words != null)
+			if(item.text.Length>0)
 			{
-				return words;
-			}else return item.itemDesc;
-		}else return item.itemDesc;
+				string words = item.text[item.questStage];
+				if(words != null)
+				{
+					return words;
+				}
+			}
+		}
+		return item.itemDesc;
 	}
 	public string GetText()
 	{
-		if(text.Length>0)
+		if(!bFinished)
 		{
-			string words = text[stage];
-			if(words != null)
+			if(text.Length>0)
 			{
-				return words;
-			}else return itemDesc;
-		}else return itemDesc;
+				string words = text[questStage];
+				if(words != null)
+				{
+					return words;
+				}
+			}
+		}
+		return itemDesc;
 	}
 }

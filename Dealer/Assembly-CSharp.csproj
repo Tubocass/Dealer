@@ -220,7 +220,7 @@
      <Compile Include="Assets\_Scripts\Quest_Item.cs" />
      <Compile Include="Assets\_Scripts\Quest_Journal.cs" />
      <Compile Include="Assets\_Scripts\SecretNote.cs" />
-     <Compile Include="Assets\_Scripts\Weed.cs" />
+     <Compile Include="Assets\_Scripts\WeedQuest.cs" />
      <Compile Include="Assets\_Scripts\playerMovement.cs" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />

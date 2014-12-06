@@ -11,7 +11,7 @@ public class Item {
 	public int itemOwner;
 	public int stackAmount;
 	public bool bStackable;
-	public int value;
+	public int itemValue;
 
 	public enum ItemType
 	{
@@ -39,5 +39,6 @@ public class Item {
 		bStackable = item.bStackable;
 		stackAmount = item.stackAmount;
 		itemIcon = item.itemIcon;
+		itemValue = item.itemValue;
 	}
 }

@@ -20,11 +20,12 @@ public class Inventory : MonoBehaviour
 	protected Rect windowRect;
 	public int UniqueID;
 	public bool bTrading;
-	public int money;
+	public int money = 0;
 	Inventory tradeInventory;
 
 	public delegate void TradeAction();
 	public static event TradeAction SoldWeed;
+	public static event TradeAction BoughtWeed;
 
 	protected virtual void Start()
 	{
@@ -148,16 +149,35 @@ public class Inventory : MonoBehaviour
 						if(e.type == EventType.mouseUp&& draggingItem)
 						{
 							print (draggedItem.itemOwner);
-							inventory[i] = draggedItem;
+
 							if(draggedItem.itemOwner != UniqueID)
 							{
-								Find_Inventory(draggedItem.itemOwner).money-=1;;
-								inventory[i].itemOwner = UniqueID;
-								SoldWeed();
+								if(bTrading)
+								{
+									if(money>= draggedItem.itemValue*draggedItem.stackAmount)
+									{
+
+										AddMoney(-draggedItem.itemValue*draggedItem.stackAmount);
+										inventory[i] = draggedItem;
+										inventory[i].itemOwner = UniqueID;
+										tradeInventory.AddMoney(draggedItem.itemValue*draggedItem.stackAmount);
+
+										if(draggedItem.itemName == "Weed")
+										{
+											if(BoughtWeed!=null)
+											BoughtWeed();
+										}
+										draggingItem = false;
+										draggedItem = null;
+									}
+								}
+
 								
-							}
+							}else{
+							inventory[i] = draggedItem;
 							draggingItem = false;
 							draggedItem = null;
+							}
 							
 						}
 					}
@@ -180,17 +200,23 @@ public class Inventory : MonoBehaviour
 	}
 	public void Trade(Item item)
 	{
-		if(tradeInventory.money>= item.value)
+		if(tradeInventory.money>= item.itemValue)
 		{
-			tradeInventory.money -= item.value;
+
 			RemoveItem(inventory[ContainsItemAt(item.itemID)]);
+			AddMoney(item.itemValue);
 			tradeInventory.AddItem(item.itemID);
+			tradeInventory.money -= item.itemValue;
 
 			if(item.itemName == "Weed")
 			{
 				SoldWeed();
 			}
-		}
+		}else return;
+	}
+	public void AddMoney(int dolla)
+	{
+		money+=dolla;
 	}
 	
 	public virtual void AddItem(int id)
