@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
 	public int UniqueID;
 	public bool bTrading;
 	public int money;
+	Inventory tradeInventory;
 
 	public delegate void TradeAction();
 	public static event TradeAction SoldWeed;
@@ -130,7 +131,10 @@ public class Inventory : MonoBehaviour
 						}
 						if(e.type==EventType.mouseDown&& e.button==1)
 						{
-							Trade(GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>(),inventory[i]);
+							if(bTrading)
+							{
+								Trade(inventory[i]);
+							}
 
 							if(slots[i].itemtype==Item.ItemType.Consumable)
 							{
@@ -168,16 +172,25 @@ public class Inventory : MonoBehaviour
 		}
 	}
 	
-	public void StartTrading()
+	public void StartTrading(Inventory other)
 	{
+		tradeInventory = other;
 		showInventory = true;
 		bTrading = true;
 	}
-	public void Trade(Inventory other, Item item)
+	public void Trade(Item item)
 	{
-		RemoveItem(inventory[ContainsItemAt(item.itemID)]);
-		other.money -=1;
-		other.AddItem(item.itemID);
+		if(tradeInventory.money>= item.value)
+		{
+			tradeInventory.money -= item.value;
+			RemoveItem(inventory[ContainsItemAt(item.itemID)]);
+			tradeInventory.AddItem(item.itemID);
+
+			if(item.itemName == "Weed")
+			{
+				SoldWeed();
+			}
+		}
 	}
 	
 	public virtual void AddItem(int id)

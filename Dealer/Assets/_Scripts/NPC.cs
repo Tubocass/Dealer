@@ -35,8 +35,9 @@ public class NPC : MonoBehaviour {
 			GUI.BeginGroup(trade);
 			if(GUI.Button(new Rect(0,0+5,100,40),"Trade"))
 			{
-				inventory.StartTrading();
-				player.GetComponent<Inventory>().StartTrading();
+				Inventory playerInventory = player.GetComponent<Inventory>();
+				inventory.StartTrading(playerInventory);
+				playerInventory.StartTrading(inventory);
 			}
 			if(GUI.Button(new Rect(0,0+55,100,40),"Talk"))
 			{

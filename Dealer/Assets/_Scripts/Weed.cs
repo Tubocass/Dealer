@@ -41,6 +41,7 @@ public class Weed : MonoBehaviour
 			print ("You got all the weed!");
 			weed1.stage = 1;
 			stage = 1;
+
 		}
 	}
 	void WeedSold()
@@ -50,6 +51,7 @@ public class Weed : MonoBehaviour
 		{
 			print ("You sold all the weed!");
 			weed1.bFinished = true;
+
 			weed1.stage = 2;
 			stage = 2;
 		}

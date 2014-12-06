@@ -11,6 +11,7 @@ public class Item {
 	public int itemOwner;
 	public int stackAmount;
 	public bool bStackable;
+	public int value;
 
 	public enum ItemType
 	{

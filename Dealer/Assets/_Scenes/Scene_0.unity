@@ -111,6 +111,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
   - itemName: Weed
     itemID: 1
     itemDesc: Some Dank
@@ -119,6 +120,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 1
     bStackable: 1
+    value: 0
   - itemName: Drank
     itemID: 2
     itemDesc: Some Drank
@@ -127,6 +129,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
   - itemName: Important Note
     itemID: 3
     itemDesc: Meet me at the ware house to fuck that nigga up.
@@ -135,6 +138,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
   - itemName: 
     itemID: 0
     itemDesc: 
@@ -143,6 +147,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
 --- !u!4 &18059365
 Transform:
   m_ObjectHideFlags: 0
@@ -154,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1 &90167556
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +169,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 90167558}
   - 114: {fileID: 90167557}
+  - 114: {fileID: 90167559}
   m_Layer: 0
   m_Name: Quest_DB
   m_TagString: QuestDatabase
@@ -191,6 +197,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
     questReward: 0
     bConditionsMet: 0
     bActive: 0
@@ -205,6 +212,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
     questReward: 0
     bConditionsMet: 0
     bActive: 0
@@ -220,6 +228,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
     questReward: 0
     bConditionsMet: 0
     bActive: 0
@@ -237,6 +246,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
     questReward: 0
     bConditionsMet: 0
     bActive: 0
@@ -251,6 +261,7 @@ MonoBehaviour:
     itemOwner: 0
     stackAmount: 0
     bStackable: 0
+    value: 0
     questReward: 0
     bConditionsMet: 0
     bActive: 0
@@ -269,6 +280,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &90167559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 90167556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7e49a2dbd7a4848bc2bd98d44ae8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weedAmount: 0
+  weedSold: 0
+  weed1:
+    itemName: 
+    itemID: -1
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    value: 0
+    questReward: 0
+    bConditionsMet: 0
+    bActive: 0
+    bFinished: 0
+    stage: 0
+    text:
+    - 
+  weed2:
+    itemName: 
+    itemID: -1
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    value: 0
+    questReward: 0
+    bConditionsMet: 0
+    bActive: 0
+    bFinished: 0
+    stage: 0
+    text:
+    - 
+  journal: {fileID: 951207408}
+  stage: 0
 --- !u!1 &91214679
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +392,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &96953173
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +505,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!1 &184915340
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,54 +808,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1001 &401750393
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -4.07727146
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.95909977
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-      propertyPath: journal
-      value: 
-      objectReference: {fileID: 951207408}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-  m_RootGameObject: {fileID: 441175396}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1001 &404588398
 Prefab:
   m_ObjectHideFlags: 0
@@ -833,7 +845,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
@@ -904,80 +916,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
---- !u!1 &441175396
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-  m_PrefabInternal: {fileID: 401750393}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 441175398}
-  - 114: {fileID: 441175397}
-  m_Layer: 0
-  m_Name: WeedQuest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &441175397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 8e62e34febef0ff40a43e1883c8a26dc,
-    type: 2}
-  m_PrefabInternal: {fileID: 401750393}
-  m_GameObject: {fileID: 441175396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7e49a2dbd7a4848bc2bd98d44ae8a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weedAmount: 0
-  weedSold: 0
-  weed1:
-    itemName: 
-    itemID: -1
-    itemDesc: 
-    itemIcon: {fileID: 0}
-    itemtype: 0
-    itemOwner: 0
-    stackAmount: 0
-    bStackable: 0
-    questReward: 0
-    bConditionsMet: 0
-    bActive: 0
-    bFinished: 0
-    stage: 0
-    text: []
-  weed2:
-    itemName: 
-    itemID: -1
-    itemDesc: 
-    itemIcon: {fileID: 0}
-    itemtype: 0
-    itemOwner: 0
-    stackAmount: 0
-    bStackable: 0
-    questReward: 0
-    bConditionsMet: 0
-    bActive: 0
-    bFinished: 0
-    stage: 0
-    text: []
-  journal: {fileID: 951207408}
-  stage: 0
---- !u!4 &441175398
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 8e62e34febef0ff40a43e1883c8a26dc, type: 2}
-  m_PrefabInternal: {fileID: 401750393}
-  m_GameObject: {fileID: 441175396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.07727146, y: 1.95909977, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
 --- !u!1001 &612880272
 Prefab:
   m_ObjectHideFlags: 0
@@ -1023,7 +961,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c812f45886767a540a9edba4086858d8, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c812f45886767a540a9edba4086858d8, type: 2}
       propertyPath: items.Array.data[1].itemID
@@ -1325,7 +1263,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
@@ -1395,7 +1333,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1001 &789432085
 Prefab:
   m_ObjectHideFlags: 0
@@ -1485,7 +1423,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c812f45886767a540a9edba4086858d8, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c812f45886767a540a9edba4086858d8, type: 2}
       propertyPath: items.Array.data[1].itemID
@@ -1625,7 +1563,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4d08054856ee6dd46b6c009ef6938272, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d08054856ee6dd46b6c009ef6938272, type: 2}
@@ -1847,7 +1785,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc5bc3e484c481b49874d8b183238123, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc5bc3e484c481b49874d8b183238123, type: 2}
@@ -1955,7 +1893,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
@@ -2047,7 +1985,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc5bc3e484c481b49874d8b183238123, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: cc5bc3e484c481b49874d8b183238123, type: 2}
       propertyPath: m_TagString
