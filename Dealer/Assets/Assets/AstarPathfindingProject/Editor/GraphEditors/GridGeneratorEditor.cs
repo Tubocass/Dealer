@@ -153,7 +153,9 @@ namespace Pathfinding {
 			
 			float prevRatio = graph.aspectRatio;
 			graph.aspectRatio = EditorGUILayout.FloatField (new GUIContent ("Aspect Ratio","Scaling of the nodes width/depth ratio. Good for isometric games"),graph.aspectRatio);
-	
+
+			graph.isometricAngle = EditorGUILayout.FloatField (new GUIContent ("Isometric Angle", "For an isometric 2D game, you can use this parameter to scale the graph correctly."), graph.isometricAngle);
+
 			if (graph.nodeSize != newNodeSize || prevRatio != graph.aspectRatio) {
 				if (!locked) {
 					graph.nodeSize = newNodeSize;

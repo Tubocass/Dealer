@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour
 		
 		if(showInventory)
 		{
-			windowRect = GUI.Window (UniqueID, windowRect, WindowFunction, "My Inventory",skin.GetStyle("Window"));
+			windowRect = GUI.Window (UniqueID, windowRect, WindowFunction,money.ToString(),skin.GetStyle("Window"));
 		}
 		if(draggingItem)
 		{
@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
 
 	protected void CreateTooltip(Item item)
 	{
-		tooltip = item.itemName;
+		tooltip = item.itemName+"\n Worth: "+item.itemValue;
 	}
 
 	protected virtual void DrawInventory()
@@ -280,6 +280,20 @@ public class Inventory : MonoBehaviour
 		}
 		return result;
 	}
+	public virtual bool ContainsItem(string name)
+	{
+		bool result = false;
+		for (int i = 0; i<inventory.Count;i++)
+		{
+			result = inventory[i].itemName == name;
+			if(result)
+			{
+				break;
+			}
+			
+		}
+		return result;
+	}
 	public virtual int ContainsItemAt(int id)
 	{
 		for (int i = 0; i<inventory.Count;i++)
@@ -292,6 +306,33 @@ public class Inventory : MonoBehaviour
 			
 		}
 		return -1;
+	}
+	
+	public virtual int ContainsItemAt(string name)
+	{
+		for (int i = 0; i<inventory.Count;i++)
+		{
+			if(inventory[i].itemName == name)
+			{
+				return i;
+				break;
+			}
+			
+		}
+		return -1;
+	}
+	
+	public virtual Item ReturnItem(string name)
+	{
+		for (int i = 0; i<inventory.Count;i++)
+		{
+			if(inventory[i].itemName == name)
+			{
+				return inventory[i];
+				break;
+			}	
+		}
+		return null;
 	}
 	
 	public static Inventory Find_Inventory(int id)

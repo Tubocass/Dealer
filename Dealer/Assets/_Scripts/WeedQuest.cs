@@ -3,24 +3,28 @@ using System.Collections;
 
 public class WeedQuest : MonoBehaviour 
 {
-	public int weedAmount, weedSold;
+	public int weedAmount,weedGathered, weedSold;
 	public Quest_Item weed1;
-	public Quest_Item weed2;
-	public Quest_Journal journal;
+	public Quest_Journal questGiver;
 	Quest_Database questDB;
+	Inventory inv;
 	public GameObject player;
 	public int stage = 0;
 	void Start()
 	{
 		//journal = GetComponent<Quest_Journal>();
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
-		weed1 = questDB.items[2];
-		weed2 = new Quest_Item("Sell Weed",3,"Sell 3 Dank",Item.ItemType.Quest,3);
-		if (journal)
+		weed1 = new Quest_Item(questDB.items[2]);
+		player = GameObject.FindGameObjectWithTag("Player");
+		inv = GetComponent<Inventory>();
+		if(inv!=null)
 		{
-			weed1.bActive = true;
-			journal.AddItem(weed1);
-			journal.AddItem(weed2);
+			weedAmount = 0;
+		}
+		questGiver = GetComponent<Quest_Journal>();
+		if (questGiver)
+		{
+			questGiver.AddItem(weed1);
 		}
 		//OnEnable();
 	}
@@ -37,37 +41,47 @@ public class WeedQuest : MonoBehaviour
 	}
 	void IncreaseAmount()
 	{
-		weedAmount+=1;
-		if(weedAmount>=3)
+		if(weed1.bActive)
 		{
-			print ("You got all the weed!");
-			weed1.questStage = 1;
-			stage = 1;
-
+			weedGathered+=1;
+			if(weedGathered>=3)
+			{
+				print ("You got all the weed!");
+				weed1.questStage = 1;
+				stage = 1;
+					
+			}
 		}
 	}
 	void WeedSold()
 	{
-		weedSold+=1;
-		if(weedSold>=3)
+		if(weed1.bActive)
 		{
-			print ("You sold all the weed!");
-			weed1.bAlmostFinished = true;
-			weed1.questStage = 2;
-			stage = 2;
+			int newAmount = GetComponent<Inventory>().ReturnItem("Weed").stackAmount;
+			if(newAmount>weedAmount)
+			{
+				weedAmount = newAmount;
+				weedSold+=1;
+				if(weedSold>=3)
+				{
+					print ("You sold all the weed!");
+					weed1.bAlmostFinished = true;
+					weed1.questStage = 2;
+					stage = 2;
+				}
+			}
 		}
 	}
 	void TalkToQuestGiver()
 	{
-		if(!weed1.bActive)
+		if(weed1.bActive)
 		{
-			weed1.bActive = true;
-		}else{ 
 			if(weed1.questStage == 2)
 			{
 				player.GetComponent<Inventory>().AddMoney(weed1.questReward);
-				//weed1.FinishQuest();
+				weed1.FinishQuest();
 			}
 		}
+		
 	}
 }

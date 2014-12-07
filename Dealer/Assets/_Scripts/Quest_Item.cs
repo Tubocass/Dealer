@@ -28,6 +28,7 @@ public class Quest_Item : Item
 		itemIcon = item.itemIcon;
 		questReward = item.questReward;
 		questStage = item.questStage;
+		text = item.text;
 	}
 	public void FinishQuest()
 	{

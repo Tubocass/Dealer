@@ -71,7 +71,7 @@ public class Quest_Journal : Inventory {
 				Rect slotRect = new Rect(5+(x*50),(y*35),50,25);
 				GUI.Box(slotRect,"",skin.GetStyle("Slot"));
 				//slots[i] = inventory[i];
-				if(quests[i].itemName!=null)
+				if(quests[i].itemName!=null&&!quests[i].bFinished)
 				{
 					GUI.Box(slotRect,quests[i].itemName);
 					if(slotRect.Contains(e.mousePosition))
@@ -95,6 +95,10 @@ public class Quest_Journal : Inventory {
 							{
 								print ("testes");
 								Find_Journal(1).AddItem(quests[i].itemID);
+								if(!quests[i].bActive)
+								{
+									quests[i].bActive = true;
+								}
 							}
 
 							words = quests[i].itemDesc;

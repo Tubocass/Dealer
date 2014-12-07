@@ -1,5 +1,11 @@
 /** \page changelog Changelog
 
+- 3.5.2 (2013-09-01) (tiny bugfix and small feature release)
+	- Added isometric angle option for grid graphs to help with isometric 2D games.
+	- Fixed a bug with the RVOAgent class which caused the LightweightRVO example scene to not work as intended (no agents were avoiding each other).
+	- Fixed some documentation typos.
+	- Fixed some compilations errors some people were having with other compilers than Unity's.
+
 - 3.5.1 (2013-06-15)
 	- Added avoidance masks to local avoidance.
 		Each agent now has a layer and each agent can specify which layers it will avoid.

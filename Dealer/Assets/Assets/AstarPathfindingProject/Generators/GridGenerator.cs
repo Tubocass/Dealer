@@ -100,7 +100,28 @@ AstarPath.active.Scan();
 		
 		[JsonMember]
 		public float aspectRatio = 1F; /**< Scaling of the graph along the X axis. This should be used if you want different scales on the X and Y axis of the grid */
-		//public Vector3 offset;
+
+		/** Angle to use for the isometric projection.
+		 * If you are making a 2D isometric game, you may want to use this parameter to adjust the layout of the graph to match your game.
+		 * This will essentially scale the graph along one of its diagonals to produce something like this:
+		 * 
+		 * A perspective view of an isometric graph.
+		 * \shadowimage{isometric/isometric_perspective.png}
+		 * 
+		 * A top down view of an isometric graph. Note that the graph is entirely 2D, there is no perspective in this image.
+		 * \shadowimage{isometric/isometric_top.png}
+		 * 
+		 * Usually the angle that you want to use is either 30 degrees (alternatively 90-30 = 60 degrees) or atan(1/sqrt(2)) which is approximately 35.264 degrees (alternatively 90 - 35.264 = 54.736 degrees).
+		 * You might also want to rotate the graph plus or minus 45 degrees around the Y axis to get the oritientation required for your game.
+		 * 
+		 * You can read more about it on the wikipedia page linked below.
+		 * 
+		 * \see http://en.wikipedia.org/wiki/Isometric_projection
+		 * \see rotation
+		 */
+		[JsonMember]
+		public float isometricAngle = 0;
+
 		[JsonMember]
 		public Vector3 rotation; /**< Rotation of the grid in degrees */
 		
@@ -186,21 +207,24 @@ AstarPath.active.Scan();
 		[JsonMember]
 		public bool cutCorners = true;
 		
-		[JsonMember]
 		/** Offset for the position when calculating penalty.
 		  * \see penaltyPosition */
+		[JsonMember]
 		public float penaltyPositionOffset = 0;
-		[JsonMember]
+
 		/** Use position (y-coordinate) to calculate penalty */
-		public bool penaltyPosition = false;
 		[JsonMember]
+
+		public bool penaltyPosition = false;
 		/** Scale factor for penalty when calculating from position.
 		 * \see penaltyPosition
 		 */
+		[JsonMember]
 		public float penaltyPositionFactor = 1F;
 		
 		[JsonMember]
 		public bool penaltyAngle = false;
+
 		[JsonMember]
 		public float penaltyAngleFactor = 100F;
 		
@@ -400,8 +424,10 @@ AstarPath.active.Scan();
 			//size.y = size.y < 0.1F ? 0.1F : size.y;
 			size.y = size.y < nodeSize ? nodeSize : size.y;
 			
-			
-			boundsMatrix.SetTRS (center,Quaternion.Euler (rotation),new Vector3 (aspectRatio,1,1));
+			var isometricMatrix = Matrix4x4.TRS (Vector3.zero, Quaternion.Euler(0,45,0), Vector3.one);
+			isometricMatrix = Matrix4x4.Scale ( new Vector3 ( Mathf.Cos(Mathf.Deg2Rad*isometricAngle), 1, 1 ) ) * isometricMatrix;
+			isometricMatrix = Matrix4x4.TRS (Vector3.zero, Quaternion.Euler(0,-45,0), Vector3.one) * isometricMatrix;
+			boundsMatrix = Matrix4x4.TRS (center,Quaternion.Euler (rotation),new Vector3 (aspectRatio,1,1)) * isometricMatrix;
 			
 			//bounds.center = boundsMatrix.MultiplyPoint (Vector3.up*height*0.5F);
 			//bounds.size = new Vector3 (width*nodeSize,height,depth*nodeSize);
@@ -418,8 +444,11 @@ AstarPath.active.Scan();
 			}
 			
 			//height = size.y;
-			
-			SetMatrix (Matrix4x4.TRS (boundsMatrix.MultiplyPoint3x4 (-new Vector3 (size.x,0,size.y)*0.5F),Quaternion.Euler(rotation), new Vector3 (nodeSize*aspectRatio,1,nodeSize)));
+
+
+			var m = Matrix4x4.TRS (boundsMatrix.MultiplyPoint3x4 (-new Vector3 (size.x,0,size.y)*0.5F),Quaternion.Euler(rotation), new Vector3 (nodeSize*aspectRatio,1,nodeSize)) * isometricMatrix;
+
+			SetMatrix (m);
 		}
 		
 		//public void GenerateBounds () {

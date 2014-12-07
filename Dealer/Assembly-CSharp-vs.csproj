@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AStar_Simple.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\AI\AIPath.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\AI\NavmeshController.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\AI\Seeker.cs" />
@@ -57,6 +56,7 @@
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\GraphUpdateShape.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\AnimationLink.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\AstarDebugger.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\AstarEnumFlagAttr.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\BinaryHeap.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\GraphEditorBase.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\GraphModifier.cs" />
@@ -69,17 +69,22 @@
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\PathPool.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\StackPool.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\ThreadControlQueue.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Misc\WindowsStoreCompatibility.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Nodes\GraphNode.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Path.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\PathHandler.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Serialization\JsonConverters.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Serialization\JsonSerializer.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Serialization\SimpleJsonReplacement.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\Core\Serialization\SimpleZipReplacement.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Core\astarclasses.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\AIFollow.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\AstarSmoothFollow2.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\DoorController.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\DynamicGridObstacle.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\MineBotAI.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScripts\AIFollow.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScripts\AstarSmoothFollow2.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScripts\DoorController.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScripts\DynamicGridObstacle.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScripts\MineBotAI.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScripts\ObjectPlacer.cs" />
+     <Compile Include="Assets\Assets\AstarPathfindingProject\ExampleScripts\TargetMover.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Generators\Base.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Generators\GridGenerator.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Generators\NavMeshGenerator.cs" />
@@ -108,7 +113,6 @@
      <Compile Include="Assets\Assets\AstarPathfindingProject\Utilities\LockFreeStack.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Utilities\PathUtilities.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Utilities\SizeProfiler.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\Assets\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\Assets\Sample Assets\2D\Scripts\Camera2DFollow.cs" />
@@ -204,10 +208,7 @@
      <Compile Include="Assets\Assets\Sample Assets\Vehicles\Car\Scripts\Wheel.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Vehicles\Rolling Ball\Scripts\Ball.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Vehicles\Rolling Ball\Scripts\BallUserControl.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Core\Misc\AstarEnumFlagAttr.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Core\Misc\WindowsStoreCompatibility.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleJsonReplacement.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleZipReplacement.cs" />
+     <Compile Include="Assets\_Scripts\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
      <Compile Include="Assets\_Scripts\Inventory.cs" />
      <Compile Include="Assets\_Scripts\Item.cs" />
@@ -269,10 +270,10 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer/Assets/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer/Assets/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -31,7 +31,7 @@ public class AstarPath : MonoBehaviour {
 	 */
 	public static System.Version Version {
 		get {
-			return new System.Version (3,5,1);
+			return new System.Version (3,5,2);
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class AstarPath : MonoBehaviour {
 	 * users of the development versions can get notifications of development
 	 * updates.
 	 */
-	public static readonly string Branch = "rvo_cleanups_Free";
+	public static readonly string Branch = "isometric_Free";
 
 	/** Used by the editor to show some Pro specific stuff.
 	 * Note that setting this to true will not grant you any additional features */
