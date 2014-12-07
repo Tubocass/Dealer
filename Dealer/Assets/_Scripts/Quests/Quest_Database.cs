@@ -8,6 +8,6 @@ public class Quest_Database : MonoBehaviour{
 
 	public void Awake()
 	{
-		items[3] = new Quest_Item("Sell Weed",2,"Sell 3 Dank",Item.ItemType.Quest,3);
+		//items[3] = new Quest_Item("Sell Weed",2,"Sell 3 Dank",Item.ItemType.Quest,3);
 	}
 }

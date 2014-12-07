@@ -9,7 +9,9 @@ public class Quest_Journal : Inventory {
 	public List<Quest_Item> quests = new List<Quest_Item>();
 
 	public delegate void TalkAction();
-	public static event TalkAction TalkTo;
+	public event TalkAction AcceptQuest;
+	public event TalkAction Talk;
+	
 	protected override void Start()
 	{
 		for (int i = 0; i<(slotsX*slotsY); i++)
@@ -84,10 +86,10 @@ public class Quest_Journal : Inventory {
 						if(e.type==EventType.mouseDown&& e.button==0)
 						{
 							print ("balls");
-							words = quests[i].GetText();
-							if(TalkTo != null)
-								TalkTo();
-
+							words = quests[i].itemDesc;
+							if(Talk != null)
+								Talk();
+							
 						}
 						if(e.type==EventType.mouseDown&& e.button==1)
 						{
@@ -100,8 +102,9 @@ public class Quest_Journal : Inventory {
 									quests[i].bActive = true;
 								}
 							}
-
-							words = quests[i].itemDesc;
+							words = quests[i].GetText();
+							
+							
 						}
 					}
 				}

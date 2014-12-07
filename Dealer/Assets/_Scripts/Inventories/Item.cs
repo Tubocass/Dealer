@@ -21,7 +21,7 @@ public class Item {
 	{
 		itemID = -1;
 	}
-	public Item(string name, int id, string desc, ItemType type, bool stackable, int amount)
+	public Item(string name, int id, string desc, ItemType type, bool stackable, int amount, int value)
 	{
 		itemName = name;
 		itemID = id;
@@ -29,6 +29,7 @@ public class Item {
 		itemtype = type;
 		bStackable = stackable;
 		stackAmount = amount;
+		itemValue = value;
 	}
 	public Item(Item item)
 	{

@@ -4,7 +4,7 @@ using System.Collections;
 public class Quest_Item : Item 
 {
 	public int questReward;
-	public bool bConditionsMet;
+	public bool bPreConditionsMet;
 	public bool bActive;
 	public bool bAlmostFinished;
 	public bool bFinished;
@@ -30,13 +30,13 @@ public class Quest_Item : Item
 		questStage = item.questStage;
 		text = item.text;
 	}
+	
 	public void FinishQuest()
 	{
 		bFinished = true;
 		bAlmostFinished = false;
 		bActive = false;
-		bConditionsMet = false;
-		//stage = -1;
+		bPreConditionsMet = false;
 	}
 	public static string GetText(Quest_Item item)
 	{
