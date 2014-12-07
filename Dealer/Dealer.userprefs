@@ -1,16 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Quest_Item.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Quest_Journal.cs">
     <Files>
-      <File FileName="Assets\_Scripts\Weed.cs" Line="66" Column="23" />
-      <File FileName="Assets\_Scripts\Quest_Journal.cs" Line="68" Column="4" />
-      <File FileName="Assets\_Scripts\NPC.cs" Line="52" Column="19" />
-      <File FileName="Assets\_Scripts\Inventory.cs" Line="270" Column="11" />
-      <File FileName="Assets\_Scripts\Player_Interactions.cs" Line="8" Column="2" />
+      <File FileName="Assets\_Scripts\Quest_Journal.cs" Line="101" Column="10" />
+      <File FileName="Assets\_Scripts\NPC.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Player_Interactions.cs" Line="1" Column="1" />
       <File FileName="Assets\_Scripts\Quest_Database.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Quest_Item.cs" Line="61" Column="35" />
-      <File FileName="Assets\_Scripts\Item.cs" Line="42" Column="30" />
+      <File FileName="Assets\_Scripts\Quest_Item.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Item.cs" Line="1" Column="1" />
       <File FileName="Assets\_Scripts\SecretNote.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\WeedQuest.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
