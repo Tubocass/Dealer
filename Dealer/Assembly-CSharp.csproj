@@ -216,6 +216,7 @@
      <Compile Include="Assets\_Scripts\Inventories\Player_Inventory.cs" />
      <Compile Include="Assets\_Scripts\NPC.cs" />
      <Compile Include="Assets\_Scripts\Player_Interactions.cs" />
+     <Compile Include="Assets\_Scripts\Quests\NewQJ.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest_Database.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest_Item.cs" />

@@ -56,7 +56,7 @@ public class Inventory : MonoBehaviour
 		if(draggingItem)
 		{
 			//GUI.BringWindowToBack(UniqueID);
-			GUI.DrawTexture(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,50,50),draggedItem.itemIcon);
+			//GUI.DrawTexture(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,50,50),draggedItem.itemIcon);
 		}
 	
 	}
@@ -88,7 +88,7 @@ public class Inventory : MonoBehaviour
 				slots[i] = inventory[i];
 				if(slots[i].itemName!=null)
 				{
-					GUI.DrawTexture(slotRect,slots[i].itemIcon);
+					//GUI.DrawTexture(slotRect,(Texture2D)slots[i].itemIcon);
 					if(slots[i].bStackable)
 					{
 						GUI.Label(slotRect, ""+slots[i].stackAmount,skin.GetStyle("label"));

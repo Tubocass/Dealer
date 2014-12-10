@@ -6,7 +6,7 @@ public class Item {
 	public string itemName;
 	public int itemID;
 	public string itemDesc;
-	public Texture2D itemIcon;
+	public Sprite itemIcon;
 	public ItemType itemtype;
 	public int itemOwner;
 	public int stackAmount;
