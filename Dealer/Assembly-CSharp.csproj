@@ -213,10 +213,10 @@
      <Compile Include="Assets\_Scripts\Inventories\Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Item.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Item_Database.cs" />
+     <Compile Include="Assets\_Scripts\Inventories\NewQJ.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Player_Inventory.cs" />
      <Compile Include="Assets\_Scripts\NPC.cs" />
      <Compile Include="Assets\_Scripts\Player_Interactions.cs" />
-     <Compile Include="Assets\_Scripts\Quests\NewQJ.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest_Database.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest_Item.cs" />
@@ -271,10 +271,10 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

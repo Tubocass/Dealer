@@ -75,7 +75,7 @@ public class Inventory : MonoBehaviour
 		tooltip = item.itemName+"\n Worth: "+item.itemValue;
 	}
 
-	protected virtual void DrawInventory()
+	public virtual void DrawInventory()
 	{
 		Event e = Event.current;
 		int i = 0;
@@ -363,31 +363,6 @@ public class Inventory : MonoBehaviour
 			
 		}
 		return -1;
-	}
-	
-	public virtual Item ReturnItem(string name)
-	{
-		for (int i = 0; i<inventory.Count;i++)
-		{
-			if(inventory[i].itemName == name)
-			{
-				return inventory[i];
-				break;
-			}	
-		}
-		return null;
-	}
-	public virtual int ReturnItemAmount(string name)
-	{
-		for (int i = 0; i<inventory.Count;i++)
-		{
-			if(inventory[i].itemName == name)
-			{
-				return inventory[i].stackAmount;
-				break;
-			}	
-		}
-		return 0;
 	}
 	
 	public static Inventory Find_Inventory(int id)

@@ -60,7 +60,7 @@ public class Quest_Journal : Inventory {
 		GUI.DragWindow(new Rect(0, 0, 10000, 10000));
 		
 	}
-	protected override void DrawInventory()
+	public override void DrawInventory()
 	{
 		Event e = Event.current;
 		int i = 0;
