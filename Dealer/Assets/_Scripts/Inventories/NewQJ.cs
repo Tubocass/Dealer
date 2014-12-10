@@ -6,19 +6,20 @@ using System.Collections.Generic;
 public class NewQJ : MonoBehaviour
 {
 	public int slotsX,slotsY;
-	[SerializeField] Transform panel;
+	[SerializeField] RectTransform panel;
 	[SerializeField] GameObject imagePrefab;
+	Item_Database itemDB;
+	Inventory tradeInventory;
 	public List<Item> inventory = new List<Item>();
 	public List<Image> images = new List<Image>();
 	protected static bool draggingItem = false;
 	public static Item draggedItem;
 	public static int draggedAmount;
-	Item_Database itemDB;
-	public Sprite theSprite;
+	static int prevIndex;
 	public int UniqueID;
 	public bool bTrading;
 	public int money = 0;
-	Inventory tradeInventory;
+	public Text amount;
 
 	public delegate void TradeAction();
 	public event TradeAction SoldWeed;
@@ -35,6 +36,10 @@ public class NewQJ : MonoBehaviour
 			icon.transform.SetParent(panel);
 			icon.SetActive(false);
 			images.Add(icon.GetComponent<Image>());
+			Text text = Instantiate(amount) as Text;
+			text.rectTransform.SetParent(panel.GetChild(i));
+			//text.gameObject.SetActive();
+			
 			
 		}
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
@@ -50,13 +55,20 @@ public class NewQJ : MonoBehaviour
 		//DrawInventory();
 	}
 	
-	public void DrawInventory()
+	public void OnClick_Inventory()
 	{
 		print ("Words");
 		 
 		foreach (Transform child in panel) {
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
+			if(child.gameObject.activeSelf)
+			DrawInventory();
+	
 		}
+		
+	}
+	public void DrawInventory()
+	{
 		//image = panel.GetComponentsInChildren<Image>();
 		//foreach(Image i in image){i.gameObject.SetActive(true);}
 		for(int i =0; i<inventory.Count;i++)
@@ -64,11 +76,28 @@ public class NewQJ : MonoBehaviour
 			//Image image = GetComponentInChildren<Image>();
 			if(inventory[i].itemIcon!=null)
 			{
-				print (i);
-				print (inventory[i].itemIcon.ToString());
-				//images[i].color = Color.blue;
 				images[i].sprite = (Sprite)inventory[i].itemIcon;
+				if(inventory[i].bStackable)
+				{
+					Text text = images[i].GetComponentInChildren<Text>();
+					text.text = ""+inventory[i].stackAmount;
+					
+				}
+				
+			//	if(panel.GetChild(i).)
+				
+				
 			}
+		}
+	}
+	public void OnDrag(int i)
+	{
+		/*draggingItem = true;
+		prevIndex = images[1].rectTransform.GetSiblingIndex();
+		draggedItem = inventory[i];*/
+		foreach (RectTransform child in panel) 
+		{
+			print(child.GetSiblingIndex().ToString());
 		}
 	}
 
@@ -94,8 +123,48 @@ public class NewQJ : MonoBehaviour
 		money+=dolla;
 	}
 
+	public void AddItem(Item item)
+	{
+		int s = ContainsItemAt(item.itemID);
+		if(s>-1&& inventory[s].bStackable)
+		{
+			inventory[s].stackAmount += 1;
+			ItemAddedEvent(item);
+			
+		}else
+		{
+			for(int i =0;i<inventory.Count;i++)
+			{
+				if(inventory[i].itemName == null)
+				{
+					for(int j = 0;j<itemDB.items.Count;j++)
+					{
+						if(itemDB.items[j].itemID==item.itemID)
+						{
+							Item it = new Item(itemDB.items[j]);
+							inventory[i] = it;
+							inventory[i].itemOwner = this.UniqueID;
+							ItemAddedEvent(inventory[i]);
+							break;
+						}
+					}break;
+				}
+			}
+		}
+	}
+	
 	public virtual void AddItem(int id)
 	{
+		if(id<1)
+			return;
+		int s = ContainsItemAt(id);
+		if(s>-1&& inventory[s].bStackable)
+		{
+			inventory[s].stackAmount += 1;
+			ItemAddedEvent(inventory[s]);
+			
+		}else
+		{
 			for(int i =0;i<inventory.Count;i++)
 			{
 				if(inventory[i].itemName == null)
@@ -106,14 +175,14 @@ public class NewQJ : MonoBehaviour
 						{
 							Item it = new Item(itemDB.items[j]);
 							inventory[i] = it;
-							//inventory[i].itemOwner = this.UniqueID;
-							//ItemAddedEvent(inventory[i]);
+							inventory[i].itemOwner = this.UniqueID;
+							ItemAddedEvent(inventory[i]);
 							break;
 						}
 					}break;
 				}
 			}
-
+		}
 	}
 
 	void ItemAddedEvent(Item item)
