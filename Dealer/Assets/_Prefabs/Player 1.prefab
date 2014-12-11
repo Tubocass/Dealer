@@ -222,13 +222,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 4
   slotsY: 5
-  panel: {fileID: 22400018, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
+  panel: {fileID: 0}
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   inventory: []
   images: []
   UniqueID: 0
   bTrading: 0
   money: 0
+  amount: {fileID: 11400000, guid: 973dc1dc4075b6a4a812548085d0f7b8, type: 2}
+  e: {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

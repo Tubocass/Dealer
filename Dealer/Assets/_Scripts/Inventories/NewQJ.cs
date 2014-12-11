@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,7 +13,7 @@ public class NewQJ : MonoBehaviour
 	Inventory tradeInventory;
 	public List<Item> inventory = new List<Item>();
 	public List<Image> images = new List<Image>();
-	protected static bool draggingItem = false;
+	public static bool draggingItem = false;
 	public static Item draggedItem;
 	public static int draggedAmount;
 	static int prevIndex;
@@ -20,33 +21,75 @@ public class NewQJ : MonoBehaviour
 	public bool bTrading;
 	public int money = 0;
 	public Text amount;
+	public EventSystem e;
 
 	public delegate void TradeAction();
+	public delegate void EventDelegate(BaseEventData baseEvent);
 	public event TradeAction SoldWeed;
 	public TradeAction BoughtWeed;
 
-
+	EventTrigger.Entry entry = new EventTrigger.Entry();
+	
 	protected void Start()
-	{
+	{	
+		e = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystem>();
+		
+		//This event will respond to a drop event
+		entry.eventID = EventTriggerType.PointerClick;
+		
+		//Create a new trigger to hold our callback methods
+		entry.callback = new EventTrigger.TriggerEvent();
+		
+		//Create a new UnityAction, it contains our DropEventMethod delegate to respond to events
+		UnityEngine.Events.UnityAction<BaseEventData> callback =
+			new UnityEngine.Events.UnityAction<BaseEventData>(DropEventMethod);
+		
+		//Add our callback to the listeners
+		entry.callback.AddListener(callback);
+		
+	
 		for (int i = 0; i<(slotsX*slotsY); i++)
 		{
 			//slots.Add(new Quest_Item());
 			inventory.Add(new Item());
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
 			icon.transform.SetParent(panel);
-			icon.SetActive(false);
+			
+			icon.GetComponent<EventTrigger>().delegates.Add(entry);
+		
 			images.Add(icon.GetComponent<Image>());
 			Text text = Instantiate(amount) as Text;
 			text.rectTransform.SetParent(panel.GetChild(i));
+			icon.SetActive(false);
 			//text.gameObject.SetActive();
 			
 			
 		}
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
 		//windowRect = new Rect (400, 20, (slotsX*60), (slotsY*60)+20);
-		//DrawInventory();
+		//DrawInventory();	
+	}
+	public void DropEventMethod(BaseEventData baseEvent) 
+	{
+		int siblingIndex = -1;
+		if(baseEvent.selectedObject!= null)
+		{
+			e.SetSelectedGameObject(baseEvent.selectedObject);	
+			siblingIndex = baseEvent.selectedObject.transform.GetSiblingIndex();
+		}
+		Debug.Log(siblingIndex);
+		GameObject current = EventSystem.current.currentSelectedGameObject;
+		string g = "None";
+		if (current!= null)
+		{
+			g = inventory[siblingIndex].itemName;
+			draggingItem = true;
+			draggedItem = inventory[siblingIndex];
+			//inventory[siblingIndex] = new Item();
+		}
+		print (current.ToString()+" "+g);
 		
-		
+		//Debug.Log(baseEvent.selectedObject.name + " triggered an event!");
 	}
 
 
@@ -61,11 +104,14 @@ public class NewQJ : MonoBehaviour
 		 
 		foreach (Transform child in panel) {
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
-			if(child.gameObject.activeSelf)
-			DrawInventory();
+		
 	
 		}
 		
+	}
+	void OnGUI()
+	{
+		DrawInventory();
 	}
 	public void DrawInventory()
 	{
@@ -80,6 +126,7 @@ public class NewQJ : MonoBehaviour
 				if(inventory[i].bStackable)
 				{
 					Text text = images[i].GetComponentInChildren<Text>();
+					if(text!= null)
 					text.text = ""+inventory[i].stackAmount;
 					
 				}
@@ -90,15 +137,16 @@ public class NewQJ : MonoBehaviour
 			}
 		}
 	}
-	public void OnDrag(int i)
+	public void OnDrag()
 	{
-		/*draggingItem = true;
-		prevIndex = images[1].rectTransform.GetSiblingIndex();
-		draggedItem = inventory[i];*/
-		foreach (RectTransform child in panel) 
-		{
-			print(child.GetSiblingIndex().ToString());
-		}
+		GameObject current = EventSystem.current.currentSelectedGameObject;
+		if (current!= null)
+		print (current.ToString());
+		prevIndex = current.transform.GetSiblingIndex();
+		draggingItem = true;
+		draggedItem = inventory[prevIndex];
+		inventory[prevIndex] = new Item();
+		
 	}
 
 	public void Trade(Item item)
