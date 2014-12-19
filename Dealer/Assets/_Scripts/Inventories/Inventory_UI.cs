@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
-public class NewQJ : MonoBehaviour
+public class Inventory_UI : MonoBehaviour
 {
 	public int slotsX,slotsY;
 	[SerializeField] RectTransform panel;
@@ -19,6 +19,7 @@ public class NewQJ : MonoBehaviour
 	static int prevIndex;
 	public int UniqueID;
 	public bool bTrading;
+	public bool showInventory;
 	public int money = 0;
 	public Text amount;
 	public EventSystem e;
@@ -28,10 +29,11 @@ public class NewQJ : MonoBehaviour
 	public event TradeAction SoldWeed;
 	public TradeAction BoughtWeed;
 
-	EventTrigger.Entry entry = new EventTrigger.Entry();
+	//EventTrigger.Entry entry = new EventTrigger.Entry();
 	
 	protected void Start()
 	{	
+		/*
 		e = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystem>();
 		
 		//This event will respond to a drop event
@@ -47,7 +49,7 @@ public class NewQJ : MonoBehaviour
 		//Add our callback to the listeners
 		entry.callback.AddListener(callback);
 		
-	
+	*/
 		for (int i = 0; i<(slotsX*slotsY); i++)
 		{
 			//slots.Add(new Quest_Item());
@@ -55,11 +57,11 @@ public class NewQJ : MonoBehaviour
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
 			icon.transform.SetParent(panel);
 			
-			icon.GetComponent<EventTrigger>().delegates.Add(entry);
+			//icon.GetComponent<EventTrigger>().delegates.Add(entry);
 		
 			images.Add(icon.GetComponent<Image>());
-			Text text = Instantiate(amount) as Text;
-			text.rectTransform.SetParent(panel.GetChild(i));
+			//Text text = Instantiate(amount) as Text;
+			//text.rectTransform.SetParent(panel.GetChild(i));
 			icon.SetActive(false);
 			//text.gameObject.SetActive();
 			
@@ -101,6 +103,7 @@ public class NewQJ : MonoBehaviour
 	public void OnClick_Inventory()
 	{
 		print ("Words");
+
 		 
 		foreach (Transform child in panel) {
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
@@ -111,6 +114,7 @@ public class NewQJ : MonoBehaviour
 	}
 	void OnGUI()
 	{
+		//if(showInventory)
 		DrawInventory();
 	}
 	public void DrawInventory()

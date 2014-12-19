@@ -58,7 +58,7 @@ public class NPC : MonoBehaviour {
 	{
 		print ("bboobbss");
 		clicked = true;
-		//inventory.showInventory = true;
+		inventory.showInventory = true;
 		//inventory.AddItem(1);
 	}
 	
