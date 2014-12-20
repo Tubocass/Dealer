@@ -11,7 +11,6 @@ GameObject:
   - 222: {fileID: 22200000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -68,19 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c67d41b31287b48a75251eafcc324f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragOnSurfaces: 1
+  dragOnSurfaces: 0
   inv: {fileID: 0}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266dee177694435468095e35de5218cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   containerImage: {fileID: 11400000}
   receivingImage: {fileID: 11400000}
   highlightColor: {r: 1, g: .921568632, b: .0156862754, a: 1}

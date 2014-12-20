@@ -65,9 +65,7 @@ public class NPC : MonoBehaviour {
 	public void OnClick_Trade()
 	{
 		Inventory playerInventory = player.GetComponent<Inventory>();
-		inventory.StartTrading(playerInventory);
-		//inventory.showInventory = !inventory.showInventory; 
-		playerInventory.StartTrading(inventory);
+
 	}
 	public void OnClick_Quests()
 	{

@@ -5,7 +5,7 @@ public class Quest : MonoBehaviour
 	public Quest_Item quest1;
 	protected Quest_Journal journal;
 	protected Quest_Database questDB;
-	protected Inventory_UI inv;
+	protected Inventory inv;
 	protected GameObject player;
 	public int finalStage;
 	
@@ -14,7 +14,7 @@ public class Quest : MonoBehaviour
 	{
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
 		player = GameObject.FindGameObjectWithTag("Player");
-		inv = GetComponent<Inventory_UI>();
+		inv = GetComponent<Inventory>();
 		
 		journal = GetComponent<Quest_Journal>();
 		if (journal)

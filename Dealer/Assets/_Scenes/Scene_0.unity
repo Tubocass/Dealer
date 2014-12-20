@@ -198,15 +198,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 1
   slotsY: 4
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
+  panel: {fileID: 0}
+  imagePrefab: {fileID: 0}
   inventory: []
-  showInventory: 0
+  images: []
   UniqueID: 0
   bTrading: 0
+  showInventory: 0
   money: 5
+  amount: {fileID: 0}
+  e: {fileID: 0}
   scrollPosition: {x: 0, y: 0}
   quests: []
 --- !u!114 &20910124
@@ -1060,15 +1061,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 1
   slotsY: 4
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
+  panel: {fileID: 0}
+  imagePrefab: {fileID: 0}
   inventory: []
-  showInventory: 0
+  images: []
   UniqueID: 0
   bTrading: 0
+  showInventory: 0
   money: 5
+  amount: {fileID: 0}
+  e: {fileID: 0}
   scrollPosition: {x: 0, y: 0}
   quests: []
 --- !u!114 &189787700
@@ -1961,6 +1963,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
+      propertyPath: m_Name
+      value: Inventory Canvas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
   m_RootGameObject: {fileID: 1902541116}
@@ -2591,15 +2597,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 4
   slotsY: 5
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
+  panel: {fileID: 0}
+  imagePrefab: {fileID: 0}
   inventory: []
-  showInventory: 0
+  images: []
   UniqueID: 0
   bTrading: 0
+  showInventory: 0
   money: 0
+  amount: {fileID: 0}
+  e: {fileID: 0}
 --- !u!114 &716985162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2626,15 +2633,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 1
   slotsY: 8
-  beginX: 400
-  beginY: 100
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
+  panel: {fileID: 0}
+  imagePrefab: {fileID: 0}
   inventory: []
-  showInventory: 0
+  images: []
   UniqueID: 1
   bTrading: 0
+  showInventory: 0
   money: 10
+  amount: {fileID: 0}
+  e: {fileID: 0}
   scrollPosition: {x: 0, y: 0}
   quests: []
 --- !u!114 &716985164
@@ -2750,15 +2758,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 1
   slotsY: 4
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
+  panel: {fileID: 0}
+  imagePrefab: {fileID: 0}
   inventory: []
-  showInventory: 0
+  images: []
   UniqueID: 0
   bTrading: 0
+  showInventory: 0
   money: 5
+  amount: {fileID: 0}
+  e: {fileID: 0}
   scrollPosition: {x: 0, y: 0}
   quests: []
 --- !u!114 &734180362
@@ -4421,15 +4430,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 1
   slotsY: 4
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
+  panel: {fileID: 0}
+  imagePrefab: {fileID: 0}
   inventory: []
-  showInventory: 0
+  images: []
   UniqueID: 0
   bTrading: 0
+  showInventory: 0
   money: 5
+  amount: {fileID: 0}
+  e: {fileID: 0}
   scrollPosition: {x: 0, y: 0}
   quests: []
 --- !u!114 &1575250369
@@ -4824,7 +4834,7 @@ GameObject:
   - 114: {fileID: 1902541119}
   - 114: {fileID: 1902541118}
   m_Layer: 5
-  m_Name: Inventory
+  m_Name: Inventory Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4969,7 +4979,6 @@ GameObject:
   - 224: {fileID: 1980195162}
   - 222: {fileID: 1980195164}
   - 114: {fileID: 1980195163}
-  - 114: {fileID: 1980195165}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -5026,17 +5035,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 410977389}
   m_GameObject: {fileID: 1980195161}
---- !u!114 &1980195165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1980195161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b895a589a253443a9ac85bafa7402a65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2014679746
 GameObject:
   m_ObjectHideFlags: 0

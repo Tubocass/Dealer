@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player_Interactions : MonoBehaviour {
 
-	Inventory_UI inventory;
+	Inventory inventory;
 	Quest_Journal journal;
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
@@ -11,7 +11,7 @@ public class Player_Interactions : MonoBehaviour {
 	
 	void Start()
 	{
-		inventory = GetComponent<Inventory_UI>();
+		inventory = GetComponent<Inventory>();
 		journal = GetComponent<Quest_Journal>();
 
 		inventory.AddItem(1);
