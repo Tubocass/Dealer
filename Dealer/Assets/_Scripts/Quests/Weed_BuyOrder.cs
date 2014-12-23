@@ -20,7 +20,6 @@ public class Weed_BuyOrder : Quest
 		{
 			inv.BoughtWeed+=WeedBought;
 		}
-	
 	}
 
 	void Update()

@@ -21,7 +21,7 @@ public class Old_Inventory : MonoBehaviour
 	public int UniqueID;
 	public bool bTrading;
 	public int money = 0;
-	Inventory tradeInventory;
+	Old_Inventory tradeInventory;
 
 	public delegate void TradeAction();
 	public event TradeAction SoldWeed;
@@ -88,21 +88,12 @@ public class Old_Inventory : MonoBehaviour
 				slots[i] = inventory[i];
 				if(slots[i].itemName!=null)
 				{
-					//GUI.DrawTexture(slotRect,(Texture2D)slots[i].itemIcon);
+					GUI.DrawTexture(slotRect,slots[i].itemTexture);
 					if(slots[i].bStackable)
 					{
 						GUI.Label(slotRect, ""+slots[i].stackAmount,skin.GetStyle("label"));
 					}
-					if(bTrading)
-					{
-						if(slotRect.Contains(e.mousePosition))
-						{
-							if(e.type==EventType.mouseDown&& e.button==1)
-							{
-								
-							}
-						}
-					}
+
 					if(slotRect.Contains(e.mousePosition))
 					{
 						if(!draggingItem)
@@ -168,14 +159,11 @@ public class Old_Inventory : MonoBehaviour
 										draggedItem = null;
 									}
 								}
-
-								
 							}else{
 							inventory[i] = draggedItem;
 							draggingItem = false;
 							draggedItem = null;
 							}
-							
 						}
 					}
 				}
@@ -189,7 +177,7 @@ public class Old_Inventory : MonoBehaviour
 		}
 	}
 	
-	public void StartTrading(Inventory other)
+	public void StartTrading(Old_Inventory other)
 	{
 		tradeInventory = other;
 		showInventory = true;
@@ -319,7 +307,6 @@ public class Old_Inventory : MonoBehaviour
 			{
 				break;
 			}
-			
 		}
 		return result;
 	}
@@ -333,7 +320,6 @@ public class Old_Inventory : MonoBehaviour
 			{
 				break;
 			}
-			
 		}
 		return result;
 	}
@@ -346,7 +332,6 @@ public class Old_Inventory : MonoBehaviour
 				return i;
 				break;
 			}
-			
 		}
 		return -1;
 	}
@@ -360,7 +345,6 @@ public class Old_Inventory : MonoBehaviour
 				return i;
 				break;
 			}
-			
 		}
 		return -1;
 	}

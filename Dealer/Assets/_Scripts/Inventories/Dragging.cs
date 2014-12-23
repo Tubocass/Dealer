@@ -68,7 +68,30 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		if (m_DraggingIcon != null)
 			SetDraggedPosition(data);
 	}
-	
+
+	public void OnEndDrag(PointerEventData eventData)
+	{
+		if (m_DraggingIcon != null)
+			Destroy(m_DraggingIcon);
+	}
+
+	public void OnDrop(PointerEventData data)
+	{
+		containerImage.color = normalColor;
+		
+		int index  = receivingImage.transform.GetSiblingIndex();
+		Text text = receivingImage.GetComponentInChildren<Text>();
+		if(inv.inventory[index].itemName!=null)
+		{
+			inv.inventory[prevIndex] = inv.inventory[index];
+		}
+		if(draggedItem != null)
+		{
+			inv.inventory[index] = draggedItem;
+			draggedItem = null;
+		}
+	}
+
 	private void SetDraggedPosition(PointerEventData data)
 	{
 		if (dragOnSurfaces && data.pointerEnter != null && data.pointerEnter.transform as RectTransform != null)
@@ -82,13 +105,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 			rt.rotation = m_DraggingPlane.rotation;
 		}
 	}
-	
-	public void OnEndDrag(PointerEventData eventData)
-	{
-		if (m_DraggingIcon != null)
-			Destroy(m_DraggingIcon);
-	}
-	
+
 	static public T FindInParents<T>(GameObject go) where T : Component
 	{
 		if (go == null) return null;
@@ -105,24 +122,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		}
 		return comp;
 	}
-	
-	public void OnDrop(PointerEventData data)
-	{
-		containerImage.color = normalColor;
-			
-		int index  = receivingImage.transform.GetSiblingIndex();
-		Text text = receivingImage.GetComponentInChildren<Text>();
-		if(inv.inventory[index].itemName!=null)
-		{
-			inv.inventory[prevIndex] = inv.inventory[index];
-		}
-		if(draggedItem != null)
-		{
-			inv.inventory[index] = draggedItem;
-			draggedItem = null;
-		}
-	}
-	
+
 	public void OnPointerEnter(PointerEventData data)
 	{
 		if (containerImage == null)

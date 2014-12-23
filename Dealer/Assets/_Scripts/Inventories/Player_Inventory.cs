@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player_Inventory : Inventory 
+public class Player_Inventory : Old_Inventory 
 {	
 	void Update()
 	{
