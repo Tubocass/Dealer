@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
 	[SerializeField] GameObject imagePrefab;
 	Item_Database itemDB;
 	Inventory tradeInventory;
+	public bool bTrading;
 	public List<Item> inventory = new List<Item>();
 	public List<Image> images = new List<Image>();
 	public static bool draggingItem = false;
@@ -18,16 +19,13 @@ public class Inventory : MonoBehaviour
 	public static int draggedAmount;
 	static int prevIndex;
 	public int UniqueID;
-	public bool bTrading;
 	public bool showInventory;
 	protected bool showTooltip = false;
 	protected string tooltip;
 	public int money = 0;
-	public Text amount;
-	public EventSystem e;
 
 	public delegate void TradeAction();
-	public delegate void EventDelegate(BaseEventData baseEvent);
+
 	public event TradeAction SoldWeed;
 	public TradeAction BoughtWeed;
 
@@ -35,9 +33,7 @@ public class Inventory : MonoBehaviour
 	
 	protected virtual void Start()
 	{	
-		/*
-		e = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystem>();
-		
+		/* Code for ceating an event
 		//This event will respond to a drop event
 		entry.eventID = EventTriggerType.PointerClick;
 		
@@ -50,35 +46,21 @@ public class Inventory : MonoBehaviour
 		
 		//Add our callback to the listeners
 		entry.callback.AddListener(callback);
+		//GetComponent<EventTrigger>().delegates.Add(entry);
 		
 	*/
 		for (int i = 0; i<(slotsX*slotsY); i++)
 		{
-			//slots.Add(new Quest_Item());
 			inventory.Add(new Item());
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
 			icon.transform.SetParent(panel);
 			
-			//icon.GetComponent<EventTrigger>().delegates.Add(entry);
-		
 			images.Add(icon.GetComponent<Image>());
 			images[i].GetComponent<Dragging>().inv = this;
-			//Text text = Instantiate(amount) as Text;
-			//text.rectTransform.SetParent(panel.GetChild(i));
 			icon.SetActive(false);
-			//text.gameObject.SetActive();
-			
-			
 		}
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
-		//windowRect = new Rect (400, 20, (slotsX*60), (slotsY*60)+20);
-		//DrawInventory();	
-	}
 
-
-	void Update()
-	{
-		//DrawInventory();
 	}
 	
 	public void OnClick_Inventory()
@@ -87,9 +69,7 @@ public class Inventory : MonoBehaviour
 		foreach (Transform child in panel) 
 		{
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
-		}
-		
-		
+		}	
 	}
 	protected virtual void OnGUI()
 	{
@@ -97,6 +77,7 @@ public class Inventory : MonoBehaviour
 		if(showInventory)
 		DrawInventory();
 	}
+	
 	protected virtual void DrawInventory()
 	{
 		for(int i =0; i<inventory.Count;i++)
@@ -117,7 +98,13 @@ public class Inventory : MonoBehaviour
 			else{ images[i].sprite = null; text.text = "";}
 		}
 	}
-
+	
+	public void StartTrading(Inventory other)
+	{
+		tradeInventory = other;
+		showInventory = true;
+		bTrading = true;
+	}
 
 	public void Trade(Item item)
 	{
@@ -136,6 +123,7 @@ public class Inventory : MonoBehaviour
 			}
 		}else return;
 	}
+	
 	public void AddMoney(int dolla)
 	{
 		money+=dolla;
@@ -143,6 +131,8 @@ public class Inventory : MonoBehaviour
 
 	public void AddItem(Item item)
 	{
+		if(item.itemID<1)
+			return;
 		int s = ContainsItemAt(item.itemID);
 		if(s>-1&& inventory[s].bStackable)
 		{

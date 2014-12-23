@@ -64,8 +64,8 @@
      <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\RaycastModifierEditor.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\SmoothModifierEditor.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\SeekerEditor.cs" />
-     <Compile Include="Assets\_Scripts\UI\Editor\AlphaNumericSort.cs" />
-     <Compile Include="Assets\_Scripts\UI\Editor\GUIHierarchy.cs" />
+     <Compile Include="Assets\_Scripts\UI Samples\Editor\AlphaNumericSort.cs" />
+     <Compile Include="Assets\_Scripts\UI Samples\Editor\GUIHierarchy.cs" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
      <None Include="Assets\Assets\Sample Assets\Prototyping\Shaders\WorldCoord Diffuse.shader" />

@@ -9,6 +9,8 @@ public class NPC : MonoBehaviour {
 	bool clicked;
 	SpriteRenderer sprite;
 	GameObject player;
+	public static bool bSelected;
+	public bool bInteractable;
 	public GUI Trade_Button;
 	// Use this for initialization
 	void Start () 
@@ -17,9 +19,6 @@ public class NPC : MonoBehaviour {
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory>();
 		quests = GetComponent<Quest_Journal>();
-		quests.AddItem(1);
-		inventory.AddItem(1);
-		inventory.AddItem(1);
 	}
 	void OnGUI()
 	{
