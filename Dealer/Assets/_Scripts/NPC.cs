@@ -4,8 +4,8 @@ using System.Collections;
 
 public class NPC : MonoBehaviour {
 
-	Old_Inventory inventory;
-	Quest_Journal quests;
+	public Old_Inventory inventory;
+	public Old_Inventory quests;
 	bool clicked;
 	SpriteRenderer sprite;
 	GameObject player;
@@ -28,16 +28,16 @@ public class NPC : MonoBehaviour {
 		{
 			//print ("tiiiittttss");
 			clicked = false;
-			inventory.showInventory = false;
+			//inventory.showInventory = false;
 		}
 		if(clicked)
 		{
 			GUI.BeginGroup(trade);
 			if(GUI.Button(new Rect(0,0+5,100,40),"Trade"))
 			{
+				inventory.showInventory = !inventory.showInventory; 
 				Old_Inventory playerInventory = player.GetComponent<Old_Inventory>();
 				inventory.StartTrading(playerInventory);
-				//inventory.showInventory = !inventory.showInventory; 
 				playerInventory.StartTrading(inventory);
 			}
 			if(GUI.Button(new Rect(0,0+55,100,40),"Talk"))
@@ -50,14 +50,14 @@ public class NPC : MonoBehaviour {
 				quests.showInventory = !quests.showInventory; 
 			}
 			GUI.EndGroup();
-		}else{quests.showInventory = false;}
+		}else{quests.showInventory = false; inventory.showInventory = false;}
 
 	}
 	public void OnMouseDown() 
 	{
 		print ("bboobbss");
 		clicked = true;
-		inventory.showInventory = true;
+		//inventory.showInventory = true;
 		//inventory.AddItem(1);
 	}
 	

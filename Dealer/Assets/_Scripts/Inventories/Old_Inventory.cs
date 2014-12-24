@@ -22,11 +22,11 @@ public class Old_Inventory : MonoBehaviour
 	public bool bTrading;
 	public int money = 0;
 	Old_Inventory tradeInventory;
-
+	
 	public delegate void TradeAction();
 	public event TradeAction SoldWeed;
 	public TradeAction BoughtWeed;
-
+	
 	
 	protected virtual void Start()
 	{
@@ -42,7 +42,7 @@ public class Old_Inventory : MonoBehaviour
 			UniqueID = (int)(Random.value*1000f);
 		}
 	}
-
+	
 	protected virtual void OnGUI()
 	{
 		
@@ -56,9 +56,9 @@ public class Old_Inventory : MonoBehaviour
 		if(draggingItem)
 		{
 			//GUI.BringWindowToBack(UniqueID);
-			//GUI.DrawTexture(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,50,50),draggedItem.itemIcon);
+			GUI.DrawTexture(new Rect(Event.current.mousePosition.x+15f,Event.current.mousePosition.y+15f,50,50),draggedItem.itemTexture);
 		}
-	
+		
 	}
 	protected virtual void WindowFunction (int windowID) 
 	{
@@ -69,13 +69,13 @@ public class Old_Inventory : MonoBehaviour
 		}
 		GUI.DragWindow(new Rect(0, 0, 10000, 10000));
 	}
-
+	
 	protected void CreateTooltip(Item item)
 	{
 		tooltip = item.itemName+"\n Worth: "+item.itemValue;
 	}
-
-	public virtual void DrawInventory()
+	
+	protected virtual void DrawInventory()
 	{
 		Event e = Event.current;
 		int i = 0;
@@ -93,7 +93,16 @@ public class Old_Inventory : MonoBehaviour
 					{
 						GUI.Label(slotRect, ""+slots[i].stackAmount,skin.GetStyle("label"));
 					}
-
+					if(bTrading)
+					{
+						if(slotRect.Contains(e.mousePosition))
+						{
+							if(e.type==EventType.mouseDown&& e.button==1)
+							{
+								
+							}
+						}
+					}
 					if(slotRect.Contains(e.mousePosition))
 					{
 						if(!draggingItem)
@@ -128,7 +137,7 @@ public class Old_Inventory : MonoBehaviour
 							{
 								Trade(inventory[i]);
 							}
-
+							
 							if(slots[i].itemtype==Item.ItemType.Consumable)
 							{
 								print ("balls");
@@ -141,29 +150,32 @@ public class Old_Inventory : MonoBehaviour
 						if(e.type == EventType.mouseUp&& draggingItem)
 						{
 							print (draggedItem.itemOwner);
-
+							
 							if(draggedItem.itemOwner != UniqueID)
 							{
 								if(bTrading)
 								{
 									if(money>= draggedItem.itemValue*draggedItem.stackAmount)
 									{
-
+										
 										AddMoney(-draggedItem.itemValue*draggedItem.stackAmount);
 										inventory[i] = draggedItem;
 										inventory[i].itemOwner = UniqueID;
 										tradeInventory.AddMoney(draggedItem.itemValue*draggedItem.stackAmount);
-
+										
 										ItemAddedEvent(draggedItem);
 										draggingItem = false;
 										draggedItem = null;
 									}
 								}
+								
+								
 							}else{
-							inventory[i] = draggedItem;
-							draggingItem = false;
-							draggedItem = null;
+								inventory[i] = draggedItem;
+								draggingItem = false;
+								draggedItem = null;
 							}
+							
 						}
 					}
 				}
@@ -180,23 +192,23 @@ public class Old_Inventory : MonoBehaviour
 	public void StartTrading(Old_Inventory other)
 	{
 		tradeInventory = other;
-		showInventory = true;
+		//showInventory = true;
 		bTrading = true;
 	}
 	public void Trade(Item item)
 	{
 		if(tradeInventory.money>= item.itemValue)
 		{
-
+			
 			RemoveItem(inventory[ContainsItemAt(item.itemID)]);
 			AddMoney(item.itemValue);
 			tradeInventory.AddItem(item);
 			tradeInventory.money -= item.itemValue;
-
+			
 			if(item.itemName == "Weed")
 			{
 				if(SoldWeed!=null)
-				SoldWeed();
+					SoldWeed();
 			}
 		}else return;
 	}
@@ -238,13 +250,13 @@ public class Old_Inventory : MonoBehaviour
 	public virtual void AddItem(int id)
 	{
 		if(id<1)
-		return;
+			return;
 		int s = ContainsItemAt(id);
 		if(s>-1&& inventory[s].bStackable)
 		{
 			inventory[s].stackAmount += 1;
 			ItemAddedEvent(inventory[s]);
-				
+			
 		}else
 		{
 			for(int i =0;i<inventory.Count;i++)
@@ -282,18 +294,18 @@ public class Old_Inventory : MonoBehaviour
 	{
 		switch(item.itemName)
 		{
-			case "Weed":
+		case "Weed":
+		{
+			if(BoughtWeed!=null)
 			{
-				if(BoughtWeed!=null)
-				{
-					BoughtWeed();
-				}
-				break;
+				BoughtWeed();
 			}
-			case "Drank":
-			{
-				break;
-			}
+			break;
+		}
+		case "Drank":
+		{
+			break;
+		}
 		}
 	}
 	
@@ -307,6 +319,7 @@ public class Old_Inventory : MonoBehaviour
 			{
 				break;
 			}
+			
 		}
 		return result;
 	}
@@ -320,6 +333,7 @@ public class Old_Inventory : MonoBehaviour
 			{
 				break;
 			}
+			
 		}
 		return result;
 	}
@@ -332,6 +346,7 @@ public class Old_Inventory : MonoBehaviour
 				return i;
 				break;
 			}
+			
 		}
 		return -1;
 	}
@@ -345,8 +360,34 @@ public class Old_Inventory : MonoBehaviour
 				return i;
 				break;
 			}
+			
 		}
 		return -1;
+	}
+	
+	public virtual Item ReturnItem(string name)
+	{
+		for (int i = 0; i<inventory.Count;i++)
+		{
+			if(inventory[i].itemName == name)
+			{
+				return inventory[i];
+				break;
+			}	
+		}
+		return null;
+	}
+	public virtual int ReturnItemAmount(string name)
+	{
+		for (int i = 0; i<inventory.Count;i++)
+		{
+			if(inventory[i].itemName == name)
+			{
+				return inventory[i].stackAmount;
+				break;
+			}	
+		}
+		return 0;
 	}
 	
 	public static Inventory Find_Inventory(int id)

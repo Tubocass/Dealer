@@ -5,7 +5,7 @@ public class Quest : MonoBehaviour
 	public Quest_Item quest1;
 	protected Quest_Journal journal;
 	protected Quest_Database questDB;
-	protected Inventory inv;
+	protected Old_Inventory inv;
 	protected GameObject player;
 	public int finalStage;
 	
@@ -14,7 +14,7 @@ public class Quest : MonoBehaviour
 	{
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
 		player = GameObject.FindGameObjectWithTag("Player");
-		inv = GetComponent<Inventory>();
+		inv = GetComponent<Old_Inventory>();
 		
 		journal = GetComponent<Quest_Journal>();
 		if (journal)
@@ -22,7 +22,6 @@ public class Quest : MonoBehaviour
 			journal.AddItem(quest1);
 			journal.Talk+=TalkToQuestGiver;
 		}
-		
 	}
 
 

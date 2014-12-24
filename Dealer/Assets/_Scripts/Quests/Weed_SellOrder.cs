@@ -8,12 +8,15 @@ public class Weed_SellOrder : Quest
 	void Start()
 	{
 		base.Start();
+		sellAmount= 4; //how much to sell
+		gatherAmount = 4;//how much to gather
+		finalStage = 2;
 		quest1 = new Quest_Item(questDB.items[2]);
 		if(inv!=null)
 		{
 			//inv.SoldWeed+=WeedSold;
-			player.GetComponent<Inventory>().BoughtWeed+=WeedGathered;
-			player.GetComponent<Inventory>().SoldWeed+=WeedSold;
+			player.GetComponent<Old_Inventory>().BoughtWeed+=WeedGathered;
+			player.GetComponent<Old_Inventory>().SoldWeed+=WeedSold;
 			
 		}
 		if (journal)
@@ -52,6 +55,6 @@ public class Weed_SellOrder : Quest
 	}
 	public override void FinishQuest()
 	{
-		player.GetComponent<Inventory>().AddMoney(quest1.questReward);
+		player.GetComponent<Old_Inventory>().AddMoney(quest1.questReward);
 	}
 }

@@ -10,6 +10,8 @@ public class Weed_BuyOrder : Quest
 	protected override void Start () 
 	{
 		base.Start();
+		finalStage = 1;
+		weedDesired = 3;
 		quest1 = new Quest_Item(questDB.items[3]);
 		if (journal)
 		{
@@ -46,7 +48,7 @@ public class Weed_BuyOrder : Quest
 
 	public override void FinishQuest()
 	{
-		player.GetComponent<Inventory>().AddMoney(quest1.questReward);
+		player.GetComponent<Old_Inventory>().AddMoney(quest1.questReward);
 	}
 }
 
