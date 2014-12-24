@@ -46,29 +46,29 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\AnimationLinkEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\AstarUpdateWindow.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\EditorGUIx.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\EditorUtilities.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\GraphEditors\GraphEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\GraphEditors\GridGeneratorEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\GraphEditors\NavMeshGeneratorEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\GraphEditors\PointGeneratorEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\GraphUpdateSceneEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\ModifierEditors\RaycastModifierEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\ModifierEditors\SmoothModifierEditor.cs" />
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Editor\SeekerEditor.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Cameras\Scripts\Editor\AutoCamInspector.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Cameras\Scripts\Editor\FreeLookCamInspector.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Cross Platform Input\Scripts\Editor\CrossPlatformInputInitialize.cs" />
      <Compile Include="Assets\Assets\Sample Assets\Vehicles\Car\Scripts\Editor\WheelEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\AnimationLinkEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\AstarUpdateWindow.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\EditorGUIx.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\EditorUtilities.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\GraphEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\GridGeneratorEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\NavMeshGeneratorEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\PointGeneratorEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphUpdateSceneEditor.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\Misc\AstarEnumFlagDrawer.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\RaycastModifierEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\SmoothModifierEditor.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\Editor\SeekerEditor.cs" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
-     <None Include="Assets\Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
+     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
      <None Include="Assets\Assets\Sample Assets\Prototyping\Shaders\WorldCoord Diffuse.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />
-     <None Include="Assets\Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
+     <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
      <None Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularSmooth.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Shared.cginc" />
@@ -81,25 +81,25 @@
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
      <None Include="Assets\Assets\Sample Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\InterpolateAlongRays.shader" />
-     <None Include="Assets\Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
+     <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
      <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\DepthBreaks.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Alpha.shader" />
      <None Include="Assets\Assets\Sample Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Particle Systems Guidelines.txt" />
-     <None Include="Assets\Assets\AstarPathfindingProject\Readme_upgrading.txt" />
+     <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
      <None Include="Assets\Assets\Sample Assets\Cross Platform Input\Cross Platform Input Guidelines.txt" />
      <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Add (Soft).shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
-     <None Include="Assets\Assets\AstarPathfindingProject\Readme.txt" />
+     <None Include="Assets\AstarPathfindingProject\Readme.txt" />
      <None Include="Assets\Assets\Sample Assets\Effects\Shaders\Mobile-Spec.shader" />
      <None Include="Assets\Assets\Sample Assets\Vehicles\Car\Car Guidelines.txt" />
      <None Include="Assets\Assets\Sample Assets\Characters\Third Person Character\Third Person Character Guidelines.txt" />
-     <None Include="Assets\Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
-     <None Include="Assets\Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
+     <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
+     <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\Assets\Sample Assets\Cameras\Camera Guidelines.txt" />
      <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Raymarch.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\FinalInterpolation.shader" />
@@ -110,7 +110,7 @@
      <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Add.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\ColorFilter.shader" />
-     <None Include="Assets\Assets\AstarPathfindingProject\link.xml" />
+     <None Include="Assets\AstarPathfindingProject\link.xml" />
  <Reference Include="Assembly-UnityScript">
  <HintPath>/Users/Fox/Documents/Dealer/Dealer/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>

@@ -4,13 +4,13 @@ using System.Collections;
 public class playerMovement : MonoBehaviour {
 	private Animator anim;
 	public Vector3 startPosition;
-	public Vector2 speed = new Vector2(1, 0);
-
+	public Vector2 speed = new Vector2(0, 0);
+	public static Vector3 movement;
 
 
 	void Start () {
-		startPosition = transform.position;
-		anim = gameObject.GetComponent<Animator> ();
+				startPosition = transform.position;
+				anim = gameObject.GetComponent<Animator> ();
 		}
 
 	void Update (){
@@ -21,60 +21,65 @@ public class playerMovement : MonoBehaviour {
 				anim.SetFloat ("Speedx", inputX);
 				anim.SetFloat ("Speedy", inputY);
 
-				
-
-				Vector3 movement = new Vector3 (
-					speed.x * inputX,
-					speed.y * inputY,
-					0);
+				movement = new Vector3 	(speed.x * inputX, speed.y * inputY, 0);
 
 				movement *= Time.deltaTime;
 
 				transform.Translate (movement);
 		}
+			
 	
 	// Use this for initialization
 	void FixedUpdate() 
 	{
-				//var mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-				//Quaternion rot = Quaternion.LookRotation (transform.position - mousePosition, Vector3.forward);
-				//transform.rotation = rot;
-				//transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
-				//rigidbody2D.angularVelocity = 0;
-
+				
 				float lastInputX = Input.GetAxis ("Horizontal");
 				float lastInputY = Input.GetAxis ("Vertical");
 
-				
-				
-
 				if (lastInputX != 0 || lastInputY != 0) {
-					anim.SetBool ("walking", true);
+						anim.SetBool ("walking", true);
 						if (lastInputX > 0) {
-							anim.SetFloat("LastMoveX", 1f);
+								anim.SetFloat ("LastMoveX", 1f);
 						} else if (lastInputX < 0) {
-							anim.SetFloat("LastMoveX", -1f);
+								anim.SetFloat ("LastMoveX", -1f);
 						} else {
-							anim.SetFloat ("LastMoveX", 0f); 
+								anim.SetFloat ("LastMoveX", 0f); 
 						}
 
-						if (lastInputY >0) {
-							anim.SetFloat("LastMoveY", 1f);
-						} else if (lastInputY < 0 ) {
-							anim.SetFloat ("LastMoveY", -1f);
+						if (lastInputY > 0) {
+								anim.SetFloat ("LastMoveY", 1f);
+						} else if (lastInputY < 0) {
+								anim.SetFloat ("LastMoveY", -1f);
 						} else {
-							anim.SetFloat("LastMoveY", 0f);
+								anim.SetFloat ("LastMoveY", 0f);
 						}
-
-				
 
 				} else {
 						anim.SetBool ("walking", false);
 				
-	}
+				}
+		}
+}
+
+				
 
 
-				//float v = Input.GetAxis ("Vertical");
+
+
+
+
+
+
+
+
+
+//var mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+//Quaternion rot = Quaternion.LookRotation (transform.position - mousePosition, Vector3.forward);
+//transform.rotation = rot;
+//transform.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+//rigidbody2D.angularVelocity = 0;
+
+		//float v = Input.GetAxis ("Vertical");
 
 				//rigidbody2D.AddForce (gameObject.transform.up * speed * v);
 
@@ -100,6 +105,6 @@ public class playerMovement : MonoBehaviour {
 		//lastPos = transform.position;
 		//Quaternion rot = Quaternion.LookRotation ((transform.position+ newPosition)-transform.position, Vector3.forward);
 		//transform.rotation = rot;
-		}
-}
+		
+
 	
