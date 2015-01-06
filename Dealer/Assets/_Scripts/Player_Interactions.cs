@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player_Interactions : MonoBehaviour {
+public class Player_Interactions : MonoBehaviour 
+{
 
 	Old_Inventory inventory;
 	Quest_Journal journal;
@@ -24,39 +25,54 @@ public class Player_Interactions : MonoBehaviour {
 	{
 		switch(other.gameObject.tag)
 		{
-		
-		case "Weed":
+			case "Weed":
+			{
+				Destroy(other.gameObject,1);
+				print ("something");
+				inventory.AddItem(1);
+				if(PickedUpWeed!=null)
+				PickedUpWeed();
+				break;
+			}
+			case "Drank":
+			{
+				Destroy(other.gameObject,1);
+				print ("something");
+				inventory.AddItem(2);
+				break;
+			}
+			case "Pills":
+			{
+				Destroy(other.gameObject,1);
+				print ("something");
+				inventory.AddItem(2);
+				break;
+			}
+			case "Quest":
+			{
+				//var quest = other.GetComponent<>
+				Destroy(other.gameObject,1);
+				print ("something");
+				journal.AddItem(1);
+				break;
+			}
+			case "Roof":
+			{
+				other.GetComponent<SpriteRenderer>().enabled = false;
+				break;
+			}
+		}
+	}
+	void OnTriggerExit2D(Collider2D other)
+	{
+		switch(other.gameObject.tag)
 		{
-			Destroy(other.gameObject,1);
-			print ("something");
-			inventory.AddItem(1);
-			if(PickedUpWeed!=null)
-			PickedUpWeed();
-			break;
+			case "Roof":
+			{
+				other.GetComponent<SpriteRenderer>().enabled = true;
+				break;
+			}
 		}
-		case "Drank":
-		{
-			Destroy(other.gameObject,1);
-			print ("something");
-			inventory.AddItem(2);
-			break;
-		}
-		case "Pills":
-		{
-			Destroy(other.gameObject,1);
-			print ("something");
-			inventory.AddItem(2);
-			break;
-		}
-		case "Quest":
-		{
-			//var quest = other.GetComponent<>
-			Destroy(other.gameObject,1);
-			print ("something");
-			journal.AddItem(1);
-			break;
-		}
-		}
-		
 	}
 }
+

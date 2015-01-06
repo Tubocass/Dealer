@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,7 +9,8 @@ public class Quest_Journal : Old_Inventory {
 	public List<Quest_Item> quests = new List<Quest_Item>();
 
 	public delegate void TalkAction();
-	public event TalkAction AcceptQuest;
+	public event TalkAction QuestFinished;
+	//public event TalkAction FinishQuest;
 	public event TalkAction Talk;
 	
 	protected override void Start()

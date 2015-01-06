@@ -35,7 +35,7 @@ public class Old_Inventory : MonoBehaviour
 			slots.Add(new Item());
 			inventory.Add(new Item());
 		}
-		windowRect = new Rect (400, 20, (slotsX*60), (slotsY*60)+20);
+		windowRect = new Rect (20, 20, (slotsX*60), (slotsY*60)+20);
 		itemDB = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent <Item_Database> ();
 		if(this.gameObject.tag!="Player")
 		{

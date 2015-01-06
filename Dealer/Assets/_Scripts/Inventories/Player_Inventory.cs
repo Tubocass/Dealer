@@ -3,6 +3,11 @@ using System.Collections;
 
 public class Player_Inventory : Old_Inventory 
 {	
+	protected override void Start()
+	{
+		base.Start();
+		windowRect = new Rect (200, 20, (slotsX*60), (slotsY*60)+20);
+	}
 	void Update()
 	{
 		if(Input.GetButtonDown("Inventory"))

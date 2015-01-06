@@ -17,8 +17,11 @@ public class NPC : MonoBehaviour {
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		sprite = GetComponent<SpriteRenderer>();
-		inventory = GetComponent<Old_Inventory>();
+		if(GetComponent<Inventory_NPC>()!=null)
+		inventory = GetComponent<Inventory_NPC>();
+		else inventory = GetComponent<Old_Inventory>();
 		quests = GetComponent<Quest_Journal>();
+		
 	}
 	void OnGUI()
 	{
