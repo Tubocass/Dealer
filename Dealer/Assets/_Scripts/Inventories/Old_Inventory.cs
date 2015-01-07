@@ -20,7 +20,7 @@ public class Old_Inventory : MonoBehaviour
 	protected Rect windowRect;
 	public int UniqueID;
 	public bool bTrading;
-	public int money = 0;
+	public float money = 0;
 	Old_Inventory tradeInventory;
 	
 	public delegate void TradeAction();

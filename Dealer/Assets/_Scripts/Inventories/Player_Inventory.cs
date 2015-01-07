@@ -3,10 +3,13 @@ using System.Collections;
 
 public class Player_Inventory : Old_Inventory 
 {	
+	public float CostOfLivingBase, Rent, ElectricityCost,ElectricityUsed, Fertilizer, NumPlants;
+
 	protected override void Start()
 	{
 		base.Start();
 		windowRect = new Rect (200, 20, (slotsX*60), (slotsY*60)+20);
+		Daily_Balance.Costs+= CostOfDoingBusiness;
 	}
 	void Update()
 	{
@@ -14,6 +17,11 @@ public class Player_Inventory : Old_Inventory
 		{
 			showInventory = !showInventory;
 		}
+	}
+	
+	void CostOfDoingBusiness()
+	{
+		money-= (Fertilizer * NumPlants)+ (ElectricityCost*ElectricityUsed)+Rent+CostOfLivingBase;
 	}
 	void OnGUI()
 	{

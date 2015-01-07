@@ -21,6 +21,7 @@ public class Player_Interactions : MonoBehaviour
 		//journal.AddItem(1);
 		//journal.AddItem(2);
 	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		switch(other.gameObject.tag)
@@ -28,7 +29,7 @@ public class Player_Interactions : MonoBehaviour
 			case "Weed":
 			{
 				Destroy(other.gameObject,1);
-				print ("something");
+				//print ("something");
 				inventory.AddItem(1);
 				if(PickedUpWeed!=null)
 				PickedUpWeed();
@@ -37,7 +38,7 @@ public class Player_Interactions : MonoBehaviour
 			case "Drank":
 			{
 				Destroy(other.gameObject,1);
-				print ("something");
+				//print ("something");
 				inventory.AddItem(2);
 				break;
 			}
@@ -59,6 +60,7 @@ public class Player_Interactions : MonoBehaviour
 			case "Roof":
 			{
 				other.GetComponent<SpriteRenderer>().enabled = false;
+				other.transform.Translate(new Vector3(0,0,1));
 				break;
 			}
 		}
@@ -69,6 +71,7 @@ public class Player_Interactions : MonoBehaviour
 		{
 			case "Roof":
 			{
+			other.transform.Translate(new Vector3(0,0,-1));
 				other.GetComponent<SpriteRenderer>().enabled = true;
 				break;
 			}

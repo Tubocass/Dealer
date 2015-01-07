@@ -43,9 +43,7 @@ public class Quest_Journal : Old_Inventory {
 		
 		if(showInventory)
 		{
-			
 			windowRect = GUI.Window (UniqueID, windowRect, WindowFunction, "My Missions");
-			
 		}
 	}
 	protected override void WindowFunction (int windowID) 
@@ -91,7 +89,6 @@ public class Quest_Journal : Old_Inventory {
 							words = quests[i].itemDesc;
 							if(Talk != null)
 								Talk();
-							
 						}
 						if(e.type==EventType.mouseDown&& e.button==1)
 						{
