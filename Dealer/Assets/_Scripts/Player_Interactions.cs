@@ -8,6 +8,10 @@ public class Player_Interactions : MonoBehaviour {
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
 	public GameObject bullet;
+	Animator anim;
+	int idleHash = Animator.StringToHash("Base Layer.Idle");
+	int tokeHash = Animator.StringToHash("Base Layer.Toking");
+
 
 
 	//public static event TradeAction SoldWeed;
@@ -15,6 +19,7 @@ public class Player_Interactions : MonoBehaviour {
 	void Start()
 	{
 
+		anim = GetComponent<Animator>();
 
 		inventory = GetComponent<NewQJ>();
 		journal = GetComponent<Quest_Journal>();
@@ -79,7 +84,7 @@ public class Player_Interactions : MonoBehaviour {
 								
 								
 								break;
-								
+
 						}
 						
 
@@ -94,14 +99,35 @@ public class Player_Interactions : MonoBehaviour {
 	}
 
 
-	void Update() {
+	void FixedUpdate() {
 
 
 	if (Input.GetKeyDown ("space")) {
-			Instantiate(bullet, transform.position, Quaternion.identity);
-		}
+			var bull = Instantiate(bullet, transform.position,Quaternion.identity);
 
 		}
+	if(Input.GetKey (KeyCode.L)) 
+		{
+			OnToke ();
+
+		//	anim.SetBool ("Toking", false);
+
+		}
+
+	}
+	public void OnToke()
+	{
+		if(anim.GetCurrentAnimatorStateInfo(0).nameHash!=tokeHash)
+		{//If I'm not alredy in the bite state
+			anim.SetBool("Toking",true);
+		}
+	}
+	void EndToke()
+	{
+		anim.SetBool("Toking",false);
+	}
+
+
 
 
 	void OnCollisionEnter(Collision col) {
