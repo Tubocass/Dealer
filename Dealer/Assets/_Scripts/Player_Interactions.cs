@@ -33,7 +33,7 @@ public class Player_Interactions : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
 				
-				switch (other.gameObject.tag) {
+		switch (other.gameObject.tag) {
 			case "Weed":
 			{
 				Destroy(other.gameObject,1);
@@ -94,32 +94,19 @@ public class Player_Interactions : MonoBehaviour
 			anim.SetBool("Toking",true);
 		}
 	}
-	void EndToke()
+	public void EndToke()
 	{
 		anim.SetBool("Toking",false);
 	}
 
-
-
-
-
-
-	
-
-
-	
-
-
-
-					}
-				IEnumerator MyCoroutine(GameObject obj) 
-				{
-						//This rotates an object out of view for x secs. For door animations.
-						obj.transform.Rotate (0, 90, 0);
-						yield return new WaitForSeconds(1);
-						obj.transform.Rotate (0, -90, 0);
+	IEnumerator MyCoroutine(GameObject obj) 
+	{
+		//This rotates an object out of view for x secs. For door animations.
+		obj.transform.Rotate (0, 90, 0);
+		yield return new WaitForSeconds(1);
+		obj.transform.Rotate (0, -90, 0);
 			
-				}
+	}
 
 
 }
