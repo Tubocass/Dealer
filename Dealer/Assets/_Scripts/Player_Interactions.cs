@@ -8,11 +8,19 @@ public class Player_Interactions : MonoBehaviour
 	Quest_Journal journal;
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
+	public GameObject bullet;
+	Animator anim;
+	int idleHash = Animator.StringToHash("Base Layer.Idle");
+	int tokeHash = Animator.StringToHash("Base Layer.Toking");
+
+
+
 	//public static event TradeAction SoldWeed;
 	
 	void Start()
 	{
 		inventory = GetComponent<Old_Inventory>();
+		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
 
 		inventory.AddItem(1);
@@ -24,8 +32,8 @@ public class Player_Interactions : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		switch(other.gameObject.tag)
-		{
+				
+				switch (other.gameObject.tag) {
 			case "Weed":
 			{
 				Destroy(other.gameObject,1);
@@ -63,6 +71,7 @@ public class Player_Interactions : MonoBehaviour
 				other.transform.Translate(new Vector3(0,0,1));
 				break;
 			}
+
 		}
 	}
 	void OnTriggerExit2D(Collider2D other)
@@ -76,6 +85,44 @@ public class Player_Interactions : MonoBehaviour
 				break;
 			}
 		}
+
 	}
+	public void OnToke()
+	{
+		if(anim.GetCurrentAnimatorStateInfo(0).nameHash!=tokeHash)
+		{//If I'm not alredy in the bite state
+			anim.SetBool("Toking",true);
+		}
+	}
+	void EndToke()
+	{
+		anim.SetBool("Toking",false);
+	}
+
+
+
+
+
+
+	
+
+
+	
+
+
+
+					}
+				IEnumerator MyCoroutine(GameObject obj) 
+				{
+						//This rotates an object out of view for x secs. For door animations.
+						obj.transform.Rotate (0, 90, 0);
+						yield return new WaitForSeconds(1);
+						obj.transform.Rotate (0, -90, 0);
+			
+				}
+
+
 }
 
+		
+	

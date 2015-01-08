@@ -258,5 +258,25 @@ namespace Pathfinding.Serialization
             }
             return holder;
         }
+
+
+
     }
+
+	/*public class Walls : MonoBehaviour
+	{
+		void OnCollisionEnter (Collision col)
+		{
+			if(col.gameObject.tag == "Wall")
+			{
+				print ("boom");
+				Destroy(col.gameObject);
+			}
+		}
+	}*/
+
+
 }
+
+
+
