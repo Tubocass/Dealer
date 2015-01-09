@@ -102,8 +102,15 @@ public class Player_Interactions : MonoBehaviour {
 	void FixedUpdate() {
 
 
-	if (Input.GetKeyDown ("space")) {
-			var bull = Instantiate(bullet, transform.position,Quaternion.identity);
+		
+		
+
+	if (Input.GetKey ("space")) {
+
+	
+//			var bull = Instantiate(bullet, transform.position,Quaternion.LookRotation);
+
+
 
 		}
 	if(Input.GetKey (KeyCode.L)) 

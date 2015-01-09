@@ -4,12 +4,16 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
 	public float speed = 6;
+
 	// Use this for initialization
 	void Start () {
-	
+
+
 		Vector3 v = rigidbody2D.velocity;
 		v.y = speed;
 		rigidbody2D.velocity = v;
+		transform.Rotate(0,1,-1);
+
 	}
 	void OnBecameInvisible() {  
 		// Destroy the bullet 

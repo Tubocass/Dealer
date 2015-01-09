@@ -12,7 +12,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Speedx
     m_Type: 1
@@ -71,28 +71,56 @@ BlendTree:
     m_IsAnim: 1
     m_Mirror: 0
   - m_Motion: {fileID: 7400000, guid: 95dcf09861f624b3a9973bfe91bd6af6, type: 2}
-    m_Threshold: .333333343
+    m_Threshold: .142857149
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
   - m_Motion: {fileID: 7400000, guid: 42cee781e588f477bb66a4b23643f010, type: 2}
-    m_Threshold: .666666687
+    m_Threshold: .285714298
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
   - m_Motion: {fileID: 7400000, guid: 63200f8ed40d64645a97dd750b4baae2, type: 2}
-    m_Threshold: 1
+    m_Threshold: .428571433
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  m_BlendParameter: LastMoveX
-  m_BlendParameterY: LastMoveY
+  - m_Motion: {fileID: 7400000, guid: 53685258adab1428692d02b40f74ea49, type: 2}
+    m_Threshold: .571428597
+    m_Position: {x: -1, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: 1f46b990110a74a1cb91e8fa583c3317, type: 2}
+    m_Threshold: .714285731
+    m_Position: {x: 1, y: 1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: ec0692f4d52064521b89fceb66e8f1e3, type: 2}
+    m_Threshold: .857142866
+    m_Position: {x: 1, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: 90982617a6dc34a25ac27580c33f9488, type: 2}
+    m_Threshold: 1
+    m_Position: {x: -1, y: 1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  m_BlendParameter: Speedx
+  m_BlendParameterY: Speedy
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -104,36 +132,64 @@ BlendTree:
   m_PrefabInternal: {fileID: 0}
   m_Name: Blend Tree
   m_Childs:
-  - m_Motion: {fileID: 7400000, guid: 00a28a5bba4f849da8bcdda649e78d65, type: 2}
+  - m_Motion: {fileID: 7400000, guid: 9727ce07da98d4e9488f3f22ac6bcf1a, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  - m_Motion: {fileID: 7400000, guid: 770d7c64465134bb5bfed20242672311, type: 2}
-    m_Threshold: .333333343
+  - m_Motion: {fileID: 7400000, guid: f84823f5d560743d08fe0135733aa99c, type: 2}
+    m_Threshold: .142857149
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  - m_Motion: {fileID: 7400000, guid: 770d7c64465134bb5bfed20242672311, type: 2}
-    m_Threshold: .666666687
+  - m_Motion: {fileID: 7400000, guid: 16efb463c504e46e8b4ffd9587e6ef55, type: 2}
+    m_Threshold: .285714298
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  - m_Motion: {fileID: 7400000, guid: 9e03f73182aba4475b378f1a6b69400c, type: 2}
-    m_Threshold: 1
+  - m_Motion: {fileID: 7400000, guid: ed264fc8f83534e57a30b3227db26b99, type: 2}
+    m_Threshold: .428571433
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  m_BlendParameter: Speedx
-  m_BlendParameterY: Speedy
+  - m_Motion: {fileID: 7400000, guid: b9d0a035bd0274860863a890b1a2dbaa, type: 2}
+    m_Threshold: .571428597
+    m_Position: {x: 1, y: 1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: f2dce9dd2707e440b91728170c0463e3, type: 2}
+    m_Threshold: .714285731
+    m_Position: {x: -1, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: c54eea8640d0e474ca1e918c5d9b238c, type: 2}
+    m_Threshold: .857142866
+    m_Position: {x: 1, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  - m_Motion: {fileID: 7400000, guid: c54eea8640d0e474ca1e918c5d9b238c, type: 2}
+    m_Threshold: 1
+    m_Position: {x: -1, y: 1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_IsAnim: 1
+    m_Mirror: 0
+  m_BlendParameter: LastMoveX
+  m_BlendParameterY: LastMoveY
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
