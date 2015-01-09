@@ -30,6 +30,10 @@ public class Player_Interactions : MonoBehaviour
 		//journal.AddItem(2);
 	}
 
+	void FixedUpdate()
+	{
+
+	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
 				

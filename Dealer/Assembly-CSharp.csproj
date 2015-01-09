@@ -211,13 +211,12 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
-     <Compile Include="Assets\Bullet.cs" />
-     <Compile Include="Assets\Coppa.cs" />
-     <Compile Include="Assets\Grow_Weed.cs" />
-     <Compile Include="Assets\Roof.cs" />
      <Compile Include="Assets\_Scripts\AStar_Simple.cs" />
+     <Compile Include="Assets\_Scripts\Coppa.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
+     <Compile Include="Assets\_Scripts\FireBullet.cs" />
+     <Compile Include="Assets\_Scripts\Grow_Weed.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Dragging.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Inventory_NPC.cs" />
@@ -235,6 +234,7 @@
      <Compile Include="Assets\_Scripts\Quests\Quest_Journal.cs" />
      <Compile Include="Assets\_Scripts\Quests\Weed_BuyOrder.cs" />
      <Compile Include="Assets\_Scripts\Quests\Weed_SellOrder.cs" />
+     <Compile Include="Assets\_Scripts\Roof.cs" />
      <Compile Include="Assets\_Scripts\SceneChange.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ActiveStateToggler.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ApplicationManager.cs" />
@@ -247,7 +247,7 @@
      <Compile Include="Assets\_Scripts\UI Samples\ScrollDetailTexture.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ShowSliderValue.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\TiltWindow.cs" />
-     <Compile Include="Assets\_Scripts\playerMovement.cs" />
+     <Compile Include="Assets\_Scripts\playerMovementRotation.cs" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
      <None Include="Assets\Assets\Sample Assets\Prototyping\Shaders\WorldCoord Diffuse.shader" />

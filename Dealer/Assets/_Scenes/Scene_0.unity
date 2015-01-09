@@ -7115,7 +7115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
-  speed: {x: 5, y: 5}
+  speed: 10
+  turningSpeed: 300
+  bullet: {fileID: 100000, guid: 533519f324be543eca9c3e65ac249fbe, type: 2}
 --- !u!61 &716985157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7126,7 +7128,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.71000004, y: 2.36999989}
+  m_Size: {x: .75, y: .469999999}
   m_Center: {x: 0, y: 0}
 --- !u!50 &716985158
 Rigidbody2D:
@@ -7221,7 +7223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7654211607a854399166c2ec29f633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 100000, guid: 533519f324be543eca9c3e65ac249fbe, type: 2}
 --- !u!114 &716985163
 MonoBehaviour:
   m_ObjectHideFlags: 0
