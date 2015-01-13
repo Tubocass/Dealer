@@ -7,69 +7,87 @@ public class playerMovementRotation : MonoBehaviour {
 	public float speed, turningSpeed;
 	public static Vector3 movement;
 	public GameObject bullet;
+	public Quaternion qTo;
 
 
-	void Start () {
-				startPosition = transform.position;
-				anim = gameObject.GetComponent<Animator> ();
-		}
+	void Start () 
+	{
+		startPosition = transform.position;
+		anim = gameObject.GetComponent<Animator> ();
+	}
 
 	void FixedUpdate() 
 	{
-				
+			
 		float lastInputX = Input.GetAxis ("Horizontal");
 		float lastInputY = Input.GetAxis ("Vertical");
 
-		anim.SetFloat ("Speedx", lastInputX);
-		anim.SetFloat ("Speedy", lastInputY);
+		//anim.SetFloat ("Speedx", lastInputX);
+		//anim.SetFloat ("Speedy", lastInputY);
 		
 		movement = new Vector3 	(speed * lastInputX, speed * lastInputY, 0);
-		Vector3 targetdir  = Vector3.Normalize(transform.position + movement); 
-		targetdir.z = 0;
-		RotateTowards(movement);
-		movement *= Time.deltaTime;
-		//transform.Rotate(0,0,-Input.GetAxis("Horizontal")*turningSpeed*Time.deltaTime);
-
-		//targetdir.z = -1;
-		//Vector3 newDir = Vector3.RotateTowards(transform.forward, targetdir, 3, 0.0F);
+		Vector3 targetDir  = transform.position + movement; 
+		//Vector3 targetDir = (transform.position+movement) - transform.position;
+		float step = speed * Time.deltaTime;
+		Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
+		Debug.DrawRay(transform.position, newDir, Color.red);
 		//transform.rotation = Quaternion.LookRotation(newDir);
+			
+		//transform.RotateAround(Vector3.zero, Vector3.forward, Vector3. * Time.deltaTime);
+		//Quaternion dir = Quaternion.RotateTowards(transform.rotation, qTo, turningSpeed * Time.deltaTime);
+		//RotateTowards(targetdir);
+		movement *= Time.deltaTime;
+		transform.position = Vector3.MoveTowards(transform.position,targetDir,0.25f);
+		transform.Rotate(0,0,-Input.GetAxis("Horizontal")*turningSpeed*Time.deltaTime);
 
-		transform.Translate (movement);
+		//Vector3 newDir = Vector3.RotateTowards(transform.forward, targetdir, 3, 0.0F);
+
 		
 		if(Input.GetKeyDown("space"))
 		{
 			GameObject bulletFired = Instantiate(bullet,transform.position,Quaternion.identity)as GameObject;
-			bulletFired.GetComponent<FireBullet>().direction = targetdir;
+			bulletFired.GetComponent<FireBullet>().direction = targetDir;
 		}
 
 		if (lastInputX != 0 || lastInputY != 0) 
 		{
-			anim.SetBool ("walking", true);
-			/*if (lastInputX > 0) 
+			anim.SetBool ("Walking", true);
+			float LastMoveX = 0;
+			float LastMoveY = 0;
+
+
+			if (lastInputX > 0) 
 			{
-				anim.SetFloat ("LastMoveX", 1f);
+				LastMoveX = 1f;
+				anim.SetFloat ("LastMoveX", LastMoveX);
 			} else if (lastInputX < 0) 
 			{
-				anim.SetFloat ("LastMoveX", -1f);
+				LastMoveX = -1f;
+				anim.SetFloat ("LastMoveX", LastMoveX);
 			} else 
 			{
-				anim.SetFloat ("LastMoveX", 0f); 
+				LastMoveX = 0f;
+				anim.SetFloat ("LastMoveX", LastMoveX); 
 			}
 
 			if (lastInputY > 0) 
 			{
-				anim.SetFloat ("LastMoveY", 1f);
+				LastMoveY = 1f;
+				anim.SetFloat ("LastMoveY", LastMoveY);
 			} else if (lastInputY < 0) 
 			{
-				anim.SetFloat ("LastMoveY", -1f);
+				LastMoveY = -1f;
+				anim.SetFloat ("LastMoveY", -LastMoveY);
 			} else 
 			{
-				anim.SetFloat ("LastMoveY", 0f);
+				LastMoveY = 0f;
+				anim.SetFloat ("LastMoveY", LastMoveY);
 			}
-*/
+
+			Vector3 face = transform.TransformDirection( new Vector3(LastMoveX,LastMoveY,0));
 		} else 
 		{
-			anim.SetBool ("walking", false);
+			anim.SetBool ("Walking", false);
 				
 		}
 	}

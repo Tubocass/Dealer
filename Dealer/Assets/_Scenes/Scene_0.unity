@@ -7110,7 +7110,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 716985155}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6a53ca5ea68e4abf80f928afb48c19e, type: 3}
   m_Name: 
@@ -7119,6 +7119,7 @@ MonoBehaviour:
   speed: 10
   turningSpeed: 300
   bullet: {fileID: 100000, guid: 533519f324be543eca9c3e65ac249fbe, type: 2}
+  qTo: {x: 0, y: 0, z: 0, w: 0}
 --- !u!61 &716985157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7259,7 +7260,7 @@ Animator:
   m_GameObject: {fileID: 716985155}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af43878b372fa49eb9baf1c938f65d78, type: 2}
+  m_Controller: {fileID: 9100000, guid: dc7bb7790cae29a43a4aa61cde3c030c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -7271,13 +7272,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 716985155}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6b5c71278d32314a806587e68050afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
-  speed: {x: 5, y: 5}
+  speed: 0
 --- !u!1001 &717257721
 Prefab:
   m_ObjectHideFlags: 0
