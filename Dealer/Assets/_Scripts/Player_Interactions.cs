@@ -12,9 +12,7 @@ public class Player_Interactions : MonoBehaviour
 	Animator anim;
 	int idleHash = Animator.StringToHash("Base Layer.Idle");
 	int tokeHash = Animator.StringToHash("Base Layer.Toking");
-
-
-
+	
 	//public static event TradeAction SoldWeed;
 	
 	void Start()
@@ -30,9 +28,12 @@ public class Player_Interactions : MonoBehaviour
 		//journal.AddItem(2);
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
-
+		if(Input.GetKeyDown("space"))
+		{
+			GameObject bulletFired = Instantiate(bullet,transform.position,transform.rotation)as GameObject;
+		}
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{

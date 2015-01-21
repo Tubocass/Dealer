@@ -33,7 +33,7 @@ public class NPC : MonoBehaviour {
 			clicked = false;
 			//inventory.showInventory = false;
 		}
-		if(clicked)
+		if(clicked&& Vector3.Distance(transform.position, player.transform.position)<=15)
 		{
 			GUI.BeginGroup(trade);
 			if(GUI.Button(new Rect(0,0+5,100,40),"Trade"))
@@ -53,7 +53,7 @@ public class NPC : MonoBehaviour {
 				quests.showInventory = !quests.showInventory; 
 			}
 			GUI.EndGroup();
-		}else{quests.showInventory = false; inventory.showInventory = false;}
+		}else{quests.showInventory = false; inventory.showInventory = false; clicked = false;}
 
 	}
 	public void OnMouseDown() 
