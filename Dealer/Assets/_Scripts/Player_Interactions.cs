@@ -35,13 +35,19 @@ public class Player_Interactions : MonoBehaviour
 			GameObject bulletFired = Instantiate(bullet,transform.position,transform.rotation)as GameObject;
 		}
 	}
+	public void AddWeed()
+	{
+		inventory.AddItem(1);
+		if(PickedUpWeed!=null)
+			PickedUpWeed();
+	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
 				
 		switch (other.gameObject.tag) {
 			case "Weed":
 			{
-				Destroy(other.gameObject,1);
+				Destroy(other.gameObject,0);
 				//print ("something");
 				inventory.AddItem(1);
 				if(PickedUpWeed!=null)

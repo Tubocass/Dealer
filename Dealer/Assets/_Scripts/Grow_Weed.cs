@@ -4,12 +4,16 @@ using System.Collections;
 public class Grow_Weed : MonoBehaviour {
 	float timer;
 	public float limit;
-	public string dick;
-	public GameObject prefab;
-	bool bBudded;
+	public GameObject prefab,bud;
+	bool bBudded, clicked;
+	SpriteRenderer sprite;
+	GameObject player;
+
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		player = GameObject.FindGameObjectWithTag("Player");
+		sprite = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -22,16 +26,57 @@ public class Grow_Weed : MonoBehaviour {
 			{
 				timer = 0;
 				print("boosh"); 
-				Instantiate(prefab, transform.position,Quaternion.identity);
+				bud  = Instantiate(prefab, transform.position,Quaternion.identity) as GameObject;
+
 
 			}
 		}
 	}
-	void OnTriggerStay2D(Collider2D other)
+
+	public void OnMouseDown() 
 	{
-		if(other.gameObject.tag == "Weed")
+		print ("bboobbss");
+		clicked = true;
+		//inventory.showInventory = true;
+		//inventory.AddItem(1);
+	}
+	public void OnGUI()
+	{
+		Event e = Event.current;
+		Rect trade = new Rect(100,20,100,100);
+		if(!sprite.bounds.Contains(e.mousePosition)&& !trade.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
+		{
+			//print ("tiiiittttss");
+			clicked = false;
+			//inventory.showInventory = false;
+		}
+		if(clicked)
+		{
+			GUI.BeginGroup(trade);
+			if(GUI.Button(new Rect(0,10,90,40),"Plant"))
+			{
+
+			}
+			if(GUI.Button(new Rect(0,50,90,40),"Harvest"))
+			{
+				player.GetComponent<Player_Interactions>().AddWeed();
+				Destroy(bud,2);
+			}
+			GUI.EndGroup();
+		}
+	}
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if(other.gameObject == bud)
 		{
 			bBudded = true;
+		}
+	}
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if(other.gameObject == bud)
+		{
+			bBudded = false;
 		}
 	}
 }

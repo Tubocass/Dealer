@@ -2069,8 +2069,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f631760e2c9c364ca6bb467a21f4fb5, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 4f631760e2c9c364ca6bb467a21f4fb5, type: 2}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 100000, guid: 593d419c57c7b3747b6dec304367c3ac, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f631760e2c9c364ca6bb467a21f4fb5, type: 2}
   m_RootGameObject: {fileID: 488827270}
@@ -5389,8 +5393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limit: 5
-  dick: 
-  prefab: {fileID: 100000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
+  prefab: {fileID: 100000, guid: 593d419c57c7b3747b6dec304367c3ac, type: 2}
+  bud: {fileID: 0}
 --- !u!212 &488827272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5493,8 +5497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limit: 5
-  dick: dick
-  prefab: {fileID: 100000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
+  prefab: {fileID: 100000, guid: 593d419c57c7b3747b6dec304367c3ac, type: 2}
+  bud: {fileID: 0}
 --- !u!1 &495141467
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,7 +7384,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .529999971, y: .469999999}
+  m_Size: {x: .660000026, y: .419999987}
   m_Center: {x: 0, y: 0}
 --- !u!50 &716985158
 Rigidbody2D:
@@ -9255,7 +9259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 49872e0282fafd4408a8f40568b2895a, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49872e0282fafd4408a8f40568b2895a, type: 2}
@@ -12188,7 +12192,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ba306e46f65fb5a4cb5479d854dc9cbe, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ba306e46f65fb5a4cb5479d854dc9cbe, type: 2}
       propertyPath: m_LocalScale.y
@@ -13201,7 +13205,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b28f453ca770a9f44b0a8977161fcb8e, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b28f453ca770a9f44b0a8977161fcb8e, type: 2}
       propertyPath: m_LocalScale.y
@@ -15171,7 +15175,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b28f453ca770a9f44b0a8977161fcb8e, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b28f453ca770a9f44b0a8977161fcb8e, type: 2}
@@ -17339,7 +17343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 716985160}
-  damping: 1
+  damping: .25
   lookAheadFactor: 4
   lookAheadReturnSpeed: .5
   lookAheadMoveThreshold: .100000001
