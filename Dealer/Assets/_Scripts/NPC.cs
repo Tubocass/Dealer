@@ -12,6 +12,7 @@ public class NPC : MonoBehaviour {
 	public static bool bSelected;
 	public bool bInteractable;
 	public GUI Trade_Button;
+	public int health = 99;
 	// Use this for initialization
 	void Start () 
 	{

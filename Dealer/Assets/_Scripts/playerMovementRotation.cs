@@ -21,7 +21,6 @@ public class playerMovementRotation : MonoBehaviour
 
 		movement = new Vector3 	(speed * lastInputX, speed * lastInputY, 0);
 		Vector3 targetDir  = tran.position + movement*Time.deltaTime; 
-		movement *= Time.deltaTime;
 		tran.position = Vector3.MoveTowards(tran.position,targetDir,0.25f);
 
 		var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

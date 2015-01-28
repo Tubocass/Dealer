@@ -6,6 +6,7 @@ public class Player_Interactions : MonoBehaviour
 
 	Old_Inventory inventory;
 	Quest_Journal journal;
+	Transform tran;
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
 	public GameObject bullet;
@@ -20,7 +21,7 @@ public class Player_Interactions : MonoBehaviour
 		inventory = GetComponent<Old_Inventory>();
 		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
-
+		tran = transform;
 		inventory.AddItem(1);
 		inventory.AddItem(2);
 		inventory.AddItem(2);
@@ -32,7 +33,23 @@ public class Player_Interactions : MonoBehaviour
 	{
 		if(Input.GetKeyDown("space"))
 		{
-			GameObject bulletFired = Instantiate(bullet,transform.position,transform.rotation)as GameObject;
+			Vector3 fwd = tran.TransformDirection(Vector3.up*3);
+			GameObject bulletFired = Instantiate(bullet,tran.position+fwd,transform.rotation)as GameObject;
+		}
+		if(Input.GetKeyDown("e"))
+		{
+			Vector3 fwd = tran.TransformDirection(Vector3.up);
+			RaycastHit hit;
+			Debug.DrawRay(tran.position, fwd, Color.red);
+			if (Physics.Raycast(tran.position, fwd, out hit))
+			{
+				Debug.DrawRay(tran.position, fwd, Color.blue);
+				if(hit.collider.gameObject.tag == "NPC")
+				{
+					Debug.Log("penis");
+					hit.collider.gameObject.GetComponent<NPC>().health -=1;
+				}
+			}
 		}
 	}
 	public void AddWeed()
