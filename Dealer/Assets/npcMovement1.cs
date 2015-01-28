@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerMovement : MonoBehaviour {
+public class npcMovement1 : MonoBehaviour {
 	private Animator anim;
 	public Vector3 startPosition;
 	public float speed;
 	public static Vector3 movement;
-
-
+	
+	
 	void Start () 
 	{
-
+		
 		startPosition = transform.position;
 		anim = gameObject.GetComponent<Animator> ();
 	}
-			
-
+	
+	
 	void FixedUpdate() 
 	{
-		float lastInputX = Input.GetAxis ("Horizontal");
-		float lastInputY = Input.GetAxis ("Vertical");
+		float lastInputX = transform.position.x;
+		float lastInputY  = transform.position.y;
 		anim.SetFloat ("Speedx", lastInputX);
 		anim.SetFloat ("Speedy", lastInputY);
 		
@@ -28,7 +28,7 @@ public class playerMovement : MonoBehaviour {
 		movement *= Time.deltaTime;
 		
 		transform.Translate (movement);
-
+		
 		if (lastInputX != 0 || lastInputY != 0) 
 		{
 			anim.SetBool ("walking", true);
@@ -42,7 +42,7 @@ public class playerMovement : MonoBehaviour {
 			{
 				anim.SetFloat ("LastMoveX", 0f); 
 			}
-
+			
 			if (lastInputY > 0) 
 			{
 				anim.SetFloat ("LastMoveY", 1f);
@@ -53,12 +53,12 @@ public class playerMovement : MonoBehaviour {
 			{
 				anim.SetFloat ("LastMoveY", 0f);
 			}
-
+			
 		} else 
 		{
 			anim.SetBool ("walking", false);
-				
+			
 		}
 	}
 }
-	
+

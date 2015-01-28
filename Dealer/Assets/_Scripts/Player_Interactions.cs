@@ -32,6 +32,13 @@ public class Player_Interactions : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if(Input.GetKey (KeyCode.K)) {
+			anim.SetBool("SwingAnim", true);
+		}
+		else {
+			anim.SetBool("SwingAnim", false);
+		}
+
 
 	}
 	void OnTriggerEnter2D(Collider2D other)
@@ -94,7 +101,7 @@ public class Player_Interactions : MonoBehaviour
 	public void OnToke()
 	{
 		if(anim.GetCurrentAnimatorStateInfo(0).nameHash!=tokeHash)
-		{//If I'm not alredy in the bite state
+		{//If I'm not alredy in the toke state
 			anim.SetBool("Toking",true);
 		}
 	}
