@@ -4,43 +4,49 @@ using System.Collections;
 public class Coppa : MonoBehaviour 
 {
 	public bool bPlayerVisible;
-	public float fieldOfViewAngle;
+	public float fieldOfViewAngle,length;
 	CircleCollider2D col;
+	Transform tran;
+	LayerMask playerMask;
+	GameObject player;
 
 	// Use this for initialization
 	void Start () 
 	{
-	
 		col = GetComponent<CircleCollider2D>();
-	
+		tran = transform;
+		player = GameObject.FindGameObjectWithTag("Player");
+		playerMask =1<<player.layer;
 	}
 
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		Vector3 direction = other.transform.position - transform.position;
-		float angle = Vector3.Angle(direction, transform.up);
-		//Is the object in my field of view?
-		if(angle < fieldOfViewAngle*0.5f)
+		if(other.gameObject.tag == "Player")
 		{
-			//Debug.Log("you're in my FOV");
-			//Debug.DrawRay(transform.position, direction, Color.red);
-			//are ther any obstructions between me and the object?
-			Vector3 fwd = transform.TransformDirection(Vector3.up*1);
-			RaycastHit2D hit = Physics2D.Raycast(transform.position, direction,col.radius);
-			if(hit)
+			Vector3 direction = other.transform.position - tran.position;
+			float angle = Vector3.Angle(direction, tran.up);
+			//Is the object in my field of view?
+			if(angle < fieldOfViewAngle*0.5f)
 			{
-				Debug.Log(hit.collider.gameObject.tag);
-				Debug.DrawRay(transform.position+fwd, direction-fwd, Color.red);
-				//what is the object?
-				if(hit.collider.gameObject.tag == "Player")
+				//are ther any obstructions between me and the object?
+				Vector3 fwd = tran.TransformDirection(Vector3.up*1);
+				RaycastHit2D hit = Physics2D.Raycast(tran.position, direction,length,playerMask);
+				if(hit.collider!=null && hit.collider.gameObject.tag == "Player")
 				{
-					Debug.DrawRay(transform.position, direction, Color.red);
+					Debug.DrawRay(tran.position, direction, Color.red);
 					Debug.Log("you're a player");
 					bPlayerVisible = true;
-
 				}
 			}
+		}
+	}
+		
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if(other.gameObject.tag == "Player")
+		{
+
 		}
 	}
 }

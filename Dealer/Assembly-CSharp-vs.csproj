@@ -227,6 +227,7 @@
      <Compile Include="Assets\_Scripts\Inventories\Old_Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Player_Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Slot.cs" />
+     <Compile Include="Assets\_Scripts\LayerMaskExtensions.cs" />
      <Compile Include="Assets\_Scripts\NPC.cs" />
      <Compile Include="Assets\_Scripts\Player_Interactions.cs" />
      <Compile Include="Assets\_Scripts\Quests\Player_Quest_Journal.cs" />
