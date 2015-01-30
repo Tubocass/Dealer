@@ -7,6 +7,7 @@ public class Player_Interactions : MonoBehaviour
 	Old_Inventory inventory;
 	Quest_Journal journal;
 	Transform tran;
+	LayerMask characterMask;
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
 	public GameObject bullet;
@@ -25,6 +26,8 @@ public class Player_Interactions : MonoBehaviour
 		inventory.AddItem(1);
 		inventory.AddItem(2);
 		inventory.AddItem(2);
+		characterMask = 1<<9;
+			
 		//journal.AddItem(1);
 		//journal.AddItem(2);
 	}
@@ -51,7 +54,34 @@ public class Player_Interactions : MonoBehaviour
 				}
 			}
 		}
-	}
+
+				//This is for the swinging animation and for the player to check to see if an NPC is in front of him
+
+				if(Input.GetKeyDown (KeyCode.K)) {
+			anim.SetBool("SwingAnim", true);
+					}
+				else {
+						anim.SetBool("SwingAnim", false);
+					}
+						
+						RaycastHit2D hit1 = Physics2D.Raycast (transform.position, transform.up,5, characterMask ); 
+					//print (hit.collider.gameObject.tag);
+						// add an action for a specific tag here
+				if(hit1.collider.gameObject.tag == "NPC"){
+
+								Debug.Log ("boom, bitch"); 
+						}
+
+					
+				else {
+						anim.SetBool("SwingAnim", false);
+						}
+	
+	
+
+}
+
+
 	public void AddWeed()
 	{
 		inventory.AddItem(1);

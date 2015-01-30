@@ -8,7 +8,7 @@ public class SceneChange : MonoBehaviour {
 
 			if (Input.GetKeyDown ("n"))
 			{
-				Application.LoadLevel ("Scene_1");
+				Application.LoadLevel ("Scene_High");
 				transform.position = new Vector3(0,0,0);
 				
 			}
