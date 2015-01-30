@@ -4,26 +4,27 @@ using System.Collections;
 public class FireBullet : MonoBehaviour {
 
 	public float speed = 6;
-	public Vector3 direction;
-	// Use this for initialization
-	void Start () {
-	
-		//Vector3 v = rigidbody2D.velocity;
-		//v.y = speed;
-		//rigidbody2D.velocity = v;
-		//transform.position+=Vector3.one;
-	}
-	void FixedUpdate()
+	Transform tran;
+
+
+	void Start () 
 	{
-		transform.Translate(direction*speed);
+		tran = transform;
+		Destroy(this.gameObject,5);
 	}
-	void OnBecameInvisible() {  
-		// Destroy the bullet 
-		//Destroy(gameObject);
+
+	void Update () 
+	{
+		//tran.Translate(Vector3.up*speed*Time.deltaTime);
+		Vector3 targetDir  = tran.position + tran.up; 
+
+		tran.position = Vector3.MoveTowards(tran.position,targetDir,0.25f);
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		Debug.Log("bull it");
+		Destroy(this.gameObject);
 	}
+
 }

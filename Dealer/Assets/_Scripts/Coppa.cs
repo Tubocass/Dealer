@@ -1,21 +1,55 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Coppa : MonoBehaviour {
+public class Coppa : MonoBehaviour 
+{
+	public bool bPlayerVisible;
+	public float fieldOfViewAngle,length;
+	CircleCollider2D col;
+	Transform tran;
+	LayerMask playerMask;
+	GameObject player;
 
 	// Use this for initialization
-	void Start () {
-	
-		transform.Translate (0, 0, 10);
-	
+	void Start () 
+	{
+		col = GetComponent<CircleCollider2D>();
+		tran = transform;
+		player = GameObject.FindGameObjectWithTag("Player");
+		playerMask =1<<player.layer;
 	}
-	
-	// Update is called once per frame
 
 
-		void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerStay2D(Collider2D other)
+	{
+		if(other.gameObject.tag == "Player")
 		{
-			
-}
+			Vector3 direction = other.transform.position - tran.position;
+			float angle = Vector3.Angle(direction, tran.up);
+			//Is the object in my field of view?
+			if(angle < fieldOfViewAngle*0.5f)
+			{
+				//are ther any obstructions between me and the object?
+				Vector3 fwd = tran.TransformDirection(Vector3.up*1);
+				RaycastHit2D hit = Physics2D.Raycast(tran.position, direction,length,playerMask);
+				if(hit.collider!=null && hit.collider.gameObject.tag == "Player")
+				{
+					Debug.DrawRay(tran.position, direction, Color.red);
+					Debug.Log("you're a player");
+					bPlayerVisible = true;
+				}
+			}
 		}
+	}
+		
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if(other.gameObject.tag == "Player")
+		{
+
+		}
+	}
+}
+			
+
 	

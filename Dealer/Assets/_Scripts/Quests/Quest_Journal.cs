@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Quest_Journal : Old_Inventory {
 	string words;
+	int selectedQuest;
 	public Vector2 scrollPosition = Vector2.zero;
 	Quest_Database questDB;
 	public List<Quest_Item> quests = new List<Quest_Item>();
@@ -51,7 +52,15 @@ public class Quest_Journal : Old_Inventory {
 		
 		//GUI.BeginGroup(windowRect);
 		DrawInventory();
-		GUI.Box(new Rect(85,20,windowRect.width-((slotsX*60)+20),windowRect.height-40),words);
+		GUI.Box(new Rect(85,20,windowRect.width-((slotsX*60)+20),windowRect.height-60),words);
+
+		if(GUI.Button(new Rect(85,windowRect.height-40,100,40),"Sure bud."))//accept a quest
+		{
+			quests[selectedQuest].bActive = true;
+			print ("testes");
+			Find_Journal(1).AddItem(quests[selectedQuest].itemID);
+			words = quests[selectedQuest].GetText();
+		}
 		//GUI.EndGroup();
 		if(showTooltip)
 		{
@@ -86,6 +95,7 @@ public class Quest_Journal : Old_Inventory {
 						if(e.type==EventType.mouseDown&& e.button==0)
 						{
 							print ("balls");
+							selectedQuest = i;
 							words = quests[i].itemDesc;
 							if(Talk != null)
 								Talk();

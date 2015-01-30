@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Quest_DB
+  m_TagString: QuestDatabase
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c285181b54263304ea2afd320f5f2eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - itemName: nossing
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemTexture: {fileID: 0}
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    itemValue: 0
+    questReward: 0
+    bPreConditionsMet: 0
+    bActive: 0
+    bAlmostFinished: 0
+    bFinished: 0
+    questStage: 0
+    text: []
+  - itemName: Note
+    itemID: 1
+    itemDesc: Do Stuff
+    itemIcon: {fileID: 2800000, guid: c78e2936e983b3b459f111b08b042f16, type: 3}
+    itemTexture: {fileID: 0}
+    itemtype: 2
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    itemValue: 0
+    questReward: 0
+    bPreConditionsMet: 0
+    bActive: 0
+    bAlmostFinished: 0
+    bFinished: 0
+    questStage: 0
+    text:
+    - 
+  - itemName: Distribute Weed
+    itemID: 2
+    itemDesc: Sell all my dank and I'll give you something nice
+    itemIcon: {fileID: 0}
+    itemTexture: {fileID: 0}
+    itemtype: 2
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    itemValue: 0
+    questReward: 0
+    bPreConditionsMet: 0
+    bActive: 0
+    bAlmostFinished: 0
+    bFinished: 0
+    questStage: 0
+    text:
+    - I need you to gather 4 whole marijuana
+    - Now just fill people's orders and come back to me.
+    - Thanks for the help. Here's 3 monies.
+  - itemName: Want Pot
+    itemID: 3
+    itemDesc: I could really use some pot right now.
+    itemIcon: {fileID: 0}
+    itemTexture: {fileID: 0}
+    itemtype: 2
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    itemValue: 0
+    questReward: 1
+    bPreConditionsMet: 0
+    bActive: 0
+    bAlmostFinished: 0
+    bFinished: 0
+    questStage: 0
+    text:
+    - I could really use some pot right now.
+    - Thanks for the bud, bud.
+  - itemName: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemTexture: {fileID: 0}
+    itemtype: 0
+    itemOwner: 0
+    stackAmount: 0
+    bStackable: 0
+    itemValue: 0
+    questReward: 0
+    bPreConditionsMet: 0
+    bActive: 0
+    bAlmostFinished: 0
+    bFinished: 0
+    questStage: 0
+    text: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

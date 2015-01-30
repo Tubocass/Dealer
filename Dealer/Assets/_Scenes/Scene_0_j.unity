@@ -1490,8 +1490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b5c71278d32314a806587e68050afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 0, z: 0}
-  speed: 5
 --- !u!61 &716985157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4185,6 +4183,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   quests: {fileID: 0}
   bInteractable: 0
+  health: 99
 --- !u!212 &2113689820
 SpriteRenderer:
   m_ObjectHideFlags: 0
