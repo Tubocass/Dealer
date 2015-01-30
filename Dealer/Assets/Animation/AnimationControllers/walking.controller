@@ -394,10 +394,10 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Swing
-  m_Speed: 1
+  m_Speed: .699999988
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 3f1982cb3ff2f46b7a5d2bdd74fdfb04, type: 2}
+  - {fileID: 7400000, guid: 7a3a03f566d55400297654f29ae0f5fd, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: -204, y: 72, z: 0}
   m_IKOnFeet: 0
@@ -480,10 +480,6 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110226748}
-      second:
-      - {fileID: 110128934}
-    data:
       first: {fileID: 0}
       second: []
     data:
@@ -500,6 +496,10 @@ StateMachine:
       first: {fileID: 110287211}
       second:
       - {fileID: 110140360}
+    data:
+      first: {fileID: 110226748}
+      second:
+      - {fileID: 110128934}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

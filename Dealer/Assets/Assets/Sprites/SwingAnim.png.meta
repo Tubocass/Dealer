@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0ff16e088b3ea43e6bd86c6c71e3041c
+guid: 4601a6a45a15147f0a91bb44d8e1776c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SwingAnim_0
-    21300002: SwingAnim_1
-    21300004: SwingAnim_2
+    21300000: SwingAnim 1_0
+    21300002: SwingAnim 1_1
+    21300004: SwingAnim 1_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -46,7 +46,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: SwingAnim_0
+    - name: SwingAnim 1_0
       rect:
         serializedVersion: 2
         x: 6
@@ -56,17 +56,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SwingAnim_1
+    - name: SwingAnim 1_1
       rect:
         serializedVersion: 2
         x: 86
         y: 35
-        width: 66
+        width: 62
         height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SwingAnim_2
+    - name: SwingAnim 1_2
       rect:
         serializedVersion: 2
         x: 160
