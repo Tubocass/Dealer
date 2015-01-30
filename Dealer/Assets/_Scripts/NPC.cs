@@ -24,6 +24,7 @@ public class NPC : MonoBehaviour {
 		quests = GetComponent<Quest_Journal>();
 		
 	}
+
 	void OnGUI()
 	{
 		Rect trade = new Rect(100,20,110,200);
