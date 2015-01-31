@@ -7,11 +7,13 @@ public class Player_Interactions : MonoBehaviour
 	Old_Inventory inventory;
 	Quest_Journal journal;
 	Transform tran;
-	LayerMask characterMask;
+	int characterMask;
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
 	public GameObject bullet;
 	Animator anim;
+	public float strikeDist = 5;
+	public LayerMask playerMask;
 	int idleHash = Animator.StringToHash("Base Layer.Idle");
 	int tokeHash = Animator.StringToHash("Base Layer.Toking");
 	
@@ -27,7 +29,7 @@ public class Player_Interactions : MonoBehaviour
 		inventory.AddItem(2);
 		inventory.AddItem(2);
 		characterMask = 1<<9;
-			
+	
 		//journal.AddItem(1);
 		//journal.AddItem(2);
 	}
@@ -39,45 +41,24 @@ public class Player_Interactions : MonoBehaviour
 			Vector3 fwd = tran.TransformDirection(Vector3.up*3);
 			GameObject bulletFired = Instantiate(bullet,tran.position+fwd,transform.rotation)as GameObject;
 		}
-		if(Input.GetKeyDown("e"))
+		//This is for the swinging animation and for the player to check to see if an NPC is in front of him
+		if(Input.GetKey (KeyCode.F))
 		{
-			Vector3 fwd = tran.TransformDirection(Vector3.up);
-			RaycastHit hit;
-			Debug.DrawRay(tran.position, fwd, Color.red);
-			if (Physics.Raycast(tran.position, fwd, out hit))
-			{
-				Debug.DrawRay(tran.position, fwd, Color.blue);
-				if(hit.collider.gameObject.tag == "NPC")
-				{
-					Debug.Log("penis");
-					hit.collider.gameObject.GetComponent<NPC>().health -=1;
-				}
-			}
-		}
-
-				//This is for the swinging animation and for the player to check to see if an NPC is in front of him
-
-				if(Input.GetKeyDown (KeyCode.K)) {
 			anim.SetBool("SwingAnim", true);
-					}
-				else {
-						anim.SetBool("SwingAnim", false);
-					}
-						
-						RaycastHit2D hit1 = Physics2D.Raycast (transform.position, transform.up,5, characterMask ); 
-					//print (hit.collider.gameObject.tag);
-						// add an action for a specific tag here
-				if(hit1.collider.gameObject.tag == "NPC"){
-
-								Debug.Log ("boom, bitch"); 
-						}
-
-					
-				else {
-						anim.SetBool("SwingAnim", false);
-						}
-	
-	
+			RaycastHit2D hit1 = Physics2D.Raycast (transform.position, tran.TransformDirection(Vector2.up),strikeDist, playerMask ); 
+			//print (hit.collider.gameObject.tag);
+			// add an action for a specific tag here
+			if(hit1.collider!=null)// && hit1.collider.gameObject.tag == "NPC" )
+			{
+				Vector3 dir = tran.position - hit1.transform.position;
+				Debug.DrawRay(tran.position, dir, Color.red);
+				Debug.Log (hit1.collider.gameObject.tag); 
+				//hit1.collider.gameObject.GetComponent<NPC>().health -=1;
+			}
+		}else 
+		{
+			anim.SetBool("SwingAnim", false);
+		}
 
 }
 

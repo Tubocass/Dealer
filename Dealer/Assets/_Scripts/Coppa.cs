@@ -7,7 +7,7 @@ public class Coppa : MonoBehaviour
 	public float fieldOfViewAngle,length;
 	CircleCollider2D col;
 	Transform tran;
-	LayerMask playerMask;
+	public LayerMask visionMask;
 	GameObject player;
 
 	// Use this for initialization
@@ -16,7 +16,6 @@ public class Coppa : MonoBehaviour
 		col = GetComponent<CircleCollider2D>();
 		tran = transform;
 		player = GameObject.FindGameObjectWithTag("Player");
-		playerMask =1<<player.layer;
 	}
 
 
@@ -24,7 +23,7 @@ public class Coppa : MonoBehaviour
 	{
 		tran.position = Vector3.MoveTowards(tran.position,dir,.2f);
 		Debug.Log("moving");
-		yield return new WaitForSeconds(1) ;
+		yield return null;
 	}
 
 	void OnTriggerStay2D(Collider2D other)
@@ -38,14 +37,14 @@ public class Coppa : MonoBehaviour
 			{
 				//are there any obstructions between me and the object?
 				//Vector3 fwd = tran.TransformDirection(Vector3.up*1);
-				RaycastHit2D hit = Physics2D.Raycast(tran.position, direction,length,playerMask);
+				RaycastHit2D hit = Physics2D.Raycast(tran.position, direction,length,visionMask);
 				if(hit.collider!=null && hit.collider.gameObject.tag == "Player")
 				{
 					Debug.DrawRay(tran.position, direction, Color.red);
 					//Debug.Log("you're a player");
 					bPlayerVisible = true;
 					StartCoroutine("Move",(player.transform.position));
-				}else bPlayerVisible = false;
+				}else{ bPlayerVisible = false; StopCoroutine("Move");}
 			}
 		}
 	}
