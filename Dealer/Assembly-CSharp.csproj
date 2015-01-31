@@ -212,6 +212,7 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\Bullet.cs" />
+     <Compile Include="Assets\Coppa_LOS.cs" />
      <Compile Include="Assets\_Scripts\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\Coppa.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />

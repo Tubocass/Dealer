@@ -1337,7 +1337,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11430396, guid: 472896c666c358146877e6fc276dc686, type: 2}
       propertyPath: visionMask.m_Bits
-      value: 768
+      value: 2308
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 472896c666c358146877e6fc276dc686, type: 2}
@@ -4276,6 +4276,10 @@ Prefab:
     - target: {fileID: 100000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
+      propertyPath: playerMask.m_Bits
+      value: 2564
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
@@ -7336,7 +7340,7 @@ MonoBehaviour:
   strikeDist: 5
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2564
 --- !u!114 &716985163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10217,7 +10221,6 @@ GameObject:
   - 114: {fileID: 1019155840}
   - 114: {fileID: 1019155839}
   - 114: {fileID: 1019155838}
-  - 58: {fileID: 1019155837}
   - 50: {fileID: 1019155846}
   m_Layer: 9
   m_Name: Coppa
@@ -10226,17 +10229,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &1019155837
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1019155836}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Radius: 3
-  m_Center: {x: 0, y: 0}
 --- !u!114 &1019155838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10254,7 +10246,8 @@ MonoBehaviour:
   length: 10
   visionMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 2308
+  lastKnownLoc: {x: 0, y: 0, z: 0}
 --- !u!114 &1019155839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10383,7 +10376,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5, y: -9.60000038, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1103350866}
   m_Father: {fileID: 1778052083}
   m_RootOrder: 4
 --- !u!50 &1019155846
@@ -11197,6 +11191,57 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ca5134fe8ecf496aae96aece6635133, type: 3}
   m_Color: {r: .846669555, g: .956404328, b: .992647052, a: 1}
+--- !u!1 &1103350865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1103350866}
+  - 114: {fileID: 1103350868}
+  - 58: {fileID: 1103350867}
+  m_Layer: 0
+  m_Name: LOS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103350866
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103350865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1019155845}
+  m_RootOrder: 0
+--- !u!58 &1103350867
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103350865}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: 3
+  m_Center: {x: 0, y: 0}
+--- !u!114 &1103350868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103350865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6fc312804eec44da5968c9e34d5679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1109750646
 GameObject:
   m_ObjectHideFlags: 0
@@ -17312,7 +17357,7 @@ GameObject:
   - 4: {fileID: 1982906414}
   - 212: {fileID: 1982906413}
   - 61: {fileID: 1982906412}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
