@@ -42,25 +42,25 @@ public class Player_Interactions : MonoBehaviour
 			GameObject bulletFired = Instantiate(bullet,tran.position+fwd,transform.rotation)as GameObject;
 		}
 		//This is for the swinging animation and for the player to check to see if an NPC is in front of him
-		if(Input.GetKey (KeyCode.F))
+		if(Input.GetKeyDown (KeyCode.F))
 		{
 			anim.SetBool("SwingAnim", true);
 			RaycastHit2D hit1 = Physics2D.Raycast (transform.position, tran.TransformDirection(Vector2.up),strikeDist, playerMask ); 
 			//print (hit.collider.gameObject.tag);
 			// add an action for a specific tag here
-			if(hit1.collider!=null)// && hit1.collider.gameObject.tag == "NPC" )
+			if(hit1.collider!=null && hit1.collider.gameObject.tag == "NPC" )
 			{
 				Vector3 dir = tran.position - hit1.transform.position;
-				Debug.DrawRay(tran.position, dir, Color.red);
+				Debug.DrawRay(tran.position, -dir, Color.red);
 				Debug.Log (hit1.collider.gameObject.tag); 
-				//hit1.collider.gameObject.GetComponent<NPC>().health -=1;
+				hit1.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+				hit1.collider.gameObject.GetComponent<NPC>().health -=1;
 			}
 		}else 
 		{
 			anim.SetBool("SwingAnim", false);
 		}
-
-}
+	}
 
 
 	public void AddWeed()
@@ -71,7 +71,6 @@ public class Player_Interactions : MonoBehaviour
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
-				
 		switch (other.gameObject.tag) {
 			case "Weed":
 			{
@@ -119,7 +118,7 @@ public class Player_Interactions : MonoBehaviour
 		{
 			case "Roof":
 			{
-			other.transform.Translate(new Vector3(0,0,-1));
+				other.transform.Translate(new Vector3(0,0,-1));
 				other.GetComponent<SpriteRenderer>().enabled = true;
 				break;
 			}
