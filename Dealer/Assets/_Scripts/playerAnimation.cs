@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class playerMovement : MonoBehaviour {
+public class playerAnimation: MonoBehaviour {
 	private Animator anim;
 	
 	void Start () 

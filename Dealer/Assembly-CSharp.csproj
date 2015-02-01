@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Assets\AstarPathfindingProject\Utilities\AstarParallel.cs" />
      <Compile Include="Assets\Assets\Sample Assets\2D\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Assets\Sample Assets\2D\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Assets\Sample Assets\2D\Scripts\Platformer2DUserControl.cs" />
@@ -211,7 +210,6 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
-     <Compile Include="Assets\_Scripts\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
      <Compile Include="Assets\_Scripts\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
@@ -226,6 +224,7 @@
      <Compile Include="Assets\_Scripts\Inventories\Player_Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Slot.cs" />
      <Compile Include="Assets\_Scripts\LayerMaskExtensions.cs" />
+     <Compile Include="Assets\_Scripts\NPCs\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa_Los.cs" />
      <Compile Include="Assets\_Scripts\NPCs\NPC.cs" />
@@ -250,7 +249,7 @@
      <Compile Include="Assets\_Scripts\UI Samples\ScrollDetailTexture.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ShowSliderValue.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\TiltWindow.cs" />
-     <Compile Include="Assets\_Scripts\playerMovement.cs" />
+     <Compile Include="Assets\_Scripts\playerAnimation.cs" />
      <Compile Include="Assets\_Scripts\playerMovementRotation.cs" />
      <Compile Include="Assets\npcMovement.cs" />
      <Compile Include="Assets\npcMovement1.cs" />

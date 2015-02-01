@@ -7,7 +7,6 @@ public class Player_Interactions : MonoBehaviour
 	Old_Inventory inventory;
 	Quest_Journal journal;
 	Transform tran;
-	int characterMask;
 	public delegate void TradeAction();
 	public static event TradeAction PickedUpWeed;
 	public GameObject bullet;
@@ -28,8 +27,6 @@ public class Player_Interactions : MonoBehaviour
 		inventory.AddItem(1);
 		inventory.AddItem(2);
 		inventory.AddItem(2);
-		characterMask = 1<<9;
-		
 		//journal.AddItem(1);
 		//journal.AddItem(2);
 	}
@@ -71,44 +68,45 @@ public class Player_Interactions : MonoBehaviour
 	}
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		switch (other.gameObject.tag) {
-		case "Weed":
+		switch (other.gameObject.tag) 
 		{
-			Destroy(other.gameObject,0);
-			//print ("something");
-			inventory.AddItem(1);
-			if(PickedUpWeed!=null)
-				PickedUpWeed();
-			break;
-		}
-		case "Drank":
-		{
-			Destroy(other.gameObject,1);
-			//print ("something");
-			inventory.AddItem(2);
-			break;
-		}
-		case "Pills":
-		{
-			Destroy(other.gameObject,1);
-			print ("something");
-			inventory.AddItem(2);
-			break;
-		}
-		case "Quest":
-		{
-			//var quest = other.GetComponent<>
-			Destroy(other.gameObject,1);
-			print ("something");
-			journal.AddItem(1);
-			break;
-		}
-		case "Roof":
-		{
-			other.GetComponent<SpriteRenderer>().enabled = false;
-			other.transform.Translate(new Vector3(0,0,1));
-			break;
-		}
+			case "Weed":
+			{
+				Destroy(other.gameObject,0);
+				//print ("something");
+				inventory.AddItem(1);
+				if(PickedUpWeed!=null)
+					PickedUpWeed();
+				break;
+			}
+			case "Drank":
+			{
+				Destroy(other.gameObject,1);
+				//print ("something");
+				inventory.AddItem(2);
+				break;
+			}
+			case "Pills":
+			{
+				Destroy(other.gameObject,1);
+				print ("something");
+				inventory.AddItem(2);
+				break;
+			}
+			case "Quest":
+			{
+				//var quest = other.GetComponent<>
+				Destroy(other.gameObject,1);
+				print ("something");
+				journal.AddItem(1);
+				break;
+			}
+			case "Roof":
+			{
+				other.GetComponent<SpriteRenderer>().enabled = false;
+				other.transform.Translate(new Vector3(0,0,1));
+				break;
+			}
 			
 		}
 	}
@@ -116,12 +114,12 @@ public class Player_Interactions : MonoBehaviour
 	{
 		switch(other.gameObject.tag)
 		{
-		case "Roof":
-		{
-			other.transform.Translate(new Vector3(0,0,-1));
-			other.GetComponent<SpriteRenderer>().enabled = true;
-			break;
-		}
+			case "Roof":
+			{
+				other.transform.Translate(new Vector3(0,0,-1));
+				other.GetComponent<SpriteRenderer>().enabled = true;
+				break;
+			}
 		}
 		
 	}
