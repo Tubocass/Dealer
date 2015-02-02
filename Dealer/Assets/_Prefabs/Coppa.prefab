@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11430394}
   - 114: {fileID: 11430396}
   - 50: {fileID: 5096014}
+  - 114: {fileID: 11482752}
   m_Layer: 9
   m_Name: Coppa
   m_TagString: Untagged
@@ -194,12 +195,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bPlayerVisible: 0
+  bClicked: 0
   fieldOfViewAngle: 360
   length: 10
   visionMask:
     serializedVersion: 2
     m_Bits: 2308
   lastKnownLoc: {x: 0, y: 0, z: 0}
+--- !u!114 &11482752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ac18cdd242041b6bebc0e95b624c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repathRate: .5
+  target: {fileID: 0}
+  canSearch: 1
+  canMove: 1
+  speed: 3
+  turningSpeed: 5
+  slowdownDistance: .600000024
+  pickNextWaypointDist: 2
+  forwardLook: 1
+  endReachedDistance: .200000003
+  closestOnPathCheck: 1
 --- !u!114 &11496014
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -58,7 +58,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 212: {fileID: 21200004}
   - 61: {fileID: 6100000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - 4: {fileID: 400008}
   - 212: {fileID: 21200006}
   - 61: {fileID: 6100002}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - 4: {fileID: 400010}
   - 212: {fileID: 21200008}
   - 61: {fileID: 6100004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - 4: {fileID: 400014}
   - 212: {fileID: 21200012}
   - 61: {fileID: 6100006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - 4: {fileID: 400016}
   - 212: {fileID: 21200014}
   - 61: {fileID: 6100008}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}

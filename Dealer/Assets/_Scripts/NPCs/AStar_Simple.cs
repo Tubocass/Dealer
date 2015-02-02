@@ -5,7 +5,7 @@ using System.Collections;
 using Pathfinding;
 public class AStar_Simple : MonoBehaviour {
 	//The point to move to
-	public Vector3 targetPosition;
+	public Vector3 targetPosition, targetVector;
 	public Transform target;
 	private Seeker seeker;
 	private CharacterController controller;
@@ -17,13 +17,15 @@ public class AStar_Simple : MonoBehaviour {
 	public float nextWaypointDistance = 3;
 	//The waypoint we are currently moving towards
 	private int currentWaypoint = 0;
-	public void Start () {
+	public void Start () 
+	{
 		seeker = GetComponent<Seeker>();
 		controller = GetComponent<CharacterController>();
 		//Start a new path to the targetPosition, return the result to the OnPathComplete function
-		seeker.StartPath (transform.position,target.position, OnPathComplete);
+		//seeker.StartPath (transform.position,target.position, OnPathComplete);
 	}
-	public void OnPathComplete (Path p) {
+	public void OnPathComplete (Path p) 
+	{
 		//Debug.Log ("Yay, we got a path back. Did it have an error? "+p.error);
 		if (!p.error) {
 			path = p;
@@ -31,6 +33,30 @@ public class AStar_Simple : MonoBehaviour {
 			currentWaypoint = 0;
 		}
 	}
+	public void setTarget(Transform t)
+	{
+		this.target = t;
+		TrySearchPath ();
+	}
+	public void setTargetVector(Vector3 t)
+	{
+		this.targetVector = t;
+		TrySearchPath ();
+	}
+	public void TrySearchPath()
+	{
+		//lastRepath = Time.time;
+		//canSearchAgain = false;
+		if (target == null) 
+			seeker.StartPath (transform.position, targetVector, OnPathComplete);
+		else{
+			
+			Vector3 targetPosition = target.position;
+			
+			seeker.StartPath (transform.position, targetPosition, OnPathComplete);
+		}
+	}
+
 	public void FixedUpdate () {
 		if (path == null) 
 		{
@@ -39,6 +65,9 @@ public class AStar_Simple : MonoBehaviour {
 		if (currentWaypoint >= path.vectorPath.Count) 
 		{
 			Debug.Log ("End Of Path Reached");
+			//seeker.StartPath (transform.position,target.position, OnPathComplete);
+			//currentWaypoint = 0;
+			path = null;
 			return;
 			
 		}
