@@ -8,7 +8,6 @@ public class AStar_Simple : MonoBehaviour {
 	public Vector3 targetPosition, targetVector;
 	public Transform target;
 	private Seeker seeker;
-	private CharacterController controller;
 	//The calculated path
 	public Path path;
 	//The AI's speed per second
@@ -20,7 +19,6 @@ public class AStar_Simple : MonoBehaviour {
 	public void Start () 
 	{
 		seeker = GetComponent<Seeker>();
-		controller = GetComponent<CharacterController>();
 		//Start a new path to the targetPosition, return the result to the OnPathComplete function
 		//seeker.StartPath (transform.position,target.position, OnPathComplete);
 	}
@@ -49,11 +47,11 @@ public class AStar_Simple : MonoBehaviour {
 		//canSearchAgain = false;
 		if (target == null) 
 			seeker.StartPath (transform.position, targetVector, OnPathComplete);
-		else{
+		else
+		{
+			targetPosition = target.position;
 			
-			Vector3 targetPosition = target.position;
-			
-			seeker.StartPath (transform.position, targetPosition, OnPathComplete);
+			seeker.StartPath (transform.position, target.position, OnPathComplete);
 		}
 	}
 

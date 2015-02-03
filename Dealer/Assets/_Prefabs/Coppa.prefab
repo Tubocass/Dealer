@@ -9,17 +9,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 430396}
   - 212: {fileID: 21230396}
-  - 114: {fileID: 11430392}
   - 61: {fileID: 6130396}
   - 114: {fileID: 11430390}
   - 114: {fileID: 11430388}
   - 114: {fileID: 11430394}
   - 114: {fileID: 11430396}
   - 50: {fileID: 5096014}
-  - 114: {fileID: 11482752}
   m_Layer: 9
   m_Name: Coppa
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: -9.60000038, z: 0}
+  m_LocalPosition: {x: .200000003, y: 12.1000004, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 496014}
@@ -109,14 +107,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130396}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9143fdb200792bf4e9b021d5e8bd4cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 4.71000004, y: 5.0999999, z: 0}
+  targetVector: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
-  speed: 10
+  speed: 5
   nextWaypointDistance: 3
 --- !u!114 &11430390
 MonoBehaviour:
@@ -146,21 +145,6 @@ MonoBehaviour:
     tagsChange: -1
     tagsSet: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
---- !u!114 &11430392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130396}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c3f13dc93115545bc85235d93e213f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  quests: {fileID: 0}
-  bInteractable: 0
-  health: 99
 --- !u!114 &11430394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,28 +186,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2308
   lastKnownLoc: {x: 0, y: 0, z: 0}
---- !u!114 &11482752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ac18cdd242041b6bebc0e95b624c85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repathRate: .5
-  target: {fileID: 0}
-  canSearch: 1
-  canMove: 1
-  speed: 3
-  turningSpeed: 5
-  slowdownDistance: .600000024
-  pickNextWaypointDist: 2
-  forwardLook: 1
-  endReachedDistance: .200000003
-  closestOnPathCheck: 1
+  PathGroup: {fileID: 0}
+  aPath: []
+  nextWaypointDistance: 3
 --- !u!114 &11496014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,7 +220,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 50beabc8551332f43ac3e18a1125181e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c35ece5454a42347b0ca98e12ffa0ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
