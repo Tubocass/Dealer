@@ -54,6 +54,12 @@ public class Player_Interactions : MonoBehaviour
 				}
 			}
 		}
+		if(Input.GetKeyDown (KeyCode.L)) 
+		{
+			OnToke ();
+
+		
+		}
 
 				//This is for the swinging animation and for the player to check to see if an NPC is in front of him
 
@@ -67,7 +73,7 @@ public class Player_Interactions : MonoBehaviour
 						RaycastHit2D hit1 = Physics2D.Raycast (transform.position, transform.up,5, characterMask ); 
 					//print (hit.collider.gameObject.tag);
 						// add an action for a specific tag here
-				if(hit1.collider.gameObject.tag == "NPC"){
+				if(hit1.collider!=null&& hit1.collider.gameObject.tag == "NPC"){
 
 								Debug.Log ("boom, bitch"); 
 						}
@@ -129,6 +135,7 @@ public class Player_Interactions : MonoBehaviour
 				other.transform.Translate(new Vector3(0,0,1));
 				break;
 			}
+
 
 		}
 	}
