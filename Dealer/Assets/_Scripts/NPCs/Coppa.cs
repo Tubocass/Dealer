@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Coppa : MonoBehaviour
 {
-	public bool bPlayerVisible, bClicked;
+	public bool bPlayerVisible, bClicked, bPatrolling;
 	public float fieldOfViewAngle,length;
 	CircleCollider2D col;
 	Transform tran;
@@ -46,23 +46,38 @@ public class Coppa : MonoBehaviour
 	{
 		if(bPlayerVisible)
 		{
-			Debug.Log("Did you sell drugs in front of me?");
-			AIPath.setTarget(player.transform);
+			bPatrolling = false;
+
+			if (Vector2.Distance (tran.position,player.transform.position) < 5)
+			{
+				Debug.Log("Did you sell drugs in front of me?");
+			}else 
+			{
+
+				AIPath.setTarget(player.transform);
+			}
 		}
 	}
 	void Patrol()
 	{
 		if (PathGroup!= null)
 		{
+			if(!bPatrolling)
+			{
+				bPatrolling = true;
+				AIPath.target = null;
+				AIPath.setTargetVector(aPath[currentWaypoint].position);
+			}
 			if (Vector2.Distance (tran.position,aPath[currentWaypoint].position) < nextWaypointDistance)
 			{
-				if(currentWaypoint<aPath.Length-1)
-				{
-					currentWaypoint++;
-					AIPath.setTargetVector(aPath[currentWaypoint].position);
-				}else{ currentWaypoint = 1; AIPath.setTargetVector(aPath[currentWaypoint].position);}
-			}//else{ AIPath.setTargetVector(aPath[currentWaypoint].position); return;}
+				currentWaypoint = (currentWaypoint+1) % (aPath.Length);
+				AIPath.setTargetVector(aPath[currentWaypoint].position);
+
+			}
 		}
+	}
+	void ChasePlayer()
+	{
 	}
 
 
@@ -70,7 +85,7 @@ public class Coppa : MonoBehaviour
 	{
 		if(bPlayerVisible)
 		{
-			//StartCoroutine("Move",lastKnownLoc);
+			
 		}else Patrol();
 	}
 	

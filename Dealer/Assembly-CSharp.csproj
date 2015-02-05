@@ -225,8 +225,11 @@
      <Compile Include="Assets\_Scripts\LayerMaskExtensions.cs" />
      <Compile Include="Assets\_Scripts\NPCs\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa.cs" />
+     <Compile Include="Assets\_Scripts\NPCs\Coppa_FSM.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa_Los.cs" />
+     <Compile Include="Assets\_Scripts\NPCs\FSM_BASE.cs" />
      <Compile Include="Assets\_Scripts\NPCs\NPC.cs" />
+     <Compile Include="Assets\_Scripts\Noteriety.cs" />
      <Compile Include="Assets\_Scripts\Player_Interactions.cs" />
      <Compile Include="Assets\_Scripts\Quests\Player_Quest_Journal.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest.cs" />
@@ -235,7 +238,6 @@
      <Compile Include="Assets\_Scripts\Quests\Quest_Journal.cs" />
      <Compile Include="Assets\_Scripts\Quests\Weed_BuyOrder.cs" />
      <Compile Include="Assets\_Scripts\Quests\Weed_SellOrder.cs" />
-     <Compile Include="Assets\_Scripts\Roof.cs" />
      <Compile Include="Assets\_Scripts\SceneChange.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ActiveStateToggler.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ApplicationManager.cs" />

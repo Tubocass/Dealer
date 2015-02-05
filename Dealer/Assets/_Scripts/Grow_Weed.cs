@@ -27,8 +27,6 @@ public class Grow_Weed : MonoBehaviour {
 				timer = 0;
 				print("boosh"); 
 				bud  = Instantiate(prefab, transform.position,Quaternion.identity) as GameObject;
-
-
 			}
 		}
 	}
