@@ -10,7 +10,7 @@ TagManager:
   - QuestDatabase
   - EventSystem
   - Roof
-  - 
+  - ImagePrefab
   - Wall
   - Door
   - NPC

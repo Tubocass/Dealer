@@ -1,10 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Great War\Assets\Controls.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Inventories\Inventory.cs">
     <Files>
-      <File FileName="..\..\Great War\Assets\Controls.cs" Line="27" Column="33" />
-      <File FileName="Assets\_Scripts\Inventories\Dragging.cs" Line="17" Column="28" />
-      <File FileName="Assets\_Scripts\Inventories\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Inventories\Inventory_NPC.cs" Line="21" Column="56" />
+      <File FileName="..\..\GreatWar\Great War\Assets\_Scripts\Soldier.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\NPCs\Coppa.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Inventories\Inventory.cs" Line="69" Column="17" />
+      <File FileName="Assets\_Scripts\NPCs\NPC.cs" Line="17" Column="3" />
+      <File FileName="Assets\_Scripts\Inventories\Old_Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Inventories\Dragging.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

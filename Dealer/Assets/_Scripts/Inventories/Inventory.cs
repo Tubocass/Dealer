@@ -7,9 +7,9 @@ using System.Collections.Generic;
 public class Inventory : MonoBehaviour
 {
 	public int slotsX,slotsY;
-	[SerializeField] RectTransform panel;
-	[SerializeField] GameObject imagePrefab;
-	Item_Database itemDB;
+	[SerializeField] public RectTransform panel;
+	[SerializeField] protected GameObject imagePrefab;
+	protected Item_Database itemDB;
 	Inventory tradeInventory;
 	public bool bTrading;
 	public List<Item> inventory = new List<Item>();
@@ -66,9 +66,10 @@ public class Inventory : MonoBehaviour
 	public void OnClick_Inventory()
 	{
 		showInventory = !showInventory;
-		foreach (Transform child in panel) 
+		foreach (Image child in images) 
 		{
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
+			//GetComponent<Dragging>().inv = this;
 		}	
 	}
 	protected virtual void OnGUI()
@@ -95,7 +96,7 @@ public class Inventory : MonoBehaviour
 				}else text.text = "";
 			
 			}
-			else{ images[i].sprite = null; text.text = "";}
+			else{ images[i].sprite = null;text.text = "";}
 		}
 	}
 	
@@ -304,5 +305,15 @@ public class Inventory : MonoBehaviour
 		}
 		return 0;
 	}
-	
+
+	public static Inventory Find_Inventory(int id)
+	{
+		Inventory[] inv = FindObjectsOfType<Inventory>();
+		for(int i =0; i<inv.Length;i++)
+		{
+			if( inv[i].UniqueID == id)
+			{ return inv[i];}
+		}
+		return null;
+	}
 }

@@ -1,16 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class NPC : MonoBehaviour {
 
-	public Old_Inventory inventory;
+	public Inventory inventory;
 	public Old_Inventory quests;
-	bool clicked;
+	bool bClicked;
 	SpriteRenderer sprite;
 	GameObject player;
-	public static bool bSelected;
-	public bool bInteractable;
+	public static int selectedID;
 	public GUI Trade_Button;
 	public int health = 99;
 	// Use this for initialization
@@ -18,9 +17,11 @@ public class NPC : MonoBehaviour {
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		sprite = GetComponent<SpriteRenderer>();
-		if(GetComponent<Inventory_NPC>()!=null)
-		inventory = GetComponent<Inventory_NPC>();
-		else inventory = GetComponent<Old_Inventory>();
+		//if(GetComponent<Inventory_NPC>()!=null)
+		{
+			inventory = GetComponent<Inventory_NPC>();
+		}
+		//else inventory = GetComponent<Old_Inventory>();
 		quests = GetComponent<Quest_Journal>();
 		
 	}
@@ -32,10 +33,10 @@ public class NPC : MonoBehaviour {
 		if(!sprite.bounds.Contains(e.mousePosition)&& !trade.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
 			//print ("tiiiittttss");
-			clicked = false;
+			bClicked = false;
 			//inventory.showInventory = false;
 		}
-		if(clicked&& Vector3.Distance(transform.position, player.transform.position)<=15)
+		/*if(bClicked&& Vector3.Distance(transform.position, player.transform.position)<=15)
 		{
 			GUI.BeginGroup(trade);
 			if(GUI.Button(new Rect(0,0+5,100,40),"Trade"))
@@ -55,20 +56,23 @@ public class NPC : MonoBehaviour {
 				quests.showInventory = !quests.showInventory; 
 			}
 			GUI.EndGroup();
-		}else{quests.showInventory = false; inventory.showInventory = false; clicked = false;}
-
+		}else{quests.showInventory = false; inventory.showInventory = false; bClicked = false;}
+*/
 	}
 	public void OnMouseDown() 
 	{
 		print ("bboobbss");
-		clicked = true;
+		bClicked = true;
+		selectedID = inventory.UniqueID;
 		//inventory.showInventory = true;
 		//inventory.AddItem(1);
 	}
 	
 	public void OnClick_Trade()
 	{
-		Inventory playerInventory = player.GetComponent<Inventory>();
+		//Inventory.Find_Inventory(selectedID).showInventory = !Inventory.Find_Inventory(selectedID).showInventory;
+		//inventory.showInventory = true;
+		inventory.OnClick_Inventory();
 
 	}
 	public void OnClick_Quests()

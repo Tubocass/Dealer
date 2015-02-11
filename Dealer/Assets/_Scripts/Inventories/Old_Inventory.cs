@@ -162,7 +162,8 @@ public class Old_Inventory : MonoBehaviour
 										inventory[i] = draggedItem;
 										inventory[i].itemOwner = UniqueID;
 										tradeInventory.AddMoney(draggedItem.itemValue*draggedItem.stackAmount);
-										
+										if(SoldWeed!=null)
+											SoldWeed();
 										ItemAddedEvent(draggedItem);
 										draggingItem = false;
 										draggedItem = null;
@@ -390,9 +391,9 @@ public class Old_Inventory : MonoBehaviour
 		return 0;
 	}
 	
-	public static Inventory Find_Inventory(int id)
+	public static Old_Inventory Find_Inventory(int id)
 	{
-		Inventory[] inv = FindObjectsOfType<Inventory>();
+		Old_Inventory[] inv = FindObjectsOfType<Old_Inventory>();
 		for(int i =0; i<inv.Length;i++)
 		{
 			if( inv[i].UniqueID == id)
