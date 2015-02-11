@@ -209,6 +209,7 @@ public class Old_Inventory : MonoBehaviour
 			{
 				if(SoldWeed!=null)
 					SoldWeed();
+
 			}
 		}else return;
 	}
