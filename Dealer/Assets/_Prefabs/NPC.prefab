@@ -61,10 +61,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   quests: {fileID: 0}
+  panel: {fileID: 0}
   health: 99
 --- !u!114 &11400002
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -73,10 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab7f2543ea4ee344bb207d4a0ef413b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 0
-  slotsY: 0
+  slotsX: 6
+  slotsY: 1
   panel: {fileID: 0}
-  imagePrefab: {fileID: 0}
+  imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   bTrading: 0
   inventory: []
   images: []
@@ -109,7 +110,7 @@ MonoBehaviour:
   quests: []
 --- !u!114 &11400006
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -153,7 +154,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &11400010
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -184,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ec271d158fafd4fbe9912df0e8aa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 1
-  slotsY: 4
+  slotsX: 6
+  slotsY: 1
   panel: {fileID: 0}
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   bTrading: 0

@@ -219,6 +219,7 @@
      <Compile Include="Assets\_Scripts\Inventories\Inventory_NPC.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Item.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Item_Database.cs" />
+     <Compile Include="Assets\_Scripts\Inventories\NPC_UI.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Old_Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Player_Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Slot.cs" />

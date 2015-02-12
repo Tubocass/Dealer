@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class Player_Inventory : Old_Inventory 
+using System.Collections.Generic;
+using UnityEngine.UI;
+public class Player_Inventory : Inventory 
 {	
-	public float CostOfLivingBase, Rent, ElectricityCost,ElectricityUsed, Fertilizer, NumPlants;
-
-	protected override void Start()
+	[SerializeField] public RectTransform panel;
+	[SerializeField] protected GameObject imagePrefab;
+	public List<Image> images = new List<Image>();
+	protected override void  Start()
 	{
 		base.Start();
-		windowRect = new Rect (200, 20, (slotsX*60), (slotsY*60)+20);
-		Daily_Balance.Costs+= CostOfDoingBusiness;
+		for (int i = 0; i<slots; i++)
+		{
+			GameObject icon = (GameObject)Instantiate(imagePrefab);
+			icon.transform.SetParent(panel);
+			
+			images.Add(icon.GetComponent<Image>());
+			images[i].GetComponent<Dragging>().inv = this;
+			icon.SetActive(false);
+		}
 	}
 	void Update()
 	{
@@ -18,20 +27,47 @@ public class Player_Inventory : Old_Inventory
 			showInventory = !showInventory;
 		}
 	}
-	
-	void CostOfDoingBusiness()
+
+	public void OnClick_Inventory()
 	{
-		money-= (Fertilizer * NumPlants)+ (ElectricityCost*ElectricityUsed)+Rent+CostOfLivingBase;
+		showInventory = !showInventory;
+		foreach (Image child in images) 
+		{
+			child.gameObject.SetActive(!child.gameObject.activeSelf);
+			child.GetComponent<Dragging>().inv = this;
+			//GetComponent<Dragging>().inv = this;
+		}	
 	}
+
 	void OnGUI()
 	{
-		base.OnGUI();
-		//if(GUI.Button(new Rect(40,400,100,40),"Save"))
-			//SaveInventory();
-		//if(GUI.Button(new Rect(40,460,100,40),"Load"))
-			//LoadInventory();
+		tooltip = "";
+		if(showInventory)
+		{
+			DrawInventory();
+		}
 	}
-	
+	protected virtual void DrawInventory()
+	{
+		for(int i =0; i<inventory.Count;i++)
+		{
+			Text text = images[i].GetComponentInChildren<Text>();
+			if(text!=null)
+			{
+				if(inventory[i].itemIcon!=null)
+				{
+					images[i].sprite = inventory[i].itemIcon;
+					
+					if(inventory[i].bStackable)
+					{
+						text.text = ""+inventory[i].stackAmount;
+						
+					}else text.text = "";
+					
+				}else{ images[i].sprite = null;text.text = "";}
+			}
+		}
+	}
 	void SaveInventory()
 	{
 		for(int i = 0;i<inventory.Count;i++)

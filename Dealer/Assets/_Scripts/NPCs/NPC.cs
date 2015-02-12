@@ -6,35 +6,31 @@ public class NPC : MonoBehaviour {
 
 	public Inventory inventory;
 	public Old_Inventory quests;
+	NPC_UI ui;
 	bool bClicked;
 	SpriteRenderer sprite;
 	GameObject player;
-	public static int selectedID;
-	public GUI Trade_Button;
 	public int health = 99;
 	// Use this for initialization
 	void Start () 
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
+		ui = GameObject.FindGameObjectWithTag("GameController").GetComponent<NPC_UI>();
 		sprite = GetComponent<SpriteRenderer>();
-		//if(GetComponent<Inventory_NPC>()!=null)
-		{
-			inventory = GetComponent<Inventory_NPC>();
-		}
-		//else inventory = GetComponent<Old_Inventory>();
+		inventory = GetComponent<Inventory_NPC>();
 		quests = GetComponent<Quest_Journal>();
-		
+		inventory.AddItem(1);
 	}
 
 	void OnGUI()
 	{
-		Rect trade = new Rect(100,20,110,200);
+		Rect trade = new Rect(0,0,200,200);
 		Event e = Event.current;
 		if(!sprite.bounds.Contains(e.mousePosition)&& !trade.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
 			//print ("tiiiittttss");
 			bClicked = false;
-			//inventory.showInventory = false;
+			//inventory.ShowInventory = false;
 		}
 		/*if(bClicked&& Vector3.Distance(transform.position, player.transform.position)<=15)
 		{
@@ -63,21 +59,7 @@ public class NPC : MonoBehaviour {
 	{
 		print ("bboobbss");
 		bClicked = true;
-		selectedID = inventory.UniqueID;
-		//inventory.showInventory = true;
-		//inventory.AddItem(1);
-	}
-	
-	public void OnClick_Trade()
-	{
-		//Inventory.Find_Inventory(selectedID).showInventory = !Inventory.Find_Inventory(selectedID).showInventory;
-		//inventory.showInventory = true;
-		inventory.OnClick_Inventory();
-
-	}
-	public void OnClick_Quests()
-	{
-		quests.showInventory = !quests.showInventory; 
+		ui.Inventory = inventory;
 	}
 
 	
