@@ -24,7 +24,7 @@ public class Player_Inventory : Inventory
 	{
 		if(Input.GetButtonDown("Inventory"))
 		{
-			showInventory = !showInventory;
+			OnClick_Inventory();
 		}
 	}
 
@@ -34,8 +34,6 @@ public class Player_Inventory : Inventory
 		foreach (Image child in images) 
 		{
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
-			child.GetComponent<Dragging>().inv = this;
-			//GetComponent<Dragging>().inv = this;
 		}	
 	}
 

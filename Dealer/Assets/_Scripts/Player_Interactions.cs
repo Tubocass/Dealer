@@ -4,7 +4,7 @@ using System.Collections;
 public class Player_Interactions : MonoBehaviour 
 {
 	
-	Old_Inventory inventory;
+	Inventory inventory;
 	Quest_Journal journal;
 	Transform tran;
 	public delegate void TradeAction();
@@ -20,7 +20,7 @@ public class Player_Interactions : MonoBehaviour
 	
 	void Start()
 	{
-		inventory = GetComponent<Old_Inventory>();
+		inventory = GetComponent<Inventory>();
 		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
 		tran = transform;
