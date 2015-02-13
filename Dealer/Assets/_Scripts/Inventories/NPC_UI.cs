@@ -44,11 +44,16 @@ public class NPC_UI: MonoBehaviour
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
 		}		
 	}
-	public void ShowUI(bool show)
+
+	public void OnClick_Quests()
 	{
-		showUI = show;
-		panelUI.gameObject.SetActive(show);
+		showQuests = !showQuests;
+		foreach (Image child in images) 
+		{
+			child.gameObject.SetActive(!child.gameObject.activeSelf);
+		}		
 	}
+
 	public void OnChange_Inventory()
 	{
 		foreach (Image child in images) 
@@ -57,12 +62,23 @@ public class NPC_UI: MonoBehaviour
 		}		
 	}
 
+	public void ShowUI(bool show)
+	{
+		showUI = show;
+		panelUI.gameObject.SetActive(show);
+	}
+
+
 	protected virtual void OnGUI()
 	{
 		//tooltip = "";
 		if(panelUI!=null && showUI)
 		{
 			if(inv!=null && showInventory)
+			{
+				DrawInventory();
+			}
+			if(inv!=null && showQuests)
 			{
 				DrawInventory();
 			}
@@ -89,5 +105,9 @@ public class NPC_UI: MonoBehaviour
 				}else{ images[i].sprite = null;text.text = "";}
 			}
 		}
+	}
+	void DrawQuests()
+	{
+
 	}
 }

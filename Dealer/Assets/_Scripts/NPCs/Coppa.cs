@@ -4,7 +4,7 @@ using System.Collections;
 public class Coppa : MonoBehaviour
 {
 	public bool bPlayerVisible, bClicked, bPatrolling;
-	public float fieldOfViewAngle,length;
+	public float fieldOfViewAngle, length, nextWaypointDistance = 3;
 	CircleCollider2D col;
 	Transform tran;
 	public LayerMask visionMask;
@@ -13,7 +13,6 @@ public class Coppa : MonoBehaviour
 	AStar_Simple AIPath;
 	public GameObject PathGroup;
 	[SerializeField] Transform[] aPath;
-	public float nextWaypointDistance = 3;
 	//The waypoint we are currently moving towards
 	private int currentWaypoint = 0;
 	
@@ -24,13 +23,13 @@ public class Coppa : MonoBehaviour
 		length = col.radius*10;
 		tran = transform;
 		player = GameObject.FindGameObjectWithTag("Player");
-		player.GetComponent<Old_Inventory>().SoldWeed+=Investigate;
+		player.GetComponent<Inventory>().SoldWeed+=Investigate;
 		AIPath = GetComponent<AStar_Simple>();
 		if (PathGroup!= null)
 		{
 			aPath = PathGroup.GetComponentsInChildren<Transform>();
 			aPath[0] = tran;
-			AIPath.setTargetVector(aPath[currentWaypoint].position);
+			//AIPath.setTargetVector(aPath[currentWaypoint].position);
 		}
 
 	}

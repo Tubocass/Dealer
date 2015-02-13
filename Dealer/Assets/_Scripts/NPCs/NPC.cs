@@ -5,15 +5,14 @@ using System.Collections;
 public class NPC : MonoBehaviour {
 
 	public Inventory inventory;
-	public Old_Inventory quests;
+	public Inventory quests;
 	NPC_UI ui;
 	bool bClicked;
 	SpriteRenderer sprite;
 	GameObject player;
 	public int health = 99;
 	Rect myUI,playerUI;
-	public GUISkin skin;
-	// Use this for initialization
+	
 	void Start () 
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -22,15 +21,13 @@ public class NPC : MonoBehaviour {
 		inventory = GetComponent<Inventory_NPC>();
 		quests = GetComponent<Quest_Journal>();
 		inventory.AddItem(1);
-		Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-		myUI = new Rect(0,0,130,200);
-		playerUI = new Rect(Screen.width - 130,0, 130, 200 );
+		myUI = ui.window;
+		playerUI = player.GetComponent<Player_UI>().window;
 	}
 
 	void OnGUI()
 	{
-		//GUI.Box(playerUI,"",skin.GetStyle("Slot"));
 		Event e = Event.current;
 		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.Contains(e.mousePosition) && !myUI.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{

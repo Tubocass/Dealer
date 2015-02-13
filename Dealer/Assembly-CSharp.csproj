@@ -209,8 +209,6 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
-     <Compile Include="Assets\Legs_Anim.cs" />
-     <Compile Include="Assets\Player_UI.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
      <Compile Include="Assets\_Scripts\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
@@ -224,8 +222,10 @@
      <Compile Include="Assets\_Scripts\Inventories\NPC_UI.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Old_Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Player_Inventory.cs" />
+     <Compile Include="Assets\_Scripts\Inventories\Player_UI.cs" />
      <Compile Include="Assets\_Scripts\Inventories\Slot.cs" />
      <Compile Include="Assets\_Scripts\LayerMaskExtensions.cs" />
+     <Compile Include="Assets\_Scripts\Legs_Anim.cs" />
      <Compile Include="Assets\_Scripts\NPCs\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa_FSM.cs" />

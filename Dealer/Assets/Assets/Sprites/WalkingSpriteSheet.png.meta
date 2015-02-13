@@ -1,11 +1,15 @@
 fileFormatVersion: 2
-guid: ded22a1625e910341904f8a78b1a3d62
+guid: 880686dc3b4bb394eadd011824568429
 TextureImporter:
   fileIDToRecycleName:
-    21300000: WalkUpSpriteTorso_0
-    21300002: WalkUpSpriteTorso_1
-    21300004: WalkUpSpriteTorso_2
-    21300006: WalkUpSpriteTorso_3
+    21300000: WalkingSpriteSheet_0
+    21300002: WalkingSpriteSheet_1
+    21300004: WalkingSpriteSheet_2
+    21300006: WalkingSpriteSheet_3
+    21300008: WalkingSpriteSheet_4
+    21300010: WalkingSpriteSheet_5
+    21300012: WalkingSpriteSheet_6
+    21300014: WalkingSpriteSheet_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,7 +51,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: WalkUpSpriteTorso_0
+    - name: WalkingSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -57,7 +61,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: WalkUpSpriteTorso_1
+    - name: WalkingSpriteSheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -67,7 +71,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: WalkUpSpriteTorso_2
+    - name: WalkingSpriteSheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -77,10 +81,50 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: WalkUpSpriteTorso_3
+    - name: WalkingSpriteSheet_3
       rect:
         serializedVersion: 2
         x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WalkingSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WalkingSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WalkingSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WalkingSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
         y: 0
         width: 64
         height: 64

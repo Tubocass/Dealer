@@ -12,8 +12,8 @@ public class playerAnimation: MonoBehaviour {
 
 	void Update() 
 	{
-		float lastInputX = Input.GetAxis ("Horizontal");
-		float lastInputY = Input.GetAxis ("Vertical");
+		float lastInputX = Input.GetAxisRaw ("Horizontal");
+		float lastInputY = Input.GetAxisRaw ("Vertical");
 
 		if (lastInputX != 0 || lastInputY != 0) 
 		{
