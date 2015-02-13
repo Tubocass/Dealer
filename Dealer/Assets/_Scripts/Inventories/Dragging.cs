@@ -83,12 +83,16 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		Text text = receivingImage.GetComponentInChildren<Text>();
 		if(inv.inventory[index].itemName!=null)
 		{
-			inv.inventory[prevIndex] = inv.inventory[index];
-		}
-		if(draggedItem != null)
-		{
-			inv.inventory[index] = draggedItem;
-			draggedItem = null;
+			if(draggedItem.bStackable)
+			{
+				inv.AddItem(draggedItem);
+			}else inv.inventory[prevIndex] = inv.inventory[index];
+		}else {
+			if(draggedItem != null)
+			{
+				inv.inventory[index] = draggedItem;
+				draggedItem = null;
+			}
 		}
 	}
 

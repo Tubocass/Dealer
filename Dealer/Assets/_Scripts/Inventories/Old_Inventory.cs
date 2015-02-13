@@ -138,7 +138,7 @@ public class Old_Inventory : MonoBehaviour
 								Trade(inventory[i]);
 							}
 							
-							if(slots[i].itemtype==Item.ItemType.Consumable)
+							if(slots[i].itemType==Item.ItemType.Consumable)
 							{
 								print ("balls");
 							}

@@ -209,6 +209,7 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
+     <Compile Include="Assets\Legs_Anim.cs" />
      <Compile Include="Assets\Player_UI.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
      <Compile Include="Assets\_Scripts\Dialogue.cs" />

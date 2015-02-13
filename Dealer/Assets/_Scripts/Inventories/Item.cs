@@ -8,7 +8,7 @@ public class Item {
 	public string itemDesc;
 	public Sprite itemIcon;
 	public Texture2D itemTexture;
-	public ItemType itemtype;
+	public ItemType itemType;
 	public int itemOwner;
 	public int stackAmount;
 	public bool bStackable;
@@ -27,7 +27,7 @@ public class Item {
 		itemName = name;
 		itemID = id;
 		itemDesc = desc;
-		itemtype = type;
+		itemType = type;
 		bStackable = stackable;
 		stackAmount = amount;
 		itemValue = value;
@@ -37,7 +37,7 @@ public class Item {
 		itemName = item.itemName;
 		itemID = item.itemID;
 		itemDesc = item.itemDesc;
-		itemtype = item.itemtype;
+		itemType = item.itemType;
 		bStackable = item.bStackable;
 		stackAmount = item.stackAmount;
 		itemIcon = item.itemIcon;

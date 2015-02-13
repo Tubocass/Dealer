@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 [System.Serializable]
 public class Quest_Item : Item 
@@ -13,7 +13,7 @@ public class Quest_Item : Item
 		itemName = name;
 		itemID = id;
 		itemDesc = desc;
-		itemtype = type;
+		itemType = type;
 		questReward = reward;
 	}
 	public Quest_Item(Quest_Item item)
@@ -21,7 +21,7 @@ public class Quest_Item : Item
 		itemName = item.itemName;
 		itemID = item.itemID;
 		itemDesc = item.itemDesc;
-		itemtype = item.itemtype;
+		itemType = item.itemType;
 		itemIcon = item.itemIcon;
 		questReward = item.questReward;
 		questStage = item.questStage;

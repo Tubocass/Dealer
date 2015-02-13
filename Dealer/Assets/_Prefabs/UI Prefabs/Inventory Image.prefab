@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c67d41b31287b48a75251eafcc324f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragOnSurfaces: 0
+  dragOnSurfaces: 1
   inv: {fileID: 0}
   containerImage: {fileID: 11400000}
   receivingImage: {fileID: 11400000}

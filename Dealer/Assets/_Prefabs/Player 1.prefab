@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 95: {fileID: 9583886}
+  - 114: {fileID: 11402274}
   - 114: {fileID: 11423264}
   m_Layer: 8
   m_Name: Player 1
@@ -225,23 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd38d973ac1657b47b66eed222343e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 4
-  slotsY: 5
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
-  inventory: []
-  showInventory: 0
+  slots: 20
   UniqueID: 0
-  bTrading: 0
   money: 0
-  CostOfLivingBase: 0
-  Rent: 0
-  ElectricityCost: 0
-  ElectricityUsed: 0
-  Fertilizer: 0
-  NumPlants: 0
+  bTrading: 0
+  inventory: []
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,6 +244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 100000, guid: 533519f324be543eca9c3e65ac249fbe, type: 2}
   strikeDist: 5
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 2564
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,9 +287,30 @@ MonoBehaviour:
   lookAheadFactor: 1
   lookAheadReturnSpeed: .5
   lookAheadMoveThreshold: .200000003
---- !u!114 &11423264
+--- !u!114 &11402274
 MonoBehaviour:
   m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839538908098a4e44aa2c59b3ccdf409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelUI: {fileID: 0}
+  grid: {fileID: 0}
+  slots: 20
+  window:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
+--- !u!114 &11423264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -306,16 +319,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab7f2543ea4ee344bb207d4a0ef413b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 0
-  slotsY: 0
-  panel: {fileID: 0}
-  imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
+  slots: 0
+  UniqueID: 0
+  money: 0
   bTrading: 0
   inventory: []
-  images: []
-  UniqueID: 0
-  showInventory: 0
-  money: 0
 --- !u!114 &11483886
 MonoBehaviour:
   m_ObjectHideFlags: 1

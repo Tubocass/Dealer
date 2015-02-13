@@ -12,6 +12,7 @@ public class NPC : MonoBehaviour {
 	GameObject player;
 	public int health = 99;
 	Rect myUI,playerUI;
+	public GUISkin skin;
 	// Use this for initialization
 	void Start () 
 	{
@@ -23,13 +24,13 @@ public class NPC : MonoBehaviour {
 		inventory.AddItem(1);
 		Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-		myUI = ui.window;
-		playerUI = player.GetComponent<Player_UI>().window;
+		myUI = new Rect(0,0,130,200);
+		playerUI = new Rect(Screen.width - 130,0, 130, 200 );
 	}
 
 	void OnGUI()
 	{
-
+		//GUI.Box(playerUI,"",skin.GetStyle("Slot"));
 		Event e = Event.current;
 		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.Contains(e.mousePosition) && !myUI.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{

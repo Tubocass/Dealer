@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
 		int s = ContainsItemAt(item.itemID);
 		if(s>-1&& inventory[s].bStackable)
 		{
-			inventory[s].stackAmount += 1;
+			inventory[s].stackAmount += item.stackAmount;
 			ItemAddedEvent(item);
 			
 		}else
