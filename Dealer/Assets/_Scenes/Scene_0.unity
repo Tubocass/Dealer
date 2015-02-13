@@ -278,10 +278,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: 6
-  bTrading: 0
-  inventory: []
   UniqueID: 0
   money: 5
+  bTrading: 0
+  inventory: []
 --- !u!114 &20910125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,7 +493,7 @@ RectTransform:
   - {fileID: 1980195162}
   - {fileID: 2095777424}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2341,10 +2341,10 @@ RectTransform:
   - {fileID: 220687200}
   m_Father: {fileID: 1766146706}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 65, y: -25}
+  m_SizeDelta: {x: 43.3333321, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &177147357
 MonoBehaviour:
@@ -2605,10 +2605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: 6
-  bTrading: 0
-  inventory: []
   UniqueID: 0
   money: 5
+  bTrading: 0
+  inventory: []
 --- !u!114 &189787701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4417,7 +4417,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11423264, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: panel
@@ -5085,10 +5085,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5521ddfa980a5345be4f38d718e6820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 780545809}
+  panelUI: {fileID: 780545809}
   grid: {fileID: 1289905009}
-  images: []
   slots: 6
+  window:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
 --- !u!1 &425405604
 GameObject:
@@ -6249,7 +6254,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400016, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22400016, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -6402,6 +6407,10 @@ Prefab:
     - target: {fileID: 11400002, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
@@ -7654,6 +7663,7 @@ GameObject:
   - 114: {fileID: 716985162}
   - 114: {fileID: 716985163}
   - 95: {fileID: 716985164}
+  - 114: {fileID: 716985165}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -7738,7 +7748,7 @@ Transform:
   - {fileID: 2014679751}
   - {fileID: 985472273}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &716985161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7752,13 +7762,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: 20
-  bTrading: 0
-  inventory: []
   UniqueID: 0
   money: 0
-  panel: {fileID: 1391663609}
-  imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
-  images: []
+  bTrading: 0
+  inventory: []
 --- !u!114 &716985162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7817,6 +7824,27 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &716985165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716985155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839538908098a4e44aa2c59b3ccdf409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelUI: {fileID: 1980195162}
+  grid: {fileID: 1391663609}
+  slots: 20
+  window:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
 --- !u!1001 &717257721
 Prefab:
   m_ObjectHideFlags: 0
@@ -7986,10 +8014,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: 6
-  bTrading: 0
-  inventory: []
   UniqueID: 0
   money: 5
+  bTrading: 0
+  inventory: []
 --- !u!114 &734180363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8451,7 +8479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &780545809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11589,10 +11617,10 @@ RectTransform:
   - {fileID: 1202559453}
   m_Father: {fileID: 1766146706}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108.333328, y: -25}
+  m_SizeDelta: {x: 43.3333321, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1088937485
 MonoBehaviour:
@@ -14367,7 +14395,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 716985161}
+      - m_Target: {fileID: 716985165}
         m_MethodName: OnClick_Inventory
         m_Mode: 1
         m_Arguments:
@@ -14424,10 +14452,10 @@ RectTransform:
   - {fileID: 66407757}
   m_Father: {fileID: 1766146706}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 21.666666, y: -25}
+  m_SizeDelta: {x: 43.3333321, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &1526258088
 Prefab:
@@ -14897,10 +14925,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: 6
-  bTrading: 0
-  inventory: []
   UniqueID: 0
   money: 5
+  bTrading: 0
+  inventory: []
 --- !u!114 &1575250370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18120,7 +18148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1980195162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18233,7 +18261,7 @@ Transform:
   m_LocalScale: {x: 3.8599999, y: 1.00999999, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1987393653
 GameObject:
   m_ObjectHideFlags: 0

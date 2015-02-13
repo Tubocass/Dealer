@@ -6,15 +6,16 @@ using System.Collections.Generic;
 public class NPC_UI: MonoBehaviour
 {
 
-	[SerializeField] public RectTransform panel, grid;
-	Inventory inv;
+	[SerializeField] protected RectTransform panelUI, grid;
+	protected Inventory inv;
 	public Inventory Inventory{get{return inv;}set{inv = value; OnChange_Inventory();}}
-	bool showInventory;
-	public List<Image> images = new List<Image>();
-	public int slots = 6;
-	public GameObject imagePrefab;
+	protected bool showInventory, showUI, showQuests;
+	List<Image> images = new List<Image>();
+	[SerializeField] int slots = 6;
+	public Rect window;
+	[SerializeField] GameObject imagePrefab;
 	// Use this for initialization
-	void Start () 
+	protected virtual void Start () 
 	{
 		//grid = GameObject.FindGameObjectWithTag("NPC_Grid").GetComponent<RectTransform>();
 		/*
@@ -23,7 +24,7 @@ public class NPC_UI: MonoBehaviour
 			images.Add(grid.GetChild(i).GetComponent<Image>());
 			images[i].gameObject.SetActive(false);
 		}*/
-
+		window = new Rect(0,0,panelUI.rect.width, panelUI.rect.height );
 		for (int i = 0; i<slots; i++)
 		{
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
@@ -34,10 +35,7 @@ public class NPC_UI: MonoBehaviour
 			icon.SetActive(false);
 		}
 	}
-
-	void Update () {
 	
-	}
 	public void OnClick_Inventory()
 	{
 		showInventory = !showInventory;
@@ -45,6 +43,11 @@ public class NPC_UI: MonoBehaviour
 		{
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
 		}		
+	}
+	public void ShowUI(bool show)
+	{
+		showUI = show;
+		panelUI.gameObject.SetActive(show);
 	}
 	public void OnChange_Inventory()
 	{
@@ -57,9 +60,12 @@ public class NPC_UI: MonoBehaviour
 	protected virtual void OnGUI()
 	{
 		//tooltip = "";
-		if(inv !=null&&showInventory)
+		if(panelUI!=null && showUI)
 		{
-			DrawInventory();
+			if(inv!=null && showInventory)
+			{
+				DrawInventory();
+			}
 		}
 	}
 

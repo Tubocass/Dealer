@@ -6,13 +6,12 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
-	public int slots;
+	public int slots, UniqueID, money;
 	protected Item_Database itemDB;
 	Inventory tradeInventory;
 	public bool bTrading;
 	public List<Item> inventory = new List<Item>();
-	public int UniqueID;
-	protected bool showInventory;
+	protected bool showInventory, showTooltip;
 	/*public bool ShowInventory
 	{
 		get{return showInventory;}
@@ -23,17 +22,13 @@ public class Inventory : MonoBehaviour
 				child.gameObject.SetActive(!child.gameObject.activeSelf);}
 			}
 	}*/
-	protected bool showTooltip = false;
 	protected string tooltip;
-	public int money = 0;
 
 	public delegate void TradeAction();
-
 	public event TradeAction SoldWeed;
 	public TradeAction BoughtWeed;
 
 	//EventTrigger.Entry entry = new EventTrigger.Entry();
-	
 	protected virtual void Start()
 	{	
 		/* Code for ceating an event

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 public class Player_Inventory : Inventory 
-{	
+{	/*
 	[SerializeField] public RectTransform panel;
 	[SerializeField] protected GameObject imagePrefab;
 	public List<Image> images = new List<Image>();
@@ -80,4 +80,5 @@ public class Player_Inventory : Inventory
 			//inventory[i] = PlayerPrefs.GetInt("Inventory"+i,-1) >= 0 ? itemDB.items[PlayerPrefs.GetInt("Inventory"+(i-1))] : new Item();
 		}
 	}
+	*/
 }
