@@ -29,7 +29,7 @@ public class Coppa : MonoBehaviour
 		{
 			aPath = PathGroup.GetComponentsInChildren<Transform>();
 			aPath[0] = tran;
-			//AIPath.setTargetVector(aPath[currentWaypoint].position);
+			AIPath.setTargetVector(aPath[currentWaypoint].position);
 		}
 
 	}
@@ -84,7 +84,7 @@ public class Coppa : MonoBehaviour
 	{
 		if(bPlayerVisible)
 		{
-			
+			bPatrolling = false;
 		}else Patrol();
 	}
 	

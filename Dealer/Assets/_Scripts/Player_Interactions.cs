@@ -41,7 +41,7 @@ public class Player_Interactions : MonoBehaviour
 		//This is for the swinging animation and for the player to check to see if an NPC is in front of him
 		if(Input.GetKeyDown (KeyCode.F))
 		{
-			anim.SetBool("SwingAnim", true);
+			anim.SetTrigger("Swing");
 			RaycastHit2D hit1 = Physics2D.Raycast (transform.position, tran.TransformDirection(Vector2.up),strikeDist, playerMask ); 
 			//print (hit.collider.gameObject.tag);
 			// add an action for a specific tag here

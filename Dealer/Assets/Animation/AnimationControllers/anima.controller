@@ -14,8 +14,8 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: SwingAnim
-    m_Type: 4
+  - m_Name: Swing
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -45,7 +45,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: SwingAnim
+    m_ConditionEvent: Swing
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -105,7 +105,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Swing
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -157,21 +157,6 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1102 &110272334
-State:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Torso_Walking
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: 3c7b074e4044bc344b0edbfe06287606, type: 2}
-  m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: -205, y: 101, z: 0}
-  m_IKOnFeet: 0
-  m_Mirror: 0
-  m_Tag: 
 --- !u!1107 &110700000
 StateMachine:
   serializedVersion: 2
@@ -184,7 +169,6 @@ StateMachine:
   - {fileID: 110200000}
   - {fileID: 110233612}
   - {fileID: 110236708}
-  - {fileID: 110272334}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
