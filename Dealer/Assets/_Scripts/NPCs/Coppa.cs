@@ -11,7 +11,7 @@ public class Coppa : MonoBehaviour
 	GameObject player;
 	public Vector3 lastKnownLoc;
 	AStar_Simple AIPath;
-	public GameObject PathGroup;
+	public Transform PathGroup;
 	[SerializeField] Transform[] aPath;
 	//The waypoint we are currently moving towards
 	private int currentWaypoint = 0;
@@ -28,8 +28,7 @@ public class Coppa : MonoBehaviour
 		if (PathGroup!= null)
 		{
 			aPath = PathGroup.GetComponentsInChildren<Transform>();
-			aPath[0] = tran;
-			AIPath.setTargetVector(aPath[currentWaypoint].position);
+			//StartCoroutine("Patrol");
 		}
 
 	}
@@ -57,7 +56,7 @@ public class Coppa : MonoBehaviour
 			}
 		}
 	}
-	void Patrol()
+	IEnumerator Patrol()
 	{
 		if (PathGroup!= null)
 		{
@@ -66,14 +65,16 @@ public class Coppa : MonoBehaviour
 				bPatrolling = true;
 				AIPath.target = null;
 				AIPath.setTargetVector(aPath[currentWaypoint].position);
+				yield return new WaitForSeconds(2);
 			}
 			if (Vector2.Distance (tran.position,aPath[currentWaypoint].position) < nextWaypointDistance)
 			{
 				currentWaypoint = (currentWaypoint+1) % (aPath.Length);
 				AIPath.setTargetVector(aPath[currentWaypoint].position);
-
-			}
-		}
+				yield return new WaitForSeconds(2);
+				
+			}else yield return new WaitForSeconds(1);
+		}yield return null;
 	}
 	void ChasePlayer()
 	{
@@ -85,7 +86,8 @@ public class Coppa : MonoBehaviour
 		if(bPlayerVisible)
 		{
 			bPatrolling = false;
-		}else Patrol();
+			StopCoroutine("Patrol");
+		}else StartCoroutine("Patrol");;
 	}
 	
 }

@@ -53,9 +53,6 @@ public class Player_Interactions : MonoBehaviour
 				hit1.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
 				hit1.collider.gameObject.GetComponent<NPC>().health -=1;
 			}
-		}else 
-		{
-			anim.SetBool("SwingAnim", false);
 		}
 	}
 	
@@ -74,9 +71,7 @@ public class Player_Interactions : MonoBehaviour
 			{
 				Destroy(other.gameObject,0);
 				//print ("something");
-				inventory.AddItem(1);
-				if(PickedUpWeed!=null)
-					PickedUpWeed();
+				AddWeed();
 				break;
 			}
 			case "Drank":
@@ -125,15 +120,9 @@ public class Player_Interactions : MonoBehaviour
 	}
 	public void OnToke()
 	{
-		if(anim.GetCurrentAnimatorStateInfo(0).nameHash!=tokeHash)
-		{//If I'm not alredy in the bite state
-			anim.SetBool("Toking",true);
-		}
+		anim.SetTrigger("Toke");
 	}
-	public void EndToke()
-	{
-		anim.SetBool("Toking",false);
-	}
+
 	
 	IEnumerator MyCoroutine(GameObject obj) 
 	{
