@@ -22,13 +22,14 @@ public class NPC : MonoBehaviour {
 		quests = GetComponent<Quest_Journal>();
 		inventory.AddItem(1);
 
-		myUI = ui.window;
-		playerUI = player.GetComponent<Player_UI>().window;
+		myUI = new Rect(0,0,130, 200 );
+		playerUI = new Rect(Screen.width - 130,0,130,200 );
 	}
 
 	void OnGUI()
 	{
 		Event e = Event.current;
+		//GUI.Box(myUI,"MY UI ");
 		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.Contains(e.mousePosition) && !myUI.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
 			//print ("tiiiittttss");
