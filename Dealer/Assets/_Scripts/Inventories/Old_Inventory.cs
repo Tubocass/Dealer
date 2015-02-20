@@ -210,6 +210,7 @@ public class Old_Inventory : MonoBehaviour
 			{
 				if(SoldWeed!=null)
 					SoldWeed();
+
 			}
 		}else return;
 	}
@@ -318,6 +319,7 @@ public class Old_Inventory : MonoBehaviour
 			result = inventory[i].itemID == id;
 			if(result)
 			{
+				return result;
 				break;
 			}
 			
@@ -332,6 +334,7 @@ public class Old_Inventory : MonoBehaviour
 			result = inventory[i].itemName == name;
 			if(result)
 			{
+				return result;
 				break;
 			}
 			
