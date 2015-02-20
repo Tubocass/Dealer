@@ -29,7 +29,7 @@ public class NPC : MonoBehaviour {
 		Event e = Event.current;
 		//GUI.Box(ui.window,"MY UI ");
 		//GUI.Box(playerUI.window,"P UI ");
-		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.window.Contains(e.mousePosition) && !ui.window.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
+		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.Window.Contains(e.mousePosition) && !ui.Window.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
 			//print ("tiiiittttss");
 			bClicked = false;
