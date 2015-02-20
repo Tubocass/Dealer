@@ -276,7 +276,7 @@ MonoBehaviour:
   strikeDist: 5
   playerMask:
     serializedVersion: 2
-    m_Bits: 2564
+    m_Bits: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e5b7c0e21a30c4898f9d1ee511f3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: 0
+  slots: 8
   UniqueID: 1
   money: 0
   bTrading: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 839538908098a4e44aa2c59b3ccdf409, type: 3}
   m_Name: 
@@ -327,8 +327,8 @@ MonoBehaviour:
   journalWindow: {fileID: 0}
   journalList: {fileID: 0}
   questText: {fileID: 0}
-  itemSlots: 6
-  questSlots: 4
+  itemAmount: 0
+  questAmount: 0
   window:
     serializedVersion: 2
     x: 0
@@ -336,7 +336,8 @@ MonoBehaviour:
     width: 0
     height: 0
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
-  buttonPrefab: {fileID: 0}
+  buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
+  events: {fileID: 0}
 --- !u!114 &11455292
 MonoBehaviour:
   m_ObjectHideFlags: 1

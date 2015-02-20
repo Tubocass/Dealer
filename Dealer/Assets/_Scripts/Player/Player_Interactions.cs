@@ -8,15 +8,11 @@ public class Player_Interactions : MonoBehaviour
 	Quest_Journal journal;
 	Transform tran;
 	public delegate void TradeAction();
-	public static event TradeAction PickedUpWeed;
+	public event TradeAction PickedUpWeed;
 	public GameObject bullet;
 	Animator anim;
 	public float strikeDist = 5;
 	public LayerMask playerMask;
-	int idleHash = Animator.StringToHash("Base Layer.Idle");
-	int tokeHash = Animator.StringToHash("Base Layer.Toking");
-	
-	//public static event TradeAction SoldWeed;
 	
 	void Start()
 	{

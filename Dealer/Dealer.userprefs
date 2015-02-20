@@ -1,17 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Inventories\NPC_UI.cs">
-    <Files>
-      <File FileName="Assets\_Scripts\Inventories\NPC_UI.cs" Line="81" Column="68" />
-      <File FileName="Assets\_Scripts\Quests\Weed_BuyOrder.cs" Line="22" Column="4" />
-      <File FileName="Assets\_Scripts\Quests\Quest.cs" Line="17" Column="22" />
-      <File FileName="Assets\_Scripts\Quests\Weed_SellOrder.cs" Line="61" Column="1" />
-      <File FileName="Assets\_Scripts\Quests\Quest_Journal.cs" Line="33" Column="37" />
-      <File FileName="Assets\_Scripts\Inventories\Dragging.cs" Line="156" Column="2" />
-      <File FileName="Assets\_Scripts\Inventories\Player_UI.cs" Line="17" Column="3" />
-      <File FileName="Assets\_Scripts\NPCs\NPC.cs" Line="37" Column="38" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

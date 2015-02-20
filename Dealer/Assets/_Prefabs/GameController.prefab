@@ -132,8 +132,8 @@ MonoBehaviour:
   journalWindow: {fileID: 0}
   journalList: {fileID: 0}
   questText: {fileID: 0}
-  itemSlots: 6
-  questSlots: 4
+  itemAmount: 6
+  questAmount: 4
   window:
     serializedVersion: 2
     x: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
     height: 0
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
+  events: {fileID: 0}
 --- !u!114 &11472502
 MonoBehaviour:
   m_ObjectHideFlags: 1

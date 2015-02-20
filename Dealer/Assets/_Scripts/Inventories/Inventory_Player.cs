@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-public class Player_Inventory : Inventory 
+public class Inventory_Player : Inventory 
 {	/*
 	[SerializeField] public RectTransform panel;
 	[SerializeField] protected GameObject imagePrefab;
