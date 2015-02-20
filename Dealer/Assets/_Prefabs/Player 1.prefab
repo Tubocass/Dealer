@@ -15,9 +15,8 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
-  - 95: {fileID: 9583886}
   - 114: {fileID: 11402274}
-  - 114: {fileID: 11423264}
+  - 95: {fileID: 9555292}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -55,14 +54,15 @@ GameObject:
   - 4: {fileID: 483886}
   - 95: {fileID: 9583888}
   - 212: {fileID: 21283886}
-  - 114: {fileID: 11483886}
+  - 114: {fileID: 11455292}
+  - 50: {fileID: 5055292}
   m_Layer: 8
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -97,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 183886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 1
@@ -148,6 +148,21 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!50 &5055292
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183886}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6100000
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -173,6 +188,21 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
+--- !u!95 &9555292
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc7bb7790cae29a43a4aa61cde3c030c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9583886
 Animator:
   serializedVersion: 3
@@ -258,17 +288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e5b7c0e21a30c4898f9d1ee511f3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 1
-  slotsY: 8
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
-  inventory: []
-  showInventory: 0
+  slots: 0
   UniqueID: 1
+  money: 0
   bTrading: 0
-  money: 10
+  inventory: []
   scrollPosition: {x: 0, y: 0}
   quests: []
 --- !u!114 &11400010
@@ -293,14 +317,18 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 839538908098a4e44aa2c59b3ccdf409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   panelUI: {fileID: 0}
-  grid: {fileID: 0}
-  slots: 20
+  inventoryGrid: {fileID: 0}
+  journalWindow: {fileID: 0}
+  journalList: {fileID: 0}
+  questText: {fileID: 0}
+  itemSlots: 6
+  questSlots: 4
   window:
     serializedVersion: 2
     x: 0
@@ -308,23 +336,8 @@ MonoBehaviour:
     width: 0
     height: 0
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
---- !u!114 &11423264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ab7f2543ea4ee344bb207d4a0ef413b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots: 0
-  UniqueID: 0
-  money: 0
-  bTrading: 0
-  inventory: []
---- !u!114 &11483886
+  buttonPrefab: {fileID: 0}
+--- !u!114 &11455292
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -332,7 +345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 183886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b5c71278d32314a806587e68050afb, type: 3}
+  m_Script: {fileID: 11500000, guid: 588bff96084cf4c4b8012ee7ff766c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!124 &12400000
@@ -384,7 +397,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ad131a65df5d74cd986dc8b739729b1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f599a108b90164f4b97fbe7fb9cffeef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

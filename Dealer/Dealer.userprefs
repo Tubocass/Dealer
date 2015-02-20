@@ -1,16 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\NPCs\NPC.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\GreatWar\Great War\Assets\_Scripts\Enemy.cs">
     <Files>
-      <File FileName="Assets\_Scripts\NPCs\NPC.cs" Line="32" Column="37" />
-      <File FileName="Assets\_Scripts\Player_Interactions.cs" Line="44" Column="27" />
-      <File FileName="Assets\_Scripts\Quests\Quest_Journal.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Inventories\NPC_UI.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\NPCs\Coppa.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Inventories\Inventory.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Legs_Anim.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\playerAnimation.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\playerMovementRotation.cs" Line="1" Column="1" />
+      <File FileName="..\..\GreatWar\Great War\Assets\_Scripts\Soldier.cs" Line="30" Column="2" />
+      <File FileName="..\..\GreatWar\Great War\Assets\_Scripts\Controls.cs" Line="1" Column="1" />
+      <File FileName="..\..\GreatWar\Great War\Assets\_Scripts\boom.cs" Line="19" Column="31" />
+      <File FileName="..\..\GreatWar\Great War\Assets\Trench_Takeover.cs" Line="22" Column="1" />
+      <File FileName="..\..\GreatWar\Great War\Assets\_Scripts\Enemy.cs" Line="51" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

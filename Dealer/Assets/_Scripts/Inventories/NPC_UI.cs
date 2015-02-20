@@ -5,15 +5,20 @@ using System.Collections.Generic;
 
 public class NPC_UI: MonoBehaviour
 {
-
-	[SerializeField] protected RectTransform panelUI, grid;
+	[SerializeField] Canvas can;
+	[SerializeField] protected RectTransform panelUI, inventoryGrid, journalWindow,journalList, questText;
+	//[SerializeField] Text questText;
 	protected Inventory inv;
 	public Inventory Inventory{get{return inv;}set{inv = value; OnChange_Inventory();}}
+	protected Quest_Journal journ;
+	public Quest_Journal Journal{get{return journ;}set{journ = value; OnChange_Journal();}}
 	protected bool showInventory, showUI, showQuests;
-	List<Image> images = new List<Image>();
-	[SerializeField] int slots = 6;
+	List<Image> invSlots = new List<Image>();
+	List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
+	[SerializeField] protected int itemAmount = 6, questAmount = 4;
 	public Rect window;
-	[SerializeField] GameObject imagePrefab;
+	public Vector3 position;
+	[SerializeField] GameObject imagePrefab, buttonPrefab;
 	// Use this for initialization
 	protected virtual void Start () 
 	{
@@ -24,42 +29,68 @@ public class NPC_UI: MonoBehaviour
 			images.Add(grid.GetChild(i).GetComponent<Image>());
 			images[i].gameObject.SetActive(false);
 		}*/
-		window = new Rect(0,0,panelUI.rect.width, panelUI.rect.height );
-		for (int i = 0; i<slots; i++)
+
+		window = GetScreenRect((RectTransform)panelUI.transform);
+		//position=panelUI.anchoredPosition;
+		//window.position = position;
+		//window.size*= can.scaleFactor;
+		for (int i = 0; i<itemAmount; i++)
 		{
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
-			icon.transform.SetParent(grid);
+			icon.transform.SetParent(inventoryGrid);
 			
-			images.Add(icon.GetComponent<Image>());
-			images[i].GetComponent<Dragging>().inv = inv;
+			invSlots.Add(icon.GetComponent<Image>());
+			invSlots[i].GetComponent<Dragging>().inv = inv;
+			icon.SetActive(false);
+		}
+		for (int j = 0; j<questAmount; j++)
+		{
+			GameObject icon = (GameObject)Instantiate(buttonPrefab);
+			icon.transform.SetParent(journalList);
+
+			journSlots.Add(icon.GetComponent<UnityEngine.UI.Button>());
+			journSlots[j].onClick.AddListener(() => { DrawQuestText(); });
 			icon.SetActive(false);
 		}
 	}
 	
 	public void OnClick_Inventory()
 	{
+		if(showQuests)
+		{
+			OnClick_Quests();
+		}
 		showInventory = !showInventory;
-		foreach (Image child in images) 
+		foreach (Image child in invSlots) 
 		{
 			child.gameObject.SetActive(!child.gameObject.activeSelf);
 		}		
 	}
-
-	public void OnClick_Quests()
-	{
-		showQuests = !showQuests;
-		foreach (Image child in images) 
-		{
-			child.gameObject.SetActive(!child.gameObject.activeSelf);
-		}		
-	}
-
 	public void OnChange_Inventory()
 	{
-		foreach (Image child in images) 
+		foreach (Image child in invSlots) 
 		{
 			child.GetComponent<Dragging>().inv = inv;
 		}		
+	}
+	public void OnClick_Quests()
+	{
+		if(showInventory)
+		{
+			OnClick_Inventory();
+		}
+		showQuests = !showQuests;
+		questText.gameObject.SetActive(!questText.gameObject.activeSelf);
+		journalList.gameObject.SetActive(!journalList.gameObject.activeSelf);
+		foreach (UnityEngine.UI.Button child in journSlots) 
+		{
+			child.gameObject.SetActive(!child.gameObject.activeSelf);
+		}		
+	}
+
+	public void OnChange_Journal()
+	{
+				
 	}
 
 	public void ShowUI(bool show)
@@ -68,19 +99,47 @@ public class NPC_UI: MonoBehaviour
 		panelUI.gameObject.SetActive(show);
 	}
 
+	public Rect GetScreenRect(RectTransform rectTransform)
+	{
+		Vector3[] corners = new Vector3[4];
+		rectTransform.GetWorldCorners(corners);
+		float xMin = float.PositiveInfinity;
+		float xMax = float.NegativeInfinity;
+		float yMin = float.PositiveInfinity;
+		float yMax = float.NegativeInfinity;
+		for (int i = 0; i < 4; i++)
+		{
+			// For Canvas mode Screen Space - Overlay there is no Camera; best solution I've found
+			// is to use RectTransformUtility.WorldToScreenPoint) with a null camera.
+			Vector3 screenCoord = RectTransformUtility.WorldToScreenPoint(null, corners[i]);
+			if (screenCoord.x < xMin)
+				xMin = screenCoord.x;
+			if (screenCoord.x > xMax)
+				xMax = screenCoord.x;
+			if (screenCoord.y < yMin)
+				yMin = screenCoord.y;
+			if (screenCoord.y > yMax)
+				yMax = screenCoord.y;
+		}
+		Rect result = new Rect(xMin, -yMin, xMax - xMin, yMax - yMin);
+		return result;
+	}
 
 	protected virtual void OnGUI()
 	{
 		//tooltip = "";
+		window = GetScreenRect((RectTransform)panelUI.transform);
+		window.y = 0;
+		//window.size*= can.scaleFactor;
+		
 		if(panelUI!=null && showUI)
 		{
 			if(inv!=null && showInventory)
 			{
 				DrawInventory();
-			}
-			if(inv!=null && showQuests)
+			}else if(journ!=null && showQuests) 
 			{
-				DrawInventory();
+				DrawQuests();
 			}
 		}
 	}
@@ -89,12 +148,12 @@ public class NPC_UI: MonoBehaviour
 	{
 		for(int i =0; i<inv.inventory.Count;i++)
 		{
-			Text text = images[i].GetComponentInChildren<Text>();
+			Text text = invSlots[i].GetComponentInChildren<Text>();
 			if(text!=null)
 			{
 				if(inv.inventory[i].itemIcon!=null)
 				{
-					images[i].sprite = (Sprite)inv.inventory[i].itemIcon;
+					invSlots[i].sprite = (Sprite)inv.inventory[i].itemIcon;
 					
 					if(inv.inventory[i].bStackable)
 					{
@@ -102,12 +161,28 @@ public class NPC_UI: MonoBehaviour
 						
 					}else text.text = "";
 					
-				}else{ images[i].sprite = null;text.text = "";}
+				}else{ invSlots[i].sprite = null;text.text = "";}
 			}
 		}
 	}
 	void DrawQuests()
 	{
-
+		for(int j = 0; j< journ.quests.Count;j++)
+		{
+			Text slotText = journSlots[j].GetComponentInChildren<Text>();
+			if(slotText!=null)
+			{
+				if(journ.quests[j].itemName!=null)
+				{
+					slotText.text = journ.quests[j].itemName;
+				}
+			}
+		}
+	}
+	public void DrawQuestText()
+	{
+		Text qtext = questText.GetComponentInChildren<Text>();
+		qtext.text = "Some Text";
+		Debug.Log("Some Text");
 	}
 }

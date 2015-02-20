@@ -5,13 +5,13 @@ using System.Collections;
 public class NPC : MonoBehaviour {
 
 	public Inventory inventory;
-	public Inventory quests;
-	NPC_UI ui;
+	public Quest_Journal quests;
+	NPC_UI ui, playerUI;
 	bool bClicked;
 	SpriteRenderer sprite;
 	GameObject player;
 	public int health = 99;
-	Rect myUI,playerUI;
+
 	
 	void Start () 
 	{
@@ -21,16 +21,15 @@ public class NPC : MonoBehaviour {
 		inventory = GetComponent<Inventory_NPC>();
 		quests = GetComponent<Quest_Journal>();
 		inventory.AddItem(1);
-
-		myUI = new Rect(0,0,130, 200 );
-		playerUI = new Rect(Screen.width - 130,0,130,200 );
+		playerUI = player.GetComponent<Player_UI>();
 	}
 
 	void OnGUI()
 	{
 		Event e = Event.current;
-		//GUI.Box(myUI,"MY UI ");
-		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.Contains(e.mousePosition) && !myUI.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
+		GUI.Box(ui.window,"MY UI ");
+		GUI.Box(playerUI.window,"P UI ");
+		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.window.Contains(e.mousePosition) && !ui.window.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
 		{
 			//print ("tiiiittttss");
 			bClicked = false;
@@ -65,6 +64,7 @@ public class NPC : MonoBehaviour {
 		print ("bboobbss");
 		bClicked = true;
 		ui.ShowUI(true);
+		ui.Journal = quests;
 		ui.Inventory = inventory;
 	}
 

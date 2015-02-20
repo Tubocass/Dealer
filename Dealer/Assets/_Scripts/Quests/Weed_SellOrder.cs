@@ -15,8 +15,8 @@ public class Weed_SellOrder : Quest
 		if(inv!=null)
 		{
 			//inv.SoldWeed+=WeedSold;
-			player.GetComponent<Old_Inventory>().BoughtWeed+=WeedGathered;
-			player.GetComponent<Old_Inventory>().SoldWeed+=WeedSold;
+			player.GetComponent<Inventory>().BoughtWeed+=WeedGathered;
+			player.GetComponent<Inventory>().SoldWeed+=WeedSold;
 			
 		}
 		if (journal)
