@@ -24,7 +24,7 @@ public class playerMovementRotation : MonoBehaviour
 		tran.position = Vector3.MoveTowards(tran.position,targetDir,0.25f);
 
 		var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		//Debug.DrawRay(tran.position, -(tran.position - mousePosition), Color.red);
+		Debug.DrawRay(tran.position, movement, Color.blue);
 		Quaternion rot = Quaternion.LookRotation (tran.position - mousePosition, Vector3.forward);
 		tran.rotation = rot;
 		tran.eulerAngles = new Vector3 (0, 0, tran.eulerAngles.z);

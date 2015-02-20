@@ -5,6 +5,7 @@ public class Legs_Anim : MonoBehaviour {
 
 	private Animator anim;
 	Transform tran;
+	float degree;
 
 	void Start () 
 	{
@@ -20,13 +21,10 @@ public class Legs_Anim : MonoBehaviour {
 		if (lastInputX != 0 || lastInputY != 0) 
 		{
 			anim.SetBool ("Walking", true);
-			Vector3 moveDirection = new Vector3(lastInputX,lastInputY,0);
-			Debug.DrawRay(tran.position, moveDirection, Color.red);
-			Quaternion rot = Quaternion.LookRotation (moveDirection, Vector3.forward);
-			//tran.rotation.SetLookRotation(moveDirection);
-			tran.rotation = rot;
-			tran.eulerAngles = new Vector3 (0, 0, tran.eulerAngles.z);
-			rigidbody2D.angularVelocity = 0;
+			//Vector3 moveDirection = new Vector3(lastInputX,lastInputY,0);
+			//Debug.DrawRay(tran.position, moveDirection, Color.red);
+			degree = Mathf.Atan((-lastInputX/lastInputY))*Mathf.Rad2Deg ;
+			tran.eulerAngles = new Vector3 (0, 0, degree);
 		} else 
 		{
 			anim.SetBool ("Walking", false);

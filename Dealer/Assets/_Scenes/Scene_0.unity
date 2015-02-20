@@ -7712,6 +7712,7 @@ GameObject:
   - 114: {fileID: 716985163}
   - 114: {fileID: 716985165}
   - 95: {fileID: 716985164}
+  - 114: {fileID: 716985166}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -7894,6 +7895,17 @@ MonoBehaviour:
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 1204721871}
+--- !u!114 &716985166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716985155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588bff96084cf4c4b8012ee7ff766c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &717257721
 Prefab:
   m_ObjectHideFlags: 0
@@ -13778,6 +13790,10 @@ Prefab:
       propertyPath: events
       value: 
       objectReference: {fileID: 1204721871}
+    - target: {fileID: 21200000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
   m_RootGameObject: {fileID: 716985155}
