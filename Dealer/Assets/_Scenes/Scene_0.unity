@@ -2141,6 +2141,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22401902, guid: 1370589ecce9c444f9a33a8a0c435715, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.62260437e-06
+      objectReference: {fileID: 0}
+    - target: {fileID: 22401902, guid: 1370589ecce9c444f9a33a8a0c435715, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1370589ecce9c444f9a33a8a0c435715, type: 2}
   m_RootGameObject: {fileID: 1368131599}
@@ -5269,7 +5277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5521ddfa980a5345be4f38d718e6820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  can: {fileID: 24945904}
   panelUI: {fileID: 780545809}
   inventoryGrid: {fileID: 1289905009}
   journalWindow: {fileID: 347886737}
@@ -5283,9 +5290,9 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  position: {x: 0, y: 0, z: 0}
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
+  events: {fileID: 1204721871}
 --- !u!1 &425405604
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,6 +5933,10 @@ Prefab:
       propertyPath: can
       value: 
       objectReference: {fileID: 24945904}
+    - target: {fileID: 11472500, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: events
+      value: 
+      objectReference: {fileID: 1204721871}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
   m_RootGameObject: {fileID: 424365856}
@@ -7593,8 +7604,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1222324466}
   m_HandleRect: {fileID: 1222324465}
   m_Direction: 0
-  m_Value: .5
-  m_Size: .999999881
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7867,7 +7878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839538908098a4e44aa2c59b3ccdf409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  can: {fileID: 24945904}
   panelUI: {fileID: 1980195162}
   inventoryGrid: {fileID: 1391663609}
   journalWindow: {fileID: 2082130718}
@@ -7881,9 +7891,9 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  position: {x: 0, y: 0, z: 0}
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
+  events: {fileID: 1204721871}
 --- !u!1001 &717257721
 Prefab:
   m_ObjectHideFlags: 0
@@ -10907,8 +10917,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: .439999998, y: 0}
-  m_SizeDelta: {x: 10, y: 150}
+  m_AnchoredPosition: {x: -2.62260437e-06, y: 0}
+  m_SizeDelta: {x: 80, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1040586433
 MonoBehaviour:
@@ -13764,6 +13774,10 @@ Prefab:
       propertyPath: can
       value: 
       objectReference: {fileID: 24945904}
+    - target: {fileID: 11402274, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
+      propertyPath: events
+      value: 
+      objectReference: {fileID: 1204721871}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
   m_RootGameObject: {fileID: 716985155}

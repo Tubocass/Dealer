@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class NPC_UI: MonoBehaviour
 {
-	[SerializeField] Canvas can;
 	[SerializeField] protected RectTransform panelUI, inventoryGrid, journalWindow,journalList, questText;
 	//[SerializeField] Text questText;
 	protected Inventory inv;
@@ -17,8 +17,9 @@ public class NPC_UI: MonoBehaviour
 	List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
 	[SerializeField] protected int itemAmount = 6, questAmount = 4;
 	public Rect window;
-	public Vector3 position;
 	[SerializeField] GameObject imagePrefab, buttonPrefab;
+	[SerializeField] EventSystem events;
+
 	// Use this for initialization
 	protected virtual void Start () 
 	{
@@ -31,9 +32,6 @@ public class NPC_UI: MonoBehaviour
 		}*/
 
 		window = GetScreenRect((RectTransform)panelUI.transform);
-		//position=panelUI.anchoredPosition;
-		//window.position = position;
-		//window.size*= can.scaleFactor;
 		for (int i = 0; i<itemAmount; i++)
 		{
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
@@ -182,7 +180,10 @@ public class NPC_UI: MonoBehaviour
 	public void DrawQuestText()
 	{
 		Text qtext = questText.GetComponentInChildren<Text>();
-		qtext.text = "Some Text";
+
 		Debug.Log("Some Text");
+		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
+		Debug.Log(s);
+		qtext.text = journ.quests[s].GetText();;
 	}
 }
