@@ -11,14 +11,15 @@ public class LevelingSystem : MonoBehaviour {
 	int level = 1;
 	int totalWeed = 0;
 	int totalBitchesSlapped = 0;
-	Animator anim;
+
 
 
 	void Start () {
 		GameObject player = GameObject.FindWithTag ("Player");
 		player.GetComponent<Old_Inventory>().SoldWeed+=LevelWeed;
-		anim = GetComponent<Animator>();
-		}
+		player.GetComponent<Player_Interactions>().PickedUpWeed+=WeedGather;
+
+					}
 
 	void OnGUI()
 	{
@@ -27,7 +28,7 @@ public class LevelingSystem : MonoBehaviour {
 
 	void Update () {
 		xpText = "Level: " + level + "    XP: " + curXp + " / " + maxXp;
-		weedStat = "\n\n\n\n" + "Stats" + "\n" + "Weed Toked:   "   + totalWeed;
+		weedStat = "\n\n\n\n" + "Stats" + "\n" + "Grams Gathered:   "   + totalWeed;
 		bitchesStat = "\n" + "Bitches Slapped:   " + totalBitchesSlapped;
 
 		if(curXp == maxXp)
@@ -36,13 +37,11 @@ public class LevelingSystem : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown (KeyCode.K))
-		   {
+	   {
 			print ("go");
 			LevelBitches();
 		}
-
-
-			}
+						}
 
 	void LevelBitches() 
 	{
@@ -51,12 +50,15 @@ public class LevelingSystem : MonoBehaviour {
 	}
 
 
+	void WeedGather()
+	{
+		totalWeed++;
+	}
 	void LevelWeed() 
-		{
+	{
 			print ("DING!");
 			level++;
-			totalWeed++;
-		}
+	}
 
 	void levelUpSystem () 
 	{

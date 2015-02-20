@@ -1530,7 +1530,6 @@ GameObject:
   - 4: {fileID: 716985160}
   - 212: {fileID: 716985159}
   - 61: {fileID: 716985157}
-  - 114: {fileID: 716985161}
   - 114: {fileID: 716985162}
   - 114: {fileID: 716985163}
   - 50: {fileID: 716985158}
@@ -1619,35 +1618,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!114 &716985161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 4d08054856ee6dd46b6c009ef6938272,
-    type: 2}
-  m_PrefabInternal: {fileID: 947758543}
-  m_GameObject: {fileID: 716985155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd38d973ac1657b47b66eed222343e4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotsX: 4
-  slotsY: 5
-  beginX: 0
-  beginY: 0
-  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
-  slots: []
-  inventory: []
-  showInventory: 0
-  UniqueID: 0
-  bTrading: 0
-  money: 0
-  CostOfLivingBase: 0
-  Rent: 0
-  ElectricityCost: 0
-  ElectricityUsed: 0
-  Fertilizer: 0
-  NumPlants: 0
 --- !u!114 &716985162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,6 +1642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c924f41352e284c859799fe1d68e7d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: f0cc8f79c3e214b4bb0fa33013dfb53f, type: 3}
+  fadeSpeed: .800000012
 --- !u!95 &716985164
 Animator:
   serializedVersion: 3
@@ -1698,11 +1670,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed00a384b4fba64e97d6de6aef8d38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotsX: 0
-  slotsY: 0
+  slotsX: 4
+  slotsY: 5
   beginX: 0
   beginY: 0
-  skin: {fileID: 0}
+  skin: {fileID: 11400000, guid: a9f8cdf3589ecea45a889255dd14084b, type: 2}
   slots: []
   inventory: []
   showInventory: 0
@@ -1721,6 +1693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpText: 
+  weedStat: 
+  bitchesStat: 
 --- !u!1 &723415507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,6 +2589,7 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 5000000, guid: 4d08054856ee6dd46b6c009ef6938272, type: 2}
     - {fileID: 11400000, guid: 4d08054856ee6dd46b6c009ef6938272, type: 2}
+    - {fileID: 11400002, guid: 4d08054856ee6dd46b6c009ef6938272, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4d08054856ee6dd46b6c009ef6938272, type: 2}
   m_RootGameObject: {fileID: 716985155}
   m_IsPrefabParent: 0

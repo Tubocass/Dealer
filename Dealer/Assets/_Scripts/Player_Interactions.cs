@@ -9,7 +9,7 @@ public class Player_Interactions : MonoBehaviour
 	Transform tran;
 	LayerMask characterMask;
 	public delegate void TradeAction();
-	public static event TradeAction PickedUpWeed;
+	public event TradeAction PickedUpWeed;
 	public GameObject bullet;
 	Animator anim;
 	int idleHash = Animator.StringToHash("Base Layer.Idle");
@@ -23,7 +23,7 @@ public class Player_Interactions : MonoBehaviour
 		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
 		tran = transform;
-		inventory.AddItem(1);
+		//inventory.AddItem(1);
 		inventory.AddItem(2);
 		inventory.AddItem(2);
 		characterMask = 1<<9;
@@ -83,7 +83,15 @@ public class Player_Interactions : MonoBehaviour
 						anim.SetBool("SwingAnim", false);
 						}
 	
-	
+		if (Input.GetKeyDown(KeyCode.N) && GetComponent<Old_Inventory>().ContainsItem(1)) 
+		{
+
+			GetComponent<SceneChange>().BeginFade (1);
+			print ("1");
+
+
+		}
+
 
 }
 
