@@ -56,11 +56,8 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 			else
 				m_DraggingPlane = canvas.transform as RectTransform;
 			
-			SetDraggedPosition(eventData);
-			
+			SetDraggedPosition(eventData);	
 		}
-		
-		
 	}
 	
 	public void OnDrag(PointerEventData data)
@@ -80,27 +77,32 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		containerImage.color = normalColor;
 		
 		int index  = receivingImage.transform.GetSiblingIndex();
-		Text text = receivingImage.GetComponentInChildren<Text>();
-		if(inv.inventory[index].itemName!=null)
+		if(draggedItem != null)
 		{
-			if(inv.inventory[index].bStackable&&draggedItem.bStackable)
+			if(draggedItem.itemOwner == inv.UniqueID)
 			{
-				if(inv.inventory[index].itemID == draggedItem.itemID)
+				if(inv.inventory[index].itemName!=null)
 				{
-					inv.AddItem(draggedItem);
-				}else{ 
-					inv.inventory[prevIndex] = inv.inventory[index];
-					inv.inventory[index] = draggedItem;
+					if((inv.inventory[index].itemID == draggedItem.itemID) && draggedItem.bStackable)
+					{
+							inv.AddItem(draggedItem);
+					}else{ 
+						inv.inventory[prevIndex] = inv.inventory[index];
+						inv.inventory[index] = draggedItem;
+					}
+				}else {
+						inv.inventory[index] = draggedItem;
 				}
-			}else{ 
-				inv.inventory[prevIndex] = inv.inventory[index];
-				inv.inventory[index] = draggedItem;
-			}
-		}else {
-			if(draggedItem != null)
-			{
-				inv.inventory[index] = draggedItem;
 				draggedItem = null;
+
+			}else{
+				if(inv.money>= draggedItem.itemValue*draggedItem.stackAmount)
+				{
+					inv.AddMoney(-draggedItem.itemValue*draggedItem.stackAmount);
+					inv.inventory[index] = draggedItem;
+					inv.inventory[index].itemOwner = inv.UniqueID;
+
+				}
 			}
 		}
 	}

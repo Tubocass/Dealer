@@ -28,7 +28,7 @@ public class Coppa : MonoBehaviour
 		if (PathGroup!= null)
 		{
 			aPath = PathGroup.GetComponentsInChildren<Transform>();
-			//StartCoroutine("Patrol");
+			StartCoroutine("Patrol");
 		}
 
 	}
@@ -60,11 +60,12 @@ public class Coppa : MonoBehaviour
 	{
 		if (PathGroup!= null)
 		{
-			if(!bPatrolling)
+			if(bPatrolling)
 			{
-				bPatrolling = true;
 				AIPath.target = null;
 				AIPath.setTargetVector(aPath[currentWaypoint].position);
+				yield return new WaitForSeconds(2);
+			}else{ 
 				yield return new WaitForSeconds(2);
 			}
 			if (Vector2.Distance (tran.position,aPath[currentWaypoint].position) < nextWaypointDistance)
@@ -86,8 +87,7 @@ public class Coppa : MonoBehaviour
 		if(bPlayerVisible)
 		{
 			bPatrolling = false;
-			StopCoroutine("Patrol");
-		}else StartCoroutine("Patrol");;
+		}else bPatrolling = true;
 	}
 	
 }

@@ -153,7 +153,7 @@ public class Inventory : MonoBehaviour
 		}
 	}
 
-	void ItemAddedEvent(Item item)
+	public void ItemAddedEvent(Item item)
 	{
 		switch(item.itemName)
 		{
@@ -162,6 +162,24 @@ public class Inventory : MonoBehaviour
 			if(BoughtWeed!=null)
 			{
 				BoughtWeed();
+			}
+			break;
+		}
+		case "Drank":
+		{
+			break;
+		}
+		}
+	}
+	public void ItemSoldEvent(Item item)
+	{
+		switch(item.itemName)
+		{
+		case "Weed":
+		{
+			if(SoldWeed!=null)
+			{
+				SoldWeed();
 			}
 			break;
 		}
