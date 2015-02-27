@@ -13,12 +13,15 @@ public class Player_Interactions : MonoBehaviour
 	Animator anim;
 	public float strikeDist = 5;
 	public LayerMask playerMask;
+	GameObject mainCam;
 	
 	void Start()
 	{
 		inventory = GetComponent<Inventory>();
 		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
+		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
+		mainCam.GetComponent<Camera2DFollow>().target = this.transform;
 		tran = transform;
 		inventory.AddItem(1);
 		inventory.AddItem(2);

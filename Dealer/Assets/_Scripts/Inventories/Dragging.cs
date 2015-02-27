@@ -11,6 +11,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public Inventory inv;
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
+	public Inventory tradeInventory;
 	
 	public Image containerImage;
 	public Image receivingImage;
@@ -69,7 +70,10 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public void OnEndDrag(PointerEventData eventData)
 	{
 		if (m_DraggingIcon != null)
+		{
+
 			Destroy(m_DraggingIcon);
+		}
 	}
 
 	public void OnDrop(PointerEventData data)
@@ -96,9 +100,14 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 				draggedItem = null;
 
 			}else{
-				if(inv.money>= draggedItem.itemValue*draggedItem.stackAmount)
+				int value = draggedItem.itemValue*draggedItem.stackAmount;
+				if(inv.money>= value)
 				{
-					inv.AddMoney(-draggedItem.itemValue*draggedItem.stackAmount);
+					tradeInventory = Inventory.Find_Inventory(draggedItem.itemOwner);
+					inv.AddMoney(-value);
+					tradeInventory.AddMoney(value);
+					tradeInventory.ItemSoldEvent(draggedItem);
+					inv.ItemAddedEvent(draggedItem);
 					inv.inventory[index] = draggedItem;
 					inv.inventory[index].itemOwner = inv.UniqueID;
 

@@ -1875,6 +1875,14 @@ Prefab:
       propertyPath: inventoryPanel
       value: 
       objectReference: {fileID: 1318718673}
+    - target: {fileID: 11400002, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
+      propertyPath: money
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
   m_RootGameObject: {fileID: 716985155}
@@ -2868,7 +2876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slots: 6
   UniqueID: 0
-  money: 0
+  money: 5
   bTrading: 0
   inventory: []
 --- !u!114 &189787701
@@ -7750,7 +7758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slots: 20
   UniqueID: 0
-  money: 0
+  money: 5
   bTrading: 0
   inventory: []
 --- !u!114 &716985162
@@ -19286,7 +19294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8238cc53530b64fbb7828c3d3bb591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 716985160}
+  target: {fileID: 0}
   damping: .25
   lookAheadFactor: 1
   lookAheadReturnSpeed: .5
@@ -19512,6 +19520,10 @@ Prefab:
     - target: {fileID: 100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
       propertyPath: m_Name
       value: Eric
+      objectReference: {fileID: 0}
+    - target: {fileID: 11422002, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
+      propertyPath: money
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}

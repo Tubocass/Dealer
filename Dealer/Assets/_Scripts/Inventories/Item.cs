@@ -43,5 +43,6 @@ public class Item {
 		itemIcon = item.itemIcon;
 		itemTexture = item.itemTexture;
 		itemValue = item.itemValue;
+		itemOwner = item.itemOwner;
 	}
 }

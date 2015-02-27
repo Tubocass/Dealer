@@ -21,8 +21,17 @@ public class Player_UI : NPC_UI {
 	{
 		if(Input.GetButtonDown("Inventory"))
 		{
-			ShowUI(!showUI);
+			if(showUI&&showInventory)
+			ShowUI(false);
+			else ShowUI(true);
 			OnClick_Inventory();
+		}
+		if(Input.GetButtonDown("Journal"))
+		{
+			if(showUI&&showQuests)
+				ShowUI(false);
+			else ShowUI(true);
+			OnClick_Quests();
 		}
 	}
 }
