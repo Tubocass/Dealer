@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Coppa : MonoBehaviour
 {
-	public bool bPlayerVisible, bClicked, bPatrolling;
+	public bool bPlayerVisible, bClicked, bPatrolling, bMoving;
 	public float fieldOfViewAngle, length, nextWaypointDistance = 3;
 	CircleCollider2D col;
 	Transform tran;
@@ -27,7 +27,13 @@ public class Coppa : MonoBehaviour
 		AIPath = GetComponent<AStar_Simple>();
 		if (PathGroup!= null)
 		{
-			aPath = PathGroup.GetComponentsInChildren<Transform>();
+			Transform[] points = PathGroup.GetComponentsInChildren<Transform>();
+			aPath = new Transform[points.Length-1];
+			for(int i = 0;i<points.Length-1;i++)
+			{
+				aPath[i] = PathGroup.GetChild(i);
+			}
+			//aPath[0] = tran;
 			StartCoroutine("Patrol");
 		}
 
@@ -51,8 +57,8 @@ public class Coppa : MonoBehaviour
 				Debug.Log("Did you sell drugs in front of me?");
 			}else 
 			{
-
 				AIPath.setTarget(player.transform);
+				bMoving = true;
 			}
 		}
 	}
@@ -60,22 +66,29 @@ public class Coppa : MonoBehaviour
 	{
 		if (PathGroup!= null)
 		{
-			if(bPatrolling)
+			while(bPatrolling)
 			{
 				AIPath.target = null;
-				AIPath.setTargetVector(aPath[currentWaypoint].position);
-				yield return new WaitForSeconds(2);
-			}else{ 
-				yield return new WaitForSeconds(2);
-			}
-			if (Vector2.Distance (tran.position,aPath[currentWaypoint].position) < nextWaypointDistance)
-			{
-				currentWaypoint = (currentWaypoint+1) % (aPath.Length);
-				AIPath.setTargetVector(aPath[currentWaypoint].position);
-				yield return new WaitForSeconds(2);
-				
-			}else yield return new WaitForSeconds(1);
-		}yield return null;
+				Debug.Log("I'm Patrolling");
+				if(!bMoving)
+				{
+					AIPath.setTargetVector(aPath[currentWaypoint].position);
+					bMoving = true;
+					yield return new WaitForSeconds(2);
+				}else
+				{
+					if (Vector2.Distance (tran.position,aPath[currentWaypoint].position) < nextWaypointDistance)
+					{
+						currentWaypoint = (currentWaypoint+1) % (aPath.Length);
+						Debug.Log("penus");
+						yield return new WaitForSeconds(0.5f);
+						AIPath.setTargetVector(aPath[currentWaypoint].position);
+						bMoving = true;
+					}else yield return new WaitForSeconds(1);
+				}
+				yield return null;
+			}	
+		}
 	}
 	void ChasePlayer()
 	{
@@ -87,7 +100,12 @@ public class Coppa : MonoBehaviour
 		if(bPlayerVisible)
 		{
 			bPatrolling = false;
-		}else bPatrolling = true;
+			bMoving = false;
+		}else {
+			if(!bMoving)
+			StartCoroutine("Patrol");
+			bPatrolling = true;
+		}
 	}
 	
 }

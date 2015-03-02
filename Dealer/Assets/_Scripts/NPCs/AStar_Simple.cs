@@ -3,7 +3,8 @@ using System.Collections;
 //Note this line, if it is left out, the script won't know that the class 'Path' exists and it will throw compiler errors
 //This line should always be present at the top of scripts which use pathfinding
 using Pathfinding;
-public class AStar_Simple : MonoBehaviour {
+public class AStar_Simple : MonoBehaviour 
+{
 	//The point to move to
 	public Vector3 targetPosition, targetVector;
 	public Transform target;
@@ -69,9 +70,7 @@ public class AStar_Simple : MonoBehaviour {
 			return;
 			
 		}
-		//Direction to the next waypoint
-		//Vector3 dir = (path.vectorPath[currentWaypoint]-transform.position).normalized;
-		//dir *= speed * Time.fixedDeltaTime;
+		
 		transform.position = Vector2.Lerp(transform.position,path.vectorPath[currentWaypoint], speed * Time.fixedDeltaTime);
 		//Check if we are close enough to the next waypoint
 		//If we are, proceed to follow the next waypoint
