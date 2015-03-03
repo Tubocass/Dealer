@@ -83,6 +83,22 @@ public class Inventory : MonoBehaviour
 			}
 		}else return;
 	}
+	public void Trade(Inventory other, Item item)
+	{
+		if(tradeInventory.money>= item.itemValue)
+		{
+			RemoveItem(inventory[ContainsItemAt(item.itemID)]);
+			AddMoney(item.itemValue);
+			tradeInventory.AddItem(item);
+			tradeInventory.AddMoney(-item.itemValue);
+			
+			if(item.itemName == "Weed")
+			{
+				if(SoldWeed!=null)
+					SoldWeed();
+			}
+		}else return;
+	}
 	
 	public void AddMoney(int dolla)
 	{
