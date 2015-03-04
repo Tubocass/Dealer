@@ -10,6 +10,7 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 		if(pointer.button == PointerEventData.InputButton.Right)
 		{
 			Debug.Log("tig ol bitties");
+
 		}
 	}
 }

@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
 	public bool dragOnSurfaces = true;
-	static bool bOverSlot;
 	public static Item draggedItem;
-	static int prevIndex;
+	public static int prevIndex;
 	public Inventory inv;
+	public NPC_UI ui;
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
-	public Inventory tradeInventory;
+	Inventory tradeInventory;
+	static bool bOverSlot;
+	
 	
 	public Image containerImage;
 	public Image receivingImage;
@@ -30,7 +32,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		var canvas = FindInParents<Canvas>(gameObject);
 		if (canvas == null)
 			return;
-		
+		inv = ui.Inventory;
 		prevIndex = transform.GetSiblingIndex();
 		if(inv.inventory[prevIndex].itemName!=null)
 		{
@@ -74,18 +76,23 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		{
 			Destroy(m_DraggingIcon);
 		}
-		if (!bOverSlot)
-		{
-			Debug.Log("I'm outside you"+  eventData.position+eventData.pointerEnter);
-			Inventory prevInv = Inventory.Find_Inventory(draggedItem.itemOwner);
-			prevInv.inventory[prevIndex] = draggedItem;
-		}
+//		if (!bOverSlot)
+//		{
+//			var back = FindInParents<Inventory_Background>(gameObject);
+//			if(back!=null && back.bOverUI)
+//			{
+//				//Debug.Log("I'm inside you"+  eventData.position+eventData.pointerEnter);
+//				Inventory prevInv = Inventory.Find_Inventory(draggedItem.itemOwner);
+//				prevInv.inventory[prevIndex] = draggedItem;
+//				draggedItem = null;
+//			}
+//		}
 	}
 
 	public void OnDrop(PointerEventData data)
 	{
 		containerImage.color = normalColor;
-	
+		inv = ui.Inventory;
 		int index  = transform.GetSiblingIndex();
 		if(draggedItem != null)
 		{
@@ -113,9 +120,11 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 					inv.AddMoney(-value);
 					tradeInventory.AddMoney(value);
 					tradeInventory.ItemSoldEvent(draggedItem);
-					inv.ItemAddedEvent(draggedItem);
-					inv.inventory[index] = draggedItem;
-					inv.inventory[index].itemOwner = inv.UniqueID;
+					inv.AddItem(draggedItem);
+					draggedItem = null;
+					//inv.ItemAddedEvent(draggedItem);
+					//inv.inventory[index] = draggedItem;
+					//inv.inventory[index].itemOwner = inv.UniqueID;
 				}
 			}
 		}
@@ -156,7 +165,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		bOverSlot = true;
+		//bOverSlot = true;
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
 			containerImage.color = highlightColor;
@@ -166,7 +175,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		bOverSlot = false;
+		//bOverSlot = false;
 		containerImage.color = normalColor;
 	}
 	

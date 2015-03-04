@@ -33,13 +33,15 @@ public class NPC_UI: MonoBehaviour
 		}*/
 		qtext = questText.GetComponentInChildren<Text>();
 		window = GetScreenRect((RectTransform)panelUI.transform);
+		inventoryPanel.GetComponent<Inventory_Background>().ui = this;
 		for (int i = 0; i<itemAmount; i++)
 		{
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
 			icon.transform.SetParent(inventoryGrid);
 			
 			invSlots.Add(icon.GetComponent<Image>());
-			invSlots[i].GetComponent<Dragging>().inv = inv;
+			invSlots[i].GetComponent<Dragging>().ui = this;
+			//invSlots[i].GetComponent<Dragging>().inv = inv;
 			icon.SetActive(true);
 		}
 		for (int j = 0; j<questAmount; j++)
@@ -74,20 +76,15 @@ public class NPC_UI: MonoBehaviour
 			OnClick_Inventory();
 		}
 		showQuests = !showQuests;
-		//questText.gameObject.SetActive(!questText.gameObject.activeSelf);
 		journalWindow.gameObject.SetActive(!journalWindow.gameObject.activeSelf);
-		/*foreach (UnityEngine.UI.Button child in journSlots) 
-		{
-			child.gameObject.SetActive(!child.gameObject.activeSelf);
-		}*/		
 	}
 
 	public void OnChange_Inventory()
 	{
-		foreach (Image child in invSlots) 
+		/*foreach (Image child in invSlots) 
 		{
 			child.GetComponent<Dragging>().inv = inv;
-		}		
+		}*/		
 	}
 	
 	public void OnChange_Journal()
@@ -107,7 +104,6 @@ public class NPC_UI: MonoBehaviour
 		//tooltip = "";
 		window = GetScreenRect((RectTransform)panelUI.transform);
 		window.y = 0;
-		//window.size*= can.scaleFactor;
 		
 		if(panelUI!=null && showUI)
 		{

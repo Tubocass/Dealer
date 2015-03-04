@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragOnSurfaces: 1
   inv: {fileID: 0}
-  tradeInventory: {fileID: 0}
+  ui: {fileID: 0}
   containerImage: {fileID: 11400000}
   receivingImage: {fileID: 11400000}
   highlightColor: {r: 1, g: .921568632, b: .0156862754, a: 1}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c8814fb4754ed749b598695ea42642c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a94e3ce6238ae84f94a38f14bbd4209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &22200000

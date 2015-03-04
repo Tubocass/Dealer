@@ -12,16 +12,6 @@ public class Inventory : MonoBehaviour
 	public bool bTrading;
 	public List<Item> inventory = new List<Item>();
 	protected bool showInventory, showTooltip;
-	/*public bool ShowInventory
-	{
-		get{return showInventory;}
-		set{
-			showInventory = value; 
-			foreach (Image child in images) 
-			{
-				child.gameObject.SetActive(!child.gameObject.activeSelf);}
-			}
-	}*/
 	protected string tooltip;
 
 	public delegate void TradeAction();

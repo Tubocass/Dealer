@@ -1,8 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Dealer_5\Assets\Assets\Sample Assets\Cross Platform Input\Scripts\Editor\CrossPlatformInputInitialize.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\UI\NPC_UI.cs">
     <Files>
-      <File FileName="..\Dealer_5\Assets\Assets\Sample Assets\Cross Platform Input\Scripts\Editor\CrossPlatformInputInitialize.cs" Line="81" Column="5" />
+      <File FileName="Assets\_Scripts\UI\NPC_UI.cs" Line="36" Column="68" />
+      <File FileName="Assets\_Scripts\Inventories\Dragging.cs" Line="81" Column="10" />
+      <File FileName="Assets\_Scripts\NPCs\Coppa.cs" Line="80" Column="97" />
+      <File FileName="Assets\_Scripts\Inventories\Inventory.cs" Line="303" Column="1" />
+      <File FileName="Assets\_Scripts\Inventories\RightClickSell.cs" Line="17" Column="4" />
+      <File FileName="Assets\_Scripts\UI\Player_UI.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
