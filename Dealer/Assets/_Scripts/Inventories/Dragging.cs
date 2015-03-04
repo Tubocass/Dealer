@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
 	public bool dragOnSurfaces = true;
+	static bool bOverSlot;
 	public static Item draggedItem;
 	static int prevIndex;
 	public Inventory inv;
@@ -71,8 +72,13 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (m_DraggingIcon != null)
 		{
-	
 			Destroy(m_DraggingIcon);
+		}
+		if (!bOverSlot)
+		{
+			Debug.Log("I'm outside you"+  eventData.position+eventData.pointerEnter);
+			Inventory prevInv = Inventory.Find_Inventory(draggedItem.itemOwner);
+			prevInv.inventory[prevIndex] = draggedItem;
 		}
 	}
 
@@ -110,7 +116,6 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 					inv.ItemAddedEvent(draggedItem);
 					inv.inventory[index] = draggedItem;
 					inv.inventory[index].itemOwner = inv.UniqueID;
-
 				}
 			}
 		}
@@ -151,7 +156,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		
+		bOverSlot = true;
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
 			containerImage.color = highlightColor;
@@ -161,7 +166,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		
+		bOverSlot = false;
 		containerImage.color = normalColor;
 	}
 	

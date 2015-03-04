@@ -69,7 +69,7 @@ public class Coppa : MonoBehaviour
 			while(bPatrolling)
 			{
 				AIPath.target = null;
-				Debug.Log("I'm Patrolling");
+				//Debug.Log("I'm Patrolling");
 				if(!bMoving)
 				{
 					AIPath.setTargetVector(aPath[currentWaypoint].position);
@@ -80,7 +80,7 @@ public class Coppa : MonoBehaviour
 					if (Vector2.Distance (tran.position,aPath[currentWaypoint].position) < nextWaypointDistance)
 					{
 						currentWaypoint = (currentWaypoint+1) % (aPath.Length);
-						Debug.Log("penus");
+						//Debug.Log("penus");
 						yield return new WaitForSeconds(0.5f);
 						AIPath.setTargetVector(aPath[currentWaypoint].position);
 						bMoving = true;
