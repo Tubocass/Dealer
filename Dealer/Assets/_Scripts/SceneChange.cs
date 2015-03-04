@@ -4,11 +4,35 @@ using System.Collections;
 public class SceneChange : MonoBehaviour {
 
 	public Texture2D fadeOutTexture;
-	public float fadeSpeed = 0.8f;
+	public float fadeSpeed = 0.1f;
 	private int drawDepth = -1000;
 	private float alpha = 1.0f;
 	private int fadeDir = -1;
+	public GameObject player;
 
+	void Start()
+	{
+		player =GameObject.Find ("Player");
+	}
+
+
+	void Update() 
+	{
+		if (Input.GetKeyDown (KeyCode.N)) 
+		{
+
+			BeginFade(1);
+
+		}
+		if(Input.GetKeyDown (KeyCode.M)) 
+		{
+			DontDestroyOnLoad (this);
+			GameObject.Find("Player").transform.position = new Vector3(-33,33,0);
+			Application.LoadLevel ("Scene_High");
+			BeginFade (-1);
+		}
+
+	}
 
 	void OnGUI()
 	{
@@ -22,7 +46,7 @@ public class SceneChange : MonoBehaviour {
 
 	public float BeginFade(int direction) 
 	{
-		print ("3");
+
 		fadeDir = direction;
 		return (fadeSpeed);
 
@@ -31,9 +55,17 @@ public class SceneChange : MonoBehaviour {
 	}
 	void OnLevelWasLoaded ()
 	{
-		print("2");
+
 		BeginFade(-1);
 	}
 
+
+	IEnumerator FadeCoroutine() 
+	{
+
+		BeginFade (-1);
+		yield return new WaitForSeconds(5);
+
+	}
 
 }
