@@ -21,13 +21,9 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 				if(tradeInventory!=null)
 				{
 					int value = item.itemValue;
-					if(inv.money>= value)
+					if(tradeInventory.money>= value)
 					{
-						inv.RemoveItem(item);
-						inv.AddMoney(value);
-						inv.ItemSoldEvent(item);
-						tradeInventory.AddItem(item);
-						tradeInventory.AddMoney(-value);
+						inv.Trade(tradeInventory,item,value);
 					}
 
 				}

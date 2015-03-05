@@ -149,7 +149,7 @@ public class NPC_UI: MonoBehaviour
 				if(journ.quests[j].itemName!=null)
 				{
 					slotText.text = journ.quests[j].itemName;
-				}
+				}else slotText.text = "";
 			}
 		}
 	}

@@ -36,8 +36,6 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		prevIndex = transform.GetSiblingIndex();
 		if(inv.inventory[prevIndex].itemName!=null)
 		{
-			// We have clicked something that can be dragged.
-			// What we want to do is create an icon for this.
 			m_DraggingIcon = new GameObject("icon");
 			
 			m_DraggingIcon.transform.SetParent (canvas.transform, false);
@@ -76,17 +74,19 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		{
 			Destroy(m_DraggingIcon);
 		}
-//		if (!bOverSlot)
-//		{
-//			var back = FindInParents<Inventory_Background>(gameObject);
-//			if(back!=null && back.bOverUI)
-//			{
-//				//Debug.Log("I'm inside you"+  eventData.position+eventData.pointerEnter);
-//				Inventory prevInv = Inventory.Find_Inventory(draggedItem.itemOwner);
-//				prevInv.inventory[prevIndex] = draggedItem;
-//				draggedItem = null;
-//			}
-//		}
+		if (!bOverSlot)
+		{
+			if(!Inventory_Background.bOverInventory)
+			{
+				PutBackItem();
+			}
+		}
+	}
+	public static void PutBackItem()
+	{
+		Inventory prevInv = Inventory.Find_Inventory(draggedItem.itemOwner);
+		prevInv.inventory[prevIndex] = draggedItem;
+		draggedItem = null;
 	}
 
 	public void OnDrop(PointerEventData data)
@@ -116,16 +116,13 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 				int value = draggedItem.itemValue*draggedItem.stackAmount;
 				if(inv.money>= value)
 				{
-					tradeInventory = Inventory.Find_Inventory(draggedItem.itemOwner);
-					inv.AddMoney(-value);
-					tradeInventory.AddMoney(value);
-					tradeInventory.ItemSoldEvent(draggedItem);
-					inv.AddItem(draggedItem);
+					inv.Trade_Dragged(draggedItem,value);
+					
 					draggedItem = null;
 					//inv.ItemAddedEvent(draggedItem);
 					//inv.inventory[index] = draggedItem;
 					//inv.inventory[index].itemOwner = inv.UniqueID;
-				}
+				}else PutBackItem();
 			}
 		}
 	}

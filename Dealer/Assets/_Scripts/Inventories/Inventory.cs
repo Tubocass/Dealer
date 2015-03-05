@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
 {
 	public int slots, UniqueID, money;
 	protected Item_Database itemDB;
-	Inventory tradeInventory;
+	//Inventory tradeInventory;
 	public bool bTrading;
 	public List<Item> inventory = new List<Item>();
 	protected bool showInventory, showTooltip;
@@ -49,45 +49,22 @@ public class Inventory : MonoBehaviour
 
 	}
 
-	public void StartTrading(Inventory other)
+	
+	public void Trade(Inventory tradeInventory, Item item, int value)
 	{
-		tradeInventory = other;
-		showInventory = true;
-		bTrading = true;
+		RemoveItem(item);
+		AddMoney(value);
+		ItemSoldEvent(item);
+		tradeInventory.AddItem(item);
+		tradeInventory.AddMoney(-value);
 	}
-
-	public void Trade(Item item)
+	public void Trade_Dragged(Item item, int value)
 	{
-		if(tradeInventory.money>= item.itemValue)
-		{
-			
-			RemoveItem(inventory[ContainsItemAt(item.itemID)]);
-			AddMoney(item.itemValue);
-			tradeInventory.AddItem(item);
-			tradeInventory.AddMoney(-item.itemValue);
-			
-			if(item.itemName == "Weed")
-			{
-				if(SoldWeed!=null)
-					SoldWeed();
-			}
-		}else return;
-	}
-	public void Trade(Inventory other, Item item)
-	{
-		if(tradeInventory.money>= item.itemValue)
-		{
-			RemoveItem(inventory[ContainsItemAt(item.itemID)]);
-			AddMoney(item.itemValue);
-			tradeInventory.AddItem(item);
-			tradeInventory.AddMoney(-item.itemValue);
-			
-			if(item.itemName == "Weed")
-			{
-				if(SoldWeed!=null)
-					SoldWeed();
-			}
-		}else return;
+		Inventory tradeInventory = Inventory.Find_Inventory(item.itemOwner);
+		AddMoney(-value);
+		AddItem(item);
+		tradeInventory.AddMoney(value);
+		tradeInventory.ItemSoldEvent(item);
 	}
 	
 	public void AddMoney(int dolla)
@@ -111,17 +88,10 @@ public class Inventory : MonoBehaviour
 			{
 				if(inventory[i].itemName == null)
 				{
-					for(int j = 0;j<itemDB.items.Count;j++)
-					{
-						if(itemDB.items[j].itemID==item.itemID)
-						{
-							Item it = new Item(itemDB.items[j]);
-							inventory[i] = it;
-							inventory[i].itemOwner = this.UniqueID;
-							ItemAddedEvent(inventory[i]);
-							break;
-						}
-					}break;
+					inventory[i] = new Item(item);
+					inventory[i].itemOwner = this.UniqueID;
+					ItemAddedEvent(inventory[i]);
+					break;
 				}
 			}
 		}
