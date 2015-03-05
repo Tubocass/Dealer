@@ -41,6 +41,7 @@ public class NPC_UI: MonoBehaviour
 			
 			invSlots.Add(icon.GetComponent<Image>());
 			invSlots[i].GetComponent<Dragging>().ui = this;
+			invSlots[i].GetComponent<RightClickSell>().ui = this;
 			//invSlots[i].GetComponent<Dragging>().inv = inv;
 			icon.SetActive(true);
 		}
@@ -148,7 +149,7 @@ public class NPC_UI: MonoBehaviour
 				if(journ.quests[j].itemName!=null)
 				{
 					slotText.text = journ.quests[j].itemName;
-				}
+				}else slotText.text = "";
 			}
 		}
 	}

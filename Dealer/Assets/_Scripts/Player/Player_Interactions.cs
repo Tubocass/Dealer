@@ -20,9 +20,10 @@ public class Player_Interactions : MonoBehaviour
 		inventory = GetComponent<Inventory>();
 		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
-		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
-		mainCam.GetComponent<Camera2DFollow>().target = this.transform;
 		tran = transform;
+		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
+		mainCam.GetComponent<Camera2DFollow>().target = tran;
+
 		inventory.AddItem(1);
 		inventory.AddItem(2);
 		inventory.AddItem(2);
@@ -115,7 +116,6 @@ public class Player_Interactions : MonoBehaviour
 				break;
 			}
 		}
-		
 	}
 	public void OnToke()
 	{

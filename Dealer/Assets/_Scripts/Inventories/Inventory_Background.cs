@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Inventory_Background : MonoBehaviour, IDropHandler
+public class Inventory_Background : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
 	public NPC_UI ui;
 	Inventory inv;
 	Item draggedItem;
+	public static bool bOverInventory;
 
 	public void OnDrop(PointerEventData data)
 	{
@@ -16,20 +17,21 @@ public class Inventory_Background : MonoBehaviour, IDropHandler
 			int value = draggedItem.itemValue*draggedItem.stackAmount;
 			if(inv.money>= value)
 			{
-				Debug.Log("Did it get Added?");
-				Inventory tradeInventory = Inventory.Find_Inventory(draggedItem.itemOwner);
-				inv.AddMoney(-value);
-				tradeInventory.AddMoney(value);
-				tradeInventory.ItemSoldEvent(draggedItem);
-				inv.AddItem(draggedItem);
+				inv.Trade_Dragged(draggedItem,value);
 				draggedItem = null;
-			}
+			}else Dragging.PutBackItem();
 		}else{
-			//Debug.Log("I'm inside you"+  eventData.position+eventData.pointerEnter);
-			Inventory prevInv = Inventory.Find_Inventory(draggedItem.itemOwner);
-			prevInv.inventory[Dragging.prevIndex] = draggedItem;
-			draggedItem = null;
+			Dragging.PutBackItem();
 		}
+	}
+	
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		bOverInventory = true;
+	}
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		bOverInventory = false;
 	}
 
 }
