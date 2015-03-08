@@ -20,20 +20,14 @@ public class NPC_UI: MonoBehaviour
 	[SerializeField] GameObject imagePrefab, buttonPrefab;
 	[SerializeField] EventSystem events;
 	Text qtext;
+	public MarketManager manager;
 
-	// Use this for initialization
 	protected virtual void Start () 
 	{
-		//grid = GameObject.FindGameObjectWithTag("NPC_Grid").GetComponent<RectTransform>();
-		/*
-		for (int i = 0; i<grid.GetComponentsInChildren<Image>().Length;i++)
-		{
-			images.Add(grid.GetChild(i).GetComponent<Image>());
-			images[i].gameObject.SetActive(false);
-		}*/
 		qtext = questText.GetComponentInChildren<Text>();
 		window = GetScreenRect((RectTransform)panelUI.transform);
 		inventoryPanel.GetComponent<Inventory_Background>().ui = this;
+		manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<MarketManager>();
 		for (int i = 0; i<itemAmount; i++)
 		{
 			GameObject icon = (GameObject)Instantiate(imagePrefab);

@@ -36,7 +36,6 @@ public class Coppa : MonoBehaviour
 			//aPath[0] = tran;
 			StartCoroutine("Patrol");
 		}
-
 	}
 	
 	public IEnumerator Move(Vector3 dir)
