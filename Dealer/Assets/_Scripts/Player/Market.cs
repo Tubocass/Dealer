@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class Market : MonoBehaviour 
+[System.Serializable]
+public class Market 
 {
 	public float playerReputation, numberOfSales, averageQuality, marketVariance;
 	public string name;
-
-	void OnEnable()
+	public enum Location
 	{
-		GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().SoldWeed+=PlayerSale;
+		Home = 0, Mall = 1
 	}
-
+	public Location location;
+	
 	public Market(){ marketVariance = 1;}
 	public Market(Market market)
 	{
@@ -30,11 +30,6 @@ public class Market : MonoBehaviour
 		sellValue = Mathf.RoundToInt(marketValue*(qualityMod+playerReputation));
 		return sellValue;
 	}
-	void PlayerSale(Item item)
-	{
-		numberOfSales++;
-		float qualityMod = 1-item.itemQuality;
-		playerReputation += qualityMod/100;
-	}
+	
 }
 

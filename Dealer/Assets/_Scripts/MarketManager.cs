@@ -1,27 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+public class MarketManager : MonoBehaviour 
+{
 
-public class MarketManager : MonoBehaviour {
-
-	Market market;
+	public List<Market>  market = new List<Market>();
 	public string name;
-	public enum MarketLocation
-	{
-		Home = 0, Mall = 1
-	}
-	public MarketLocation location;
+	
 	Market currentMarket;
-	public Market CurrentMarket{ get{return currentMarket;}}
+
+	public Market CurrentMarket
+	{ 
+		get{return currentMarket;}
+	}
+	public void ChangeMarket(Market.Location loc)
+	{
+		currentMarket = market[(int)loc];
+		
+	}
 
 	void Start()
 	{
-		market = new Market();
-		location = MarketLocation.Home;
-		market.marketVariance = 2f;
-		market.name = "Da Corner";
-		currentMarket = market;
-		name = currentMarket.name;
+		currentMarket = market[0];
+		//name = currentMarket.name;
 		if(CurrentMarket==null)
 			Debug.Log("The fuck");
 	}
+	void OnEnable()
+	{
+		GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().SoldWeed+=PlayerSale;
+	}
+	void PlayerSale()
+	{
+		CurrentMarket.numberOfSales++;
+		//float qualityMod = 1-item.itemQuality;
+		//playerReputation += qualityMod/100;
+	}
+	
 }

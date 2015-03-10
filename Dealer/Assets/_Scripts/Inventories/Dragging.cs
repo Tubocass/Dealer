@@ -8,12 +8,12 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public bool dragOnSurfaces = true;
 	public static Item draggedItem;
 	public static int prevIndex;
-	public Inventory inv;
+	Inventory inv;
 	public NPC_UI ui;
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
 	Inventory tradeInventory;
-	static bool bOverSlot;
+	//static bool bOverSlot;
 	
 	
 	public Image containerImage;
@@ -74,13 +74,12 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		{
 			Destroy(m_DraggingIcon);
 		}
-		if (!bOverSlot)
+	
+		if(!Inventory_Background.bOverInventory)
 		{
-			if(!Inventory_Background.bOverInventory)
-			{
-				PutBackItem();
-			}
+			PutBackItem();
 		}
+		
 	}
 	public static void PutBackItem()
 	{
