@@ -48,7 +48,7 @@ public class Weed_BuyOrder : Quest
 
 	public override void FinishQuest()
 	{
-		player.GetComponent<Old_Inventory>().AddMoney(quest1.questReward);
+		player.GetComponent<Inventory>().AddMoney(quest1.questReward);
 	}
 }
 

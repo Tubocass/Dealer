@@ -11,12 +11,8 @@ public class Player_UI : NPC_UI {
 		itemAmount = inv.inventory.Count;
 		questAmount = journ.quests.Count;
 		base.Start();
-
-		//window = new Rect(Screen.width - panelUI.rect.width,0,panelUI.rect.width, panelUI.rect.height );
-		journ.AddItem(1);
 	}
 	
-	// Update is called once per frame
 	void Update()
 	{
 		if(Input.GetButtonDown("Inventory"))

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class NPC_UI: MonoBehaviour
 {
-	[SerializeField] protected RectTransform panelUI, inventoryPanel, inventoryGrid, journalWindow,journalList, questText;
+	[SerializeField] public RectTransform panelUI, inventoryPanel, inventoryGrid, journalWindow,journalList, questText;
 	protected Inventory inv;
 	public Inventory Inventory{get{return inv;}set{inv = value; OnChange_Inventory();}}
 	protected Quest_Journal journ;
@@ -20,20 +20,15 @@ public class NPC_UI: MonoBehaviour
 	[SerializeField] GameObject imagePrefab, buttonPrefab;
 	[SerializeField] EventSystem events;
 	Text qtext;
+	public MarketManager manager;
+	[SerializeField] Sprite defaultSprite;
 
-	// Use this for initialization
 	protected virtual void Start () 
 	{
-		//grid = GameObject.FindGameObjectWithTag("NPC_Grid").GetComponent<RectTransform>();
-		/*
-		for (int i = 0; i<grid.GetComponentsInChildren<Image>().Length;i++)
-		{
-			images.Add(grid.GetChild(i).GetComponent<Image>());
-			images[i].gameObject.SetActive(false);
-		}*/
 		qtext = questText.GetComponentInChildren<Text>();
 		window = GetScreenRect((RectTransform)panelUI.transform);
 		inventoryPanel.GetComponent<Inventory_Background>().ui = this;
+		manager = GameObject.FindGameObjectWithTag("MarketManager").GetComponent<MarketManager>();
 		for (int i = 0; i<itemAmount; i++)
 		{
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
@@ -56,7 +51,7 @@ public class NPC_UI: MonoBehaviour
 		}
 	}
 	
-	public void OnClick_Inventory()
+	protected void OnClick_Inventory()
 	{
 		if(showQuests)
 		{
@@ -70,7 +65,7 @@ public class NPC_UI: MonoBehaviour
 		}	*/	
 
 	}
-	public void OnClick_Quests()
+	protected void OnClick_Quests()
 	{
 		if(showInventory)
 		{
@@ -80,7 +75,7 @@ public class NPC_UI: MonoBehaviour
 		journalWindow.gameObject.SetActive(!journalWindow.gameObject.activeSelf);
 	}
 
-	public void OnChange_Inventory()
+	protected void OnChange_Inventory()
 	{
 		/*foreach (Image child in invSlots) 
 		{
@@ -88,7 +83,7 @@ public class NPC_UI: MonoBehaviour
 		}*/		
 	}
 	
-	public void OnChange_Journal()
+	protected void OnChange_Journal()
 	{
 		if(qtext!=null)
 		qtext.text = "";
@@ -135,11 +130,11 @@ public class NPC_UI: MonoBehaviour
 						
 					}else text.text = "";
 					
-				}else{ invSlots[i].sprite = null;text.text = "";}
+				}else{ invSlots[i].sprite = defaultSprite;text.text = "";}
 			}
 		}
 	}
-	void DrawQuests()
+	protected void DrawQuests()
 	{
 		for(int j = 0; j< journ.quests.Count;j++)
 		{
@@ -153,7 +148,7 @@ public class NPC_UI: MonoBehaviour
 			}
 		}
 	}
-	public void DrawQuestText()
+	protected void DrawQuestText()
 	{
 		Text qtext = questText.GetComponentInChildren<Text>();
 
@@ -164,7 +159,7 @@ public class NPC_UI: MonoBehaviour
 		qtext.text = journ.quests[s].GetText();
 	}
 
-	public Rect GetScreenRect(RectTransform rectTransform)
+	protected Rect GetScreenRect(RectTransform rectTransform)
 	{
 		Vector3[] corners = new Vector3[4];
 		rectTransform.GetWorldCorners(corners);

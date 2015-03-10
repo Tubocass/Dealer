@@ -14,8 +14,7 @@ TagManager:
   - Wall
   - Door
   - NPC
-  - NorthernLights
-  - InventoryCanvas
+  - MarketManager
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

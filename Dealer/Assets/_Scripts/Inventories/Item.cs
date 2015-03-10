@@ -13,6 +13,7 @@ public class Item {
 	public int stackAmount;
 	public bool bStackable;
 	public int itemValue;
+	public int itemQuality;
 
 	public enum ItemType
 	{
@@ -22,16 +23,7 @@ public class Item {
 	{
 		itemID = -1;
 	}
-	public Item(string name, int id, string desc, ItemType type, bool stackable, int amount, int value)
-	{
-		itemName = name;
-		itemID = id;
-		itemDesc = desc;
-		itemType = type;
-		bStackable = stackable;
-		stackAmount = amount;
-		itemValue = value;
-	}
+
 	public Item(Item item)
 	{
 		itemName = item.itemName;
@@ -44,5 +36,6 @@ public class Item {
 		itemTexture = item.itemTexture;
 		itemValue = item.itemValue;
 		itemOwner = item.itemOwner;
+		itemQuality = item.itemQuality;
 	}
 }

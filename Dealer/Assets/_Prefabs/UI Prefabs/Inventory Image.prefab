@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragOnSurfaces: 1
-  inv: {fileID: 0}
   ui: {fileID: 0}
   containerImage: {fileID: 11400000}
   receivingImage: {fileID: 11400000}
@@ -112,6 +111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
+  offsetX: 0
+  offsetY: -25
+  panelFab: {fileID: 11452844, guid: 12961e3bab6330d4aafb93abfc8c830a, type: 2}
+  buttFab: {fileID: 11409944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
+  can: {fileID: 0}
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1

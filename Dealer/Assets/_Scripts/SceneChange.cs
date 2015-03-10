@@ -8,11 +8,25 @@ public class SceneChange : MonoBehaviour {
 	private int drawDepth = -1000;
 	private float alpha = 1.0f;
 	private int fadeDir = -1;
-	public GameObject player;
+	public GameObject doNotDestroy;
 
-	void Start()
+	void Update() 
 	{
-		player =GameObject.Find ("Player");
+		if (Input.GetKeyDown (KeyCode.N)) 
+		{
+
+			BeginFade(1);
+			StartCoroutine(FadeCoroutine());
+
+		}
+		if(Input.GetKeyDown (KeyCode.M)) 
+		{
+			DontDestroyOnLoad (this);
+			GameObject.Find("Player").transform.position = new Vector3(-33,33,0);
+			Application.LoadLevel ("Scene_High");
+			BeginFade (-1);
+		}
+
 	}
 
 	void OnGUI()
@@ -35,19 +49,19 @@ public class SceneChange : MonoBehaviour {
 	}
 
 
-	public IEnumerator FadeSceneCoroutine() 
+	public IEnumerator FadeCoroutine() 
 	{
-		DontDestroyOnLoad (GameObject.FindGameObjectWithTag("Player"));
-		DontDestroyOnLoad(GameObject.FindGameObjectWithTag("InventoryCanvas"));
-		DontDestroyOnLoad(GameObject.FindGameObjectWithTag("GameController"));
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(3);
+		DontDestroyOnLoad (doNotDestroy);
+		DontDestroyOnLoad (GameObject.FindGameObjectWithTag("MainCamera"));
 		GameObject.Find("Player").transform.position = new Vector3(-33,33,0);
 		Application.LoadLevel ("Scene_High");
-		BeginFade (-1);
+
 	}
 	public void SceneTimer()
 	{
-		StartCoroutine(FadeSceneCoroutine());
+		StartCoroutine(FadeCoroutine());
+		BeginFade(1);
 	}
 
 }
