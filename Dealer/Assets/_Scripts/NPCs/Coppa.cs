@@ -91,6 +91,7 @@ public class Coppa : MonoBehaviour
 	}
 	void ChasePlayer()
 	{
+
 	}
 
 

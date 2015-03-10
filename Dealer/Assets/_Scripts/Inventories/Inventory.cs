@@ -145,6 +145,10 @@ public class Inventory : MonoBehaviour
 		{
 			break;
 		}
+		case "NorthernLights":
+		{
+			break;
+		}
 		}
 	}
 	public void ItemSoldEvent(Item item)

@@ -74,6 +74,13 @@ public class Player_Interactions : MonoBehaviour
 				AddWeed();
 				break;
 			}
+			case "NorthernLights":
+			{
+			Destroy(other.gameObject,0);
+			//print ("something");
+			inventory.AddItem (4);
+			break;
+			}
 			case "Drank":
 			{
 				Destroy(other.gameObject,1);

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 public class RightClickSell : MonoBehaviour, IPointerClickHandler  
 {
@@ -11,6 +12,10 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 	[SerializeField] Image panelFab;
 	[SerializeField] UnityEngine.UI.Button buttFab;
 	[SerializeField] Canvas can;
+	SceneChange scn;
+	//Inventory inv;
+
+
 
 	public void OnPointerClick(PointerEventData pointer)
 	{
@@ -49,7 +54,20 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 				
 			}
 		}
-	}
+
+		if((pointer.button == PointerEventData.InputButton.Middle))
+		{
+			
+			Debug.Log ("Oh Shit, I'm High");
+			scn = GameObject.Find("Player").GetComponent<SceneChange>();
+			scn.BeginFade(1);
+			scn.SceneTimer();
+			inv.RemoveItem(item);
+		} 
+
+		}
+
+
 	
 	
 	static public T FindInParents<T>(GameObject go) where T : Component
