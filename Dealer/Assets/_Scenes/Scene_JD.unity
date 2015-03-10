@@ -281,6 +281,16 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 1
     itemValue: 4
+  - itemName: Lint
+    itemID: 5
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
+    itemTexture: {fileID: 2800000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
+    itemType: 0
+    itemOwner: 0
+    stackAmount: 1
+    bStackable: 1
+    itemValue: 5
 --- !u!4 &18059365
 Transform:
   m_ObjectHideFlags: 0
@@ -2104,6 +2114,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 472502, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2680,6 +2694,35 @@ Prefab:
     - target: {fileID: 11472504, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: astarData.data.Array.data[1245]
       value: 87
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemName
+      value: Lint
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemID
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: afffa9950e78240ff8e0d30eb15e6fa1,
+        type: 3}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].stackAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].bStackable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemValue
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb8476f3a877ff64489df336efa718fe, type: 2}

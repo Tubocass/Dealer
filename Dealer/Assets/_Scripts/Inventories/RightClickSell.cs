@@ -8,9 +8,6 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 	public NPC_UI ui;
 	Inventory inv;
 	SceneChange scn;
-	//Inventory inv;
-
-
 
 	public void OnPointerClick(PointerEventData pointer)
 	{
@@ -46,7 +43,6 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 			inv.RemoveItem(item);
 		} 
 
-		}
-
+	}
 
 }
