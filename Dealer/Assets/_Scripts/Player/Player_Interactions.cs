@@ -26,10 +26,11 @@ public class Player_Interactions : MonoBehaviour
 
 		inventory.AddItem(1);
 		inventory.AddItem(2);
-		inventory.AddItem(2);
+		inventory.AddItem(4);
 		//journal.AddItem(1);
 		//journal.AddItem(2);
 	}
+
 	
 	void Update()
 	{
@@ -55,7 +56,32 @@ public class Player_Interactions : MonoBehaviour
 			}
 		}
 	}
-	
+
+	public void UseItem(Item item)
+	{
+		switch(item.itemName)
+		{
+			case "Weed":
+			{
+				inventory.RemoveItem(item);
+				break;
+			}
+			case "Drank":
+			{
+				inventory.RemoveItem(item);
+				break;
+			}
+			case "Northern Lights":
+			{
+				Debug.Log ("Oh Shit, I'm High");
+				SceneChange scn = GameObject.Find("GameController").GetComponent<SceneChange>();
+				
+				scn.SceneTimer();
+				inventory.RemoveItem(item);
+				break;
+			}
+		}
+	}
 	
 	public void AddWeed()
 	{

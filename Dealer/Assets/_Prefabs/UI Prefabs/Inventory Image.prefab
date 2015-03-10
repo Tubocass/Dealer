@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragOnSurfaces: 1
-  inv: {fileID: 0}
   ui: {fileID: 0}
   containerImage: {fileID: 11400000}
   receivingImage: {fileID: 11400000}
@@ -112,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
+  offsetX: 0
+  offsetY: -25
   panelFab: {fileID: 11452844, guid: 12961e3bab6330d4aafb93abfc8c830a, type: 2}
   buttFab: {fileID: 11409944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   can: {fileID: 0}

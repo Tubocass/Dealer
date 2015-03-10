@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Inventory_Background : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+public class Inventory_Background : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 	public NPC_UI ui;
 	Inventory inv;
@@ -24,7 +24,10 @@ public class Inventory_Background : MonoBehaviour, IDropHandler, IPointerEnterHa
 			Dragging.PutBackItem();
 		}
 	}
-	
+	public void OnPointerClick(PointerEventData pointer)
+	{
+		Destroy(RightClickSell.panel.gameObject);
+	}
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		bOverInventory = true;

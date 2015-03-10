@@ -7,7 +7,8 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 {
 	public NPC_UI ui;
 	Inventory inv;
-	GameObject panel;
+	public static GameObject panel;
+	public float offsetX,offsetY;
 	private RectTransform m_DraggingPlane;
 	[SerializeField] Image panelFab;
 	[SerializeField] UnityEngine.UI.Button buttFab;
@@ -22,12 +23,15 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 		var canvas = FindInParents<Canvas>(gameObject);
 		if (canvas == null)
 			return;
+		int index  = transform.GetSiblingIndex();
+		m_DraggingPlane = canvas.transform as RectTransform;
+		inv = ui.Inventory;
+		Item item = inv.inventory[index];
+		if (panel!=null)
+		Destroy(panel.gameObject);
 		if(pointer.button == PointerEventData.InputButton.Right)
 		{
-			int index  = transform.GetSiblingIndex();
-			m_DraggingPlane = canvas.transform as RectTransform;
-			inv = ui.Inventory;
-			Item item = inv.inventory[index];
+
 			if(item.itemName!=null)
 			{
 				panel = Instantiate(panelFab.gameObject,pointer.position,Quaternion.identity)as GameObject;
@@ -35,7 +39,20 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 				panel.transform.SetParent(canvas.transform,false);
 				panel.transform.SetAsLastSibling();
 				SetPosition(pointer);
-				Inventory tradeInventory = inv.UniqueID>0? Inventory.Find_Inventory(0): Inventory.Find_Inventory(GameObject.FindGameObjectWithTag("GameController").GetComponent<NPC_UI>().Inventory.UniqueID);
+				if(inv.UniqueID==0)
+				{
+					UnityEngine.UI.Button useButton = Instantiate(buttFab) as UnityEngine.UI.Button;
+					useButton.transform.SetParent(panel.transform, false);
+					useButton.GetComponentInChildren<Text>().text = "Use";
+					useButton.onClick.AddListener(() => 
+					{ 
+						ui.GetComponent<Player_Interactions>().UseItem(item);
+						Destroy(panel.gameObject);
+					});
+				}
+				
+
+				Inventory tradeInventory = inv.UniqueID>0? Inventory.Find_Inventory(0): GameObject.FindGameObjectWithTag("GameController").GetComponent<NPC_UI>().Inventory;
 				if(tradeInventory!=null)
 				{
 					int value = ui.manager.CurrentMarket.SellValue(item);
@@ -51,24 +68,10 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 						} Destroy(panel.gameObject);
 					});
 				}
-				
 			}
 		}
+	}
 
-		if((pointer.button == PointerEventData.InputButton.Middle))
-		{
-			
-			Debug.Log ("Oh Shit, I'm High");
-			scn = GameObject.Find("Player").GetComponent<SceneChange>();
-			scn.BeginFade(1);
-			scn.SceneTimer();
-			inv.RemoveItem(item);
-		} 
-
-		}
-
-
-	
 	
 	static public T FindInParents<T>(GameObject go) where T : Component
 	{
@@ -96,6 +99,7 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 		Vector3 globalMousePos;
 		if (RectTransformUtility.ScreenPointToWorldPointInRectangle(m_DraggingPlane, data.position, data.pressEventCamera, out globalMousePos))
 		{
+			globalMousePos += new Vector3(offsetX,offsetY,0f);
 			rt.position = globalMousePos;
 			rt.rotation = m_DraggingPlane.rotation;
 		}
