@@ -3,25 +3,29 @@ using System.Collections;
 
 public class OnScreenTxt : MonoBehaviour {
 
+	Inventory inv;
 	bool showText = true;
 	Rect textArea = new Rect(200,300,Screen.width, Screen.height);
-	Inventory inv;
+	bool addLint = true;
 	
 	void Start () {
 		bool showText = true;
-
+		inv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
 	}
 
 	void Update () {
 		if (GameObject.FindGameObjectWithTag("Weed") == null)
-			//GameObject.Find("Player").transform.position = new Vector3(0,18,0);
-			//Application.LoadLevel("Scene_0_");
-
+		{
+			if(addLint)
+		{
 			inv.AddItem(5);
-			
+			addLint = false;
+			Application.LoadLevel("Scene_JD");
+		}
+	}
 
-			}
+	}
 
 	void OnGUI()
 	{
