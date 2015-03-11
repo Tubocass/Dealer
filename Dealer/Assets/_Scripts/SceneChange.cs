@@ -52,8 +52,7 @@ public class SceneChange : MonoBehaviour {
 	public IEnumerator FadeCoroutine() 
 	{
 		yield return new WaitForSeconds(3);
-		DontDestroyOnLoad (doNotDestroy);
-		DontDestroyOnLoad (GameObject.FindGameObjectWithTag("MainCamera"));
+
 		GameObject.Find("Player").transform.position = new Vector3(-33,33,0);
 		Application.LoadLevel ("Scene_High");
 
