@@ -131,15 +131,15 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1022890723}
     m_Modifications:
     - target: {fileID: 400000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -28.5
+      value: 4.2073288
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -10.1000004
+      value: -47.5411377
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -163,7 +163,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
       propertyPath: m_Name
@@ -197,6 +197,11 @@ Prefab:
       propertyPath: events
       value: 
       objectReference: {fileID: 1204721871}
+    - target: {fileID: 11402274, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05bb9f9eeb95ef742a58c92045b78df3, type: 2}
   m_RootGameObject: {fileID: 716985155}
@@ -241,6 +246,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
   - itemName: Weed
     itemID: 1
     itemDesc: Some Dank
@@ -251,6 +257,7 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 1
     itemValue: 1
+    itemQuality: 0
   - itemName: Drank
     itemID: 2
     itemDesc: Some Drank
@@ -261,6 +268,7 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 0
     itemValue: 2
+    itemQuality: 0
   - itemName: Important Note
     itemID: 3
     itemDesc: Meet me at the ware house to fuck that nigga up.
@@ -271,6 +279,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
   - itemName: Northern Lights
     itemID: 4
     itemDesc: 
@@ -281,6 +290,18 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 1
     itemValue: 4
+    itemQuality: 0
+  - itemName: Lint
+    itemID: 5
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
+    itemTexture: {fileID: 2800000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
+    itemType: 0
+    itemOwner: 0
+    stackAmount: 1
+    bStackable: 1
+    itemValue: 5
+    itemQuality: 0
 --- !u!4 &18059365
 Transform:
   m_ObjectHideFlags: 0
@@ -467,6 +488,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -501,6 +523,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -561,8 +584,8 @@ RectTransform:
   m_Children:
   - {fileID: 780545809}
   - {fileID: 1980195162}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1022890723}
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1390,6 +1413,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -1407,6 +1431,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -1425,6 +1450,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 10
     questStage: 0
     bPreConditionsMet: 0
@@ -1445,6 +1471,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 1
     questStage: 0
     bPreConditionsMet: 0
@@ -1464,6 +1491,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -2102,19 +2130,23 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1022890723}
     m_Modifications:
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 472502, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 32.7073288
       objectReference: {fileID: 0}
     - target: {fileID: 472502, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -37.4411392
       objectReference: {fileID: 0}
     - target: {fileID: 472502, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 472502, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2134,7 +2166,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472502, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11472500, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
       propertyPath: panelUI
@@ -2681,6 +2713,40 @@ Prefab:
       propertyPath: astarData.data.Array.data[1245]
       value: 87
       objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemName
+      value: Lint
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemID
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: afffa9950e78240ff8e0d30eb15e6fa1,
+        type: 3}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].stackAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].bStackable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[5].itemValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472500, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
   m_RootGameObject: {fileID: 424365856}
@@ -3518,6 +3584,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -3588,6 +3655,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -5683,7 +5751,7 @@ Transform:
   - {fileID: 1132185470}
   - {fileID: 658335651}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 6
 --- !u!1001 &404588398
 Prefab:
   m_ObjectHideFlags: 0
@@ -5814,6 +5882,7 @@ GameObject:
   - 4: {fileID: 424365857}
   - 114: {fileID: 424365858}
   - 114: {fileID: 424365859}
+  - 114: {fileID: 424365860}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -5828,14 +5897,15 @@ Transform:
   m_PrefabInternal: {fileID: 117816651}
   m_GameObject: {fileID: 424365856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 32.7073288, y: -37.4411392, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 18059365}
   - {fileID: 90167558}
   - {fileID: 96953175}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  - {fileID: 852808934}
+  m_Father: {fileID: 1022890723}
+  m_RootOrder: 1
 --- !u!114 &424365858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5872,6 +5942,22 @@ MonoBehaviour:
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 1204721871}
+  manager: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
+--- !u!114 &424365860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424365856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c924f41352e284c859799fe1d68e7d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: f0cc8f79c3e214b4bb0fa33013dfb53f, type: 3}
+  fadeSpeed: .300000012
+  doNotDestroy: {fileID: 1022890722}
 --- !u!1 &425405604
 GameObject:
   m_ObjectHideFlags: 0
@@ -6379,7 +6465,7 @@ Transform:
   m_LocalScale: {x: .322880358, y: .552256286, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!61 &488827274
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8230,7 +8316,6 @@ GameObject:
   - 114: {fileID: 716985163}
   - 114: {fileID: 716985165}
   - 95: {fileID: 716985164}
-  - 114: {fileID: 716985166}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -8309,12 +8394,12 @@ Transform:
   m_PrefabInternal: {fileID: 1624315}
   m_GameObject: {fileID: 716985155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.5, y: -10.1000004, z: 0}
+  m_LocalPosition: {x: 4.2073288, y: -47.5411377, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 985472273}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1022890723}
+  m_RootOrder: 0
 --- !u!114 &716985161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8407,20 +8492,8 @@ MonoBehaviour:
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 1204721871}
---- !u!114 &716985166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 716985155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c924f41352e284c859799fe1d68e7d0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeOutTexture: {fileID: 2800000, guid: f0cc8f79c3e214b4bb0fa33013dfb53f, type: 3}
-  fadeSpeed: .5
-  player: {fileID: 0}
+  manager: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
 --- !u!1001 &717257721
 Prefab:
   m_ObjectHideFlags: 0
@@ -8780,6 +8853,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -9678,7 +9752,7 @@ Transform:
   - {fileID: 110318687}
   - {fileID: 1826760852}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &825878022
 GameObject:
   m_ObjectHideFlags: 0
@@ -9945,6 +10019,60 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 50694fee6c2ad374180f9726c742e95e, type: 3}
   m_Color: {r: .0268166084, g: .189565703, b: .45588237, a: 1}
+--- !u!1 &852808933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 124406, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+  m_PrefabInternal: {fileID: 117816651}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 852808934}
+  - 114: {fileID: 852808935}
+  m_Layer: 0
+  m_Name: MarketManager
+  m_TagString: MarketManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &852808934
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 424406, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+  m_PrefabInternal: {fileID: 117816651}
+  m_GameObject: {fileID: 852808933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 424365857}
+  m_RootOrder: 3
+--- !u!114 &852808935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11424406, guid: eb8476f3a877ff64489df336efa718fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 117816651}
+  m_GameObject: {fileID: 852808933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d0ed1b4e0527a4d907fa27239103de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  market:
+  - playerReputation: 0
+    numberOfSales: 0
+    averageQuality: 0
+    marketVariance: 1
+    name: Ball
+    location: 0
+  - playerReputation: 0
+    numberOfSales: 0
+    averageQuality: 0
+    marketVariance: 2
+    name: Sack
+    location: 1
+  name: 
 --- !u!1001 &861122675
 Prefab:
   m_ObjectHideFlags: 0
@@ -11322,6 +11450,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 46393280}
   m_RootOrder: 37
+--- !u!1 &1022890722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1022890723}
+  m_Layer: 0
+  m_Name: DoNotDestroy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1022890723
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1022890722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 716985160}
+  - {fileID: 424365857}
+  - {fileID: 24945901}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &1026793412
 GameObject:
   m_ObjectHideFlags: 0
@@ -12577,7 +12735,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1022890723}
     m_Modifications:
     - target: {fileID: 22400016, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
       propertyPath: m_LocalPosition.x
@@ -12609,7 +12767,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400016, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22400016, guid: 57199480ca589e64ea4f1cfa0e63b298, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -12874,7 +13032,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 8
 --- !u!1 &1199108317
 GameObject:
   m_ObjectHideFlags: 0
@@ -13083,7 +13241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1212676133
 GameObject:
   m_ObjectHideFlags: 0
@@ -15780,7 +15938,7 @@ Transform:
   - {fileID: 1368973805}
   - {fileID: 1572673926}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
 --- !u!1 &1535888036
 GameObject:
   m_ObjectHideFlags: 0
@@ -16222,6 +16380,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -16256,6 +16415,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -16533,7 +16693,7 @@ Transform:
   - {fileID: 1553172267}
   - {fileID: 2116032850}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 4
 --- !u!1001 &1638373900
 Prefab:
   m_ObjectHideFlags: 0
@@ -17827,7 +17987,7 @@ Transform:
   - {fileID: 189787706}
   - {fileID: 1391040170}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1 &1794901778
 GameObject:
   m_ObjectHideFlags: 0
@@ -19931,7 +20091,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &2014679752
 MonoBehaviour:
   m_ObjectHideFlags: 0
