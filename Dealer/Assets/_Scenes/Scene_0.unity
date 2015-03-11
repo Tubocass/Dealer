@@ -257,7 +257,7 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 1
     itemValue: 1
-    itemQuality: 0
+    itemQuality: 1
   - itemName: Drank
     itemID: 2
     itemDesc: Some Drank
@@ -268,7 +268,7 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 0
     itemValue: 2
-    itemQuality: 0
+    itemQuality: 1
   - itemName: Important Note
     itemID: 3
     itemDesc: Meet me at the ware house to fuck that nigga up.
@@ -283,14 +283,14 @@ MonoBehaviour:
   - itemName: Northern Lights
     itemID: 4
     itemDesc: 
-    itemIcon: {fileID: 21300000, guid: 97c02d20362cd4b4f8fcd688235ee7b4, type: 3}
+    itemIcon: {fileID: 21300000, guid: 4f7d7aef19cdf45a78569628c9717bed, type: 3}
     itemTexture: {fileID: 2800000, guid: 97c02d20362cd4b4f8fcd688235ee7b4, type: 3}
     itemType: 0
     itemOwner: 0
     stackAmount: 1
     bStackable: 1
     itemValue: 16
-    itemQuality: 0
+    itemQuality: 4
 --- !u!4 &18059365
 Transform:
   m_ObjectHideFlags: 0
@@ -2254,7 +2254,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2055426, guid: 707f953ac095f8c41bfeb8e60c29b78d, type: 2}
       propertyPath: orthographic size
-      value: 37.0999985
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 707f953ac095f8c41bfeb8e60c29b78d, type: 2}
@@ -17204,6 +17204,23 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b,
         type: 3}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[4].itemIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f7d7aef19cdf45a78569628c9717bed,
+        type: 3}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[1].itemQuality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[2].itemQuality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472508, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
+      propertyPath: items.Array.data[4].itemQuality
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb8476f3a877ff64489df336efa718fe, type: 2}
   m_RootGameObject: {fileID: 424365856}
@@ -19422,7 +19439,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 37.0999985
+  orthographic size: 35
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

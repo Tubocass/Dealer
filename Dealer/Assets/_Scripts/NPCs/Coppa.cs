@@ -23,7 +23,7 @@ public class Coppa : MonoBehaviour
 		length = col.radius*10;
 		tran = transform;
 		player = GameObject.FindGameObjectWithTag("Player");
-		player.GetComponent<Inventory>().SoldWeed+=Investigate;
+		player.GetComponent<Inventory>().ItemSold+=Investigate;
 		AIPath = GetComponent<AStar_Simple>();
 		if (PathGroup!= null)
 		{
@@ -45,7 +45,7 @@ public class Coppa : MonoBehaviour
 		yield return new WaitForSeconds(2);
 	}
 
-	void Investigate()
+	void Investigate(Item item)
 	{
 		if(bPlayerVisible)
 		{

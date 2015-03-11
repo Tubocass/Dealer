@@ -20,7 +20,7 @@ public class Weed_BuyOrder : Quest
 		
 		if(inv!=null)
 		{
-			inv.BoughtWeed+=WeedBought;
+			inv.ItemAdded+=WeedBought;
 		}
 	}
 
@@ -32,17 +32,20 @@ public class Weed_BuyOrder : Quest
 		}
 	}
 	
-	void WeedBought()
+	void WeedBought(Item item)
 	{
-		if(quest1.bActive)
+		if (item.itemName == "Weed")
 		{
-			weedBought+=1;
-			if(weedBought==weedDesired)
+			if(quest1.bActive)
 			{
-				quest1.bAlmostFinished = true;
-				quest1.questStage += 1;
+				weedBought+=1;
+				if(weedBought==weedDesired)
+				{
+					quest1.bAlmostFinished = true;
+					quest1.questStage += 1;
+				}
+				
 			}
-			
 		}
 	}
 

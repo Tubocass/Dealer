@@ -28,13 +28,13 @@ public class MarketManager : MonoBehaviour
 	}
 	void OnEnable()
 	{
-		GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().SoldWeed+=PlayerSale;
+		GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().ItemSold+=PlayerSale;
 	}
-	void PlayerSale()
+	void PlayerSale(Item item)
 	{
+		float qualityMod = item.itemQuality-1;
+		CurrentMarket.playerReputation += qualityMod/10;
 		CurrentMarket.numberOfSales++;
-		//float qualityMod = 1-item.itemQuality;
-		//playerReputation += qualityMod/100;
 	}
 	
 }

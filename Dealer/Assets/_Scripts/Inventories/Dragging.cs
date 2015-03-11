@@ -13,7 +13,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
 	Inventory tradeInventory;
-	//static bool bOverSlot;
+	static bool bOverSlot;
 	
 	
 	public Image containerImage;
@@ -74,8 +74,8 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		{
 			Destroy(m_DraggingIcon);
 		}
-	
-		if(!Inventory_Background.bOverInventory)
+		
+		if(!Inventory_Background.bOverInventory&&!bOverSlot)
 		{
 			PutBackItem();
 		}
@@ -161,7 +161,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		//bOverSlot = true;
+		bOverSlot = true;
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
 			containerImage.color = highlightColor;
@@ -171,7 +171,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		//bOverSlot = false;
+		bOverSlot = false;
 		containerImage.color = normalColor;
 	}
 	
