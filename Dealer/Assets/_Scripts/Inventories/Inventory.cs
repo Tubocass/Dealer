@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
 	{
 		RemoveItem(item);
 		AddMoney(value);
-		tradeInventory.AddItem(item);
+		tradeInventory.AddItem(item.itemID);
 		tradeInventory.AddMoney(-value);
 		if(ItemSold!=null)
 		{

@@ -6427,7 +6427,7 @@ Prefab:
     - target: {fileID: 11422002, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 1289905009}
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -6922,7 +6922,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 1289905009}
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -16892,7 +16892,7 @@ Prefab:
     - target: {fileID: 11480316, guid: 707f953ac095f8c41bfeb8e60c29b78d, type: 2}
       propertyPath: doNotDestroy
       value: 
-      objectReference: {fileID: 2104250890}
+      objectReference: {fileID: 149292, guid: befd68ba803d1634bb2b81519491da05, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 707f953ac095f8c41bfeb8e60c29b78d, type: 2}
   m_RootGameObject: {fileID: 2014679746}
@@ -19254,7 +19254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae158c298318dd24fada3e9a7e6a1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doNotDestroy: {fileID: 2104250890}
+  doNotDestroy: {fileID: 149292, guid: befd68ba803d1634bb2b81519491da05, type: 2}
 --- !u!1 &2016831960
 GameObject:
   m_ObjectHideFlags: 0

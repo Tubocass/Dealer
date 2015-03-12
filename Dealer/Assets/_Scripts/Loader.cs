@@ -10,7 +10,9 @@ public class Loader : MonoBehaviour
 	{
 		//DontDestroyOnLoad(this.gameObject);
 		if (DoNotDestroySingleton.instance == null)
+		{
 			Instantiate(doNotDestroy);
+		}
 
 		GetComponent<Camera2DFollow>().target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
