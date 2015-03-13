@@ -16,8 +16,8 @@ public class LevelingSystem : MonoBehaviour {
 
 	void Start () {
 		GameObject player = GameObject.FindWithTag ("Player");
-		player.GetComponent<Old_Inventory>().SoldWeed+=LevelWeed;
-		player.GetComponent<Player_Interactions>().PickedUpWeed+=WeedGather;
+		player.GetComponent<Inventory>().ItemSold+=LevelWeed;
+		player.GetComponent<Inventory>().ItemAdded+=WeedGather;
 
 					}
 
@@ -44,14 +44,14 @@ public class LevelingSystem : MonoBehaviour {
 		}
 						}
 
-	void LevelBitches() 
+	void LevelBitches(Item item) 
 	{
 		print("Bitch, get out the way!");
 		totalBitchesSlapped++;
 	}
 
 
-	void WeedGather()
+	void WeedGather(Item item)
 	{
 		totalWeed++;
 	}
