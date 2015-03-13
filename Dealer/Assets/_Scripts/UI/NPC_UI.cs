@@ -12,8 +12,8 @@ public class NPC_UI: MonoBehaviour
 	protected Quest_Journal journ;
 	public Quest_Journal Journal{get{return journ;}set{journ = value; OnChange_Journal();}}
 	protected bool showInventory, showUI, showQuests;
-	List<Image> invSlots = new List<Image>();
-	List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
+	protected List<Image> invSlots = new List<Image>();
+	protected List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
 	[SerializeField] protected int itemAmount = 6, questAmount = 4;
 	protected Rect window;
 	public Rect Window{get{return window;}}

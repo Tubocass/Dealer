@@ -14,8 +14,8 @@ public class Player_UI : NPC_UI {
 	{
 		Inventory = GetComponent<Inventory>();
 		Journal = GetComponent<Quest_Journal>();
-		itemAmount = inv.inventory.Count;
-		questAmount = journ.quests.Count;
+		itemAmount = Inventory.inventory.Count;
+		questAmount = Journal.quests.Count;
 		base.Start();
 
 		for (int m = 0; m<locationAmount; m++)
