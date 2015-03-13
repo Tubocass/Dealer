@@ -24,10 +24,10 @@ public class Market
 	{
 		float qualityMod, marketValue;
 		int sellValue;
-		qualityMod = 1-item.itemQuality;
+		qualityMod = item.itemQuality-1;
 
 		marketValue = item.itemValue* marketVariance;
-		sellValue = Mathf.RoundToInt(marketValue*(qualityMod+playerReputation));
+		sellValue = Mathf.RoundToInt(marketValue+(qualityMod+playerReputation));
 		return sellValue;
 	}
 	

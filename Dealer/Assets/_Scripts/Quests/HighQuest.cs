@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OnScreenTxt : MonoBehaviour {
+public class HighQuest : MonoBehaviour {
 
 	Inventory inv;
 	bool showText = true;
@@ -14,17 +14,17 @@ public class OnScreenTxt : MonoBehaviour {
 
 	}
 
-	void Update () {
+	void Update () 
+	{
 		if (GameObject.FindGameObjectWithTag("Weed") == null)
 		{
 			if(addLint)
-		{
-			inv.AddItem(5);
-			addLint = false;
-			Application.LoadLevel("Scene_JD");
+			{
+				inv.AddItem(5);
+				addLint = false;
+				Application.LoadLevel("Scene_JD");
+			}
 		}
-	}
-
 	}
 
 	void OnGUI()

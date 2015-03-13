@@ -13,10 +13,10 @@ public class Inventory : MonoBehaviour
 	public List<Item> inventory = new List<Item>();
 	protected bool showInventory, showTooltip;
 	protected string tooltip;
-
-	public delegate void TradeAction();
-	public event TradeAction SoldWeed;
-	public TradeAction BoughtWeed;
+	
+	public delegate void ItemEvent(Item item);
+	public event ItemEvent ItemSold;
+	public event ItemEvent ItemAdded;
 
 	//EventTrigger.Entry entry = new EventTrigger.Entry();
 	protected virtual void Start()
@@ -54,9 +54,12 @@ public class Inventory : MonoBehaviour
 	{
 		RemoveItem(item);
 		AddMoney(value);
-		ItemSoldEvent(item);
-		tradeInventory.AddItem(item);
+		tradeInventory.AddItem(item.itemID);
 		tradeInventory.AddMoney(-value);
+		if(ItemSold!=null)
+		{
+			ItemSold(item);
+		}
 	}
 	public void Trade_Dragged(Item item, int value)
 	{
@@ -64,7 +67,10 @@ public class Inventory : MonoBehaviour
 		AddMoney(-value);
 		AddItem(item);
 		tradeInventory.AddMoney(value);
-		tradeInventory.ItemSoldEvent(item);
+		if(tradeInventory.ItemSold!=null)
+		{
+			tradeInventory.ItemSold(item);
+		}
 	}
 	
 	public void AddMoney(int dolla)
@@ -80,8 +86,10 @@ public class Inventory : MonoBehaviour
 		if(s>-1&& inventory[s].bStackable)
 		{
 			inventory[s].stackAmount += item.stackAmount;
-			ItemAddedEvent(item);
-			
+			if(ItemAdded!=null)
+			{
+				ItemAdded(item);
+			}
 		}else
 		{
 			for(int i =0;i<inventory.Count;i++)
@@ -90,7 +98,10 @@ public class Inventory : MonoBehaviour
 				{
 					inventory[i] = new Item(item);
 					inventory[i].itemOwner = this.UniqueID;
-					ItemAddedEvent(inventory[i]);
+					if(ItemAdded!=null)
+					{
+						ItemAdded(item);
+					}
 					break;
 				}
 			}
@@ -105,7 +116,10 @@ public class Inventory : MonoBehaviour
 		if(s>-1&& inventory[s].bStackable)
 		{
 			inventory[s].stackAmount += 1;
-			ItemAddedEvent(inventory[s]);
+			if(ItemAdded!=null)
+			{
+				ItemAdded(inventory[s]);
+			}
 			
 		}else
 		{
@@ -120,7 +134,10 @@ public class Inventory : MonoBehaviour
 							Item it = new Item(itemDB.items[j]);
 							inventory[i] = it;
 							inventory[i].itemOwner = this.UniqueID;
-							ItemAddedEvent(inventory[i]);
+							if(ItemAdded!=null)
+							{
+								ItemAdded(inventory[i]);
+							}
 							break;
 						}
 					}break;
@@ -128,47 +145,8 @@ public class Inventory : MonoBehaviour
 			}
 		}
 	}
+	
 
-	public void ItemAddedEvent(Item item)
-	{
-		switch(item.itemName)
-		{
-		case "Weed":
-		{
-			if(BoughtWeed!=null)
-			{
-				BoughtWeed();
-			}
-			break;
-		}
-		case "Drank":
-		{
-			break;
-		}
-		case "NorthernLights":
-		{
-			break;
-		}
-		}
-	}
-	public void ItemSoldEvent(Item item)
-	{
-		switch(item.itemName)
-		{
-		case "Weed":
-		{
-			if(SoldWeed!=null)
-			{
-				SoldWeed();
-			}
-			break;
-		}
-		case "Drank":
-		{
-			break;
-		}
-		}
-	}
 	public void RemoveItem(Item item)
 	{
 		if(item.bStackable&&item.stackAmount>1)

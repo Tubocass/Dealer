@@ -26,6 +26,7 @@ public class Inventory_Background : MonoBehaviour, IDropHandler, IPointerEnterHa
 	}
 	public void OnPointerClick(PointerEventData pointer)
 	{
+		if(RightClickSell.panel!=null)
 		Destroy(RightClickSell.panel.gameObject);
 	}
 	public void OnPointerEnter(PointerEventData eventData)
