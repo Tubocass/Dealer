@@ -44,7 +44,7 @@ public class LevelingSystem : MonoBehaviour {
 		}
 						}
 
-	void LevelBitches(Item item) 
+	void LevelBitches() 
 	{
 		print("Bitch, get out the way!");
 		totalBitchesSlapped++;
@@ -55,7 +55,7 @@ public class LevelingSystem : MonoBehaviour {
 	{
 		totalWeed++;
 	}
-	void LevelWeed() 
+	void LevelWeed(Item item) 
 	{
 			print ("DING!");
 			level++;
