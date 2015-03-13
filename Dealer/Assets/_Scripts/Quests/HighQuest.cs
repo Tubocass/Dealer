@@ -20,9 +20,12 @@ public class HighQuest : MonoBehaviour {
 		{
 			if(addLint)
 			{
+				SceneChange sn1 = new SceneChange();
+				sn1.BeginFade(1);
 				inv.AddItem(5);
 				addLint = false;
 				Application.LoadLevel("Scene_JD");
+
 			}
 		}
 	}
