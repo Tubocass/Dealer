@@ -6,6 +6,8 @@ public class LevelingSystem : MonoBehaviour {
 	public string xpText;
 	public string weedStat;
 	public string bitchesStat;
+	public string health;
+	public string cash;
 	int curXp = 0;
 	int maxXp = 100;
 	int level = 1;
@@ -16,8 +18,8 @@ public class LevelingSystem : MonoBehaviour {
 
 	void Start () {
 		GameObject player = GameObject.FindWithTag ("Player");
-		player.GetComponent<Old_Inventory>().SoldWeed+=LevelWeed;
-		player.GetComponent<Player_Interactions>().PickedUpWeed+=WeedGather;
+		player.GetComponent<Inventory>().ItemSold+=LevelWeed;
+		player.GetComponent<Inventory>().ItemAdded+=WeedGather;
 
 					}
 
@@ -51,11 +53,11 @@ public class LevelingSystem : MonoBehaviour {
 	}
 
 
-	void WeedGather()
+	void WeedGather(Item item)
 	{
 		totalWeed++;
 	}
-	void LevelWeed() 
+	void LevelWeed(Item item) 
 	{
 			print ("DING!");
 			level++;
