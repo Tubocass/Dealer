@@ -179,6 +179,7 @@
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\OnScreenTxt.cs" />
+     <Compile Include="Assets\SpeechBubble.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
      <Compile Include="Assets\_Scripts\FireBullet.cs" />
