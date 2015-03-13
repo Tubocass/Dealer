@@ -226,6 +226,7 @@
      <Compile Include="Assets\_Scripts\UI Samples\ScrollDetailTexture.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ShowSliderValue.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\TiltWindow.cs" />
+     <Compile Include="Assets\_Scripts\UI\MapsApp.cs" />
      <Compile Include="Assets\_Scripts\UI\NPC_UI.cs" />
      <Compile Include="Assets\_Scripts\UI\Player_UI.cs" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />

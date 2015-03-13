@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class NPC_UI: MonoBehaviour
 {
-	[SerializeField] public RectTransform panelUI, inventoryPanel, inventoryGrid, journalWindow,journalList, questText;
+	[SerializeField] protected RectTransform panelUI, inventoryPanel, inventoryGrid, journalWindow,journalList, questText;
 	protected Inventory inv;
 	public Inventory Inventory{get{return inv;}set{inv = value; OnChange_Inventory();}}
 	protected Quest_Journal journ;
@@ -17,8 +17,8 @@ public class NPC_UI: MonoBehaviour
 	[SerializeField] protected int itemAmount = 6, questAmount = 4;
 	protected Rect window;
 	public Rect Window{get{return window;}}
-	[SerializeField] GameObject imagePrefab, buttonPrefab;
-	[SerializeField] EventSystem events;
+	[SerializeField] protected GameObject imagePrefab, buttonPrefab;
+	[SerializeField] protected EventSystem events;
 	Text qtext;
 	public MarketManager manager;
 	[SerializeField] Sprite defaultSprite;
@@ -51,7 +51,7 @@ public class NPC_UI: MonoBehaviour
 		}
 	}
 	
-	protected void OnClick_Inventory()
+	public virtual void OnClick_Inventory()
 	{
 		if(showQuests)
 		{
@@ -65,7 +65,7 @@ public class NPC_UI: MonoBehaviour
 		}	*/	
 
 	}
-	protected void OnClick_Quests()
+	public virtual void OnClick_Quests()
 	{
 		if(showInventory)
 		{
