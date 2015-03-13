@@ -177,10 +177,9 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
-     <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\OnScreenTxt.cs" />
      <Compile Include="Assets\SpeechBubble.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
+     <Compile Include="Assets\_Scripts\DoNotDestroySingleton.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
      <Compile Include="Assets\_Scripts\FireBullet.cs" />
      <Compile Include="Assets\_Scripts\Grow_Weed.cs" />
@@ -194,6 +193,7 @@
      <Compile Include="Assets\_Scripts\Inventories\Old_Inventory.cs" />
      <Compile Include="Assets\_Scripts\Inventories\RightClickSell.cs" />
      <Compile Include="Assets\_Scripts\LayerMaskExtensions.cs" />
+     <Compile Include="Assets\_Scripts\Loader.cs" />
      <Compile Include="Assets\_Scripts\MarketManager.cs" />
      <Compile Include="Assets\_Scripts\NPCs\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa.cs" />
@@ -207,6 +207,7 @@
      <Compile Include="Assets\_Scripts\Player\Player_Interactions.cs" />
      <Compile Include="Assets\_Scripts\Player\playerAnimation.cs" />
      <Compile Include="Assets\_Scripts\Player\playerMovementRotation.cs" />
+     <Compile Include="Assets\_Scripts\Quests\HighQuest.cs" />
      <Compile Include="Assets\_Scripts\Quests\Player_Quest_Journal.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest.cs" />
      <Compile Include="Assets\_Scripts\Quests\Quest_Database.cs" />

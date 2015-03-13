@@ -23,7 +23,8 @@ public class LevelingSystem : MonoBehaviour {
 
 	void OnGUI()
 	{
-		GUI.Box(new Rect(100,100,180,180),""+(xpText) + "\n" + (weedStat)  + (bitchesStat));
+		GUI.Box(new Rect(0,0,200,40), "" + (xpText) + "\n" + "Health: 100  Cash:    " + (weedStat)  + (bitchesStat));
+
 	}
 
 	void Update () {
