@@ -57,7 +57,7 @@ public class Grow_Weed : MonoBehaviour {
 			}
 			if(GUI.Button(new Rect(0,50,90,40),"Harvest"))
 			{
-				player.GetComponent<Player_Interactions>().AddWeed();
+				player.GetComponent<Inventory>().AddItem(1);
 				Destroy(bud,2);
 			}
 			GUI.EndGroup();

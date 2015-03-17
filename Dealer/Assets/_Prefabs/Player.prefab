@@ -18,7 +18,7 @@ GameObject:
   - 114: {fileID: 11402274}
   - 95: {fileID: 9555292}
   m_Layer: 8
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,6 +238,12 @@ MonoBehaviour:
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 0}
+  manager: {fileID: 0}
+  defaultSprite: {fileID: 0}
+  mapPanel: {fileID: 0}
+  mapList: {fileID: 0}
+  locations: []
+  locationAmount: 8
 --- !u!114 &11455292
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,8 +13,7 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 	[SerializeField] Image panelFab;
 	[SerializeField] UnityEngine.UI.Button buttFab;
 	[SerializeField] Canvas can;
-	SceneChange scn;
-	//Inventory inv;
+
 
 
 
@@ -59,7 +58,11 @@ public class RightClickSell : MonoBehaviour, IPointerClickHandler
 					
 					UnityEngine.UI.Button sellButton = Instantiate(buttFab) as UnityEngine.UI.Button;
 					sellButton.transform.SetParent(panel.transform, false);
-					sellButton.GetComponentInChildren<Text>().text = "Sell";
+					if(inv.UniqueID>0)
+					{
+						sellButton.GetComponentInChildren<Text>().text = "Buy";
+					}else sellButton.GetComponentInChildren<Text>().text = "Sell";
+
 					sellButton.onClick.AddListener(() => 
 					{ 
 						if(tradeInventory.money>= value)
