@@ -8,6 +8,7 @@ public class LevelingSystem : MonoBehaviour {
 	public string bitchesStat;
 	int curXp = 0;
 	int maxXp = 100;
+	int health = 100;
 	int level = 1;
 	int totalWeed = 0;
 	int totalBitchesSlapped = 0;
