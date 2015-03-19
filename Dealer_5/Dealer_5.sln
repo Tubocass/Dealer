@@ -5,10 +5,6 @@ Project("{0739F563-5D7E-93CA-D115-B57E8B78DE40}") = "Dealer_5", "Assembly-CSharp
 EndProject
 Project("{0739F563-5D7E-93CA-D115-B57E8B78DE40}") = "Dealer_5", "Assembly-CSharp-Editor.csproj", "{8AC5385D-DF34-FB00-102E-871110E12A51}"
 EndProject
-Project("{0739F563-5D7E-93CA-D115-B57E8B78DE40}") = "Dealer_5", "Assembly-UnityScript.unityproj", "{91A7D6B0-A95C-704D-4A68-7743E596FCE5}"
-EndProject
-Project("{0739F563-5D7E-93CA-D115-B57E8B78DE40}") = "Dealer_5", "Assembly-UnityScript-Editor.unityproj", "{094243EB-87D9-F45A-7D5C-6D70BB92797B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,19 +19,11 @@ Global
 		{8AC5385D-DF34-FB00-102E-871110E12A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC5385D-DF34-FB00-102E-871110E12A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC5385D-DF34-FB00-102E-871110E12A51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91A7D6B0-A95C-704D-4A68-7743E596FCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91A7D6B0-A95C-704D-4A68-7743E596FCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91A7D6B0-A95C-704D-4A68-7743E596FCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91A7D6B0-A95C-704D-4A68-7743E596FCE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{094243EB-87D9-F45A-7D5C-6D70BB92797B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{094243EB-87D9-F45A-7D5C-6D70BB92797B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{094243EB-87D9-F45A-7D5C-6D70BB92797B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{094243EB-87D9-F45A-7D5C-6D70BB92797B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
+										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -54,4 +42,5 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
+
 EndGlobal

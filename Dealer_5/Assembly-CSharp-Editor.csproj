@@ -46,9 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Assets\Sample Assets\Cameras\Scripts\Editor\AutoCamInspector.cs" />
-     <Compile Include="Assets\Assets\Sample Assets\Cameras\Scripts\Editor\FreeLookCamInspector.cs" />
-     <Compile Include="Assets\Assets\Sample Assets\Cross Platform Input\Scripts\Editor\CrossPlatformInputInitialize.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\AnimationLinkEditor.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\AstarUpdateWindow.cs" />
@@ -65,39 +62,13 @@
      <Compile Include="Assets\AstarPathfindingProject\Editor\SeekerEditor.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\Editor\AlphaNumericSort.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\Editor\GUIHierarchy.cs" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularSmooth.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Shared.cginc" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Coord.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Projectors\Shaders\Projector Additive.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\InterpolateAlongRays.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\DepthBreaks.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-BasicOutline.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Alpha.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Particle Systems Guidelines.txt" />
      <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
-     <None Include="Assets\Assets\Sample Assets\Cross Platform Input\Cross Platform Input Guidelines.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Add (Soft).shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-LightedOutline.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\AstarPathfindingProject\Readme.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Shaders\Mobile-Spec.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
-     <None Include="Assets\Assets\Sample Assets\Cameras\Camera Guidelines.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Raymarch.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\FinalInterpolation.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Depth.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Light Shafts Guidelines.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Add.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularDisplacement.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\ColorFilter.shader" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -140,8 +111,8 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-UnityScript.unityproj">
-      <Project>{91A7D6B0-A95C-704D-4A68-7743E596FCE5}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{94E01894-D7DF-9125-E472-99E6F2B6D50C}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

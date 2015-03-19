@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
@@ -12,34 +12,35 @@ public class NPC_UI: MonoBehaviour
 	protected Quest_Journal journ;
 	public Quest_Journal Journal{get{return journ;}set{journ = value; OnChange_Journal();}}
 	protected bool showInventory, showUI, showQuests;
-	List<Image> invSlots = new List<Image>();
-	List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
+	protected List<Image> invImages = new List<Image>();
+	protected List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
 	[SerializeField] protected int itemAmount = 6, questAmount = 4;
 	protected Rect window;
 	public Rect Window{get{return window;}}
-	[SerializeField] GameObject imagePrefab, buttonPrefab;
-	[SerializeField] EventSystem events;
+	[SerializeField] protected GameObject imagePrefab, buttonPrefab;
+	[SerializeField] protected EventSystem events;
 	Text qtext;
+	public MarketManager manager;
+	public Dialog convo;
+	bool bQuestioning;
+	[SerializeField] Sprite defaultSprite;
 
-	// Use this for initialization
 	protected virtual void Start () 
 	{
-		//grid = GameObject.FindGameObjectWithTag("NPC_Grid").GetComponent<RectTransform>();
-		/*
-		for (int i = 0; i<grid.GetComponentsInChildren<Image>().Length;i++)
-		{
-			images.Add(grid.GetChild(i).GetComponent<Image>());
-			images[i].gameObject.SetActive(false);
-		}*/
+
 		qtext = questText.GetComponentInChildren<Text>();
 		window = GetScreenRect((RectTransform)panelUI.transform);
+		inventoryPanel.GetComponent<Inventory_Background>().ui = this;
+		manager = GameObject.FindGameObjectWithTag("MarketManager").GetComponent<MarketManager>();
 		for (int i = 0; i<itemAmount; i++)
 		{
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
 			icon.transform.SetParent(inventoryGrid);
 			
-			invSlots.Add(icon.GetComponent<Image>());
-			invSlots[i].GetComponent<Dragging>().inv = inv;
+			invImages.Add(icon.GetComponent<Image>());
+			invImages[i].GetComponent<Dragging>().ui = this;
+			invImages[i].GetComponent<RightClickSell>().ui = this;
+			//invSlots[i].GetComponent<Dragging>().inv = inv;
 			icon.SetActive(true);
 		}
 		for (int j = 0; j<questAmount; j++)
@@ -48,12 +49,12 @@ public class NPC_UI: MonoBehaviour
 			icon.transform.SetParent(journalList);
 
 			journSlots.Add(icon.GetComponent<UnityEngine.UI.Button>());
-			journSlots[j].onClick.AddListener(() => { DrawQuestText(); });
+			journSlots[j].onClick.AddListener(() => { DrawDialogText(); });
 			icon.SetActive(true);
 		}
 	}
 	
-	public void OnClick_Inventory()
+	public virtual void OnClick_Inventory()
 	{
 		if(showQuests)
 		{
@@ -67,30 +68,25 @@ public class NPC_UI: MonoBehaviour
 		}	*/	
 
 	}
-	public void OnClick_Quests()
+	public virtual void OnClick_Quests()
 	{
 		if(showInventory)
 		{
 			OnClick_Inventory();
 		}
 		showQuests = !showQuests;
-		//questText.gameObject.SetActive(!questText.gameObject.activeSelf);
 		journalWindow.gameObject.SetActive(!journalWindow.gameObject.activeSelf);
-		/*foreach (UnityEngine.UI.Button child in journSlots) 
-		{
-			child.gameObject.SetActive(!child.gameObject.activeSelf);
-		}*/		
 	}
 
-	public void OnChange_Inventory()
+	protected void OnChange_Inventory()
 	{
-		foreach (Image child in invSlots) 
+		/*foreach (Image child in invSlots) 
 		{
 			child.GetComponent<Dragging>().inv = inv;
-		}		
+		}*/		
 	}
 	
-	public void OnChange_Journal()
+	protected void OnChange_Journal()
 	{
 		if(qtext!=null)
 		qtext.text = "";
@@ -107,16 +103,15 @@ public class NPC_UI: MonoBehaviour
 		//tooltip = "";
 		window = GetScreenRect((RectTransform)panelUI.transform);
 		window.y = 0;
-		//window.size*= can.scaleFactor;
 		
 		if(panelUI!=null && showUI)
 		{
 			if(inv!=null && showInventory)
 			{
 				DrawInventory();
-			}else if(journ!=null && showQuests) 
+			}else if(convo!=null && showQuests) 
 			{
-				DrawQuests();
+				DrawDialog();
 			}
 		}
 	}
@@ -125,12 +120,12 @@ public class NPC_UI: MonoBehaviour
 	{
 		for(int i =0; i<inv.inventory.Count;i++)
 		{
-			Text text = invSlots[i].GetComponentInChildren<Text>();
+			Text text = invImages[i].GetComponentInChildren<Text>();
 			if(text!=null)
 			{
 				if(inv.inventory[i].itemIcon!=null)
 				{
-					invSlots[i].sprite = (Sprite)inv.inventory[i].itemIcon;
+					invImages[i].sprite = inv.inventory[i].itemIcon;
 					
 					if(inv.inventory[i].bStackable)
 					{
@@ -138,11 +133,11 @@ public class NPC_UI: MonoBehaviour
 						
 					}else text.text = "";
 					
-				}else{ invSlots[i].sprite = null;text.text = "";}
+				}else{ invImages[i].sprite = defaultSprite;text.text = "";}
 			}
 		}
 	}
-	void DrawQuests()
+	protected void DrawQuests()
 	{
 		for(int j = 0; j< journ.quests.Count;j++)
 		{
@@ -152,11 +147,11 @@ public class NPC_UI: MonoBehaviour
 				if(journ.quests[j].itemName!=null)
 				{
 					slotText.text = journ.quests[j].itemName;
-				}
+				}else slotText.text = "";
 			}
 		}
 	}
-	public void DrawQuestText()
+	protected void DrawQuestText()
 	{
 		Text qtext = questText.GetComponentInChildren<Text>();
 
@@ -166,8 +161,38 @@ public class NPC_UI: MonoBehaviour
 		if(qtext!=null)
 		qtext.text = journ.quests[s].GetText();
 	}
+	
+	void DrawDialog()
+	{
+		for(int j = 0; j< convo.questions.Count;j++)
+		{
+			Text slotText = journSlots[j].GetComponentInChildren<Text>();
+			if(slotText!=null)
+			{
+				if(convo.questions[j].question!=null)
+				{
+					slotText.text = convo.questions[j].question;
+				}else slotText.text = "";
+			}
+		}
+	}
+	protected void DrawDialogText()
+	{
+		Text qtext = questText.GetComponentInChildren<Text>();
+		
+		//Debug.Log("Some Text");
+		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
+		//Debug.Log(s);
+		if(qtext!=null)
+		{
+			if(convo.questions[s].answers.Count>0)
+			{
+				qtext.text = convo.questions[s].answers[0].answer;
+			}
+		}
+	}
 
-	public Rect GetScreenRect(RectTransform rectTransform)
+	protected Rect GetScreenRect(RectTransform rectTransform)
 	{
 		Vector3[] corners = new Vector3[4];
 		rectTransform.GetWorldCorners(corners);

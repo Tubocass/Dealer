@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &124406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 424406}
+  - 114: {fileID: 11424406}
+  m_Layer: 0
+  m_Name: MarketManager
+  m_TagString: MarketManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &172502
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,6 +81,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &424406
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 472502}
+  m_RootOrder: 3
 --- !u!4 &472502
 Transform:
   m_ObjectHideFlags: 1
@@ -78,6 +106,7 @@ Transform:
   - {fileID: 472508}
   - {fileID: 472506}
   - {fileID: 472504}
+  - {fileID: 424406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &472504
@@ -116,6 +145,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 472502}
   m_RootOrder: 0
+--- !u!114 &11424406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d0ed1b4e0527a4d907fa27239103de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  market:
+  - playerReputation: 0
+    numberOfSales: 0
+    averageQuality: 0
+    marketVariance: 1
+    name: Ball
+    location: 0
+  - playerReputation: 0
+    numberOfSales: 0
+    averageQuality: 0
+    marketVariance: 2
+    name: Sack
+    location: 1
+  name: 
 --- !u!114 &11472500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,21 +182,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelUI: {fileID: 0}
+  inventoryPanel: {fileID: 0}
   inventoryGrid: {fileID: 0}
   journalWindow: {fileID: 0}
   journalList: {fileID: 0}
   questText: {fileID: 0}
   itemAmount: 6
   questAmount: 4
-  window:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 0}
+  manager: {fileID: 0}
+  defaultSprite: {fileID: 0}
 --- !u!114 &11472502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,6 +318,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -284,6 +336,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -302,6 +355,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 10
     questStage: 0
     bPreConditionsMet: 0
@@ -322,6 +376,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 1
     questStage: 0
     bPreConditionsMet: 0
@@ -341,6 +396,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
     questReward: 0
     questStage: 0
     bPreConditionsMet: 0
@@ -370,6 +426,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
   - itemName: Weed
     itemID: 1
     itemDesc: Some Dank
@@ -380,6 +437,7 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 1
     itemValue: 1
+    itemQuality: 0
   - itemName: Drank
     itemID: 2
     itemDesc: Some Drank
@@ -390,6 +448,7 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 0
     itemValue: 2
+    itemQuality: 0
   - itemName: Important Note
     itemID: 3
     itemDesc: Meet me at the ware house to fuck that nigga up.
@@ -400,6 +459,7 @@ MonoBehaviour:
     stackAmount: 0
     bStackable: 0
     itemValue: 0
+    itemQuality: 0
   - itemName: Northern Lights
     itemID: 4
     itemDesc: 
@@ -410,6 +470,7 @@ MonoBehaviour:
     stackAmount: 1
     bStackable: 1
     itemValue: 16
+    itemQuality: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

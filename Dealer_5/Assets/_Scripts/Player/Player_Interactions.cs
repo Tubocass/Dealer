@@ -7,28 +7,31 @@ public class Player_Interactions : MonoBehaviour
 	Inventory inventory;
 	Quest_Journal journal;
 	Transform tran;
-	public delegate void TradeAction();
-	public event TradeAction PickedUpWeed;
 	public GameObject bullet;
 	Animator anim;
 	public float strikeDist = 5;
 	public LayerMask playerMask;
 	GameObject mainCam;
+	Transform playerStart;
 	
 	void Start()
 	{
 		inventory = GetComponent<Inventory>();
 		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
-		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
-		mainCam.GetComponent<Camera2DFollow>().target = this.transform;
 		tran = transform;
+		playerStart = GameObject.FindGameObjectWithTag("PlayerStart").transform;
+		tran.position = playerStart.position;
+		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
+		mainCam.GetComponent<Camera2DFollow>().target = tran;
+
 		inventory.AddItem(1);
 		inventory.AddItem(2);
-		inventory.AddItem(2);
+		inventory.AddItem(4);
 		//journal.AddItem(1);
 		//journal.AddItem(2);
 	}
+
 	
 	void Update()
 	{
@@ -54,14 +57,32 @@ public class Player_Interactions : MonoBehaviour
 			}
 		}
 	}
-	
-	
-	public void AddWeed()
+
+	public void UseItem(Item item)
 	{
-		inventory.AddItem(1);
-		if(PickedUpWeed!=null)
-			PickedUpWeed();
+		switch(item.itemName)
+		{
+			case "Weed":
+			{
+				break;
+			}
+			case "Drank":
+			{
+				break;
+			}
+			case "Northern Lights":
+			{
+				Debug.Log ("Oh Shit, I'm High");
+				SceneChange scn = GameObject.Find("GameController").GetComponent<SceneChange>();
+				
+				scn.SceneTimer();
+				break;
+			}
+		}
+		inventory.RemoveItem(item);
 	}
+	
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		switch (other.gameObject.tag) 
@@ -70,7 +91,14 @@ public class Player_Interactions : MonoBehaviour
 			{
 				Destroy(other.gameObject,0);
 				//print ("something");
-				AddWeed();
+				inventory.AddItem(1);
+				break;
+			}
+			case "NorthernLights":
+			{
+				Destroy(other.gameObject,0);
+				//print ("something");
+				inventory.AddItem (4);
 				break;
 			}
 			case "Drank":
@@ -115,7 +143,6 @@ public class Player_Interactions : MonoBehaviour
 				break;
 			}
 		}
-		
 	}
 	public void OnToke()
 	{

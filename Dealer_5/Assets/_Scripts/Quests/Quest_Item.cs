@@ -6,6 +6,7 @@ public class Quest_Item : Item
 	public int questReward,questStage = 0;
 	public bool bPreConditionsMet,bActive,bAlmostFinished,bFinished;
 	public string[] text = new string[1];
+	public DialogQuestion question1;
 
 	public Quest_Item(){itemID = -1;}
 	public Quest_Item(string name, int id, string desc, ItemType type, int reward)

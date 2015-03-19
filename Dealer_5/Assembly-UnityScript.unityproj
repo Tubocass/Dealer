@@ -67,7 +67,6 @@
      <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Alpha.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Particle Systems Guidelines.txt" />
      <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
-     <None Include="Assets\Assets\Sample Assets\Cross Platform Input\Cross Platform Input Guidelines.txt" />
      <None Include="Assets\Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Add (Soft).shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Lighted.shader" />

@@ -20,7 +20,7 @@ public class Quest : MonoBehaviour
 		if (journal)
 		{
 			journal.AddItem(quest1);
-			journal.Talk+=TalkToQuestGiver;
+			
 		}
 	}
 

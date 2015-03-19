@@ -7,11 +7,13 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 {
 	public bool dragOnSurfaces = true;
 	public static Item draggedItem;
-	static int prevIndex;
-	public Inventory inv;
+	public static int prevIndex;
+	Inventory inv,tradeInventory;
+	public NPC_UI ui;
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
-	public Inventory tradeInventory;
+	static bool bOverSlot;
+	
 	
 	public Image containerImage;
 	public Image receivingImage;
@@ -29,12 +31,10 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		var canvas = FindInParents<Canvas>(gameObject);
 		if (canvas == null)
 			return;
-		
+		inv = ui.Inventory;
 		prevIndex = transform.GetSiblingIndex();
 		if(inv.inventory[prevIndex].itemName!=null)
 		{
-			// We have clicked something that can be dragged.
-			// What we want to do is create an icon for this.
 			m_DraggingIcon = new GameObject("icon");
 			
 			m_DraggingIcon.transform.SetParent (canvas.transform, false);
@@ -71,15 +71,26 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (m_DraggingIcon != null)
 		{
-	
 			Destroy(m_DraggingIcon);
 		}
+		
+		if(!Inventory_Background.bOverInventory&&!bOverSlot)
+		{
+			PutBackItem();
+		}
+		
+	}
+	public static void PutBackItem()
+	{
+		Inventory prevInv = Inventory.Find_Inventory(draggedItem.itemOwner);
+		prevInv.inventory[prevIndex] = draggedItem;
+		draggedItem = null;
 	}
 
 	public void OnDrop(PointerEventData data)
 	{
 		containerImage.color = normalColor;
-	
+		inv = ui.Inventory;
 		int index  = transform.GetSiblingIndex();
 		if(draggedItem != null)
 		{
@@ -103,15 +114,13 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 				int value = draggedItem.itemValue*draggedItem.stackAmount;
 				if(inv.money>= value)
 				{
-					tradeInventory = Inventory.Find_Inventory(draggedItem.itemOwner);
-					inv.AddMoney(-value);
-					tradeInventory.AddMoney(value);
-					tradeInventory.ItemSoldEvent(draggedItem);
-					inv.ItemAddedEvent(draggedItem);
-					inv.inventory[index] = draggedItem;
-					inv.inventory[index].itemOwner = inv.UniqueID;
-
-				}
+					inv.Trade_Dragged(draggedItem,value);
+					
+					draggedItem = null;
+					//inv.ItemAddedEvent(draggedItem);
+					//inv.inventory[index] = draggedItem;
+					//inv.inventory[index].itemOwner = inv.UniqueID;
+				}else PutBackItem();
 			}
 		}
 	}
@@ -151,7 +160,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		
+		bOverSlot = true;
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
 			containerImage.color = highlightColor;
@@ -161,7 +170,7 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (containerImage == null)
 			return;
-		
+		bOverSlot = false;
 		containerImage.color = normalColor;
 	}
 	
