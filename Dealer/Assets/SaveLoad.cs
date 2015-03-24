@@ -19,15 +19,30 @@ public class SaveLoad : MonoBehaviour {
 	public int reputation;
 	//public GameObject player;
 	public LevelingSystem data;
+	public bool pauseflag;
 
+	public void Start () {
+		pauseflag = true;
+	}
 
-
-
-	public void Update () {
-		if (Input.GetKeyDown(KeyCode.P)) {
-			panel.gameObject.SetActive (!panel.gameObject.activeSelf);
-			}
-		}	
+	public void Update ()
+		{
+		if (Input.GetKeyDown(KeyCode.P))
+				{
+					if (pauseflag)
+						{
+							panel.gameObject.SetActive (!panel.gameObject.activeSelf);
+							Time.timeScale = 0;
+							pauseflag = false;
+						}
+					else 
+						{	
+							panel.gameObject.SetActive( false);
+							Time.timeScale = 1;
+							pauseflag = true;
+						}
+					}
+	}
 	
 	public void Save () {
 
