@@ -28,16 +28,6 @@ public class Quest_Journal : Inventory {
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
 	}
 
-	void Update()
-	{
-		if(Input.GetButtonDown("Journal"))
-		{
-			if(this.gameObject.tag=="Player")
-			showInventory = !showInventory;
-		}
-	}
-
-
 	public void AddItem(Quest_Item item)
 	{
 		int s = ContainsItemAt(item.itemID);
@@ -57,9 +47,8 @@ public class Quest_Journal : Inventory {
 				}
 			}
 		}
-			
-
 	}
+
 	public override int ContainsItemAt(int id)
 	{
 		for (int i = 0; i<quests.Count;i++)

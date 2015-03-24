@@ -15,8 +15,8 @@ public class Weed_SellOrder : Quest
 		if(inv!=null)
 		{
 			//inv.SoldWeed+=WeedSold;
-			player.GetComponent<Inventory>().BoughtWeed+=WeedGathered;
-			player.GetComponent<Inventory>().SoldWeed+=WeedSold;
+			player.GetComponent<Inventory>().ItemAdded+=WeedGathered;
+			player.GetComponent<Inventory>().ItemSold+=WeedSold;
 			
 		}
 		if (journal)
@@ -26,32 +26,37 @@ public class Weed_SellOrder : Quest
 	
 	}
 	
-	void WeedGathered()
+	void WeedGathered(Item item)
 	{
-		if(quest1.bActive)
+		if(item.itemName =="Weed")
 		{
-			weedGathered+=1;	
-			if(weedGathered==gatherAmount)
+			if(quest1.bActive)
 			{
-				print ("You gathered all the weed!");
-				quest1.questStage+=1;
+				weedGathered+=1;	
+				if(weedGathered==gatherAmount)
+				{
+					print ("You gathered all the weed!");
+					quest1.questStage+=1;
+				}
 			}
 		}
 	}
 	
-	void WeedSold()
+	void WeedSold(Item item)
 	{
-		if(quest1.bActive)
+		if(item.itemName =="Weed")
 		{
-			weedSold+=1;	
-			if(weedSold==sellAmount)
+			if(quest1.bActive)
 			{
-				print ("You sold all the weed!");
-				quest1.bAlmostFinished = true;
-				quest1.questStage+=1;
+				weedSold+=1;	
+				if(weedSold==sellAmount)
+				{
+					print ("You sold all the weed!");
+					quest1.bAlmostFinished = true;
+					quest1.questStage+=1;
+				}
 			}
 		}
-		
 	}
 	public override void FinishQuest()
 	{

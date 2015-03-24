@@ -52,7 +52,6 @@ public class SaveLoad : MonoBehaviour {
 		data.health = health;
 		data.cash = cash;
 		data.experience = experience;
-		//data.player = player;
 		data.reputation = reputation;
 		bf.Serialize(file, data);
 		file.Close();
@@ -60,14 +59,15 @@ public class SaveLoad : MonoBehaviour {
 
 		}
 
-	public void Load () {
+	public void Load ()
+	{
 		if(File.Exists(Application.persistentDataPath + "/playerSave.dat"))
 		   {
 			FileStream file = File.Open (Application.persistentDataPath + "/playerSave.dat" , FileMode.Open);
 			file.Close();
 			panel.gameObject.SetActive(false);
 										
-		}
+			}
 	
 	}
 
@@ -75,7 +75,7 @@ public class SaveLoad : MonoBehaviour {
 	
 		Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 
-	}
+							 }
 
 }
 
@@ -87,5 +87,4 @@ class PlayerData
 	public int experience;
 	public float cash;
 	public int reputation;
-	//public GameObject player;
 }

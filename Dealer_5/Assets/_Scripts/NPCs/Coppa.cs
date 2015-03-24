@@ -23,7 +23,7 @@ public class Coppa : MonoBehaviour
 		length = col.radius*10;
 		tran = transform;
 		player = GameObject.FindGameObjectWithTag("Player");
-		player.GetComponent<Inventory>().SoldWeed+=Investigate;
+		player.GetComponent<Inventory>().ItemSold+=Investigate;
 		AIPath = GetComponent<AStar_Simple>();
 		if (PathGroup!= null)
 		{
@@ -36,7 +36,6 @@ public class Coppa : MonoBehaviour
 			//aPath[0] = tran;
 			StartCoroutine("Patrol");
 		}
-
 	}
 	
 	public IEnumerator Move(Vector3 dir)
@@ -46,7 +45,7 @@ public class Coppa : MonoBehaviour
 		yield return new WaitForSeconds(2);
 	}
 
-	void Investigate()
+	void Investigate(Item item)
 	{
 		if(bPlayerVisible)
 		{
@@ -69,7 +68,7 @@ public class Coppa : MonoBehaviour
 			while(bPatrolling)
 			{
 				AIPath.target = null;
-				Debug.Log("I'm Patrolling");
+				//Debug.Log("I'm Patrolling");
 				if(!bMoving)
 				{
 					AIPath.setTargetVector(aPath[currentWaypoint].position);
@@ -80,7 +79,7 @@ public class Coppa : MonoBehaviour
 					if (Vector2.Distance (tran.position,aPath[currentWaypoint].position) < nextWaypointDistance)
 					{
 						currentWaypoint = (currentWaypoint+1) % (aPath.Length);
-						Debug.Log("penus");
+						//Debug.Log("penus");
 						yield return new WaitForSeconds(0.5f);
 						AIPath.setTargetVector(aPath[currentWaypoint].position);
 						bMoving = true;
@@ -92,6 +91,7 @@ public class Coppa : MonoBehaviour
 	}
 	void ChasePlayer()
 	{
+
 	}
 
 
