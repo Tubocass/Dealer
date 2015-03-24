@@ -1,0 +1,1 @@
+[{"NPC":"Hello There!","ID":"0","Choices":[{"Target":"1","Player":"Fuck you."},{"Target":"2","Player":"[silence]"}]},{"NPC":"Hmm...","ID":"1","Choices":[{"Target":"","Player":"Sorry, I was on the phone."}]},{"NPC":"Never mind then.","ID":"2","Choices":[{"Target":"","Player":"[continued silence]"}]}]

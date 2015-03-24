@@ -152,6 +152,47 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400124, guid: dbed86280764eb9418f3f335a3d19649, type: 2}
   m_PrefabInternal: {fileID: 1281727884}
+--- !u!1 &72367727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 72367729}
+  - 114: {fileID: 72367728}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &72367728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 72367727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5a6400e4f90bf479e5eb7ab05e1ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstKey: 3
+  dialogueData: {fileID: 4900000, guid: c787fb7ba10b87d40b1b61ec60e60b30, type: 3}
+--- !u!4 &72367729
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 72367727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 485.592957, y: 146.711105, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!4 &91214682
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
@@ -303,61 +344,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
   m_PrefabInternal: {fileID: 2028713328}
---- !u!114 &189787699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 189787698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c25ca9bfef12704eb9ac24cb7e1fec1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questions:
-  - precondition: 0
-    type: 1
-    question: How's Things?
-    answers:
-    - type: 2
-      answer: Mostly Meh.
-      precondition: 0
-      customE:
-        m_PersistentCalls:
-          m_Calls: []
-        m_TypeName: DialogEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-  - precondition: 0
-    type: 0
-    question: Do you need any bud?
-    answers:
-    - type: 0
-      answer: Sure
-      precondition: 0
-      customE:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 189787698}
-            m_MethodName: 
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: 
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-        m_TypeName: DialogEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-    - type: 0
-      answer: No
-      precondition: 0
-      customE:
-        m_PersistentCalls:
-          m_Calls: []
-        m_TypeName: DialogEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
 --- !u!4 &189787706
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
@@ -410,11 +396,19 @@ MonoBehaviour:
     - type: 0
       answer: 
       precondition: 0
-      customE:
-        m_PersistentCalls:
-          m_Calls: []
-        m_TypeName: DialogEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+--- !u!114 &189787708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189787698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5a6400e4f90bf479e5eb7ab05e1ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstKey: 3
+  dialogueData: {fileID: 4900000, guid: c787fb7ba10b87d40b1b61ec60e60b30, type: 3}
 --- !u!4 &191487485
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
@@ -780,22 +774,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[0].answers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[1].answers.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449370, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: items.Array.data[3].question1.answers.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 449362, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4.11101007
@@ -829,76 +807,28 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22449344, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 1.78193062e-07
-      objectReference: {fileID: 0}
-    - target: {fileID: 22449344, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449344, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449368, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449368, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22413434, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22413434, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449370, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: items.Array.data[3].question1.question
-      value: You need any good?
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449370, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: items.Array.data[3].question1.answers.Array.data[1].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449370, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: items.Array.data[3].question1.answers.Array.data[0].answer
-      value: Fuck yeah I want some pot.
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449370, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: items.Array.data[3].question1.answers.Array.data[1].answer
-      value: No thank you, sir.
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[0].question
-      value: How's things?
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[0].answers.Array.data[0].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[0].answers.Array.data[0].answer
-      value: Mostly Meh.
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[1].question
-      value: Do you need any Good?
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[1].answers.Array.data[0].answer
-      value: yessir!
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[1].answers.Array.data[1].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449352, guid: befd68ba803d1634bb2b81519491da05, type: 2}
-      propertyPath: questions.Array.data[1].answers.Array.data[1].answer
-      value: nope to dope
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: befd68ba803d1634bb2b81519491da05, type: 2}
@@ -1066,7 +996,7 @@ Transform:
   - {fileID: 1132185470}
   - {fileID: 658335651}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1001 &404588398
 Prefab:
   m_ObjectHideFlags: 0

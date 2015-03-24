@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using System.Collections;
+using System.Collections.Generic;
 [System.Serializable]
 public class DialogAnswer
 {
@@ -11,8 +11,8 @@ public class DialogAnswer
 	public AnswerType type;
 	public string answer;
 	public bool precondition;
-	//public UnityEvent Selected;
-	public DialogEvent customE;
+	//public List<DialogQuestion> subQuestion = new List<DialogQuestion>();
+
 	public DialogAnswer(string Answer, DialogAnswer.AnswerType Type)
 	{
 		answer = Answer;

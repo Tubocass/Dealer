@@ -11,17 +11,20 @@ public class Inventory_Background : MonoBehaviour, IDropHandler, IPointerEnterHa
 	public void OnDrop(PointerEventData data)
 	{
 		draggedItem = Dragging.draggedItem;
-		inv = ui.Inventory;
-		if(draggedItem.itemOwner != inv.UniqueID)
+		if(draggedItem != null)
 		{
-			int value = draggedItem.itemValue*draggedItem.stackAmount;
-			if(inv.money>= value)
+			inv = ui.Inventory;
+			if(draggedItem.itemOwner != inv.UniqueID)
 			{
-				inv.Trade_Dragged(draggedItem,value);
-				draggedItem = null;
-			}else Dragging.PutBackItem();
-		}else{
-			Dragging.PutBackItem();
+				int value = draggedItem.itemValue*draggedItem.stackAmount;
+				if(inv.money>= value)
+				{
+					inv.Trade_Dragged(draggedItem,value);
+					draggedItem = null;
+				}else Dragging.PutBackItem();
+			}else{
+				Dragging.PutBackItem();
+			}
 		}
 	}
 	public void OnPointerClick(PointerEventData pointer)

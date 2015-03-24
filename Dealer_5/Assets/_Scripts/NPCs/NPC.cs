@@ -6,7 +6,7 @@ public class NPC : MonoBehaviour {
 
 	public Inventory inventory;
 	public Quest_Journal quests;
-	Dialog dial;
+	Dialogue dial;
 	NPC_UI ui, playerUI;
 	bool bClicked;
 	SpriteRenderer sprite;
@@ -16,13 +16,12 @@ public class NPC : MonoBehaviour {
 	
 	void Start () 
 	{
-		dial = GetComponent<Dialog>();
+		dial = GetComponent<Dialogue>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		ui = GameObject.FindGameObjectWithTag("GameController").GetComponent<NPC_UI>();
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory_NPC>();
 		quests = GetComponent<Quest_Journal>();
-		inventory.AddItem(1);
 		playerUI = player.GetComponent<Player_UI>();
 	}
 
@@ -31,7 +30,8 @@ public class NPC : MonoBehaviour {
 		Event e = Event.current;
 		//GUI.Box(ui.window,"MY UI ");
 		//GUI.Box(playerUI.window,"P UI ");
-		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.Window.Contains(e.mousePosition) && !ui.Window.Contains(e.mousePosition)&& e.type==EventType.mouseDown&& e.button==0)
+		if(!sprite.bounds.Contains(e.mousePosition)&& !playerUI.Window.Contains(e.mousePosition) 
+		   && !ui.Window.Contains(e.mousePosition) && e.type==EventType.mouseDown&& e.button==0)
 		{
 			//print ("tiiiittttss");
 			bClicked = false;
@@ -42,9 +42,9 @@ public class NPC : MonoBehaviour {
 	{
 		print ("bboobbss");
 		bClicked = true;
-		ui.ShowUI(true);
 		ui.Journal = quests;
 		ui.Inventory = inventory;
 		ui.convo = dial;
+		ui.ShowUI(true);
 	}
 }

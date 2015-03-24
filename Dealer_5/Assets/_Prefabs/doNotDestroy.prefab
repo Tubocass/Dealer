@@ -237,7 +237,7 @@ GameObject:
   - 114: {fileID: 11449256}
   - 114: {fileID: 11449258}
   m_Layer: 5
-  m_Name: Quests
+  m_Name: Talk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1553,7 +1553,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11449352}
-        m_MethodName: OnClick_Quests
+        m_MethodName: OnClick_Dialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2448,12 +2448,12 @@ MonoBehaviour:
   journalList: {fileID: 22449342}
   questText: {fileID: 22413438}
   itemAmount: 0
-  questAmount: 0
+  dialAmount: 4
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 11413438}
   manager: {fileID: 0}
-  questions: []
+  convo: {fileID: 0}
   defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
   mapPanel: {fileID: 22449312}
   mapList: {fileID: 22413436}
@@ -2669,12 +2669,12 @@ MonoBehaviour:
   journalList: {fileID: 22449366}
   questText: {fileID: 22449336}
   itemAmount: 6
-  questAmount: 4
+  dialAmount: 4
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 11413438}
   manager: {fileID: 0}
-  questions: []
+  convo: {fileID: 0}
   defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
 --- !u!114 &11449354
 MonoBehaviour:
@@ -2881,6 +2881,8 @@ MonoBehaviour:
     bFinished: 0
     text: []
     question1:
+      precondition: 0
+      type: 0
       question: 
       answers: []
   - itemName: Note
@@ -2903,6 +2905,8 @@ MonoBehaviour:
     text:
     - 
     question1:
+      precondition: 0
+      type: 0
       question: 
       answers: []
   - itemName: Distribute Weed
@@ -2927,6 +2931,8 @@ MonoBehaviour:
     - Now just fill people's orders and come back to me.
     - Thanks for the help. Here's 10 monies.
     question1:
+      precondition: 0
+      type: 0
       question: 
       answers: []
   - itemName: Want Pot
@@ -2950,8 +2956,16 @@ MonoBehaviour:
     - I could really use some pot right now.
     - Thanks for the bud, bud.
     question1:
-      question: 
-      answers: []
+      precondition: 0
+      type: 0
+      question: You need any good?
+      answers:
+      - type: 0
+        answer: Fuck yeah I want some pot.
+        precondition: 0
+      - type: 1
+        answer: No thank you, sir.
+        precondition: 0
   - itemName: 
     itemID: 0
     itemDesc: 
@@ -2971,6 +2985,8 @@ MonoBehaviour:
     bFinished: 0
     text: []
     question1:
+      precondition: 0
+      type: 0
       question: 
       answers: []
 --- !u!114 &11449372

@@ -78,13 +78,6 @@
      <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleJsonReplacement.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleZipReplacement.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Core\astarclasses.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\AIFollow.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\AstarSmoothFollow2.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\DoorController.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\DynamicGridObstacle.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\MineBotAI.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\ObjectPlacer.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\TargetMover.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Generators\Base.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Generators\GridGenerator.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Generators\NavMeshGenerator.cs" />
@@ -116,6 +109,16 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\IJsonWrapper.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonData.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonException.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonMapper.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonReader.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonWriter.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\Lexer.cs" />
+     <Compile Include="Assets\Dialogue\Plugins\litJSON\ParserToken.cs" />
+     <Compile Include="Assets\Dialogue\Scripts\Dialogue.cs" />
+     <Compile Include="Assets\Dialogue\Scripts\DialogueEvents.cs" />
      <Compile Include="Assets\_Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
      <Compile Include="Assets\_Scripts\DialogEvent.cs" />
@@ -160,6 +163,7 @@
      <Compile Include="Assets\_Scripts\Quests\Weed_SellOrder.cs" />
      <Compile Include="Assets\_Scripts\SceneChange.cs" />
      <Compile Include="Assets\_Scripts\SpeechBubble.cs" />
+     <Compile Include="Assets\_Scripts\StringEvent.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ActiveStateToggler.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ApplicationManager.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\ChangeColor.cs" />
@@ -176,9 +180,11 @@
      <Compile Include="Assets\_Scripts\UI\Player_UI.cs" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
+     <None Include="Assets\Assets\Dialogues\second.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
      <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
      <None Include="Assets\AstarPathfindingProject\Readme.txt" />
+     <None Include="Assets\Assets\Dialogues\FirstQuestion.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
@@ -186,10 +192,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/Tubocass/Documents/Projects/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>C:/Users/BoB/Documents/Projects/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
