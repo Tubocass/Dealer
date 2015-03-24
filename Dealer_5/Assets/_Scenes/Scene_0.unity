@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5a6400e4f90bf479e5eb7ab05e1ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstKey: 3
+  firstKey: 0
   dialogueData: {fileID: 4900000, guid: c787fb7ba10b87d40b1b61ec60e60b30, type: 3}
 --- !u!4 &191487485
 Transform:
@@ -808,27 +808,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449344, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22449344, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22449368, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22449368, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22413434, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22413434, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: befd68ba803d1634bb2b81519491da05, type: 2}

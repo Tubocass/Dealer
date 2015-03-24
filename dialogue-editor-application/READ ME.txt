@@ -1,0 +1,35 @@
+Dialogue Editor 0.9.1 
+Creates and edits JSON fomatted dialogue graphs.
+
+INSTALLATION INSTRUCTIONS
+--------------------------------------------
+
+You can either:
+1. Place the contents of the Application Files directory in a folder of your 
+choosing and access the program using a shortcut to Dialogue Editor.exe.
+2. Run the DialogueEditor.application file in the Application Files directory 
+to install the program on your system.
+
+DOCUMENTATION
+-------------------------------------
+
+No documentation, as such, exists at this time. However, the program's 
+GUI has many tooltips.
+
+LICENCE
+-------------
+
+    Copyright (C) 2013  Simon Crowe
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
