@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ public class Player_UI : NPC_UI {
 		Inventory = GetComponent<Inventory>();
 		Journal = GetComponent<Quest_Journal>();
 		itemAmount = Inventory.inventory.Count;
-		questAmount = Journal.quests.Count;
+		dialAmount = Journal.quests.Count;
 		base.Start();
 
 		for (int m = 0; m<locationAmount; m++)
@@ -41,13 +41,13 @@ public class Player_UI : NPC_UI {
 		}
 		if(Input.GetButtonDown("Journal"))
 		{
-			if(showUI&&showQuests)
+			if(showUI&&showDialogue)
 				ShowUI(false);
 			else ShowUI(true);
-			OnClick_Quests();
+			OnClick_Dialogue();
 		}
 	}
-	protected virtual void OnGUI()
+	protected override void OnGUI()
 	{
 		base.OnGUI();
 		
@@ -56,7 +56,7 @@ public class Player_UI : NPC_UI {
 			if(inv!=null && showInventory)
 			{
 				DrawInventory();
-			}else if(journ!=null && showQuests) 
+			}else if(journ!=null && showDialogue) 
 			{
 				DrawQuests();
 			}else if(locations!= null&& showMaps)
@@ -67,9 +67,9 @@ public class Player_UI : NPC_UI {
 	}
 	public void OnClick_Maps()
 	{
-		if(showQuests)
+		if(showDialogue)
 		{
-			OnClick_Quests();
+			OnClick_Dialogue();
 		}else
 		if(showInventory)
 		{
@@ -80,9 +80,9 @@ public class Player_UI : NPC_UI {
 	}
 	public virtual void OnClick_Inventory()
 	{
-		if(showQuests)
+		if(showDialogue)
 		{
-			OnClick_Quests();
+			OnClick_Dialogue();
 		}else if (showMaps)
 		{
 			OnClick_Maps();
@@ -90,7 +90,7 @@ public class Player_UI : NPC_UI {
 		inventoryPanel.gameObject.SetActive(!inventoryPanel.gameObject.activeSelf);
 		showInventory = !showInventory;
 	}
-	public virtual void OnClick_Quests()
+	public virtual void OnClick_Dialogue()
 	{
 		if(showInventory)
 		{
@@ -99,7 +99,7 @@ public class Player_UI : NPC_UI {
 		{
 			OnClick_Maps();
 		}
-		showQuests = !showQuests;
+		showDialogue = !showDialogue;
 		journalWindow.gameObject.SetActive(!journalWindow.gameObject.activeSelf);
 	}
 	protected void DrawLocations()

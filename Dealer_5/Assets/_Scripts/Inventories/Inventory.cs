@@ -18,25 +18,8 @@ public class Inventory : MonoBehaviour
 	public event ItemEvent ItemSold;
 	public event ItemEvent ItemAdded;
 
-	//EventTrigger.Entry entry = new EventTrigger.Entry();
 	protected virtual void Start()
 	{	
-		/* Code for ceating an event
-		//This event will respond to a drop event
-		entry.eventID = EventTriggerType.PointerClick;
-		
-		//Create a new trigger to hold our callback methods
-		entry.callback = new EventTrigger.TriggerEvent();
-		
-		//Create a new UnityAction, it contains our DropEventMethod delegate to respond to events
-		UnityEngine.Events.UnityAction<BaseEventData> callback =
-			new UnityEngine.Events.UnityAction<BaseEventData>(DropEventMethod);
-		
-		//Add our callback to the listeners
-		entry.callback.AddListener(callback);
-		//GetComponent<EventTrigger>().delegates.Add(entry);
-		
-	*/
 		for (int i = 0; i<(slots); i++)
 		{
 			inventory.Add(new Item());
@@ -48,7 +31,6 @@ public class Inventory : MonoBehaviour
 		}
 
 	}
-
 	
 	public void Trade(Inventory tradeInventory, Item item, int value)
 	{
@@ -61,6 +43,7 @@ public class Inventory : MonoBehaviour
 			ItemSold(item);
 		}
 	}
+	
 	public void Trade_Dragged(Item item, int value)
 	{
 		Inventory tradeInventory = Inventory.Find_Inventory(item.itemOwner);
@@ -146,7 +129,6 @@ public class Inventory : MonoBehaviour
 		}
 	}
 	
-
 	public void RemoveItem(Item item)
 	{
 		if(item.bStackable&&item.stackAmount>1)
@@ -158,6 +140,7 @@ public class Inventory : MonoBehaviour
 			inventory[ContainsItemAt(item.itemID)]=  new Item();
 		}
 	}
+	
 	public bool ContainsItem(int id)
 	{
 		bool result = false;
@@ -172,6 +155,7 @@ public class Inventory : MonoBehaviour
 		}
 		return result;
 	}
+	
 	public virtual bool ContainsItem(string name)
 	{
 		bool result = false;
@@ -180,12 +164,14 @@ public class Inventory : MonoBehaviour
 			result = inventory[i].itemName == name;
 			if(result)
 			{
+				return result;
 				break;
 			}
 			
 		}
 		return result;
 	}
+	
 	public virtual int ContainsItemAt(int id)
 	{
 		for (int i = 0; i<inventory.Count;i++)
@@ -227,6 +213,7 @@ public class Inventory : MonoBehaviour
 		}
 		return 0;
 	}
+	
 	public virtual int ReturnItemAmount(string id)
 	{
 		for (int i = 0; i<inventory.Count;i++)

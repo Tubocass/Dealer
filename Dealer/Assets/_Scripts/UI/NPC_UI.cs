@@ -12,7 +12,7 @@ public class NPC_UI: MonoBehaviour
 	protected Quest_Journal journ;
 	public Quest_Journal Journal{get{return journ;}set{journ = value; OnChange_Journal();}}
 	protected bool showInventory, showUI, showQuests;
-	protected List<Image> invSlots = new List<Image>();
+	protected List<Image> invImages = new List<Image>();
 	protected List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
 	[SerializeField] protected int itemAmount = 6, questAmount = 4;
 	protected Rect window;
@@ -34,9 +34,9 @@ public class NPC_UI: MonoBehaviour
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
 			icon.transform.SetParent(inventoryGrid);
 			
-			invSlots.Add(icon.GetComponent<Image>());
-			invSlots[i].GetComponent<Dragging>().ui = this;
-			invSlots[i].GetComponent<RightClickSell>().ui = this;
+			invImages.Add(icon.GetComponent<Image>());
+			invImages[i].GetComponent<Dragging>().ui = this;
+			invImages[i].GetComponent<RightClickSell>().ui = this;
 			//invSlots[i].GetComponent<Dragging>().inv = inv;
 			icon.SetActive(true);
 		}
@@ -117,12 +117,12 @@ public class NPC_UI: MonoBehaviour
 	{
 		for(int i =0; i<inv.inventory.Count;i++)
 		{
-			Text text = invSlots[i].GetComponentInChildren<Text>();
+			Text text = invImages[i].GetComponentInChildren<Text>();
 			if(text!=null)
 			{
 				if(inv.inventory[i].itemIcon!=null)
 				{
-					invSlots[i].sprite = (Sprite)inv.inventory[i].itemIcon;
+					invImages[i].sprite = inv.inventory[i].itemIcon;
 					
 					if(inv.inventory[i].bStackable)
 					{
@@ -130,7 +130,7 @@ public class NPC_UI: MonoBehaviour
 						
 					}else text.text = "";
 					
-				}else{ invSlots[i].sprite = defaultSprite;text.text = "";}
+				}else{ invImages[i].sprite = defaultSprite;text.text = "";}
 			}
 		}
 	}

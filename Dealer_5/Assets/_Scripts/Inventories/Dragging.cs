@@ -8,11 +8,10 @@ public class Dragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public bool dragOnSurfaces = true;
 	public static Item draggedItem;
 	public static int prevIndex;
-	Inventory inv;
+	Inventory inv,tradeInventory;
 	public NPC_UI ui;
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
-	Inventory tradeInventory;
 	static bool bOverSlot;
 	
 	

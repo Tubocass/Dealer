@@ -11,16 +11,18 @@ public class NPC_UI: MonoBehaviour
 	public Inventory Inventory{get{return inv;}set{inv = value; OnChange_Inventory();}}
 	protected Quest_Journal journ;
 	public Quest_Journal Journal{get{return journ;}set{journ = value; OnChange_Journal();}}
-	protected bool showInventory, showUI, showQuests;
-	protected List<Image> invSlots = new List<Image>();
-	protected List<UnityEngine.UI.Button> journSlots = new List<UnityEngine.UI.Button>();
-	[SerializeField] protected int itemAmount = 6, questAmount = 4;
+	protected bool showInventory, showUI, showDialogue;
+	protected List<Image> invImages = new List<Image>();
+	protected List<UnityEngine.UI.Button> dialSlots = new List<UnityEngine.UI.Button>();
+	[SerializeField] protected int itemAmount = 6, dialAmount = 4;
 	protected Rect window;
 	public Rect Window{get{return window;}}
 	[SerializeField] protected GameObject imagePrefab, buttonPrefab;
 	[SerializeField] protected EventSystem events;
 	Text qtext;
 	public MarketManager manager;
+	public Dialogue convo;
+	bool bQuestioning;
 	[SerializeField] Sprite defaultSprite;
 
 	protected virtual void Start () 
@@ -34,28 +36,28 @@ public class NPC_UI: MonoBehaviour
 			GameObject icon = (GameObject)Instantiate(imagePrefab);
 			icon.transform.SetParent(inventoryGrid);
 			
-			invSlots.Add(icon.GetComponent<Image>());
-			invSlots[i].GetComponent<Dragging>().ui = this;
-			invSlots[i].GetComponent<RightClickSell>().ui = this;
+			invImages.Add(icon.GetComponent<Image>());
+			invImages[i].GetComponent<Dragging>().ui = this;
+			invImages[i].GetComponent<RightClickSell>().ui = this;
 			//invSlots[i].GetComponent<Dragging>().inv = inv;
 			icon.SetActive(true);
 		}
-		for (int j = 0; j<questAmount; j++)
+		for (int j = 0; j<dialAmount; j++)
 		{
 			GameObject icon = (GameObject)Instantiate(buttonPrefab);
 			icon.transform.SetParent(journalList);
 
-			journSlots.Add(icon.GetComponent<UnityEngine.UI.Button>());
-			journSlots[j].onClick.AddListener(() => { DrawQuestText(); });
+			dialSlots.Add(icon.GetComponent<UnityEngine.UI.Button>());
+			dialSlots[j].onClick.AddListener(() => { DialogueButton(); });
 			icon.SetActive(true);
 		}
 	}
 	
 	public virtual void OnClick_Inventory()
 	{
-		if(showQuests)
+		if(showDialogue)
 		{
-			OnClick_Quests();
+			OnClick_Dialogue();
 		}
 		inventoryPanel.gameObject.SetActive(!inventoryPanel.gameObject.activeSelf);
 		showInventory = !showInventory;
@@ -65,13 +67,17 @@ public class NPC_UI: MonoBehaviour
 		}	*/	
 
 	}
-	public virtual void OnClick_Quests()
+	public virtual void OnClick_Dialogue()
 	{
 		if(showInventory)
 		{
 			OnClick_Inventory();
 		}
-		showQuests = !showQuests;
+		showDialogue = !showDialogue;
+		if(showDialogue)
+		{
+			DrawDialog();
+		}
 		journalWindow.gameObject.SetActive(!journalWindow.gameObject.activeSelf);
 	}
 
@@ -92,6 +98,7 @@ public class NPC_UI: MonoBehaviour
 	public void ShowUI(bool show)
 	{
 		showUI = show;
+		//showDialogue = true;
 		panelUI.gameObject.SetActive(show);
 	}
 	
@@ -106,9 +113,9 @@ public class NPC_UI: MonoBehaviour
 			if(inv!=null && showInventory)
 			{
 				DrawInventory();
-			}else if(journ!=null && showQuests) 
+			}else if(convo!=null && showDialogue) 
 			{
-				DrawQuests();
+				DrawDialog();
 			}
 		}
 	}
@@ -117,12 +124,12 @@ public class NPC_UI: MonoBehaviour
 	{
 		for(int i =0; i<inv.inventory.Count;i++)
 		{
-			Text text = invSlots[i].GetComponentInChildren<Text>();
+			Text text = invImages[i].GetComponentInChildren<Text>();
 			if(text!=null)
 			{
 				if(inv.inventory[i].itemIcon!=null)
 				{
-					invSlots[i].sprite = (Sprite)inv.inventory[i].itemIcon;
+					invImages[i].sprite = inv.inventory[i].itemIcon;
 					
 					if(inv.inventory[i].bStackable)
 					{
@@ -130,7 +137,7 @@ public class NPC_UI: MonoBehaviour
 						
 					}else text.text = "";
 					
-				}else{ invSlots[i].sprite = defaultSprite;text.text = "";}
+				}else{ invImages[i].sprite = defaultSprite;text.text = "";}
 			}
 		}
 	}
@@ -138,7 +145,7 @@ public class NPC_UI: MonoBehaviour
 	{
 		for(int j = 0; j< journ.quests.Count;j++)
 		{
-			Text slotText = journSlots[j].GetComponentInChildren<Text>();
+			Text slotText = dialSlots[j].GetComponentInChildren<Text>();
 			if(slotText!=null)
 			{
 				if(journ.quests[j].itemName!=null)
@@ -157,6 +164,37 @@ public class NPC_UI: MonoBehaviour
 		Debug.Log(s);
 		if(qtext!=null)
 		qtext.text = journ.quests[s].GetText();
+	}
+	
+	void DrawDialog()
+	{
+		Text qtext = questText.GetComponentInChildren<Text>();
+		if(qtext!=null)
+		{
+			if(convo.currentNode.NPC!=null)
+			{
+				qtext.text = convo.currentNode.NPC;
+			}
+		}
+		for(int j = 0; j< dialAmount;j++)
+		{
+			//
+			Text slotText = dialSlots[j].GetComponentInChildren<Text>();
+			if(slotText!=null)
+			{
+				if(j<convo.currentNode.Choices.Count&&convo.currentNode.Choices[j].Player!=null)
+				{
+					slotText.text = convo.currentNode.Choices[j].Player;
+				}else slotText.text = "";
+			}
+		}
+	}
+	protected void DialogueButton()
+	{
+		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
+		convo.NextNode(s);
+		DrawDialog();
+
 	}
 
 	protected Rect GetScreenRect(RectTransform rectTransform)

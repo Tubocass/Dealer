@@ -7,13 +7,12 @@ public class Player_Interactions : MonoBehaviour
 	Inventory inventory;
 	Quest_Journal journal;
 	Transform tran;
-	public delegate void TradeAction();
-	public event TradeAction PickedUpWeed;
 	public GameObject bullet;
 	Animator anim;
 	public float strikeDist = 5;
 	public LayerMask playerMask;
 	GameObject mainCam;
+	Transform playerStart;
 	
 	void Start()
 	{
@@ -21,6 +20,8 @@ public class Player_Interactions : MonoBehaviour
 		anim = GetComponent<Animator>();
 		journal = GetComponent<Quest_Journal>();
 		tran = transform;
+		playerStart = GameObject.FindGameObjectWithTag("PlayerStart").transform;
+		tran.position = playerStart.position;
 		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
 		mainCam.GetComponent<Camera2DFollow>().target = tran;
 
@@ -63,12 +64,10 @@ public class Player_Interactions : MonoBehaviour
 		{
 			case "Weed":
 			{
-				inventory.RemoveItem(item);
 				break;
 			}
 			case "Drank":
 			{
-				inventory.RemoveItem(item);
 				break;
 			}
 			case "Northern Lights":
@@ -77,18 +76,13 @@ public class Player_Interactions : MonoBehaviour
 				SceneChange scn = GameObject.Find("GameController").GetComponent<SceneChange>();
 				
 				scn.SceneTimer();
-				inventory.RemoveItem(item);
 				break;
 			}
 		}
+		inventory.RemoveItem(item);
 	}
 	
-	public void AddWeed()
-	{
-		inventory.AddItem(1);
-		if(PickedUpWeed!=null)
-			PickedUpWeed();
-	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		switch (other.gameObject.tag) 
@@ -97,15 +91,15 @@ public class Player_Interactions : MonoBehaviour
 			{
 				Destroy(other.gameObject,0);
 				//print ("something");
-				AddWeed();
+				inventory.AddItem(1);
 				break;
 			}
 			case "NorthernLights":
 			{
-			Destroy(other.gameObject,0);
-			//print ("something");
-			inventory.AddItem (4);
-			break;
+				Destroy(other.gameObject,0);
+				//print ("something");
+				inventory.AddItem (4);
+				break;
 			}
 			case "Drank":
 			{

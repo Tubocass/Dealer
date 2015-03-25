@@ -9,10 +9,6 @@ public class Quest_Journal : Inventory {
 	Quest_Database questDB;
 	public List<Quest_Item> quests = new List<Quest_Item>();
 
-	public delegate void TalkAction();
-	public event TalkAction QuestFinished;
-	//public event TalkAction FinishQuest;
-	public event TalkAction Talk;
 	
 	protected override void Start()
 	{
@@ -26,6 +22,20 @@ public class Quest_Journal : Inventory {
 			UniqueID = (int)(Random.value*2000f);
 		}
 		questDB = GameObject.FindGameObjectWithTag ("QuestDatabase").GetComponent <Quest_Database> ();
+	}
+	
+	public override int ContainsItemAt(int id)
+	{
+		for (int i = 0; i<quests.Count;i++)
+		{
+			if(quests[i].itemID == id)
+			{
+				return i;
+				break;
+			}
+			
+		}
+		return -1;
 	}
 
 	public void AddItem(Quest_Item item)
@@ -47,20 +57,6 @@ public class Quest_Journal : Inventory {
 				}
 			}
 		}
-	}
-
-	public override int ContainsItemAt(int id)
-	{
-		for (int i = 0; i<quests.Count;i++)
-		{
-			if(quests[i].itemID == id)
-			{
-				return i;
-				break;
-			}
-			
-		}
-		return -1;
 	}
 
 	public override void AddItem(int id)
