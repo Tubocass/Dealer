@@ -82,7 +82,7 @@ public class SaveLoad : MonoBehaviour {
 [Serializable]
 class PlayerData
 {
-	LevelingSystem stats = new LevelingSystem();
+
 	public float health;
 	public int experience;
 	public float cash;

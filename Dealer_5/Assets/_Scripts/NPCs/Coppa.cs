@@ -54,10 +54,12 @@ public class Coppa : MonoBehaviour
 			if (Vector2.Distance (tran.position,player.transform.position) < 5)
 			{
 				Debug.Log("Did you sell drugs in front of me?");
+
 			}else 
 			{
 				AIPath.setTarget(player.transform);
 				bMoving = true;
+				GetComponent<SpeechBubble>().enabled = true;
 			}
 		}
 	}

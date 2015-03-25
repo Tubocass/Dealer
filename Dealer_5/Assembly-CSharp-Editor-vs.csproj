@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{F3E6ED9B-E2D5-CC32-F49F-2BAA97AFF18F}</ProjectGuid>
+	<ProjectGuid>{8AC5385D-DF34-FB00-102E-871110E12A51}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,8 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Assets\Sample Assets\Cameras\Scripts\Editor\AutoCamInspector.cs" />
-     <Compile Include="Assets\Assets\Sample Assets\Cameras\Scripts\Editor\FreeLookCamInspector.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\AnimationLinkEditor.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Editor\AstarUpdateWindow.cs" />
@@ -64,46 +62,24 @@
      <Compile Include="Assets\AstarPathfindingProject\Editor\SeekerEditor.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\Editor\AlphaNumericSort.cs" />
      <Compile Include="Assets\_Scripts\UI Samples\Editor\GUIHierarchy.cs" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularSmooth.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Shared.cginc" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Coord.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Projectors\Shaders\Projector Additive.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\InterpolateAlongRays.shader" />
+     <None Include="Assets\Assets\Dialogues\second.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\DepthBreaks.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-LightedOutline.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\AstarPathfindingProject\Readme.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Shaders\Mobile-Spec.shader" />
+     <None Include="Assets\Assets\Dialogues\FirstQuestion.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
-     <None Include="Assets\Assets\Sample Assets\Cameras\Camera Guidelines.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Raymarch.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\FinalInterpolation.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Depth.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Light Shafts Guidelines.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularDisplacement.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\ColorFilter.shader" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
- <Reference Include="Assembly-UnityScript">
- <HintPath>/Users/Fox/Documents/Dealer/Dealer_5J/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>/Users/Fox/Documents/Dealer/Dealer_5J/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>/Users/Fox/Documents/Dealer/Dealer_5J/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -132,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-vs.csproj">
-      <Project>{29A72FD5-3D64-DE23-7546-D437054CBF8A}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
+      <Project>{94E01894-D7DF-9125-E472-99E6F2B6D50C}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

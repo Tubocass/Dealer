@@ -89,7 +89,8 @@ using System.Collections;
 			//Button for shits and giggles
 			if(GUI.Button(new Rect(50,45,50,25),"Jail"))
 			{
-			Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+			Application.LoadLevel("Scene_JD");
+			GameObject.Find("Player").transform.position = new Vector3(-29,-9,0);
 			}
 			
 			GUI.EndGroup();
