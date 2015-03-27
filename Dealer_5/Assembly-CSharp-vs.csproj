@@ -119,8 +119,6 @@
      <Compile Include="Assets\Dialogue\Plugins\litJSON\ParserToken.cs" />
      <Compile Include="Assets\Dialogue\Scripts\Dialogue.cs" />
      <Compile Include="Assets\Dialogue\Scripts\DialogueEvents.cs" />
-     <Compile Include="Assets\SaveLoad.cs" />
-     <Compile Include="Assets\SpeechBubble.cs" />
      <Compile Include="Assets\_Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
      <Compile Include="Assets\_Scripts\DialogEvent.cs" />
@@ -146,6 +144,7 @@
      <Compile Include="Assets\_Scripts\NPCs\Coppa_Los.cs" />
      <Compile Include="Assets\_Scripts\NPCs\FSM_BASE.cs" />
      <Compile Include="Assets\_Scripts\NPCs\NPC.cs" />
+     <Compile Include="Assets\_Scripts\NPCs\SpeechBubble.cs" />
      <Compile Include="Assets\_Scripts\Player\Dialog.cs" />
      <Compile Include="Assets\_Scripts\Player\DialogAnswer.cs" />
      <Compile Include="Assets\_Scripts\Player\DialogQuestion.cs" />
@@ -178,6 +177,7 @@
      <Compile Include="Assets\_Scripts\UI\MapsApp.cs" />
      <Compile Include="Assets\_Scripts\UI\NPC_UI.cs" />
      <Compile Include="Assets\_Scripts\UI\Player_UI.cs" />
+     <Compile Include="Assets\_Scripts\UI\SaveLoad.cs" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
      <None Include="Assets\Assets\Dialogues\second.txt" />
