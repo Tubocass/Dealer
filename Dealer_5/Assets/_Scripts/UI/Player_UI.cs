@@ -14,7 +14,7 @@ public class Player_UI : NPC_UI {
 	{
 		Inventory = GetComponent<Inventory>();
 		Journal = GetComponent<Quest_Journal>();
-		itemAmount = Inventory.inventory.Count;
+		itemAmount = 20; //Inventory.inventory.Count;
 		dialAmount = Journal.quests.Count;
 		base.Start();
 
@@ -78,7 +78,7 @@ public class Player_UI : NPC_UI {
 		mapPanel.gameObject.SetActive(!mapPanel.gameObject.activeSelf);
 		showMaps = !showMaps;
 	}
-	public virtual void OnClick_Inventory()
+	public override void OnClick_Inventory()
 	{
 		if(showDialogue)
 		{
@@ -90,7 +90,7 @@ public class Player_UI : NPC_UI {
 		inventoryPanel.gameObject.SetActive(!inventoryPanel.gameObject.activeSelf);
 		showInventory = !showInventory;
 	}
-	public virtual void OnClick_Dialogue()
+	public override void OnClick_Dialogue()
 	{
 		if(showInventory)
 		{

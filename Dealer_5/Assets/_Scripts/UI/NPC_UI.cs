@@ -2,12 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using System.Reflection;
 using System.Collections.Generic;
 
 public class NPC_UI: MonoBehaviour
 {
 	[SerializeField] protected RectTransform panelUI, inventoryPanel, inventoryGrid, journalWindow,journalList, questText;
-	protected Inventory inv;
+	protected Inventory inv;//set by clicking on an NPC
 	public Inventory Inventory{get{return inv;}set{inv = value; OnChange_Inventory();}}
 	protected Quest_Journal journ;
 	public Quest_Journal Journal{get{return journ;}set{journ = value; OnChange_Journal();}}
@@ -24,6 +25,7 @@ public class NPC_UI: MonoBehaviour
 	public Dialogue convo;
 	bool bQuestioning;
 	[SerializeField] Sprite defaultSprite;
+	StringEvent action;
 
 	protected virtual void Start () 
 	{
@@ -125,6 +127,7 @@ public class NPC_UI: MonoBehaviour
 		for(int i =0; i<inv.inventory.Count;i++)
 		{
 			Text text = invImages[i].GetComponentInChildren<Text>();
+	
 			if(text!=null)
 			{
 				if(inv.inventory[i].itemIcon!=null)
@@ -182,10 +185,24 @@ public class NPC_UI: MonoBehaviour
 			Text slotText = dialSlots[j].GetComponentInChildren<Text>();
 			if(slotText!=null)
 			{
-				if(j<convo.currentNode.Choices.Count&&convo.currentNode.Choices[j].Player!=null)
+				if(j<convo.currentNode.Choices.Count)
 				{
-					slotText.text = convo.currentNode.Choices[j].Player;
-				}else slotText.text = "";
+				   if(convo.currentNode.Choices[j].Player!=null)
+					{
+						slotText.text = convo.currentNode.Choices[j].Player;
+
+					}else slotText.text = "";
+					if(convo.currentNode.Choices[j].Action!=null)
+					{	
+						//Get the method information using the method info class
+						MethodInfo mi = this.GetType().GetMethod(convo.currentNode.Choices[j].Action);
+						
+						//Invoke the method
+						// (null- no parameter for the method call
+						// or you can pass the array of parameters...)
+						dialSlots[j].onClick.AddListener(() => { mi.Invoke(this, null);});
+					}
+				}
 			}
 		}
 	}
@@ -195,6 +212,13 @@ public class NPC_UI: MonoBehaviour
 		convo.NextNode(s);
 		DrawDialog();
 
+	}
+	protected void DialogueButton(string action)
+	{
+		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
+		convo.NextNode(s);
+		DrawDialog();
+		
 	}
 
 	protected Rect GetScreenRect(RectTransform rectTransform)

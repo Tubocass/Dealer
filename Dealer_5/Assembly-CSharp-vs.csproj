@@ -121,7 +121,6 @@
      <Compile Include="Assets\Dialogue\Scripts\DialogueEvents.cs" />
      <Compile Include="Assets\_Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
-     <Compile Include="Assets\_Scripts\DialogEvent.cs" />
      <Compile Include="Assets\_Scripts\DoNotDestroySingleton.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
      <Compile Include="Assets\_Scripts\FireBullet.cs" />
@@ -144,9 +143,6 @@
      <Compile Include="Assets\_Scripts\NPCs\Coppa_Los.cs" />
      <Compile Include="Assets\_Scripts\NPCs\FSM_BASE.cs" />
      <Compile Include="Assets\_Scripts\NPCs\NPC.cs" />
-     <Compile Include="Assets\_Scripts\Player\Dialog.cs" />
-     <Compile Include="Assets\_Scripts\Player\DialogAnswer.cs" />
-     <Compile Include="Assets\_Scripts\Player\DialogQuestion.cs" />
      <Compile Include="Assets\_Scripts\Player\Legs_Anim.cs" />
      <Compile Include="Assets\_Scripts\Player\LevelingSystem.cs" />
      <Compile Include="Assets\_Scripts\Player\Market.cs" />

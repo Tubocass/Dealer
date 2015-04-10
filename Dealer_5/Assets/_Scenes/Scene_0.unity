@@ -126,20 +126,10 @@ MonoBehaviour:
     bFinished: 0
     text:
     - 
-    question1:
-      precondition: 0
-      type: 0
-      question: 
-      answers: []
   finalStage: 0
   weedAmount: 0
   weedDesired: 0
   weedBought: 0
-  question1:
-    precondition: 0
-    type: 0
-    question: 
-    answers: []
 --- !u!4 &46393280
 Transform:
   m_PrefabParentObject: {fileID: 400124, guid: dbed86280764eb9418f3f335a3d19649, type: 2}
@@ -379,23 +369,10 @@ MonoBehaviour:
     bFinished: 0
     text:
     - 
-    question1:
-      precondition: 0
-      type: 0
-      question: 
-      answers: []
   finalStage: 0
   weedAmount: 0
   weedDesired: 0
   weedBought: 0
-  question1:
-    precondition: 0
-    type: 0
-    question: 
-    answers:
-    - type: 0
-      answer: 
-      precondition: 0
 --- !u!114 &189787708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +806,10 @@ Prefab:
     - target: {fileID: 22413434, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449332, guid: befd68ba803d1634bb2b81519491da05, type: 2}
+      propertyPath: itemAmount
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: befd68ba803d1634bb2b81519491da05, type: 2}
@@ -2902,20 +2883,10 @@ MonoBehaviour:
     bFinished: 0
     text:
     - 
-    question1:
-      precondition: 0
-      type: 0
-      question: 
-      answers: []
   finalStage: 2
   weedAmount: 0
   weedDesired: 0
   weedBought: 0
-  question1:
-    precondition: 0
-    type: 0
-    question: 
-    answers: []
 --- !u!1 &1611267798
 GameObject:
   m_ObjectHideFlags: 0

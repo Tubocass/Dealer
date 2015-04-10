@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Documents\Projects\Dealer\Dealer_5\Assets\Dialogue\Scripts\DialogueEvents.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DialogueEditor\Data.cs">
     <Files>
-      <File FileName="..\..\Documents\Projects\Dealer\Dealer_5\Assets\Dialogue\Scripts\DialogueEvents.cs" Line="5" Column="28" />
+      <File FileName="DialogueEditor\Program.cs" Line="16" Column="43" />
+      <File FileName="DialogueEditor\mainEditor.cs" Line="21" Column="22" />
+      <File FileName="DialogueEditor\Data.cs" Line="236" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

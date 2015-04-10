@@ -28,6 +28,7 @@ public class Dialogue: MonoBehaviour{
 	public struct Choice {
 		private string target;
 		private string player;
+		private string action;
 		
 		public string Target {
 			get {return target;}
@@ -37,9 +38,19 @@ public class Dialogue: MonoBehaviour{
 			get {return player;}
 			set {player = value;}
 		}
+		public string Action {
+			get {return action;}
+			set {action = value;}
+		}
 		public Choice (string playerText, string targetNode){
 			player = playerText;
 			target = targetNode;
+			action = null;
+		}
+		public Choice (string playerText, string targetNode, string act){
+			player = playerText;
+			target = targetNode;
+			action = act;
 		}
 	}
 	public void NextNode(int i)
@@ -59,44 +70,64 @@ public class Dialogue: MonoBehaviour{
 		List<Choice> choicesTemp = new List<Choice>();
 		string playerTextTemp = null;		
 		string TargetTemp = "";
+		string actionTemp = null;
 	
-		while (reader.Read ()) {
+		while (reader.Read ()) 
+		{
 			if ((reader.Token == JsonToken.ObjectStart) 
-				|| (reader.Token == JsonToken.ArrayStart)) {
+				|| (reader.Token == JsonToken.ArrayStart)) 
+			{
 				depth++;
 			}
 			else if ((reader.Token == JsonToken.ObjectEnd)
-				|| (reader.Token == JsonToken.ArrayEnd)) {
+				|| (reader.Token == JsonToken.ArrayEnd)) 
+			{
 				depth--;
 			}
-			if (reader.Token == JsonToken.PropertyName) {
+			if (reader.Token == JsonToken.PropertyName) 
+			{
 				propertyNameTemp = (string)reader.Value;
 			}
-			else if (depth == 4){	
-				if (propertyNameTemp == "Player") {
+			else if (depth == 4)
+			{	
+				if (propertyNameTemp == "Player") 
+				{
 					playerTextTemp = (string)reader.Value;
 				}
-				else if (propertyNameTemp == "Target") {
+				else if (propertyNameTemp == "Target") 
+				{
 					TargetTemp = (string)reader.Value;
 				}
+				else if (propertyNameTemp == "Action") 
+				{
+					actionTemp = (string)reader.Value;
+				}
 			}
-			else if (depth == 2){
-				if (propertyNameTemp == "NPC") {
+			else if (depth == 2)
+			{
+				if (propertyNameTemp == "NPC") 
+				{
 					npcTextTemp = (string)reader.Value;
 					hasSavedNode = false;
 				}
-				else if (propertyNameTemp == "ID") {
+				else if (propertyNameTemp == "ID") 
+				{
 					idTemp = (string)reader.Value;
 				}
-			}
-			else if (depth == 3) {
-				if (playerTextTemp != null) {
-					choicesTemp.Add(new Choice(playerTextTemp,TargetTemp));
+			}else if (depth == 3) 
+			{
+				if (playerTextTemp != null) 
+				{
+					if(actionTemp!=null)
+					{
+						choicesTemp.Add(new Choice(playerTextTemp,TargetTemp,actionTemp));
+					}else choicesTemp.Add(new Choice(playerTextTemp,TargetTemp));
 					playerTextTemp = null;
 				}
-			}
-			else if (depth == 1) {
-				if (!hasSavedNode) {
+			}else if (depth == 1) 
+			{
+				if (!hasSavedNode) 
+				{
 					nodeTemp = new Node(npcTextTemp,idTemp,choicesTemp);
 					nodeIDs[idTemp] = nodeTemp;
 					choicesTemp = new List<Choice>();					
@@ -106,7 +137,8 @@ public class Dialogue: MonoBehaviour{
         }
 	}
 
-	void Start () {
+	void Start () 
+	{
 		//conversing = true;
 		nodeIDs = new Dictionary<string, Node>();
 		LoadData();
