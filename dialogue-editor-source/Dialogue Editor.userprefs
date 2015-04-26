@@ -1,10 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DialogueEditor\Data.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Dealer_5\Assets\DialoguerExamples\ClassicRpg\Scripts\ClassicRpgGui.cs">
     <Files>
-      <File FileName="DialogueEditor\Program.cs" Line="16" Column="43" />
-      <File FileName="DialogueEditor\mainEditor.cs" Line="21" Column="22" />
-      <File FileName="DialogueEditor\Data.cs" Line="236" Column="51" />
+      <File FileName="..\Dealer_5\Assets\_Scripts\UI\NPC_UI.cs" Line="33" Column="26" />
+      <File FileName="..\Dealer_5\Assets\DialoguerExamples\_ExampleScene\Classes\DialoguerExampleStart.cs" Line="1" Column="1" />
+      <File FileName="..\Dealer_5\Assets\DialoguerExamples\ClassicRpg\Scripts\ClassicRpgGui.cs" Line="318" Column="4" />
+      <File FileName="..\Dealer_5\Assets\Dialoguer\Dialoguer\Scripts\Core\Dialoguer.cs" Line="184" Column="30" />
+      <File FileName="..\Dealer_5\Assets\Dialoguer\Dialoguer\Scripts\Core\DialoguerEventManager.cs" Line="6" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

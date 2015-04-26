@@ -6,7 +6,6 @@ public class NPC : MonoBehaviour {
 
 	public Inventory inventory;
 	public Quest_Journal quests;
-	Dialogue dial;
 	NPC_UI ui, playerUI;
 	bool bClicked;
 	SpriteRenderer sprite;
@@ -16,7 +15,6 @@ public class NPC : MonoBehaviour {
 	
 	void Start () 
 	{
-		dial = GetComponent<Dialogue>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		ui = GameObject.FindGameObjectWithTag("GameController").GetComponent<NPC_UI>();
 		sprite = GetComponent<SpriteRenderer>();
@@ -44,7 +42,6 @@ public class NPC : MonoBehaviour {
 		bClicked = true;
 		ui.Journal = quests;
 		ui.Inventory = inventory;
-		ui.convo = dial;
 		ui.ShowUI(true);
 	}
 }

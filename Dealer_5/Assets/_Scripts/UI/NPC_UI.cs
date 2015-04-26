@@ -22,7 +22,7 @@ public class NPC_UI: MonoBehaviour
 	[SerializeField] protected EventSystem events;
 	Text qtext;
 	public MarketManager manager;
-	public Dialogue convo;
+	Dialogue convo;
 	bool bQuestioning;
 	[SerializeField] Sprite defaultSprite;
 	StringEvent action;
@@ -115,7 +115,7 @@ public class NPC_UI: MonoBehaviour
 			if(inv!=null && showInventory)
 			{
 				DrawInventory();
-			}else if(convo!=null && showDialogue) 
+			}else if(showDialogue) 
 			{
 				DrawDialog();
 			}
