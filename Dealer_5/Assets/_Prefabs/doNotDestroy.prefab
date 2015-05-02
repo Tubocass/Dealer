@@ -750,6 +750,7 @@ GameObject:
   - 114: {fileID: 11449354}
   - 114: {fileID: 11449352}
   - 114: {fileID: 11449350}
+  - 114: {fileID: 11487918}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -2447,13 +2448,12 @@ MonoBehaviour:
   journalWindow: {fileID: 22413440}
   journalList: {fileID: 22449342}
   questText: {fileID: 22413438}
-  itemAmount: 0
+  itemAmount: 20
   dialAmount: 4
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 11413438}
   manager: {fileID: 0}
-  convo: {fileID: 0}
   defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
   mapPanel: {fileID: 22449312}
   mapList: {fileID: 22413436}
@@ -2674,7 +2674,6 @@ MonoBehaviour:
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 11413438}
   manager: {fileID: 0}
-  convo: {fileID: 0}
   defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
 --- !u!114 &11449354
 MonoBehaviour:
@@ -2880,11 +2879,6 @@ MonoBehaviour:
     bAlmostFinished: 0
     bFinished: 0
     text: []
-    question1:
-      precondition: 0
-      type: 0
-      question: 
-      answers: []
   - itemName: Note
     itemID: 1
     itemDesc: Do Stuff
@@ -2904,11 +2898,6 @@ MonoBehaviour:
     bFinished: 0
     text:
     - 
-    question1:
-      precondition: 0
-      type: 0
-      question: 
-      answers: []
   - itemName: Distribute Weed
     itemID: 2
     itemDesc: Sell all my dank and I'll give you something nice
@@ -2930,11 +2919,6 @@ MonoBehaviour:
     - I need you to gather 4 whole marijuana
     - Now just fill people's orders and come back to me.
     - Thanks for the help. Here's 10 monies.
-    question1:
-      precondition: 0
-      type: 0
-      question: 
-      answers: []
   - itemName: Want Pot
     itemID: 3
     itemDesc: You got any good?
@@ -2955,17 +2939,6 @@ MonoBehaviour:
     text:
     - I could really use some pot right now.
     - Thanks for the bud, bud.
-    question1:
-      precondition: 0
-      type: 0
-      question: You need any good?
-      answers:
-      - type: 0
-        answer: Fuck yeah I want some pot.
-        precondition: 0
-      - type: 1
-        answer: No thank you, sir.
-        precondition: 0
   - itemName: 
     itemID: 0
     itemDesc: 
@@ -2984,11 +2957,6 @@ MonoBehaviour:
     bAlmostFinished: 0
     bFinished: 0
     text: []
-    question1:
-      precondition: 0
-      type: 0
-      question: 
-      answers: []
 --- !u!114 &11449372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3134,6 +3102,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xpText: 
   weedStat: 
+--- !u!114 &11487918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d94627fab7e1142beb2a177e5b6ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21249376
 SpriteRenderer:
   m_ObjectHideFlags: 1

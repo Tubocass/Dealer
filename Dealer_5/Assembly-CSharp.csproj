@@ -78,6 +78,13 @@
      <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleJsonReplacement.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Core\Serialization\SimpleZipReplacement.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Core\astarclasses.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\AIFollow.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\AstarSmoothFollow2.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\DoorController.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\DynamicGridObstacle.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\MineBotAI.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\ObjectPlacer.cs" />
+     <Compile Include="Assets\AstarPathfindingProject\ExampleScenes\ExampleScripts\TargetMover.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Generators\Base.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Generators\GridGenerator.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Generators\NavMeshGenerator.cs" />
@@ -109,17 +116,6 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\IJsonWrapper.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonData.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonException.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonMapper.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonReader.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\JsonWriter.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\Lexer.cs" />
-     <Compile Include="Assets\Dialogue\Plugins\litJSON\ParserToken.cs" />
-     <Compile Include="Assets\Dialogue\Scripts\Dialogue.cs" />
-     <Compile Include="Assets\Dialogue\Scripts\DialogueEvents.cs" />
-     <Compile Include="Assets\DialogueHandler.cs" />
      <Compile Include="Assets\Dialoguer\DialogueEditor\Scripts\Objects\DialogueObjects\DialogueEditorDialogueObject.cs" />
      <Compile Include="Assets\Dialoguer\DialogueEditor\Scripts\Objects\DialogueObjects\DialogueEditorDragPhaseObject.cs" />
      <Compile Include="Assets\Dialoguer\DialogueEditor\Scripts\Objects\DialogueObjects\DialogueEditorGlobalVariablesContainer.cs" />
@@ -168,8 +164,10 @@
      <Compile Include="Assets\DialoguerExamples\UnityDefault\UnityDefaultGui.cs" />
      <Compile Include="Assets\DialoguerExamples\_ExampleScene\Classes\DialoguerExampleStart.cs" />
      <Compile Include="Assets\DialoguerOutput\Enums\DialoguerDialogues.cs" />
+     <Compile Include="Assets\Scripts\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\_Scripts\Daily_Balance.cs" />
+     <Compile Include="Assets\_Scripts\DialogueHandler.cs" />
      <Compile Include="Assets\_Scripts\DoNotDestroySingleton.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
      <Compile Include="Assets\_Scripts\FireBullet.cs" />
@@ -186,6 +184,11 @@
      <Compile Include="Assets\_Scripts\LayerMaskExtensions.cs" />
      <Compile Include="Assets\_Scripts\Loader.cs" />
      <Compile Include="Assets\_Scripts\MarketManager.cs" />
+     <Compile Include="Assets\_Scripts\MessageBus\Message.cs" />
+     <Compile Include="Assets\_Scripts\MessageBus\MessageBus.cs" />
+     <Compile Include="Assets\_Scripts\MessageBus\MessageHandler.cs" />
+     <Compile Include="Assets\_Scripts\MessageBus\MessageSubscriber.cs" />
+     <Compile Include="Assets\_Scripts\MessageBus\MessageSubscriberController.cs" />
      <Compile Include="Assets\_Scripts\NPCs\AStar_Simple.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa.cs" />
      <Compile Include="Assets\_Scripts\NPCs\Coppa_FSM.cs" />
@@ -247,6 +250,10 @@
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{E8CC3CEB-6785-36C4-85E7-07277E817D9B}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

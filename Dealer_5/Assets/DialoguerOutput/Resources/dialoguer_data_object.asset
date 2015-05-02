@@ -17,13 +17,13 @@ MonoBehaviour:
     - id: 0
       name: First
       startPage: 0
-      scrollPosition: {x: 899.821777, y: 61.9138565}
+      scrollPosition: {x: 899.821777, y: 38.6050835}
       phases:
       - id: 0
         type: 1
         theme: 
         position: {x: 232, y: 37}
-        outs: 0100000002000000
+        outs: 0400000001000000
         advanced: 0
         metadata: 
         text: Hey There Guy!
@@ -53,41 +53,10 @@ MonoBehaviour:
         variableGetValue: 
         messageName: 
       - id: 1
-        type: 4
-        theme: 
-        position: {x: 898.092529, y: 78}
-        outs: ffffffff03000000
-        advanced: 0
-        metadata: 
-        text: 
-        name: 
-        portrait: 
-        audio: 
-        audioDelay: 0
-        rect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        newWindow: 0
-        choices: []
-        waitType: 0
-        waitDuration: 0
-        variableScope: 0
-        variableType: 1
-        variableId: 1
-        variableScrollPosition: {x: 0, y: 0}
-        variableSetEquation: 0
-        variableSetValue: 
-        variableGetEquation: 4
-        variableGetValue: 1
-        messageName: 
-      - id: 2
         type: 0
         theme: 
         position: {x: 551, y: 220}
-        outs: 01000000
+        outs: 04000000
         advanced: 0
         metadata: 
         text: '''course you do silly. It''s me [redacted].'
@@ -114,7 +83,7 @@ MonoBehaviour:
         variableGetEquation: 0
         variableGetValue: 
         messageName: 
-      - id: 3
+      - id: 2
         type: 0
         theme: 
         position: {x: 1226.82178, y: 372.903809}
@@ -145,11 +114,11 @@ MonoBehaviour:
         variableGetEquation: 0
         variableGetValue: 
         messageName: 
-      - id: 4
+      - id: 3
         type: 1
         theme: 
         position: {x: 1226.82178, y: 69.9138565}
-        outs: ffffffffffffffff
+        outs: 05000000ffffffff
         advanced: 0
         metadata: 
         text: 
@@ -178,6 +147,68 @@ MonoBehaviour:
         variableGetEquation: 0
         variableGetValue: 
         messageName: 
+      - id: 4
+        type: 4
+        theme: 
+        position: {x: 872.790527, y: 48}
+        outs: 0300000002000000
+        advanced: 0
+        metadata: 
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 1
+        variableId: 1
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 4
+        variableGetValue: 1
+        messageName: 
+      - id: 5
+        type: 5
+        theme: 
+        position: {x: 1552.82178, y: 59.6050873}
+        outs: ffffffff
+        advanced: 0
+        metadata: true
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: showInventory
       floats:
         variables: []
         selection: 0
@@ -292,7 +323,7 @@ MonoBehaviour:
         - name: Weed
           variable: 2
           id: 1
-        selection: 0
+        selection: 1
       strings:
         variables: []
         selection: 0

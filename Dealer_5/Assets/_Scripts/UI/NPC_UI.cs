@@ -22,7 +22,6 @@ public class NPC_UI: MonoBehaviour
 	[SerializeField] protected EventSystem events;
 	Text qtext;
 	public MarketManager manager;
-	Dialogue convo;
 	bool bQuestioning;
 	[SerializeField] Sprite defaultSprite;
 	StringEvent action;
@@ -50,7 +49,7 @@ public class NPC_UI: MonoBehaviour
 			icon.transform.SetParent(journalList);
 
 			dialSlots.Add(icon.GetComponent<UnityEngine.UI.Button>());
-			dialSlots[j].onClick.AddListener(() => { DialogueButton(); });
+			dialSlots[j].onClick.AddListener(() => {  });
 			icon.SetActive(true);
 		}
 	}
@@ -171,52 +170,13 @@ public class NPC_UI: MonoBehaviour
 	
 	void DrawDialog()
 	{
-		Text qtext = questText.GetComponentInChildren<Text>();
-		if(qtext!=null)
-		{
-			if(convo.currentNode.NPC!=null)
-			{
-				qtext.text = convo.currentNode.NPC;
-			}
-		}
-		for(int j = 0; j< dialAmount;j++)
-		{
-			//
-			Text slotText = dialSlots[j].GetComponentInChildren<Text>();
-			if(slotText!=null)
-			{
-				if(j<convo.currentNode.Choices.Count)
-				{
-				   if(convo.currentNode.Choices[j].Player!=null)
-					{
-						slotText.text = convo.currentNode.Choices[j].Player;
-
-					}else slotText.text = "";
-					if(convo.currentNode.Choices[j].Action!=null)
-					{	
-						//Get the method information using the method info class
-						MethodInfo mi = this.GetType().GetMethod(convo.currentNode.Choices[j].Action);
-						
-						//Invoke the method
-						// (null- no parameter for the method call
-						// or you can pass the array of parameters...)
-						dialSlots[j].onClick.AddListener(() => { mi.Invoke(this, null);});
-					}
-				}
-			}
-		}
-	}
-	protected void DialogueButton()
-	{
-		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
-		convo.NextNode(s);
-		DrawDialog();
 
 	}
+
 	protected void DialogueButton(string action)
 	{
 		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
-		convo.NextNode(s);
+
 		DrawDialog();
 		
 	}
