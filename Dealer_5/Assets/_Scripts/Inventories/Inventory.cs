@@ -28,7 +28,6 @@ public class Inventory : MonoBehaviour
 		{
 			UniqueID = (int)(Random.value*1000f);
 		}
-
 	}
 	public void Trade(string data)
 	{
@@ -64,6 +63,30 @@ public class Inventory : MonoBehaviour
 		money+=dolla;
 	}
 
+	public Item NewItem(string id)
+	{
+		for (int j = 0; j<itemDB.items.Count; j++) 
+		{
+			if (itemDB.items [j].itemName == id) 
+			{
+				return new Item(itemDB.items[j]);
+				break;
+			}
+		}
+		return null;
+	}
+	public Item NewItem(int id)
+	{
+		for (int j = 0; j<itemDB.items.Count; j++) 
+		{
+			if (itemDB.items [j].itemID == id) 
+			{
+				return new Item(itemDB.items[j]);
+				break;
+			}
+		}
+		return null;
+	}
 	public void AddItem(Item item)
 	{
 		if(item.itemID<1)
@@ -121,17 +144,9 @@ public class Inventory : MonoBehaviour
 			inventory[s].stackAmount += amount;
 		}else
 		{
-			for(int j = 0;j<itemDB.items.Count;j++)
+			for(int a = 0; a<amount;a++)
 			{
-				if(itemDB.items[j].itemID==id)
-				{
-					for(int a = 0; a<amount;a++)
-					{
-						Item it = new Item(itemDB.items[j]);
-						AddItem(it);
-					}
-					break;
-				}
+				AddItem(NewItem(id));
 			}
 		}
 	}
@@ -146,31 +161,33 @@ public class Inventory : MonoBehaviour
 			inventory[s].stackAmount += amount;
 		}else
 		{
-			for(int j = 0;j<itemDB.items.Count;j++)
+			for(int a = 0; a<amount;a++)
 			{
-				if(itemDB.items[j].itemName==id)
-				{
-					for(int a = 0; a<amount;a++)
-					{
-						Item it = new Item(itemDB.items[j]);
-						AddItem(it);
-					}
-					break;
-				}
-
+				AddItem(NewItem(id));
 			}
 		}
 	}
 	
 	public void RemoveItem(Item item)
 	{
-		if(item.bStackable&&item.stackAmount>1)
+		int k = ContainsItemAt (item.itemName);
+		if(k>-1&&item.bStackable)
 		{
 			item.stackAmount-=1;
-			
 		}else
 		{
-			inventory[ContainsItemAt(item.itemID)]=  new Item();
+			inventory[k] =  new Item();
+		}
+	}
+	public void RemoveItem(string id)
+	{
+		int k = ContainsItemAt (id);
+		if(k>-1&&inventory[k].bStackable)
+		{
+			inventory[k].stackAmount-=1;
+		}else
+		{
+			inventory[k] =  new Item();
 		}
 	}
 	public void RemoveItem(Item item, int amount)
@@ -182,13 +199,9 @@ public class Inventory : MonoBehaviour
 	}
 	public void RemoveItem(string id, int amount)
 	{
-		int s = ContainsItemAt(id);
-		if (s > -1 && inventory [s].bStackable) {
-			inventory [s].stackAmount -= amount;
-		} else 
-		{	
-			if(s > -1)
-			inventory[s]=  new Item();
+		for (int a = 0; a<amount; a++) 
+		{
+			RemoveItem (id);
 		}
 	}
 	
@@ -219,7 +232,6 @@ public class Inventory : MonoBehaviour
 				return result;
 				break;
 			}
-			
 		}
 		return result;
 	}
@@ -233,7 +245,6 @@ public class Inventory : MonoBehaviour
 				return i;
 				break;
 			}
-			
 		}
 		return -1;
 	}
@@ -247,7 +258,6 @@ public class Inventory : MonoBehaviour
 				return i;
 				break;
 			}
-			
 		}
 		return -1;
 	}
@@ -261,7 +271,6 @@ public class Inventory : MonoBehaviour
 				return inventory[i].stackAmount;
 				break;
 			}
-			
 		}
 		return 0;
 	}
@@ -275,7 +284,6 @@ public class Inventory : MonoBehaviour
 				return inventory[i].stackAmount;
 				break;
 			}
-			
 		}
 		return 0;
 	}

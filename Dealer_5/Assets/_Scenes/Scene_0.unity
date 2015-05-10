@@ -297,41 +297,6 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
   m_PrefabInternal: {fileID: 2028713328}
---- !u!114 &189787707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 189787698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ef13241c9c47b4fa085992b6d1a565, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest1:
-    itemName: 
-    itemID: -1
-    itemDesc: 
-    itemIcon: {fileID: 0}
-    itemTexture: {fileID: 0}
-    itemType: 0
-    itemOwner: 0
-    stackAmount: 0
-    bStackable: 0
-    itemValue: 0
-    itemQuality: 0
-    questReward: 0
-    questStage: 0
-    bPreConditionsMet: 0
-    bActive: 0
-    bAlmostFinished: 0
-    bFinished: 0
-    text:
-    - 
-  finalStage: 0
-  weedAmount: 0
-  weedDesired: 0
-  weedBought: 0
 --- !u!114 &189787708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3873,6 +3838,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11422004, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
+    - {fileID: 11404488, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2079103408

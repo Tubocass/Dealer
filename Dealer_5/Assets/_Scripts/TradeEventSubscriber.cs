@@ -43,9 +43,8 @@ public class TradeEventSubscriber : MessageHandler
 				if (s>-1)
 				{
 					Debug.Log ("Here's "+ meta[2]+"Weeds");
-					Item item = myInventory.inventory[s];
-					myInventory.RemoveItem(item,amount);
-					tradeInventory.AddItem(item,amount);
+					myInventory.RemoveItem(meta[1],amount);
+					tradeInventory.AddItem(meta[1],amount);
 				}
 			}
 		}
