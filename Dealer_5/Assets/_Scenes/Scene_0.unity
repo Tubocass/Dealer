@@ -332,6 +332,30 @@ MonoBehaviour:
   weedAmount: 0
   weedDesired: 0
   weedBought: 0
+--- !u!114 &189787708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189787698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24fb77f752015440a402f4b596f58eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &189787709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189787698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884ceebce6b26a34b853b3bad990dcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MessageTypes: 05000000
+  Handler: {fileID: 189787708}
 --- !u!4 &191487485 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
@@ -731,27 +755,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449344, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22449344, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22449368, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22449368, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22413434, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22413434, guid: befd68ba803d1634bb2b81519491da05, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: befd68ba803d1634bb2b81519491da05, type: 2}
@@ -1113,6 +1137,10 @@ Prefab:
     - target: {fileID: 400006, guid: fb6eaea746900471a9fbd51765684ea5, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fb6eaea746900471a9fbd51765684ea5, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb6eaea746900471a9fbd51765684ea5, type: 2}
@@ -1755,6 +1783,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e77a19c97b172438ce8050cd2234ae, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1011821044 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: d0d16a5deb6eddf4385d6c70ca777efc, type: 2}
+  m_PrefabInternal: {fileID: 2078520629}
+--- !u!114 &1011821053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1011821044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24fb77f752015440a402f4b596f58eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1011821054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1011821044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884ceebce6b26a34b853b3bad990dcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MessageTypes: 05000000
+  Handler: {fileID: 1011821053}
 --- !u!1001 &1047207688
 Prefab:
   m_ObjectHideFlags: 0

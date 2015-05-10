@@ -16,7 +16,7 @@ public class NPC : MonoBehaviour {
 	void Start () 
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
-		ui = GameObject.FindGameObjectWithTag("GameController").GetComponent<NPC_UI>();
+		ui = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<NPC_UI>();
 		sprite = GetComponent<SpriteRenderer>();
 		inventory = GetComponent<Inventory_NPC>();
 		quests = GetComponent<Quest_Journal>();
@@ -42,6 +42,7 @@ public class NPC : MonoBehaviour {
 		bClicked = true;
 		ui.Journal = quests;
 		ui.Inventory = inventory;
+		GameController.instance._currentInventory = inventory.UniqueID;
 		ui.ShowUI(true);
 	}
 }

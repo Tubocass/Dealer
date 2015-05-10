@@ -22,7 +22,7 @@ public class HighQuest : MonoBehaviour {
 			{
 				SceneChange sn1 = new SceneChange();
 				sn1.BeginFade(1);
-				inv.AddItem(5);
+				inv.AddItem(5,1);
 				addLint = false;
 				Application.LoadLevel("Scene_JD");
 

@@ -25,9 +25,9 @@ public class Player_Interactions : MonoBehaviour
 		mainCam = GameObject.FindGameObjectWithTag("MainCamera");
 		mainCam.GetComponent<Camera2DFollow>().target = tran;
 
-		inventory.AddItem(1);
-		inventory.AddItem(2);
-		inventory.AddItem(4);
+		//inventory.AddItem(1,1);
+		//inventory.AddItem(2,1);
+		//inventory.AddItem(4,1);
 		//journal.AddItem(1);
 		//journal.AddItem(2);
 	}
@@ -91,28 +91,28 @@ public class Player_Interactions : MonoBehaviour
 			{
 				Destroy(other.gameObject,0);
 				//print ("something");
-				inventory.AddItem(1);
+				inventory.AddItem(1,1);
 				break;
 			}
 			case "NorthernLights":
 			{
 				Destroy(other.gameObject,0);
 				//print ("something");
-				inventory.AddItem (4);
+				inventory.AddItem (4,1);
 				break;
 			}
 			case "Drank":
 			{
 				Destroy(other.gameObject,1);
 				//print ("something");
-				inventory.AddItem(2);
+				inventory.AddItem(2,1);
 				break;
 			}
 			case "Pills":
 			{
 				Destroy(other.gameObject,1);
 				print ("something");
-				inventory.AddItem(2);
+				inventory.AddItem(2,1);
 				break;
 			}
 			case "Quest":

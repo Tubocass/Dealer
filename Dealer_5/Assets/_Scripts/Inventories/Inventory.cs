@@ -11,8 +11,7 @@ public class Inventory : MonoBehaviour
 	//Inventory tradeInventory;
 	public bool bTrading;
 	public List<Item> inventory = new List<Item>();
-	protected bool showInventory, showTooltip;
-	protected string tooltip;
+	protected bool showInventory;
 	
 	public delegate void ItemEvent(Item item);
 	public event ItemEvent ItemSold;
@@ -31,12 +30,16 @@ public class Inventory : MonoBehaviour
 		}
 
 	}
-	
+	public void Trade(string data)
+	{
+
+
+	}
 	public void Trade(Inventory tradeInventory, Item item, int value)
 	{
 		RemoveItem(item);
 		AddMoney(value);
-		tradeInventory.AddItem(item.itemID);
+		tradeInventory.AddItem(item);
 		tradeInventory.AddMoney(-value);
 		if(ItemSold!=null)
 		{
@@ -91,40 +94,70 @@ public class Inventory : MonoBehaviour
 		}
 	}
 	
-	public virtual void AddItem(int id)
+	public void AddItem(Item item, int amount)
+	{
+		if(item.itemID<1)
+			return;
+		int s = ContainsItemAt(item.itemID);
+		if(s>-1&& inventory[s].bStackable)
+		{
+			inventory[s].stackAmount += amount;
+		}else
+		{
+			for(int a = 0; a<amount;a++)
+			{
+				AddItem(item);
+			}
+		}
+	}
+
+	public void AddItem(int id, int amount)
 	{
 		if(id<1)
 			return;
 		int s = ContainsItemAt(id);
 		if(s>-1&& inventory[s].bStackable)
 		{
-			inventory[s].stackAmount += 1;
-			if(ItemAdded!=null)
-			{
-				ItemAdded(inventory[s]);
-			}
-			
+			inventory[s].stackAmount += amount;
 		}else
 		{
-			for(int i =0;i<inventory.Count;i++)
+			for(int j = 0;j<itemDB.items.Count;j++)
 			{
-				if(inventory[i].itemName == null)
+				if(itemDB.items[j].itemID==id)
 				{
-					for(int j = 0;j<itemDB.items.Count;j++)
+					for(int a = 0; a<amount;a++)
 					{
-						if(itemDB.items[j].itemID==id)
-						{
-							Item it = new Item(itemDB.items[j]);
-							inventory[i] = it;
-							inventory[i].itemOwner = this.UniqueID;
-							if(ItemAdded!=null)
-							{
-								ItemAdded(inventory[i]);
-							}
-							break;
-						}
-					}break;
+						Item it = new Item(itemDB.items[j]);
+						AddItem(it);
+					}
+					break;
 				}
+			}
+		}
+	}
+
+	public virtual void AddItem(string id, int amount)
+	{
+		if(id=="")
+			return;
+		int s = ContainsItemAt(id);
+		if(s>-1&& inventory[s].bStackable)
+		{
+			inventory[s].stackAmount += amount;
+		}else
+		{
+			for(int j = 0;j<itemDB.items.Count;j++)
+			{
+				if(itemDB.items[j].itemName==id)
+				{
+					for(int a = 0; a<amount;a++)
+					{
+						Item it = new Item(itemDB.items[j]);
+						AddItem(it);
+					}
+					break;
+				}
+
 			}
 		}
 	}
@@ -140,6 +173,24 @@ public class Inventory : MonoBehaviour
 			inventory[ContainsItemAt(item.itemID)]=  new Item();
 		}
 	}
+	public void RemoveItem(Item item, int amount)
+	{
+		for(int a = 0; a<amount;a++)
+		{
+			RemoveItem(item);
+		}
+	}
+	public void RemoveItem(string id, int amount)
+	{
+		int s = ContainsItemAt(id);
+		if (s > -1 && inventory [s].bStackable) {
+			inventory [s].stackAmount -= amount;
+		} else 
+		{	
+			if(s > -1)
+			inventory[s]=  new Item();
+		}
+	}
 	
 	public bool ContainsItem(int id)
 	{
@@ -149,6 +200,7 @@ public class Inventory : MonoBehaviour
 			result = inventory[i].itemID == id;
 			if(result)
 			{
+				return result;
 				break;
 			}
 			

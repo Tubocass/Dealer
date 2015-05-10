@@ -17,13 +17,13 @@ MonoBehaviour:
     - id: 0
       name: First
       startPage: 0
-      scrollPosition: {x: 899.821777, y: 38.6050835}
+      scrollPosition: {x: 1275.89075, y: 0}
       phases:
       - id: 0
         type: 1
         theme: 
-        position: {x: 232, y: 37}
-        outs: 0400000001000000
+        position: {x: 98, y: 72}
+        outs: 0500000001000000
         advanced: 0
         metadata: 
         text: Hey There Guy!
@@ -55,8 +55,8 @@ MonoBehaviour:
       - id: 1
         type: 0
         theme: 
-        position: {x: 551, y: 220}
-        outs: 04000000
+        position: {x: 422, y: 262}
+        outs: 05000000
         advanced: 0
         metadata: 
         text: '''course you do silly. It''s me [redacted].'
@@ -86,8 +86,8 @@ MonoBehaviour:
       - id: 2
         type: 0
         theme: 
-        position: {x: 1226.82178, y: 372.903809}
-        outs: ffffffff
+        position: {x: 1629.82178, y: 294.903809}
+        outs: 08000000
         advanced: 0
         metadata: 
         text: cool...
@@ -115,43 +115,10 @@ MonoBehaviour:
         variableGetValue: 
         messageName: 
       - id: 3
-        type: 1
-        theme: 
-        position: {x: 1226.82178, y: 69.9138565}
-        outs: 05000000ffffffff
-        advanced: 0
-        metadata: 
-        text: 
-        name: 
-        portrait: 
-        audio: 
-        audioDelay: 0
-        rect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        newWindow: 0
-        choices:
-        - Well hey [redacted], do you want some weed?
-        - 
-        waitType: 0
-        waitDuration: 0
-        variableScope: 0
-        variableType: 0
-        variableId: 0
-        variableScrollPosition: {x: 0, y: 0}
-        variableSetEquation: 0
-        variableSetValue: 
-        variableGetEquation: 0
-        variableGetValue: 
-        messageName: 
-      - id: 4
         type: 4
         theme: 
-        position: {x: 872.790527, y: 48}
-        outs: 0300000002000000
+        position: {x: 969.790527, y: 35}
+        outs: 0600000007000000
         advanced: 0
         metadata: 
         text: 
@@ -175,16 +142,16 @@ MonoBehaviour:
         variableScrollPosition: {x: 0, y: 0}
         variableSetEquation: 0
         variableSetValue: 
-        variableGetEquation: 4
+        variableGetEquation: 2
         variableGetValue: 1
         messageName: 
-      - id: 5
+      - id: 4
         type: 5
         theme: 
-        position: {x: 1552.82178, y: 59.6050873}
-        outs: ffffffff
+        position: {x: 1642.82178, y: 26.6050873}
+        outs: 09000000
         advanced: 0
-        metadata: true
+        metadata: Take,Weed,1
         text: 
         name: 
         portrait: 
@@ -208,25 +175,108 @@ MonoBehaviour:
         variableSetValue: 
         variableGetEquation: 0
         variableGetValue: 
-        messageName: showInventory
-      floats:
-        variables: []
-        selection: 0
-      strings:
-        variables: []
-        selection: 0
-      booleans:
-        variables: []
-        selection: 0
-    - id: 1
-      name: 
-      startPage: 0
-      scrollPosition: {x: 0, y: 0}
-      phases:
-      - id: 0
+        messageName: Trade
+      - id: 5
+        type: 0
+        theme: 
+        position: {x: 646.457947, y: 67}
+        outs: 03000000
+        advanced: 0
+        metadata: 
+        text: Do you have any green?
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 6
+        type: 1
+        theme: 
+        position: {x: 1297.96753, y: 20}
+        outs: 0400000002000000
+        advanced: 0
+        metadata: 
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - I sure do
+        - Nope, sorry.
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 7
+        type: 1
+        theme: 
+        position: {x: 1294.4906, y: 282}
+        outs: 02000000ffffffff
+        advanced: 0
+        metadata: 
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - Nope, Sorry.
+        - 
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 8
         type: 6
         theme: 
-        position: {x: 200, y: 100}
+        position: {x: 2070.82178, y: 264}
         outs: 
         advanced: 0
         metadata: 
@@ -243,6 +293,471 @@ MonoBehaviour:
           height: 0
         newWindow: 0
         choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 9
+        type: 0
+        theme: 
+        position: {x: 1897.82178, y: 84}
+        outs: 08000000
+        advanced: 0
+        metadata: 
+        text: Thanks brosef.
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      floats:
+        variables:
+        - name: 
+          variable: 0
+          id: 0
+        selection: 0
+      strings:
+        variables: []
+        selection: 0
+      booleans:
+        variables: []
+        selection: 0
+    - id: 1
+      name: Sage Start
+      startPage: 2
+      scrollPosition: {x: 0, y: 0}
+      phases:
+      - id: 0
+        type: 6
+        theme: 
+        position: {x: 3327, y: 106}
+        outs: 
+        advanced: 0
+        metadata: 
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 1
+        type: 0
+        theme: 
+        position: {x: 493, y: 19}
+        outs: 03000000
+        advanced: 0
+        metadata: 
+        text: Of course you do.
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 2
+        type: 1
+        theme: 
+        position: {x: 160, y: 10}
+        outs: 0100000001000000
+        advanced: 0
+        metadata: 
+        text: Let me ask you something. Do you like getting high?
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - Fo Sho!
+        - You already know I do.
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 3
+        type: 1
+        theme: 
+        position: {x: 856.004639, y: 14}
+        outs: 0400000005000000
+        advanced: 0
+        metadata: 
+        text: But the more important question is, do you want to share that joy with
+          everyone else?
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - Yeah man. Everyone could benefit from the gonja.
+        - It's whatever man.
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 4
+        type: 1
+        theme: 
+        position: {x: 1549.88818, y: 23}
+        outs: 0600000006000000
+        advanced: 0
+        metadata: 
+        text: Then how about you do me a favor in exchange for some herb.
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - Sure thing.
+        - Yeah, it's not like I have anything else to do today.
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 5
+        type: 1
+        theme: 
+        position: {x: 1193.85083, y: 198}
+        outs: 0400000004000000
+        advanced: 0
+        metadata: 
+        text: Well, fuck it. You want to at least get some weed?
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - Fo Fho!
+        - You already know I do.
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 6
+        type: 0
+        theme: 
+        position: {x: 1913, y: 30}
+        outs: 07000000
+        advanced: 0
+        metadata: 
+        text: It's real simple.
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 7
+        type: 0
+        theme: 
+        position: {x: 1957, y: 199}
+        outs: 08000000
+        advanced: 0
+        metadata: 
+        text: All you gotta do is deliver these cookies to the houses I marked on
+          this map.
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 8
+        type: 5
+        theme: 
+        position: {x: 2290, y: 208}
+        outs: 09000000
+        advanced: 0
+        metadata: Take, Street Map, 1
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: Trade
+      - id: 9
+        type: 1
+        theme: 
+        position: {x: 2521, y: 66}
+        outs: 0a000000ffffffff
+        advanced: 0
+        metadata: 
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - That's it? And you'll just give me marijuana after that?
+        - 
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 10
+        type: 0
+        theme: 
+        position: {x: 2856, y: 55}
+        outs: 0b000000
+        advanced: 0
+        metadata: 
+        text: That's it
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: 
+      - id: 11
+        type: 5
+        theme: 
+        position: {x: 2857.85986, y: 220}
+        outs: 0c000000
+        advanced: 0
+        metadata: Take, Cookies, 4
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: Trade
+      - id: 12
+        type: 1
+        theme: 
+        position: {x: 3079.85986, y: 219}
+        outs: 00000000ffffffff
+        advanced: 0
+        metadata: 
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices:
+        - Cool.
+        - 
         waitType: 0
         waitDuration: 0
         variableScope: 0
@@ -318,12 +833,12 @@ MonoBehaviour:
       floats:
         variables:
         - name: Money
-          variable: 420
+          variable: 10
           id: 0
         - name: Weed
-          variable: 2
+          variable: 420
           id: 1
-        selection: 1
+        selection: 0
       strings:
         variables: []
         selection: 0

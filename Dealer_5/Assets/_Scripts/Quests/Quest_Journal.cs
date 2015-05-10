@@ -59,7 +59,7 @@ public class Quest_Journal : Inventory {
 		}
 	}
 
-	public override void AddItem(int id)
+	public  void AddItem(int id)
 	{
 		int s = ContainsItemAt(id);
 		if(id<1||s>-1)

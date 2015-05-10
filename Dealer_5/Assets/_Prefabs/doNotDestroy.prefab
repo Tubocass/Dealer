@@ -747,10 +747,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449372}
-  - 114: {fileID: 11449354}
-  - 114: {fileID: 11449352}
-  - 114: {fileID: 11449350}
-  - 114: {fileID: 11487918}
+  - 114: {fileID: 11464830}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -895,6 +892,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &149710
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 463958}
+  - 114: {fileID: 11465654}
+  - 114: {fileID: 11402142}
+  m_Layer: 0
+  m_Name: UIController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &413428
 Transform:
   m_ObjectHideFlags: 1
@@ -973,6 +987,7 @@ Transform:
   - {fileID: 449378}
   - {fileID: 449376}
   - {fileID: 449366}
+  - {fileID: 463958}
   m_Father: {fileID: 449362}
   m_RootOrder: 2
 --- !u!4 &449376
@@ -999,6 +1014,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 449372}
   m_RootOrder: 0
+--- !u!4 &463958
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 449372}
+  m_RootOrder: 3
 --- !u!50 &5049376
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -1076,6 +1103,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11402142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d94627fab7e1142beb2a177e5b6ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueWindow: {fileID: 22449370}
+  BranchList: {fileID: 22449332}
+  NPCText: {fileID: 22449370}
 --- !u!114 &11413428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1553,7 +1594,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11449352}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClick_Dialogue
         m_Mode: 1
         m_Arguments:
@@ -1627,7 +1668,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11449352}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClick_Inventory
         m_Mode: 1
         m_Arguments:
@@ -2637,56 +2678,6 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
---- !u!114 &11449350
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c924f41352e284c859799fe1d68e7d0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeOutTexture: {fileID: 2800000, guid: f0cc8f79c3e214b4bb0fa33013dfb53f, type: 3}
-  fadeSpeed: .300000012
-  doNotDestroy: {fileID: 149292}
---- !u!114 &11449352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5521ddfa980a5345be4f38d718e6820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelUI: {fileID: 22449356}
-  inventoryPanel: {fileID: 22449360}
-  inventoryGrid: {fileID: 22449340}
-  journalWindow: {fileID: 22449370}
-  journalList: {fileID: 22449366}
-  questText: {fileID: 22449336}
-  itemAmount: 6
-  dialAmount: 4
-  imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
-  buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
-  events: {fileID: 11413438}
-  manager: {fileID: 0}
-  defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
---- !u!114 &11449354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0b11131ce3e70d4f9dc8087e033d0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  limit: 60
 --- !u!114 &11449356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3089,6 +3080,43 @@ MonoBehaviour:
     bStackable: 1
     itemValue: 16
     itemQuality: 4
+--- !u!114 &11464830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c68284343a2d64695ccdde093aed88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentInventory: 0
+  _currentLevel: 0
+--- !u!114 &11465654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5521ddfa980a5345be4f38d718e6820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelUI: {fileID: 22449356}
+  inventoryPanel: {fileID: 22449360}
+  inventoryGrid: {fileID: 22449340}
+  journalWindow: {fileID: 22449370}
+  journalList: {fileID: 22449366}
+  questText: {fileID: 22449336}
+  itemAmount: 6
+  dialAmount: 4
+  imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
+  buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
+  events: {fileID: 11413438}
+  manager: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: b946a7bbfaec6954a88eaab0f0c2cb7b, type: 3}
 --- !u!114 &11470040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3102,17 +3130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xpText: 
   weedStat: 
---- !u!114 &11487918
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d94627fab7e1142beb2a177e5b6ff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21249376
 SpriteRenderer:
   m_ObjectHideFlags: 1

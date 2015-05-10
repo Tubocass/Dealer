@@ -47,7 +47,9 @@ public class ClassicRpgGui : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		addDialoguerEvents();
-		_showDialogueBox = false;
+		Dialoguer.StartDialogue(DialoguerDialogues.First);
+		
+		//_showDialogueBox = false;
 	}
 	
 	// Update is called once per frame

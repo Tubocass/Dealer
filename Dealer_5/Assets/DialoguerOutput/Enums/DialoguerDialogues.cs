@@ -2,4 +2,5 @@
 //	Do not modify this file, it will be overwritten by Dialoguer.
 public enum DialoguerDialogues{
 	First = 0,
+	Sage_Start = 1,
 }

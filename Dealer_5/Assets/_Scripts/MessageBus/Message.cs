@@ -6,12 +6,14 @@ public enum MessageType
 	LevelStart,
 	LevelEnd,
 	PlayerPosition,
-	PointAdded
+	PointAdded,
+	Trade
 }
 
 public struct Message
 {
 	public MessageType Type;
+	public string StringValue;
 	public int IntValue;
 	public float FloatValue;
 	public Vector3 Vector3Value;

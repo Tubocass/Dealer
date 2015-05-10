@@ -15,8 +15,7 @@ public class MessageBus
 			AddSubscriberToMessage (messageTypes[i], subscriber);
 	}
 
-	void AddSubscriberToMessage ( MessageType messageType, 
-	                             MessageSubscriber subscriber)
+	void AddSubscriberToMessage ( MessageType messageType, MessageSubscriber subscriber)
 	{
 		if (!subscriberLists.ContainsKey (messageType))
 			subscriberLists [messageType] = 
@@ -30,8 +29,7 @@ public class MessageBus
 		if (!subscriberLists.ContainsKey (message.Type))
 			return;
 
-		List<MessageSubscriber> subscriberList = 
-			subscriberLists [message.Type];
+		List<MessageSubscriber> subscriberList = subscriberLists [message.Type];
 
 		for (int i = 0; i < subscriberList.Count; i++)
 			SendMessageToSubscriber (message, subscriberList [i]);
