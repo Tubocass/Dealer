@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{2FF1E6F7-F83B-2348-ACB9-7B5A35997D1A}</ProjectGuid>
+	<ProjectGuid>{094243EB-87D9-F45A-7D5C-6D70BB92797B}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;CROSS_PLATFORM_INPUT</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;CROSS_PLATFORM_INPUT</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,45 +46,38 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Editor\Image Effects\DepthOfFieldScatterEditor.js" />
-     <Compile Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Editor\LightShaftsEditor.js" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
+     <Compile Include="Assets\RAIN\Editor\ScriptTemplates\ActionTemplate_JS.js" />
+     <Compile Include="Assets\RAIN\Editor\ScriptTemplates\DecisionTemplate_JS.js" />
+     <None Include="Assets\RAIN\Editor\Shaders\AspectSphereShader.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularSmooth.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Shared.cginc" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Coord.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Projectors\Shaders\Projector Additive.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\InterpolateAlongRays.shader" />
+     <None Include="Assets\Assets\Dialogues\second.txt" />
+     <None Include="Assets\RAIN\Editor\Shaders\VisualSensorLineShader.shader" />
+     <None Include="Assets\RAIN\Editor\Shaders\NavMeshContourShader.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\DepthBreaks.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\RAIN\Editor\Shaders\WaypointShader.shader" />
+     <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
      <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-LightedOutline.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\AstarPathfindingProject\Readme.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Shaders\Mobile-Spec.shader" />
+     <None Include="Assets\RAIN\Editor\Shaders\VisualSensorRingShader.shader" />
+     <None Include="Assets\Assets\Dialogues\FirstQuestion.txt" />
+     <None Include="Assets\RAIN\ReleaseNotes.txt" />
+     <None Include="Assets\RAIN\Editor\Shaders\AspectRingShader.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
-     <None Include="Assets\Assets\Sample Assets\Cameras\Camera Guidelines.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Raymarch.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\FinalInterpolation.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\Depth.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Light Shafts Guidelines.txt" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularDisplacement.shader" />
-     <None Include="Assets\Assets\Sample Assets\Effects\Light Shafts\Shaders\ColorFilter.shader" />
+     <None Include="Assets\RAIN\Editor\Shaders\NavMeshColliderShader.shader" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
  <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>/Users/Fox/Documents/Dealer/Dealer_5J/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>/Users/Fox/Documents/Dealer/Dealer_5J/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -110,12 +103,25 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="RAINMetaformEditor">
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/RAIN/Editor/RAINMetaformEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="RAINMetaform">
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/RAIN/RAINMetaform.dll</HintPath>
+ </Reference>
+ <Reference Include="RAIN">
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/RAIN/RAIN.dll</HintPath>
+ </Reference>
+ <Reference Include="RAINEditor">
+ <HintPath>/Users/Fox/Documents/Dealer/Dealer_5/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{29A72FD5-3D64-DE23-7546-D437054CBF8A}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
-    <ProjectReference Include="Assembly-UnityScript.unityproj">
-      <Project>{CE9E4441-BA3C-3476-0E0C-41DF7ACF8B52}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
+      <Project>{94E01894-D7DF-9125-E472-99E6F2B6D50C}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

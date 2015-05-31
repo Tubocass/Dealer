@@ -188,11 +188,12 @@ MonoBehaviour:
   journalList: {fileID: 0}
   questText: {fileID: 0}
   itemAmount: 6
-  questAmount: 4
+  dialAmount: 4
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 0}
   manager: {fileID: 0}
+  convo: {fileID: 0}
   defaultSprite: {fileID: 0}
 --- !u!114 &11472502
 MonoBehaviour:
@@ -220,6 +221,7 @@ MonoBehaviour:
   astarData:
     hasBeenReverted: 0
     data: 504b030414000008080092644f46b28a0b3c21020000520400000b0024006772617068302e6a736f6e0a00200000000000010018002c377b544e49d0012c377b544e49d0012c377b544e49d0017553db8e9b3010fd95cacf10014bb8e46d9beca695b6ddd5a6551faa3e38660856c046b6692e2bfebd838124442a919073cecc993333e683ec1a9e91c507f94bcb06c88264d44b8025611252882109dc3944fe368c59f4e0e7491c31d23a84ea1a9879a7864bb2f01dc2b5acc028ce1ec5ae4415cf214a9a8e169df6912c8218b19365cef8460d06c2801ae87bb211aca4550dd9869f6194f0bc3eac3b608c9019f474806ab22cb91eea9953ddb5f24e4fc42119a7e8adab84460be0bbc24c335ef35c83e94dd3d38a2b6ccd0a91cfd214a85051bdbf1951e085493b4a7d9b72ae8f4cae64f56528e4779e4dc1d91edd30aa11ca69a9610aae6e3d36e240cb3ddd96f0ab00f15dae956c4476c96b34042bb230aa819b269605b0fd88f6d606684cab27a39ecfd2c80ba3304c9e5c2fb17377bd59da3f61db765d1f9725afb698310baf7f1f8f5cdbf921b0296537e8142541e136be620b76e9da9641acb3f653c30fbad3172703fccc953648d89e6963e40b17fbb5e2d9357244575c9b175e713b4f5c7cd7de56360a23c9939d334ea2314ba904a86b7a0d8296e6f486e5cc74cf77ccff329e2933b25fcac00cf77b1a6ec14bace74d8937791816cb05aad2f2ad27ad119c9f18b726f00e6043dd083ead15adbbab97297a58f37325f518c5452e374c0188579b3b58a9287e7ec7cb4dc4f0dffeb0ce2471bce177b7f59b8d5b7acc88233cfa69e0a5411260648c9c8bb8a51fd2ebd97147458c9a3bfe9fb6fd07504b030414000008080092644f46287e18aa4300000048000000120024006772617068305f656469746f722e6a736f6e0a00200000000000010018002c377b544e49d0012c377b544e49d0012c377b544e49d001ab56cac94fce4e4d51b22a292a4dd5512acec82f77ad28294a54b24a4bcc29068a94a456949416a58665166726e5a4c2d4156496e59728592939a7e695a41629d50200504b030414000008080092644f46f7e3285d7400000081000000090024006d6574612e6a736f6e0a0020000000000001001800ccbd7c544e49d001ccbd7c544e49d001ccbd7c544e49d0011d8cb10e82301040ffe56624546a7b61756023ee86e16c0fe8e0959462628cff2e757bc37bef032f4e5b88021db4b5810ae644ebb241a70edc833fe80e9e1a64871a35b1653c9f2e6cd4435b675a35a1350ec60af27be5819efc2f6e949729880f32d77d0abe2fd76249f47c8dbbe4a235e3f707504b01022d0014000008080092644f46b28a0b3c21020000520400000b00240000000000000000000000000000006772617068302e6a736f6e0a00200000000000010018002c377b544e49d0012c377b544e49d0012c377b544e49d001504b01022d0014000008080092644f46287e18aa430000004800000012002400000000000000000000006e0200006772617068305f656469746f722e6a736f6e0a00200000000000010018002c377b544e49d0012c377b544e49d0012c377b544e49d001504b01022d0014000008080092644f46f7e3285d74000000810000000900240000000000000000000000050300006d6574612e6a736f6e0a0020000000000001001800ccbd7c544e49d001ccbd7c544e49d001ccbd7c544e49d001504b050600000000030003001c010000c40300000000
+    dataChecksum: 0
     data_backup: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -296,6 +298,7 @@ MonoBehaviour:
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
   showGraphs: 1
+  lastUniqueAreaIndex: 0
 --- !u!114 &11472506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +329,11 @@ MonoBehaviour:
     bAlmostFinished: 0
     bFinished: 0
     text: []
+    question1:
+      precondition: 0
+      type: 0
+      question: 
+      answers: []
   - itemName: Note
     itemID: 1
     itemDesc: Do Stuff
@@ -345,6 +353,11 @@ MonoBehaviour:
     bFinished: 0
     text:
     - 
+    question1:
+      precondition: 0
+      type: 0
+      question: 
+      answers: []
   - itemName: Distribute Weed
     itemID: 2
     itemDesc: Sell all my dank and I'll give you something nice
@@ -366,6 +379,11 @@ MonoBehaviour:
     - I need you to gather 4 whole marijuana
     - Now just fill people's orders and come back to me.
     - Thanks for the help. Here's 10 monies.
+    question1:
+      precondition: 0
+      type: 0
+      question: 
+      answers: []
   - itemName: Want Pot
     itemID: 3
     itemDesc: You got any good?
@@ -386,6 +404,11 @@ MonoBehaviour:
     text:
     - I could really use some pot right now.
     - Thanks for the bud, bud.
+    question1:
+      precondition: 0
+      type: 0
+      question: 
+      answers: []
   - itemName: 
     itemID: 0
     itemDesc: 
@@ -404,6 +427,11 @@ MonoBehaviour:
     bAlmostFinished: 0
     bFinished: 0
     text: []
+    question1:
+      precondition: 0
+      type: 0
+      question: 
+      answers: []
 --- !u!114 &11472508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,15 +445,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - itemName: 
-    itemID: 0
-    itemDesc: There isn't anysing here
-    itemIcon: {fileID: 0}
-    itemTexture: {fileID: 0}
+    itemID: 5
+    itemDesc: Lint
+    itemIcon: {fileID: 21300000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
+    itemTexture: {fileID: 2800000, guid: afffa9950e78240ff8e0d30eb15e6fa1, type: 3}
     itemType: 0
     itemOwner: 0
-    stackAmount: 0
-    bStackable: 0
-    itemValue: 0
+    stackAmount: 1
+    bStackable: 1
+    itemValue: 5
     itemQuality: 0
   - itemName: Weed
     itemID: 1
@@ -471,6 +499,17 @@ MonoBehaviour:
     bStackable: 1
     itemValue: 16
     itemQuality: 0
+  - itemName: Northern Lights
+    itemID: 4
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 97c02d20362cd4b4f8fcd688235ee7b4, type: 3}
+    itemTexture: {fileID: 2800000, guid: 97c02d20362cd4b4f8fcd688235ee7b4, type: 3}
+    itemType: 0
+    itemOwner: 0
+    stackAmount: 1
+    bStackable: 1
+    itemValue: 16
+    itemQuality: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -482,4 +521,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 172502}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

@@ -23,7 +23,7 @@ public class LevelingSystem : MonoBehaviour {
 		player.GetComponent<Inventory>().ItemSold+=LevelWeed;
 		player.GetComponent<Inventory>().ItemSold+=GetMoney;
 		player.GetComponent<Inventory>().ItemAdded+=WeedGather;
-		player.GetComponent<Inventory>().ItemAdded+=PayMoney;
+		//player.GetComponent<Inventory>().ItemAdded+=PayMoney;
 
 		stats.GetComponent<Text>();
 		stats.text =  "Health: 100  Cash: ";
@@ -32,7 +32,7 @@ public class LevelingSystem : MonoBehaviour {
 
 	void OnGUI()
 	{
-		GUI.Box(new Rect(0,0,200,40), "" + (xpText) + "\n" + "Health: 100  Cash: " + (dolla) + (weedStat)  + (bitchesStat));
+		GUI.Box(new Rect(280,0,200,40), "" + (xpText) + "\n" + "Health: 100  Cash: " + (dolla) + (weedStat)  + (bitchesStat));
 
 
 	}
