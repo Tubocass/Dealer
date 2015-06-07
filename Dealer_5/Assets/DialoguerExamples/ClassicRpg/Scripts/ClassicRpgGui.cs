@@ -47,7 +47,7 @@ public class ClassicRpgGui : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		addDialoguerEvents();
-		Dialoguer.StartDialogue(DialoguerDialogues.First);
+
 		
 		//_showDialogueBox = false;
 	}

@@ -1,11 +1,18 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DialogueHandler : MonoBehaviour 
 {
 	Message dialougueMessage;
 	[SerializeField] protected RectTransform DialogueWindow,BranchList, NPCText;
+	protected List<UnityEngine.UI.Button> choiceSlots = new List<UnityEngine.UI.Button>();
+	[SerializeField] protected GameObject buttonPrefab;
+	[SerializeField] protected EventSystem events;
+	Text qtext;
+
 	private bool _dialogue;
 	private bool _ending;
 	private bool _showDialogueBox;
@@ -30,7 +37,20 @@ public class DialogueHandler : MonoBehaviour
 	void Start()
 	{
 		addDialoguerEvents();
-		Dialoguer.StartDialogue(DialoguerDialogues.First);
+		qtext = NPCText.transform.GetComponent<Text> ();
+		for (int j = 0; j<4; j++)
+		{
+			GameObject icon = (GameObject)Instantiate(buttonPrefab);
+			icon.transform.SetParent(BranchList);
+			
+			choiceSlots.Add(icon.GetComponent<UnityEngine.UI.Button>());
+			choiceSlots[j].onClick.AddListener( ()=> {
+				int s = events.currentSelectedGameObject.transform.GetSiblingIndex(); 
+				Dialoguer.ContinueDialogue(s); 
+				Draw();
+			});
+			icon.SetActive(true);
+		}
 	}
 
 	public void addDialoguerEvents()
@@ -45,8 +65,9 @@ public class DialogueHandler : MonoBehaviour
 	
 	private void onDialogueStartedHandler()
 	{
-		Debug.Log("D Satrted");
+		Debug.Log("D Starrted");
 		_dialogue = true;
+		OnClickButton ();
 	}
 	
 	private void onDialogueEndedHandler()
@@ -76,7 +97,6 @@ public class DialogueHandler : MonoBehaviour
 		_isBranchedText = data.windowType == DialoguerTextPhaseType.BranchedText;
 		_branchedTextChoices = data.choices;
 		_currentChoice = 0;
-		Draw ();
 
 	}
 	
@@ -100,10 +120,36 @@ public class DialogueHandler : MonoBehaviour
 
 		}
 	}
+	public void OnClickButton()
+	{
+		//_showDialogueBox = !_showDialogueBox;
+		DialogueWindow.gameObject.SetActive (!DialogueWindow.gameObject.activeSelf);
+		//.gameObject.SetActive (!NPCText.gameObject.activeSelf);
+	}
+	void OnGUI()
+	{
+		if (_showDialogueBox) 
+		{
+			Draw();
+		}
+	}
 
 	public void Draw()
 	{
-		Text qtext = NPCText.GetComponentInChildren<Text>();
+
+		if(qtext!=null)
+		qtext.text = _windowTargetText;
+		if(_isBranchedText)
+		{
+			for(int c = 0; c<_branchedTextChoices.Length;c++)
+			{
+				Text slotText = choiceSlots[c].transform.GetComponentInChildren<Text>();
+				if(_branchedTextChoices[c]!=null)
+				{
+					slotText.text = _branchedTextChoices[c];
+				}else slotText.text = "";
+			}
+		}
 	}
 
 }

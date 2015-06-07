@@ -13,9 +13,7 @@ public class Player_UI : NPC_UI {
 	protected override void Start () 
 	{
 		Inventory = GetComponent<Inventory>();
-		Journal = GetComponent<Quest_Journal>();
 		itemAmount = 20; //Inventory.inventory.Count;
-		dialAmount = Journal.quests.Count;
 		base.Start();
 
 		for (int m = 0; m<locationAmount; m++)
@@ -41,10 +39,11 @@ public class Player_UI : NPC_UI {
 		}
 		if(Input.GetButtonDown("Journal"))
 		{
-			if(showUI&&showDialogue)
+			/*if(showUI&&showDialogue)
 				ShowUI(false);
 			else ShowUI(true);
 			OnClick_Dialogue();
+			*/
 		}
 	}
 	protected override void OnGUI()
@@ -56,9 +55,6 @@ public class Player_UI : NPC_UI {
 			if(inv!=null && showInventory)
 			{
 				DrawInventory();
-			}else if(journ!=null && showDialogue) 
-			{
-				DrawQuests();
 			}else if(locations!= null&& showMaps)
 			{
 				DrawLocations();
@@ -67,10 +63,6 @@ public class Player_UI : NPC_UI {
 	}
 	public void OnClick_Maps()
 	{
-		if(showDialogue)
-		{
-			OnClick_Dialogue();
-		}else
 		if(showInventory)
 		{
 			OnClick_Inventory();
@@ -80,17 +72,14 @@ public class Player_UI : NPC_UI {
 	}
 	public override void OnClick_Inventory()
 	{
-		if(showDialogue)
-		{
-			OnClick_Dialogue();
-		}else if (showMaps)
+		if (showMaps)
 		{
 			OnClick_Maps();
 		}
 		inventoryPanel.gameObject.SetActive(!inventoryPanel.gameObject.activeSelf);
 		showInventory = !showInventory;
 	}
-	public override void OnClick_Dialogue()
+	public void OnClick_Dialogue()
 	{
 		if(showInventory)
 		{
@@ -99,8 +88,7 @@ public class Player_UI : NPC_UI {
 		{
 			OnClick_Maps();
 		}
-		showDialogue = !showDialogue;
-		journalWindow.gameObject.SetActive(!journalWindow.gameObject.activeSelf);
+
 	}
 	protected void DrawLocations()
 	{

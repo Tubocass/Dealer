@@ -17,7 +17,7 @@ MonoBehaviour:
     - id: 0
       name: First
       startPage: 0
-      scrollPosition: {x: 1275.89075, y: 0}
+      scrollPosition: {x: 1505.14575, y: 0}
       phases:
       - id: 0
         type: 1
@@ -148,8 +148,8 @@ MonoBehaviour:
       - id: 4
         type: 5
         theme: 
-        position: {x: 1642.82178, y: 26.6050873}
-        outs: 09000000
+        position: {x: 1646.82178, y: 26.6050873}
+        outs: 0a000000
         advanced: 0
         metadata: Take,Weed,1
         text: 
@@ -307,7 +307,7 @@ MonoBehaviour:
       - id: 9
         type: 0
         theme: 
-        position: {x: 1897.82178, y: 84}
+        position: {x: 2101.82178, y: 28}
         outs: 08000000
         advanced: 0
         metadata: 
@@ -335,6 +335,37 @@ MonoBehaviour:
         variableGetEquation: 0
         variableGetValue: 
         messageName: 
+      - id: 10
+        type: 5
+        theme: 
+        position: {x: 1862.14575, y: 32}
+        outs: 09000000
+        advanced: 0
+        metadata: Give,Money,1
+        text: 
+        name: 
+        portrait: 
+        audio: 
+        audioDelay: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        newWindow: 0
+        choices: []
+        waitType: 0
+        waitDuration: 0
+        variableScope: 0
+        variableType: 0
+        variableId: 0
+        variableScrollPosition: {x: 0, y: 0}
+        variableSetEquation: 0
+        variableSetValue: 
+        variableGetEquation: 0
+        variableGetValue: 
+        messageName: Trade
       floats:
         variables:
         - name: 

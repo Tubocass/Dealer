@@ -20,7 +20,7 @@ public class TradeEventSubscriber : MessageHandler
 		{
 			s.Trim();
 		}
-		//("Give" or "Take" in reference to PlayerInventory, ItemName, Amount)
+		//("Give" or "Take" in reference to NPCInventory, ItemName, Amount)
 
 		if (GameController.instance._currentInventory == myInventory.UniqueID) 
 		{
@@ -29,22 +29,36 @@ public class TradeEventSubscriber : MessageHandler
 			tradeInventory = Inventory.Find_Inventory(0);
 			if (meta [0] == "Give") 
 			{
-				int s = tradeInventory.ContainsItemAt(meta[1]);
-				if (s>-1)
+				if(meta[1] =="Money")
 				{
-					Item item = tradeInventory.inventory[s];
-					myInventory.AddItem(item, amount);
-					tradeInventory.RemoveItem(item, amount);
+					myInventory.AddMoney(amount);
+					tradeInventory.AddMoney(-amount);
+				}else
+				{
+					int s = tradeInventory.ContainsItemAt(meta[1]);
+					if (s>-1)
+					{
+						Item item = tradeInventory.inventory[s];
+						myInventory.AddItem(item, amount);
+						tradeInventory.RemoveItem(item, amount);
+					}
 				}
 
 			}else if (meta [0] == "Take") 
 			{
-				int s = myInventory.ContainsItemAt(meta[1]);
-				if (s>-1)
+				if(meta[1] =="Money")
 				{
-					Debug.Log ("Here's "+ meta[2]+"Weeds");
-					myInventory.RemoveItem(meta[1],amount);
-					tradeInventory.AddItem(meta[1],amount);
+					myInventory.AddMoney(-amount);
+					tradeInventory.AddMoney(amount);
+				}else
+				{
+					int s = myInventory.ContainsItemAt(meta[1]);
+					if (s>-1)
+					{
+						Item item = myInventory.inventory[s];
+						myInventory.RemoveItem(item,amount);
+						tradeInventory.AddItem(item,amount);
+					}
 				}
 			}
 		}

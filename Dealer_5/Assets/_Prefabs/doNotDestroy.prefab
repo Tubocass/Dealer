@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &149302
 GameObject:
   m_ObjectHideFlags: 1
@@ -1115,8 +1115,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueWindow: {fileID: 22449370}
-  BranchList: {fileID: 22449332}
-  NPCText: {fileID: 22449370}
+  BranchList: {fileID: 22449366}
+  NPCText: {fileID: 22449350}
+  buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
+  events: {fileID: 11413438}
 --- !u!114 &11413428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1594,8 +1596,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnClick_Dialogue
+      - m_Target: {fileID: 11402142}
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1668,7 +1670,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11465654}
         m_MethodName: OnClick_Inventory
         m_Mode: 1
         m_Arguments:
@@ -2045,7 +2047,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 20, y: 20}
+  m_CellSize: {x: 40, y: 40}
   m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -2062,8 +2064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .827450991}
-  m_Sprite: {fileID: 21300000, guid: 33a18574a1737ab42a75137c3b83c9be, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2450,7 +2452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675bdbc07681f0e4cb91708b846ce322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
+  ui: {fileID: 11465654}
 --- !u!114 &11449330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2486,11 +2488,7 @@ MonoBehaviour:
   panelUI: {fileID: 22449314}
   inventoryPanel: {fileID: 22449338}
   inventoryGrid: {fileID: 22449334}
-  journalWindow: {fileID: 22413440}
-  journalList: {fileID: 22449342}
-  questText: {fileID: 22413438}
   itemAmount: 20
-  dialAmount: 4
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 11413438}
@@ -3107,11 +3105,7 @@ MonoBehaviour:
   panelUI: {fileID: 22449356}
   inventoryPanel: {fileID: 22449360}
   inventoryGrid: {fileID: 22449340}
-  journalWindow: {fileID: 22449370}
-  journalList: {fileID: 22449366}
-  questText: {fileID: 22449336}
   itemAmount: 6
-  dialAmount: 4
   imagePrefab: {fileID: 100000, guid: a851688f34bbcdd4bab808e876241aff, type: 2}
   buttonPrefab: {fileID: 109944, guid: 072028e2acc50314ab0d7df068ba6aa3, type: 2}
   events: {fileID: 11413438}
@@ -3555,7 +3549,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 150}
+  m_SizeDelta: {x: 264.100006, y: 296.070007}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22413442
 RectTransform:
@@ -3631,7 +3625,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 200}
+  m_SizeDelta: {x: 264.100006, y: 377.799988}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &22449316
 RectTransform:
@@ -3722,7 +3716,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.69999981, y: .600000024}
+  m_AnchoredPosition: {x: -52.7000008, y: .600000024}
   m_SizeDelta: {x: 150, y: 32}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &22449326
@@ -3775,10 +3769,10 @@ RectTransform:
   - {fileID: 22449376}
   m_Father: {fileID: 22449324}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25, y: -16}
-  m_SizeDelta: {x: 50, y: 32}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22449332
 RectTransform:
@@ -3814,7 +3808,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1.97887421e-05, y: 0}
-  m_SizeDelta: {x: 160, y: 170}
+  m_SizeDelta: {x: 262.899994, y: 340.899994}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22449336
 RectTransform:
@@ -3850,7 +3844,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1.20001221, y: 7.62939453e-06}
-  m_SizeDelta: {x: 160, y: 170}
+  m_SizeDelta: {x: 262.899994, y: 340.899994}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22449340
 RectTransform:
@@ -3933,10 +3927,10 @@ RectTransform:
   - {fileID: 22449346}
   m_Father: {fileID: 22449324}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -16}
-  m_SizeDelta: {x: 50, y: 32}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22449350
 RectTransform:
@@ -4132,7 +4126,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -.600012779}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22449372
@@ -4165,10 +4159,10 @@ RectTransform:
   - {fileID: 22449372}
   m_Father: {fileID: 22449324}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -16}
-  m_SizeDelta: {x: 50, y: 32}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22449376
 RectTransform:

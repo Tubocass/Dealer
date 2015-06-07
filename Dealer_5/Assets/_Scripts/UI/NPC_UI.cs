@@ -7,28 +7,22 @@ using System.Collections.Generic;
 
 public class NPC_UI: MonoBehaviour
 {
-	[SerializeField] protected RectTransform panelUI, inventoryPanel, inventoryGrid, journalWindow,journalList, questText;
+	[SerializeField] protected RectTransform panelUI, inventoryPanel, inventoryGrid;
 	protected Inventory inv;//set by clicking on an NPC
-	public Inventory Inventory{get{return inv;}set{inv = value; OnChange_Inventory();}}
-	protected Quest_Journal journ;
-	public Quest_Journal Journal{get{return journ;}set{journ = value; OnChange_Journal();}}
-	protected bool showInventory, showUI, showDialogue;
+	public Inventory Inventory{get{return inv;}set{inv = value;}}
+	protected bool showInventory, showUI;
 	protected List<Image> invImages = new List<Image>();
-	protected List<UnityEngine.UI.Button> dialSlots = new List<UnityEngine.UI.Button>();
-	[SerializeField] protected int itemAmount = 6, dialAmount = 4;
+	[SerializeField] protected int itemAmount = 6;
 	protected Rect window;
 	public Rect Window{get{return window;}}
 	[SerializeField] protected GameObject imagePrefab, buttonPrefab;
 	[SerializeField] protected EventSystem events;
-	Text qtext;
 	public MarketManager manager;
-	bool bQuestioning;
 	[SerializeField] Sprite defaultSprite;
 	StringEvent action;
 
 	protected virtual void Start () 
 	{
-		qtext = questText.GetComponentInChildren<Text>();
 		window = GetScreenRect((RectTransform)panelUI.transform);
 		inventoryPanel.GetComponent<Inventory_Background>().ui = this;
 		manager = GameObject.FindGameObjectWithTag("MarketManager").GetComponent<MarketManager>();
@@ -43,59 +37,14 @@ public class NPC_UI: MonoBehaviour
 			//invSlots[i].GetComponent<Dragging>().inv = inv;
 			icon.SetActive(true);
 		}
-		for (int j = 0; j<dialAmount; j++)
-		{
-			GameObject icon = (GameObject)Instantiate(buttonPrefab);
-			icon.transform.SetParent(journalList);
-
-			dialSlots.Add(icon.GetComponent<UnityEngine.UI.Button>());
-			dialSlots[j].onClick.AddListener(() => {  });
-			icon.SetActive(true);
-		}
 	}
 	
 	public virtual void OnClick_Inventory()
 	{
-		if(showDialogue)
-		{
-			OnClick_Dialogue();
-		}
-		inventoryPanel.gameObject.SetActive(!inventoryPanel.gameObject.activeSelf);
+		inventoryPanel.gameObject.SetActive (!inventoryPanel.gameObject.activeSelf);
 		showInventory = !showInventory;
-		/*foreach (Image child in invSlots) 
-		{
-			child.gameObject.SetActive(!child.gameObject.activeSelf);
-		}	*/	
-
-	}
-	public virtual void OnClick_Dialogue()
-	{
-		if(showInventory)
-		{
-			OnClick_Inventory();
-		}
-		showDialogue = !showDialogue;
-		if(showDialogue)
-		{
-			DrawDialog();
-		}
-		journalWindow.gameObject.SetActive(!journalWindow.gameObject.activeSelf);
-	}
-
-	protected void OnChange_Inventory()
-	{
-		/*foreach (Image child in invSlots) 
-		{
-			child.GetComponent<Dragging>().inv = inv;
-		}*/		
 	}
 	
-	protected void OnChange_Journal()
-	{
-		if(qtext!=null)
-		qtext.text = "";
-	}
-
 	public void ShowUI(bool show)
 	{
 		showUI = show;
@@ -114,9 +63,6 @@ public class NPC_UI: MonoBehaviour
 			if(inv!=null && showInventory)
 			{
 				DrawInventory();
-			}else if(showDialogue) 
-			{
-				DrawDialog();
 			}
 		}
 	}
@@ -142,43 +88,6 @@ public class NPC_UI: MonoBehaviour
 				}else{ invImages[i].sprite = defaultSprite;text.text = "";}
 			}
 		}
-	}
-	protected void DrawQuests()
-	{
-		for(int j = 0; j< journ.quests.Count;j++)
-		{
-			Text slotText = dialSlots[j].GetComponentInChildren<Text>();
-			if(slotText!=null)
-			{
-				if(journ.quests[j].itemName!=null)
-				{
-					slotText.text = journ.quests[j].itemName;
-				}else slotText.text = "";
-			}
-		}
-	}
-	protected void DrawQuestText()
-	{
-		Text qtext = questText.GetComponentInChildren<Text>();
-
-		Debug.Log("Some Text");
-		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
-		Debug.Log(s);
-		if(qtext!=null)
-		qtext.text = journ.quests[s].GetText();
-	}
-	
-	void DrawDialog()
-	{
-
-	}
-
-	protected void DialogueButton(string action)
-	{
-		int s = events.currentSelectedGameObject.transform.GetSiblingIndex();
-
-		DrawDialog();
-		
 	}
 
 	protected Rect GetScreenRect(RectTransform rectTransform)

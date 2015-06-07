@@ -40,9 +40,9 @@ public class NPC : MonoBehaviour {
 	{
 		print ("bboobbss");
 		bClicked = true;
-		ui.Journal = quests;
 		ui.Inventory = inventory;
 		GameController.instance._currentInventory = inventory.UniqueID;
-		ui.ShowUI(true);
+		//ui.ShowUI(true);
+		Dialoguer.StartDialogue(DialoguerDialogues.First);
 	}
 }

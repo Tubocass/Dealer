@@ -1,17 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\TradeEventSubscriber.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\ToEndAllWars\Great War 5\Assets\Plugins\UnityAnalytics\PlatformWrapper.cs">
     <Files>
-      <File FileName="Assets\_Scripts\TradeEventSubscriber.cs" Line="11" Column="49" />
-      <File FileName="Assets\DialoguerExamples\ClassicRpg\Scripts\ClassicRpgGui.cs" Line="247" Column="3" />
-      <File FileName="Assets\_Scripts\Inventories\Inventory.cs" Line="147" Column="8" />
-      <File FileName="Assets\_Scripts\UI\NPC_UI.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\NPCs\NPC.cs" Line="44" Column="28" />
-      <File FileName="Assets\_Scripts\Player\Player_Interactions.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Inventories\RightClickSell.cs" Line="1" Column="1" />
-      <File FileName="Assets\Dialoguer\Dialoguer\Scripts\Objects\DialoguerTextData.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Inventories\Inventory_NPC.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\DialogueHandler.cs" Line="106" Column="55" />
+      <File FileName="..\..\ToEndAllWars\Great War 5\Assets\Plugins\UnityAnalytics\PlatformWrapper.cs" Line="30" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
